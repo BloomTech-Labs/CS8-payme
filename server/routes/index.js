@@ -1,6 +1,7 @@
-const { register } = require('../controllers/registerUser');
-const { login, checkToken } = require('../controllers/loginUser');
-const { changePassword } = require('../controllers/changePassword');
+const { register } = require('../controllers/user/registerUser');
+const { login, checkToken } = require('../controllers/user/loginUser');
+const { changePassword } = require('../controllers/user/changePassword');
+const { addInvoice } = require('../controllers/invoice/newInvoice');
 
 const { restricted, authenticate } = require('../config/auth');
 
@@ -13,4 +14,5 @@ module.exports = app => {
   app.post('/api/login', authenticate, login);
   app.get('/api/login', restricted, checkToken);
   app.post('/api/changepassword', restricted, changePassword);
+  app.post('/api/addinvoice', restricted, addInvoice);
 };
