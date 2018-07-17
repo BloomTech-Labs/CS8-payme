@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import landPic from './landing.jpg';
 // import { Input, Button } from 'semantic-ui-react';
 
@@ -31,4 +31,4 @@ class Landing extends Component {
   }
 }
  
-export default Landing;
+export default (Landing);

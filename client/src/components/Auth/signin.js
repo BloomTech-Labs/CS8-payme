@@ -18,7 +18,7 @@ class Signin extends Component {
   };
 
   render() {
-    const { handleSubmit } = this.props;  
+    const { handleSubmit } = this.props;
     return ( 
       <div className="signup" style={styles}>
         <p className="signup-headline">Lorem ipsum <br/> <span className="signup-headline2">dolor sit amet</span></p>
@@ -26,11 +26,12 @@ class Signin extends Component {
           <h1 className="signin--header">Sign In</h1>
           <h3>{this.props.message}</h3>
           <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
-            <Field
+            <Field 
               name="username"
               component="input"
               className="signin--signin__username"
               placeholder="Username"
+              required
             />
             <br />
             <Field
@@ -38,6 +39,7 @@ class Signin extends Component {
               component="input"
               className="signin--signin__password"
               placeholder="Password"
+              required
             />
             <br />
             <button
@@ -69,11 +71,11 @@ class Signin extends Component {
 }
 const mapStateToProps = state => {
   return {
-    message: state.error,
+    message: state.auth.message,
   };
 };
 
-Signin = connect(mapStateToProps, { login })(Signin);
+Signin = (connect(mapStateToProps, { login })(Signin));
 
 export default reduxForm({
   form: 'logginIn', // Unique name for the form

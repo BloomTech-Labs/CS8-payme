@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { register } from '../../actions';
 import logo from './google.png';
@@ -89,7 +89,7 @@ const mapStateToProps = state => {
   };
 };
 
-Signup = connect(mapStateToProps, { register })(Signup);
+Signup = (connect(mapStateToProps, { register })(Signup));
 
 export default reduxForm({
   form: 'register', // Unique name for the form
