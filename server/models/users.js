@@ -37,7 +37,7 @@ const User = new mongoose.Schema(
       type: String,
       default: 'perdiem',
     },
-    invoice: { type: ObjectId, ref: 'Invoice' },
+    invoices: [{ type: ObjectId, ref: 'Invoice' }],
   },
   {
     timestamps: true,
