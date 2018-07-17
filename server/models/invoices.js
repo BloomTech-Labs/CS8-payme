@@ -7,8 +7,9 @@ const { Email } = mongoose.Schema.Types;
 
 const Invoice = new mongoose.Schema({
   number: {
-    type: Number,
+    type: String,
     required: true,
+    unique: true,
   },
   pdf: Array,
   totalAmount: {

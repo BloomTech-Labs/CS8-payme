@@ -24,6 +24,9 @@ const addInvoice = (req, res) => {
           });
       });
     })
+    .catch(err =>
+      res.status(501).json({ message: 'Failed to save invoice to database.' })
+    )
     .catch(err => res.status(500).json(err));
 };
 
