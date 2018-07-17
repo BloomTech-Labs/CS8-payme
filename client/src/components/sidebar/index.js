@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../actions';
 import Nico from './Nico.jpg';
+
 
 class Sidebar extends Component {
   state = {}
-  render() { 
-    return ( 
+
+  logoutUser = () => {
+    this.props.logout(this.props.history);
+  };
+
+  render() {
+    return (
       <div className="sidebar">
         <h1 className="sidebar--title">
-          payMe <span className="sidebar--dot">.</span>
+          payMe
+          <span className="sidebar--dot">
+          .
+          </span>
           <br />
-
         </h1>
         <div className="sidebar--chat">
           <div className="sidebar--users">
@@ -27,15 +37,20 @@ class Sidebar extends Component {
             <p><NavLink exact to='/billing'><i className="far fa-credit-card fa-fw" />Billings</NavLink></p>
             <p
               // style={{ cursor: 'pointer', color: 'rgb(129, 129, 129)' }}
-              // onClick={e => this.logoutUser(e)}
-            ><NavLink to='/'><i className="fas fa-sign-out-alt fa-fw" />Sign Out</NavLink>
+              onClick={() => this.logoutUser()}
+            ><NavLink to=''><i className="fas fa-sign-out-alt fa-fw" />Sign Out</NavLink>
             </p>
           </div>
         </div>
       </div>
 
-     )
+    );
   }
 }
- 
-export default Sidebar;
+const mapStateToProps = state => {
+  return {
+    admin: state.admin,
+  };
+};
+
+export default withRouter(connect(mapStateToProps, { logout })(Sidebar));
