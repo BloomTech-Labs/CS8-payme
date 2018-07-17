@@ -67,8 +67,28 @@
   margin: 0 auto;
   position: relative; }
   .invoice-box {
-    width: 20rem;
-    height: 5rem;
+    padding: 2rem 2rem;
+    margin-top: 5rem;
+    margin-left: 2rem;
+    justify-content: center;
+    width: 40rem;
+    height: 100%;
+    border: 1px solid black; }
+  .invoice-pdf {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer; }
+  .invoice-id {
+    font-weight: 700;
+    font-size: 1.2; }
+  .invoice-add {
+    cursor: pointer;
+    padding: 2rem 2rem;
+    margin-top: 10rem;
+    margin-left: 2rem;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
     border: 1px solid black; }
 
 .sidebar {

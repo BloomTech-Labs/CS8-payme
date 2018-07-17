@@ -7,9 +7,39 @@
   width: 120rem;
   margin: 0 auto;
   position: relative;
+
   &-box {
-    width: 20rem;
-    height: 5rem;
+    padding: 2rem 2rem;
+    // background-color: blue;
+    margin-top: 5rem;
+    margin-left: 2rem;  
+    justify-content: center;
+    width: 40rem;
+    height: 100%;
     border: 1px solid black;
+  }
+
+  &-pdf {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+
+  &-id {
+    font-weight: 700;
+    font-size: 1.2;
+  }
+
+  &-add {
+    cursor: pointer;
+    padding: 2rem 2rem;
+    // background-color: blue;
+    margin-top: 10rem;
+    margin-left: 2rem;  
+    justify-content: center;
+    width:  10rem;
+    height: 10rem;
+    border: 1px solid black;
+    // height: 100%;
   }
 }

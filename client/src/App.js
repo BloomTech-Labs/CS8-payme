@@ -6,6 +6,7 @@ import Reminders from './components/reminders/';
 import Invoices from './components/invoices/';
 import Settings from './components/settings/';
 import Billing from './components/billing/';
+import AddInvoice from './components/invoices/addInvoice';
 
 import Signin from './components/Auth/signin';
 import Signup from './components/Auth/signup';
@@ -22,6 +23,7 @@ class App extends Component {
             <Route path="/invoices" component={Invoices} />
             <Route path="/settings" component={Settings} />
             <Route path="/billing" component={Billing} />
+            <Route path="/addInvoice" component={AddInvoice} />
           </Switch>
       </Router>
     );
