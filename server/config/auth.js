@@ -4,7 +4,7 @@ const User = require('../models/users');
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const JwtStrategy = require('passport-jwt').Strategy;
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+const keys = require('./keys');
 
 function makeToken(user) {
   // sub: subject (id)

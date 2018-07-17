@@ -58,13 +58,18 @@
   color: black;
   background-color: white; }
 
-.invoices {
+.invoice {
+  display: flex;
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   width: 120rem;
   margin: 0 auto;
   position: relative; }
+  .invoice-box {
+    width: 20rem;
+    height: 5rem;
+    border: 1px solid black; }
 
 .sidebar {
   color: white;
@@ -77,6 +82,12 @@
   position: relative;
   padding-left: 2rem;
   width: 15rem; }
+  .sidebar--title {
+    font-size: 3rem; }
+  .sidebar--dot {
+    color: #22CFB1;
+    font-size: 6rem;
+    margin-left: -.5rem; }
 
 .sidebar-pic {
   display: inline;

@@ -8,8 +8,9 @@ class Sidebar extends Component {
     return ( 
       <div className="sidebar">
         <h1 className="sidebar--title">
-          payME
+          payMe <span className="sidebar--dot">.</span>
           <br />
+
         </h1>
         <div className="sidebar--chat">
           <div className="sidebar--users">

@@ -10,6 +10,15 @@
   padding-left: 2rem;
   width: 15rem;
   // align-items: center;
+
+  &--title {
+    font-size: 3rem;
+  }
+  &--dot {
+    color: $color-primary;
+    font-size: 6rem;
+    margin-left: -.5rem;
+  }
 }
 
 .sidebar-pic {

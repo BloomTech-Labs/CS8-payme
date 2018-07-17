@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
-const User = require('../../models/users');
-const { makeToken } = require('../auth');
+// const router = express.Router();
+const User = require('../models/users');
+const keys = require('../config/keys')
+const { makeToken } = require('../config/auth');
 
-// endpoint for these routers is /api/register
 
-router.post('/', (req, res) => {
+const register = (req, res) => {
   const { username, password, phone, firstName, lastName } = req.body;
   let user = {};
   if (!username || !password) {
@@ -32,6 +32,9 @@ router.post('/', (req, res) => {
       res.status(403).json({ message: 'Email already exists.' });
     }
   });
-});
+};
 
-module.exports = router;
+
+module.exports = {
+  register,
+};
