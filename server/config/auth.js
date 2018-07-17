@@ -26,8 +26,9 @@ function makeToken(user) {
 }
 
 const localStrategy = new LocalStrategy(function(username, password, done) {
-  // console.log('local');
+  // console.log(username, password);
   User.findOne({ username }, function(err, user) {
+    // console.log(`user: ${user.checkpassword}`);
     if (err) {
       return done(err);
     }
@@ -35,13 +36,14 @@ const localStrategy = new LocalStrategy(function(username, password, done) {
       return done(null, false);
     }
     user.checkPassword(password, (err, valid) => {
+      // console.log(valid);
       if (err) {
         return done(err);
       }
 
       if (valid) {
-        const { _id, username, notes } = user;
-        return done(null, { _id, username, notes });
+        const { _id, username } = user;
+        return done(null, { _id, username });
       }
       return done(null, false);
     });
@@ -67,7 +69,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
       }
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       done(err, false);
     });
 });
