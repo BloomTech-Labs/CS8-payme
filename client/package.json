@@ -17,6 +17,10 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.82.0"
   },
+  "engines": {
+    "node": "10.4.1",
+    "npm": "6.1.0"
+  },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
