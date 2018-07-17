@@ -12,7 +12,7 @@ const Invoice = new mongoose.Schema({
   },
   pdf: Array,
   totalAmount: {
-    type: Number,
+    type: String,
     required: true,
   },
   phone: {

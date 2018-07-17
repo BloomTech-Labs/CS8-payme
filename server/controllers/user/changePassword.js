@@ -1,6 +1,6 @@
 const express = require('express');
-const User = require('../models/users');
-const { makeToken } = require('../config/auth');
+const User = require('../../models/users');
+const { makeToken } = require('../../config/auth');
 
 const changePassword = (req, res) => {
   const { _id, username } = req.user;

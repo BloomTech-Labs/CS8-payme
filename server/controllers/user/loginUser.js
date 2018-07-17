@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/users');
-const { makeToken } = require('../config/auth');
+const User = require('../../models/users');
+const { makeToken } = require('../../config/auth');
 
 const login = (req, res) => {
   const { _id, username } = req.user;
