@@ -1,0 +1,52 @@
+.sidebar {
+  color:white;
+  background-color: rgb(37, 37, 37);
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30rem;
+  position: relative;
+  padding-left: 2rem;
+  width: 15rem;
+  // align-items: center;
+
+  &--title {
+    font-size: 3rem;
+  }
+  &--dot {
+    color: $color-primary;
+    font-size: 6rem;
+    margin-left: -.5rem;
+  }
+}
+
+.sidebar-pic {
+  display: inline;
+  height: 100%;
+  // width: 100%;
+  position: relative;
+}
+
+.sidebar-profile {
+  display: flex;
+
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow: 0px 0px 0px 5px rgb(211, 211, 211);
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.sidebar-links {
+  margin-top: 2rem;
+  // display: flex;
+}
+
+.fa-fw {
+  padding-right: 0.5rem;
+}
