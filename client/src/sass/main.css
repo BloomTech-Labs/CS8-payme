@@ -1,0 +1,291 @@
+.landing {
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.landing-header {
+  background-color: #222;
+  color: white; }
+
+.landing-title {
+  font-size: 10rem;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: 19rem;
+  left: 10rem; }
+
+.landing-slogan {
+  color: #ff0a0a;
+  font-size: 2rem;
+  position: absolute;
+  top: 28rem;
+  left: 25rem; }
+
+.landing-image {
+  width: 100%; }
+
+.landing-signin {
+  border: none;
+  font-size: 1.2rem;
+  background-color: #435c94;
+  color: white;
+  height: 4rem;
+  width: 12rem;
+  border-radius: .5rem;
+  position: absolute;
+  top: 68rem;
+  left: 52rem;
+  font-size: 1.3rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.753); }
+
+.landing-signup {
+  border: none;
+  font-size: 1.2rem;
+  background-color: #435c94;
+  color: white;
+  height: 4rem;
+  width: 12rem;
+  border-radius: .5rem;
+  position: absolute;
+  top: 68rem;
+  left: 65rem;
+  font-size: 1.3rem;
+  color: black;
+  background-color: white; }
+
+.invoices {
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.sidebar {
+  color: white;
+  background-color: #252525;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30rem;
+  position: relative;
+  padding-left: 2rem;
+  width: 15rem; }
+
+.sidebar-pic {
+  display: inline;
+  height: 100%;
+  position: relative; }
+
+.sidebar-profile {
+  display: flex;
+  border: 5px solid white;
+  box-shadow: 0px 0px 0px 5px lightgray;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 2rem; }
+
+.sidebar-links {
+  margin-top: 2rem; }
+
+.fa-fw {
+  padding-right: 0.5rem; }
+
+.reminder {
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.signup {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.315);
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.settings {
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.billing {
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.sign-layout {
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+
+.signin {
+  border: 1px solid black;
+  box-shadow: none;
+  width: 110rem;
+  height: 85rem;
+  display: flex;
+  justify-content: flex-end;
+  align-content: space-evenly;
+  align-items: center;
+  border: solid white;
+  background-color: #ffffff;
+  border: 1px solid white; }
+  .signin--image {
+    max-width: 150rem; }
+  .signin--box {
+    margin-left: 10rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 40rem;
+    height: 60rem;
+    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
+    position: relative; }
+  .signin--header {
+    margin-bottom: 2rem; }
+  .signin--buttons {
+    margin-bottom: 1.5rem;
+    margin-left: 1rem;
+    cursor: pointer; }
+    .signin--buttons__facebook {
+      border: none;
+      font-size: 1.2rem;
+      background-color: #435c94;
+      color: white;
+      height: 3.5rem;
+      width: 9rem;
+      margin-right: 1.5rem;
+      border-radius: .5rem; }
+    .signin--buttons__google {
+      font-size: 1.2rem;
+      color: #8b8b8b;
+      height: 3.8rem;
+      width: 10rem;
+      margin-right: 1.5rem;
+      border-radius: .5rem;
+      border: 0.7px solid rgba(105, 105, 105, 0.384);
+      padding: 1rem; }
+      .signin--buttons__google--logo {
+        padding: none;
+        height: 1.3rem;
+        align-self: auto;
+        margin-right: .5rem; }
+  .signin--orsign {
+    font-size: 1.2rem;
+    margin-bottom: 2rem; }
+  .signin--signin {
+    font-size: 1.2rem;
+    cursor: pointer; }
+    .signin--signin:hover {
+      cursor: pointer; }
+    .signin--signin__username {
+      padding: .5rem;
+      height: 3.5rem;
+      width: 20rem;
+      border-radius: .5rem;
+      margin-bottom: .5rem;
+      border: 0.1rem solid #dfdfdf; }
+    .signin--signin__password {
+      padding: .5rem;
+      height: 3.5rem;
+      width: 20rem;
+      border-radius: .5rem;
+      margin-bottom: .5rem;
+      border: 0.1rem solid #dfdfdf; }
+    .signin--signin__button {
+      padding: .5rem;
+      height: 3rem;
+      width: 100%;
+      background-color: black;
+      color: white;
+      font-size: 1rem;
+      border-radius: .5rem;
+      border: 0.5px black; }
+  .signin--notmember {
+    font-size: 1rem;
+    margin-top: 5rem; }
+
+.signup {
+  box-shadow: none;
+  height: 85rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-size: cover;
+  position: relative; }
+  .signup--box {
+    margin-right: 8rem;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 40rem;
+    height: 60rem;
+    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
+    position: relative; }
+  .signup-headline {
+    position: absolute;
+    font-size: 5rem;
+    font-weight: 700;
+    color: white;
+    top: 18rem;
+    left: 10rem; }
+  .signup-headline2 {
+    font-weight: 400;
+    font-size: 3rem;
+    position: absolute;
+    top: 4.9rem; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat',sans-serif;
+  background-size: fill; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+button {
+  cursor: pointer; }
+
+a {
+  text-decoration: none;
+  color: #818181; }
+
+ul {
+  list-style: none; }
+
+button:focus {
+  outline: 0;
+  border-radius: 15px; }
+
+.active {
+  color: #22CFB1; }
