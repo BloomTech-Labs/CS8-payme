@@ -2,7 +2,7 @@
 
 # Endpoints
 
-## /api/register
+## POST -- `/api/register` -- POST
 
 Registers a new client.
 
@@ -42,7 +42,11 @@ Failure will return:
 }
 ```
 
-## /api/login
+## GET -- `/api/login` -- GET
+
+JWT must be sent as Authorization header fromatted as 'bearer {token}'. If JWT is valid, will return user same information as successful login or register post. If not valid, will return "Unauthorized".
+
+## POST -- `/api/login` -- POST
 
 | Property | Type   | Required |
 | -------- | ------ | -------- |
@@ -74,4 +78,31 @@ Failure will return:
 {
   message: 'Reason for failure';
 }
+```
+
+## POST -- `/api/changepassword` -- POST
+
+Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+
+| Property    | Type   | Required |
+| ----------- | ------ | -------- |
+| newPassword | String | Yes      |
+
+Success will return:
+
+```js
+response = {
+  token: 'JWT String',
+  user: {
+    subscription: 'perdiem',
+    _id: '5b4d02ac6b3ee4ba0b0dd5f2',
+    username: 'testing@test.com',
+    phone: '1234567890',
+    firstName: 'John',
+    lastName: 'Doe',
+    createdAt: '2018-07-16T20:40:12.758Z',
+    updatedAt: '2018-07-16T20:40:12.758Z',
+    __v: 0,
+  },
+};
 ```
