@@ -1,11 +1,13 @@
-const { login, register } = require('../controllers/registerUser');
+const { register } = require('../controllers/registerUser');
+const { login } = require('../controllers/loginUser');
 
-module.exports = (app) => {
-app.get('/', (req, res) => {
-  res.json({ message: 'API running successfully! YAY!' });
-});
+const { restricted, authenticate } = require('../config/auth');
 
-app.post('/api/register', register);
-// app.post('/api/login', login);
+module.exports = app => {
+  app.get('/', (req, res) => {
+    res.json({ message: 'API running successfully! YAY!' });
+  });
 
-}
+  app.post('/api/register', register);
+  app.post('/api/login', authenticate, login);
+};
