@@ -12,5 +12,5 @@ module.exports = app => {
 
   app.post('/api/register', register);
   app.post('/api/login', authenticate, login);
-  app.post('/api/sms', createReminder);
+  app.post('/api/sms', restricted, createReminder);
 };
