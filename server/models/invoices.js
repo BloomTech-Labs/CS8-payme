@@ -21,15 +21,15 @@ const Invoice = new mongoose.Schema({
     frequency: String,
   },
   email: {
-    // address: Email,
-    // frequency: String,
-    mailOptions: {
-      from: String, // sender address
-      to: String, // list of receivers
-      subject: String, // Subject line
-      text: String, // plain text body
-      html: String, // html body
-    },
+    address: Email,
+    frequency: String,
+    // mailOptions: {
+    //   from: String, // sender address
+    //   to: String, // list of receivers
+    //   subject: String, // Subject line
+    //   text: String, // plain text body
+    //   html: String, // html body
+    // },
   },
 });
 
