@@ -21,7 +21,7 @@ export const authError = error => {
 
 export const login = (username, password, history) => {
   return dispatch => {
-    axios.post('http://localhost:5000/api/login', { username, password })
+    axios.post('/api/login', { username, password })
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
@@ -36,7 +36,7 @@ export const login = (username, password, history) => {
 
 export const register = (username, password, firstName, lastName, phone, history) => {
   return dispatch => {
-    axios.post('http://localhost:5000/api/register', {
+    axios.post('/api/register', {
       username, password, firstName, lastName, phone,
     })
       .then(res => {
