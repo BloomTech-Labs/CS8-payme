@@ -4,11 +4,11 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
-const app = express();
 
 const routes = require('./routes/');
 const keys = require('./config/keys');
 const port = process.env.PORT || 5000;
+const app = express();
 
 // Connecting to mLab/port
 mongoose

@@ -3,6 +3,7 @@ import axios from 'axios';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const ISAUTH = 'ISAUTH';
 export const SET_ID = 'SET_ID';
+
 ////////Action
 export const setId = id => {
   return {
@@ -28,7 +29,7 @@ export const login = (username, password, history) => {
         history.push('/invoices');
       })
       .catch(err => {
-        if (err) console.log('error: ', err.response);
+        if (err) console.log('error: ', err);
         if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
       });
   };
