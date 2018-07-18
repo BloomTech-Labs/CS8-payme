@@ -5,6 +5,7 @@ const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
+  payInvoice,
 } = require('../controllers/invoice/getInvoice');
 
 const { restricted, authenticate } = require('../config/auth');
@@ -20,4 +21,5 @@ module.exports = app => {
   app.post('/api/addinvoice', restricted, addInvoice);
   app.get('/api/invoices', restricted, getAllInvoices);
   app.get('/api/invoices/:number', restricted, getOneInvoice);
+  app.get('/api/payinvoice/:invoiceID', payInvoice);
 };

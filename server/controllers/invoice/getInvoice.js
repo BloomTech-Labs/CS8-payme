@@ -26,7 +26,20 @@ const getOneInvoice = (req, res) => {
   res.status(404).json({ message: 'Invoice number does not exist.' });
 };
 
+const payInvoice = (req, res) => {
+  const { invoiceID } = req.params;
+  Invoice.findById(invoiceID)
+    .then(response => {
+      if (!response) {
+        return res.status(404).json({ message: 'Invoice not found.' });
+      }
+      res.json(response);
+    })
+    .catch(err => res.status(500).json(err));
+};
+
 module.exports = {
   getOneInvoice,
   getAllInvoices,
+  payInvoice,
 };
