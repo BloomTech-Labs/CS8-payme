@@ -7,10 +7,6 @@ const jwt = require('jsonwebtoken');
 const keys = require('./keys');
 
 function makeToken(user) {
-  // sub: subject (id)
-  // iat:
-  //return token...
-
   const timestamp = new Date().getTime();
 
   const payload = {

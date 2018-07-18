@@ -81,9 +81,8 @@ export function changePassword(newPassword, history) {
   };
 }
 
-export function addInvoice(credentials, pdf, history) {
+export function addInvoice(credentials, history) {
   return dispatch => {
-    console.log({ ...credentials, pdf });
     axios.post('/api/addinvoice', credentials)
       .then(res => {
         console.log(res);

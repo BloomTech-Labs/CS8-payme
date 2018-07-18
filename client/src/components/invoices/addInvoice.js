@@ -14,7 +14,7 @@ class AddInvoice extends Component {
     pdf.append('file', this.uploadInput.files[0]);
     pdf.append('filename', 'this.fileName.value');
   
-    this.props.addInvoice({...credentials, pdf }, this.props.history);
+    this.props.addInvoice({ ...credentials, pdf: pdf.file }, this.props.history);
   };
 
 
@@ -28,14 +28,14 @@ class AddInvoice extends Component {
           <h1>Add Invoice</h1>
           <form className="add-invoice" onSubmit={handleSubmit(this.handleFormSubmit)}>
             <Field
-              name="name"
+              name="clientName"
               component="input"
               className="add-invoice_field"
               placeholder="Name"
             />
             <br />
             <Field
-              name="company"
+              name="companyName"
               component="input"
               className="add-invoice_field"
               placeholder="Company"
@@ -49,6 +49,7 @@ class AddInvoice extends Component {
             />
             <br />
             <Field
+              type="number"
               name="phone"
               component="input"
               className="add-invoice_field"
@@ -56,10 +57,19 @@ class AddInvoice extends Component {
             />
             <br />
             <Field
-              name="invoiceNumber"
+              type="number"
+              name="totalAmount"
               component="input"
               className="add-invoice_field"
               placeholder="Invoice Number"
+            />
+            <br />
+            <Field
+              type="number"
+              name="number"
+              component="input"
+              className="add-invoice_field"
+              placeholder="Total Amount"
             />
             <br />
             <input
