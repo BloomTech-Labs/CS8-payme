@@ -60,6 +60,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
   // console.log(load, 'load');
   User.findById(load.sub)
     .select('-password')
+    .populate('invoices')
     .then(user => {
       // console.log(load.exp - new Date().getTime());
       if (user && load.exp - new Date().getTime() >= 0) {

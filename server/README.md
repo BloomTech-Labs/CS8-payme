@@ -161,5 +161,30 @@ Success will return:
 };
 ```
 
+If invoice number is already in use, will return:
+`{ message: 'Invoice number already exists.' }`
+
 If invoice failed to save, will return:
 `{ message: "Failed to save invoice to database."}`
+
+## GET -- `/api/invoices` -- GET
+
+JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+If JWT is active, will return:
+
+```js
+{
+  invoices: [{ Invoice }, { Invoice }, { Invoice }];
+}
+```
+
+## GET --`/api/invoices/:number` -- GET
+
+JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+
+`number` is the invoive number you would like returned.
+
+If JWT is active, and `number` is a valid invoice number, will return just the requested invoice.
+
+if JWT is active, and `number` is NOT a valid invoice number, will return:
+`{ message: 'Invoice number does not exist.' }`
