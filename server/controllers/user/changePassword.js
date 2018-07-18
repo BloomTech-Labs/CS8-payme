@@ -22,9 +22,19 @@ const changePassword = (req, res) => {
         // Save Pre hook allows the password to be hashed before being saved on the database.
         if (valid) {
           user.password = newPassword;
-          return user.save().then(response => res.json({ token, response }));
+          user
+            .save()
+            .then(response => {
+              // Removes the password property without accessing the database again.
+              const ro = { ...response._doc };
+              delete ro.password;
+              res.json({ token, ro });
+            })
+            .catch(err => res.status(501).json(err));
+        } else {
+          // If passwords do not match
+          res.status(403).json({ message: 'Not authorized.' });
         }
-        return res.status(403).json({ message: 'Not authorized.' });
       });
     })
     .catch(err => res.status(500).json(err));

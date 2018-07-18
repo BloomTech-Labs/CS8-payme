@@ -86,9 +86,10 @@ Failure will return:
 
 Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
-| Property    | Type   | Required |
-| ----------- | ------ | -------- |
-| newPassword | String | Yes      |
+| Property        | Type   | Required |
+| --------------- | ------ | -------- |
+| newPassword     | String | Yes      |
+| currentPassword | String | Yes      |
 
 Success will return:
 
@@ -109,6 +110,9 @@ Success will return:
   },
 };
 ```
+
+If `currentPassword` is incorrect, will return:
+`{ message: "Not authorized." }`
 
 ## POST -- `/api/addinvoice/` -- POST
 
@@ -222,7 +226,6 @@ If `invoiceID` is valid, will return:
     "totalAmount": String,
     "__v": 0
 }
-
 ```
 
 if `invoiceID` is not valid, will return:
