@@ -3,6 +3,7 @@ import axios from 'axios';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const ISAUTH = 'ISAUTH';
 export const SET_ID = 'SET_ID';
+
 ////////Action
 export const setId = id => {
   return {
@@ -21,14 +22,14 @@ export const authError = error => {
 
 export const login = (username, password, history) => {
   return dispatch => {
-    axios.post('http://localhost:5000/api/login', { username, password })
+    axios.post('/api/login', { username, password })
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
         history.push('/invoices');
       })
       .catch(err => {
-        if (err) console.log('error: ', err.response);
+        if (err) console.log('error: ', err);
         if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
       });
   };
@@ -36,7 +37,7 @@ export const login = (username, password, history) => {
 
 export const register = (username, password, firstName, lastName, phone, history) => {
   return dispatch => {
-    axios.post('http://localhost:5000/api/register', {
+    axios.post('/api/register', {
       username, password, firstName, lastName, phone,
     })
       .then(res => {

@@ -30,16 +30,55 @@
     font-size: 1.2;
   }
 
-  &-add {
+  &-new {
+    display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
     // background-color: blue;
-    margin-top: 10rem;
+    margin-top: 15rem;
     margin-left: 2rem;  
-    justify-content: center;
+    // justify-content: center;
     width:  10rem;
-    height: 10rem;
-    border: 1px solid black;
+    // height: 10rem;
+    // border: 1px solid $color-primary;
     // height: 100%;
+  }
+  &-form {
+    width: 35rem;
+    height: 35rem;
+    // border: 0.5px solid rgb(220, 220, 220);
+    margin: 15rem auto;
+  }
+}
+.try {
+  margin-top: 10rem;
+}
+
+.fa-arrow-left {
+  margin-left: 2rem;
+  margin-top:1rem;
+  font-size: 3rem;
+  color: $color-primary;
+}
+//////////////////////
+// Add Invoice
+//////////////////////
+
+.add-invoice {
+
+  &_field {
+    border: 0.3px solid rgb(216, 216, 216);
+    height: 4rem;
+    width: 100%;
+  }
+
+  &_submit {
+    color: white;
+    height: 3rem;
+    width: 100%;
+    border: none;
+    background-color: $color-error;
+    border-radius: .5rem;
+
   }
 }
