@@ -6,6 +6,10 @@ mongooseTypes.loadTypes(mongoose, 'email');
 const { Email } = mongoose.Schema.Types;
 
 const Invoice = new mongoose.Schema({
+  isPaid: {
+    type: Boolean,
+    default: false,
+  },
   number: {
     type: String,
     required: true,

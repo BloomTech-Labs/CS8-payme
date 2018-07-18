@@ -188,3 +188,32 @@ If JWT is active, and `number` is a valid invoice number, will return just the r
 
 if JWT is active, and `number` is NOT a valid invoice number, will return:
 `{ message: 'Invoice number does not exist.' }`
+
+## DELETE -- `/api/deleteinvoice/:number` -- DELETE
+
+JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+
+`number` is the invoive number you would like deleted.
+
+If JWT is active, and `number` is a valid invoice number, will return:
+
+```js
+{
+  token: 'JWT String',
+  user: {
+    subscription: 'perdiem',
+    invoices: [],  //  Will be populated with active invoices.  Deleted invoice will not be present
+    _id: '5b4d02ac6b3ee4ba0b0dd5f2',
+    username: 'testing@test.com',
+    phone: '1234567890',
+    firstName: 'John',
+    lastName: 'Doe',
+    createdAt: '2018-07-16T20:40:12.758Z',
+    updatedAt: '2018-07-16T20:40:12.758Z',
+    __v: 0,
+  },
+};
+```
+
+if JWT is active, and `number` is NOT a valid invoice number, will return:
+`{ message: 'Invoice not found.' }`
