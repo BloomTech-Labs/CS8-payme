@@ -217,3 +217,35 @@ If JWT is active, and `number` is a valid invoice number, will return:
 
 if JWT is active, and `number` is NOT a valid invoice number, will return:
 `{ message: 'Invoice not found.' }`
+
+## PUT -- `/api/updateinvoice/:invNumber` -- PUT
+
+JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+
+`invNumber` is the invoice number you would like to update.
+
+All data sent is optional. Only what you send will get updated:
+
+```js
+{
+    "phone": {
+        "number": Number,
+        "frequency": String
+    },
+    "email": {
+        "address": String,
+        "frequency": String
+    },
+    "isPaid": Boolean,
+    "pdf": Array,
+    "clientName": String,
+    "companyName": String,
+    "number": String,
+    "totalAmount": String,
+}
+```
+
+If update was a success, will return updated invoice, including all fields listed above as well as `_id`, `createdAt`, `updatedAt`, and `_v`, structured as above with those additional fields as well.
+
+If invoice failed to update, will return:
+`{ message: 'Failed to update invoice.' }`
