@@ -22,6 +22,7 @@ class Signup extends Component {
           <h3>{this.props.error}</h3>
           <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
             <Field
+              type="email"
               name="username"
               component="input"
               className="signin--signin__username"
@@ -93,5 +94,5 @@ Signup = (connect(mapStateToProps, { register })(Signup));
 
 export default reduxForm({
   form: 'register', // Unique name for the form
-  fields: ['username', 'password', 'firstName','lastName', 'phone',],
+  fields: ['username', 'password', 'firstName', 'lastName', 'phone'],
 })(Signup);

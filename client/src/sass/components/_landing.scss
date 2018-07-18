@@ -6,49 +6,48 @@
   width: 120rem;
   margin: 0 auto;
   position: relative;
-}
 
+  &-header {
+    background-color: #222;
+    color: white;
+  }
 
-.landing-header {
-  background-color: #222;
-  color: white;
-}
+  &-title {
+    font-size: 10rem;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 19rem;
+    left: 10rem;
+  }
 
-.landing-title {
-  font-size: 10rem;
-  text-align: center;
-  color: white;
-  position: absolute;
-  top: 19rem;
-  left: 10rem;
-}
+  &-slogan {
+    color: rgb(255, 10, 10);
+    font-size: 2rem;
+    position: absolute;
+    top: 28rem;
+    left: 25rem;
+  }
 
-.landing-slogan {
-  color: rgb(255, 10, 10);
-  font-size: 2rem;
-  position: absolute;
-  top: 28rem;
-  left: 25rem;
-}
+  &-image {
+    width: 100%;
+  }
 
-.landing-image {
-  width: 100%;
-}
-
-.landing-signin {
-  border: none;
-  font-size: 1.2rem;
-  background-color: #435c94;
-  color: white;
-  height: 4rem;
-  width: 12rem;
-  border-radius: .5rem;
-  position: absolute;
-  top: 68rem;
-  left: 52rem;
-  font-size: 1.3rem;
-  color: rgb(255, 255, 255);
-  background-color: rgba(0, 0, 0, 0.753);
+  &-signin {
+    border: none;
+    font-size: 1.2rem;
+    background-color: #435c94;
+    color: white;
+    height: 4rem;
+    width: 12rem;
+    border-radius: .5rem;
+    position: absolute;
+    top: 68rem;
+    left: 52rem;
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.753);
+  }
 }
 
 .landing-signup {

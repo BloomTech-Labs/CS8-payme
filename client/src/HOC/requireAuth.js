@@ -5,7 +5,6 @@ import { setId } from '../actions';
 export default ComposedComponent => {
   class RequireAuthentication extends Component {
     componentWillMount() {
-      console.log(localStorage.getItem('id'));
       if (!localStorage.getItem('id')) this.props.history.push('/signin');
       else this.props.setId(localStorage.getItem('id'));
     }

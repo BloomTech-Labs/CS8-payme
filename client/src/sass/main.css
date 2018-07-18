@@ -5,43 +5,38 @@
   width: 120rem;
   margin: 0 auto;
   position: relative; }
-
-.landing-header {
-  background-color: #222;
-  color: white; }
-
-.landing-title {
-  font-size: 10rem;
-  text-align: center;
-  color: white;
-  position: absolute;
-  top: 19rem;
-  left: 10rem; }
-
-.landing-slogan {
-  color: #ff0a0a;
-  font-size: 2rem;
-  position: absolute;
-  top: 28rem;
-  left: 25rem; }
-
-.landing-image {
-  width: 100%; }
-
-.landing-signin {
-  border: none;
-  font-size: 1.2rem;
-  background-color: #435c94;
-  color: white;
-  height: 4rem;
-  width: 12rem;
-  border-radius: .5rem;
-  position: absolute;
-  top: 68rem;
-  left: 52rem;
-  font-size: 1.3rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.753); }
+  .landing-header {
+    background-color: #222;
+    color: white; }
+  .landing-title {
+    font-size: 10rem;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 19rem;
+    left: 10rem; }
+  .landing-slogan {
+    color: #ff0a0a;
+    font-size: 2rem;
+    position: absolute;
+    top: 28rem;
+    left: 25rem; }
+  .landing-image {
+    width: 100%; }
+  .landing-signin {
+    border: none;
+    font-size: 1.2rem;
+    background-color: #435c94;
+    color: white;
+    height: 4rem;
+    width: 12rem;
+    border-radius: .5rem;
+    position: absolute;
+    top: 68rem;
+    left: 52rem;
+    font-size: 1.3rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.753); }
 
 .landing-signup {
   border: none;
@@ -131,11 +126,10 @@
   .sidebar--dot {
     color: #22CFB1;
     font-size: 6rem; }
-
-.sidebar-pic {
-  display: inline;
-  height: 100%;
-  position: relative; }
+  .sidebar-pic {
+    display: inline;
+    height: 100%;
+    position: relative; }
 
 .sidebar-profile {
   display: flex;
@@ -179,7 +173,23 @@
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   width: 120rem;
   margin: 0 auto;
-  position: relative; }
+  position: relative;
+  display: flex; }
+  .settings-form {
+    width: 35rem;
+    height: 35rem;
+    margin: 15rem auto; }
+  .settings_field {
+    border: 0.3px solid #d8d8d8;
+    height: 4rem;
+    width: 100%; }
+  .settings_submit {
+    color: white;
+    height: 3rem;
+    width: 100%;
+    border: none;
+    background-color: #E86C62;
+    border-radius: .5rem; }
 
 .billing {
   background-color: #ffffff;

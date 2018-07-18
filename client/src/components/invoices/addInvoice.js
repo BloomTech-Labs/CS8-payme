@@ -18,7 +18,7 @@ class AddInvoice extends Component {
         <Sidebar />
         <Link to="invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
         <div className="invoice-form">
-          <form className="add-invoice" onSubmit={this.handleFormSubmit}>
+          <form className="add-invoice" onSubmit={handleSubmit(this.handleFormSubmit)}>
             <Field
               name="name"
               component="input"
@@ -77,6 +77,6 @@ class AddInvoice extends Component {
 AddInvoice = connect(null)(AddInvoice);
 
 export default reduxForm({
-  form: 'logginIn', // Unique name for the form
-  fields: ['username', 'password'],
+  form: 'addInvoice', // Unique name for the form
+  fields: ['name', 'company', 'email', 'phone', 'invoiceNumber', 'uploadPdf'],
 })(AddInvoice);

@@ -19,13 +19,13 @@
     color: $color-primary;
     font-size: 6rem;
   }
-}
-
-.sidebar-pic {
+  
+  &-pic {
   display: inline;
   height: 100%;
   // width: 100%;
   position: relative;
+  }
 }
 
 .sidebar-profile {
