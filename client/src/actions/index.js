@@ -4,6 +4,7 @@ export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const ISAUTH = 'ISAUTH';
 export const SET_ID = 'SET_ID';
 export const SUCCESS = 'SUCCESS';
+export const ADD_INVOICE = 'ADD_INVOICE';
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
@@ -76,6 +77,22 @@ export function changePassword(newPassword, history) {
       })
       .catch(error => {
         if (error)console.log('error: ', error.response);
+      });
+  };
+}
+
+export function addInvoice(credentials, pdf, history) {
+  return dispatch => {
+    console.log({ ...credentials, pdf });
+    axios.post('/api/addinvoice', credentials)
+      .then(res => {
+        console.log(res);
+        // dispatch({ type: LOGIN, payload: res.data });
+        history.push('/invoices');
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
       });
   };
 }

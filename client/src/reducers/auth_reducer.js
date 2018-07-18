@@ -1,4 +1,4 @@
-import { AUTHENTICATION_ERROR, ISAUTH, SET_ID, SUCCESS } from '../actions';
+import { AUTHENTICATION_ERROR, ISAUTH, SET_ID, SUCCESS, ADD_INVOICE } from '../actions';
 
 const initialState = {
   message: '',
@@ -13,6 +13,8 @@ export default function (state = initialState, action) {
     case SET_ID:
       return { ...state, authenticated: true, user: action.payload };
     case SUCCESS:
+      return { ...state, success: action.payload };
+    case ADD_INVOICE:
       return { ...state, success: action.payload };
     default:
       return state;

@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
+
 import Sidebar from '../sidebar';
+import { addInvoice } from '../../actions';
 
 class AddInvoice extends Component {
   state = {}
 
-  handleFormSubmit = ({ name, company, email, phone, invoiceNumber, uploadPdf }) => {
-    // const data = new FormData();
-    // data.append('file', this.uploadInput.files[0]);
-    // data.append('filename', 'this.fileName.value');
-    // console.log(data);
-    
-    // this.props.login(name, company, email, phone, invoiceNumber, this.props.history);
+  handleFormSubmit = (credentials) => {
+    const pdf = new FormData();
+    pdf.append('file', this.uploadInput.files[0]);
+    pdf.append('filename', 'this.fileName.value');
+  
+    this.props.addInvoice({...credentials, pdf }, this.props.history);
   };
 
 
@@ -64,7 +65,7 @@ class AddInvoice extends Component {
             <input
               // component="input"
               type="file"
-              accept='.jpg, .png, .jpeg'
+              accept="image/png, image/jpeg, application/pdf"
               ref={(ref) => { this.uploadInput = ref; }}
               className="add-invoice_field"
               placeholder="Upload PDF"
@@ -84,9 +85,8 @@ class AddInvoice extends Component {
   }
 }
 
-AddInvoice = connect(null)(AddInvoice);
+AddInvoice = connect(null, { addInvoice })(AddInvoice);
 
 export default reduxForm({
   form: 'addInvoice', // Unique name for the form
-  fields: ['name', 'company', 'email', 'phone', 'invoiceNumber', 'uploadPdf'],
 })(AddInvoice);
