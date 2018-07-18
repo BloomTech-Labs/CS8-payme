@@ -3,15 +3,18 @@ import axios from 'axios';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const ISAUTH = 'ISAUTH';
 export const SET_ID = 'SET_ID';
+export const SUCCESS = 'SUCCESS';
 
-////////Action
-export const setId = id => {
+const token =  localStorage.getItem('id');
+axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
+////////Auth
+export function setId(id) {
   return {
     type: SET_ID,
     payload: id,
   };
-};
-export const authError = error => {
+}
+export function authError(error) {
   if (error) {
     return {
       type: AUTHENTICATION_ERROR,
@@ -20,9 +23,9 @@ export const authError = error => {
   }
 };
 
-export const login = (username, password, history) => {
+export function login(credentials, history) {
   return dispatch => {
-    axios.post('/api/login', { username, password })
+    axios.post('/api/login', credentials)
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
@@ -33,13 +36,11 @@ export const login = (username, password, history) => {
         if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
       });
   };
-};
+}
 
-export const register = (username, password, firstName, lastName, phone, history) => {
+export function register(credentials, history) {
   return dispatch => {
-    axios.post('/api/register', {
-      username, password, firstName, lastName, phone,
-    })
+    axios.post('/api/register', credentials)
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
@@ -54,11 +55,27 @@ export const register = (username, password, firstName, lastName, phone, history
         }
       });
   };
-};
+}
 
-export const logout = history => {
+export function logout(history) {
   return dispatch => {
     localStorage.removeItem('id');
     history.push('/');
   };
 };
+// { header: { Authorization: `bearer ${token}` } }
+
+export function changePassword(newPassword, history) {
+  return dispatch => {
+    console.log(newPassword);
+    axios.post('/api/changepassword', newPassword)
+      .then(res => {
+        console.log(res);
+        dispatch({type: 'SUCCESS', payload: 'Successfully changed your password' });
+        // history.push('/invoices');
+      })
+      .catch(error => {
+        if (error)console.log('error: ', error.response);
+      });
+  };
+}

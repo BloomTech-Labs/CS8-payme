@@ -7,12 +7,13 @@ import { register } from '../../actions';
 
 class Signup extends Component {
 
-  handleFormSubmit = ({ username, password, firstName,lastName, phone }) => {
-    this.props.register(username, password,firstName,lastName, phone, this.props.history);
+  handleFormSubmit = (credentials) => {
+    this.props.register(credentials, this.props.history);
   };
 
   render() {
-    const { handleSubmit } = this.props; 
+    const { handleSubmit } = this.props;
+
     return ( 
       <div className="signup">
         <p className="signup-headline">Lorem ipsum <br/> <span className="signup-headline2">dolor sit amet</span></p>
@@ -53,6 +54,7 @@ class Signup extends Component {
             <Field
               name="phone"
               component="input"
+              type="number"
               className="signin--signin__password"
               placeholder="phone"
             />

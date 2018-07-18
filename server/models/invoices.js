@@ -6,6 +6,14 @@ mongooseTypes.loadTypes(mongoose, 'email');
 const { Email } = mongoose.Schema.Types;
 
 const Invoice = new mongoose.Schema({
+  clientName: {
+    type: String,
+    required: true,
+  },
+  companyName: {
+    type: String,
+    required: true,
+  },
   number: {
     type: String,
     required: true,

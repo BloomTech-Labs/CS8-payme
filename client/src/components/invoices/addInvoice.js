@@ -2,14 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import Sidebar from "../sidebar";
+import Sidebar from '../sidebar';
 
 class AddInvoice extends Component {
   state = {}
 
-  handleFormSubmit = ({ username, password }) => {
-    this.props.login(username, password, this.props.history);
+  handleFormSubmit = ({ name, company, email, phone, invoiceNumber, uploadPdf }) => {
+    // const data = new FormData();
+    // data.append('file', this.uploadInput.files[0]);
+    // data.append('filename', 'this.fileName.value');
+    // console.log(data);
+    
+    // this.props.login(name, company, email, phone, invoiceNumber, this.props.history);
   };
+
 
   render() {
     const { handleSubmit } = this.props;
@@ -41,26 +47,29 @@ class AddInvoice extends Component {
               placeholder="Email"
             />
             <br />
-            <Field 
+            <Field
               name="phone"
               component="input"
               className="add-invoice_field"
               placeholder="Phone"
             />
             <br />
-            <Field 
+            <Field
               name="invoiceNumber"
               component="input"
               className="add-invoice_field"
               placeholder="Invoice Number"
             />
             <br />
-            <Field 
-              name="uploadPdf"
-              component="input"
+            <input
+              // component="input"
+              type="file"
+              accept='.jpg, .png, .jpeg'
+              ref={(ref) => { this.uploadInput = ref; }}
               className="add-invoice_field"
               placeholder="Upload PDF"
             />
+            <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
             <br />
             <button
               className="add-invoice_submit"
