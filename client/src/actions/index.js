@@ -86,7 +86,7 @@ export function addInvoice(credentials, history) {
     axios.post('/api/addinvoice', credentials)
       .then(res => {
         console.log(res);
-        // dispatch({ type: LOGIN, payload: res.data });
+        dispatch({ type: INVOICE, payload: res.data });
         history.push('/invoices');
       })
       .catch(err => {
