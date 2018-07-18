@@ -18,6 +18,7 @@ class AddInvoice extends Component {
         <Sidebar />
         <Link to="invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
         <div className="invoice-form">
+          <h1>Add Invoice</h1>
           <form className="add-invoice" onSubmit={handleSubmit(this.handleFormSubmit)}>
             <Field
               name="name"
@@ -63,9 +64,9 @@ class AddInvoice extends Component {
             <br />
             <button
               className="add-invoice_submit"
-              action="submit"
+              type="submit"
               value="Submit"
-            >Sign In
+            >Add Invoice
             </button>
           </form>
         </div>
