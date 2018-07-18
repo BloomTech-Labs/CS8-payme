@@ -1,33 +1,11 @@
-
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-
-import {
-  AUTHENTICATION_ERROR,
-  ISAUTH,
-  SET_ID,
-} from '../actions';
-
-const initialState = {
-  message: '',
-};
-
-const AuthReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case AUTHENTICATION_ERROR:
-      return { ...state, message: action.payload };
-    case ISAUTH:
-      return { ...state, authenticated: true };
-    case SET_ID:
-      return { ...state, authenticated: true, user: action.payload };
-    default:
-      return state;
-  }
-};
+import authReducer from './auth_reducer';
 
 const rootReducer = combineReducers({
-  auth: AuthReducer,
+  auth: authReducer,
   form: formReducer,
 });
+
 
 export default rootReducer;

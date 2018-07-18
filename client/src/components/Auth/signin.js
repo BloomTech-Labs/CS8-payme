@@ -13,8 +13,8 @@ const styles = {
 
 class Signin extends Component {
 
-  handleFormSubmit = ({ username, password }) => {
-    this.props.login(username, password, this.props.history);
+  handleFormSubmit = (ele) => {
+    this.props.login(ele, this.props.history);
   };
 
   render() {
@@ -78,6 +78,5 @@ const mapStateToProps = state => {
 Signin = (connect(mapStateToProps, { login })(Signin));
 
 export default reduxForm({
-  form: 'logginIn', // Unique name for the form
-  fields: ['username', 'password'],
+  form: 'logIn', // Unique name for the form
 })(Signin);
