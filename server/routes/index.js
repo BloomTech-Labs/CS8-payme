@@ -5,6 +5,7 @@ const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
+  payInvoice,
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
@@ -24,4 +25,5 @@ module.exports = app => {
   app.get('/api/invoices/:number', restricted, getOneInvoice);
   app.delete('/api/deleteinvoice/:number', restricted, deleteInvoice);
   app.put('/api/updateinvoice/:invNumber', restricted, updateInvoice);
+  app.get('/api/payinvoice/:invoiceID', payInvoice);
 };

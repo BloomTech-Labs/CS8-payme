@@ -114,15 +114,18 @@ Success will return:
 
 Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
-| Property        | Type   | Required |
-| --------------- | ------ | -------- |
-| number          | Number | Yes      |
-| pdf             | Array  | No       |
-| totalAmount     | String | Yes      |
-| phone.number    | Number | No       |
-| phone.frequency | String | No       |
-| email.address   | String | No       |
-| email.frequency | String | No       |
+| Property        | Type    | Required |
+| --------------- | ------- | -------- |
+| clientName      | String  | Yes      |
+| companyName     | String  | Yes      |
+| isPaid          | Boolean | No       |
+| number          | Number  | Yes      |
+| pdf             | Array   | No       |
+| totalAmount     | String  | Yes      |
+| phone.number    | Number  | No       |
+| phone.frequency | String  | No       |
+| email.address   | String  | No       |
+| email.frequency | String  | No       |
 
 Success will return:
 
@@ -131,6 +134,9 @@ Success will return:
     user: {
     subscription: 'perdiem',
     invoices: [{
+            "clientName": "Austen Allred",
+            "companyName": "Lambda School",
+            "isPaid": false,
             "phone": {
                 "number": 123456789,
                 "frequency": "daily"
@@ -178,7 +184,7 @@ If JWT is active, will return:
 }
 ```
 
-## GET --`/api/invoices/:number` -- GET
+## GET -- `/api/invoices/:number` -- GET
 
 JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
@@ -189,45 +195,19 @@ If JWT is active, and `number` is a valid invoice number, will return just the r
 if JWT is active, and `number` is NOT a valid invoice number, will return:
 `{ message: 'Invoice number does not exist.' }`
 
-## DELETE -- `/api/deleteinvoice/:number` -- DELETE
+## GET -- `/api/payinvoice/:invoiceID` -- GET
 
-JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+JWT is not required.
 
-`number` is the invoive number you would like deleted.
+`invoiceID` is the \_id number of the invoice you want to view. This route is used so our client's client does not need to have an account or be logged in to view or pay an invoice that they were sent.
 
-If JWT is active, and `number` is a valid invoice number, will return:
-
-```js
-{
-  token: 'JWT String',
-  user: {
-    subscription: 'perdiem',
-    invoices: [],  //  Will be populated with active invoices.  Deleted invoice will not be present
-    _id: '5b4d02ac6b3ee4ba0b0dd5f2',
-    username: 'testing@test.com',
-    phone: '1234567890',
-    firstName: 'John',
-    lastName: 'Doe',
-    createdAt: '2018-07-16T20:40:12.758Z',
-    updatedAt: '2018-07-16T20:40:12.758Z',
-    __v: 0,
-  },
-};
-```
-
-if JWT is active, and `number` is NOT a valid invoice number, will return:
-`{ message: 'Invoice not found.' }`
-
-## PUT -- `/api/updateinvoice/:invNumber` -- PUT
-
-JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
-
-`invNumber` is the invoice number you would like to update.
-
-All data sent is optional. Only what you send will get updated:
+If `invoiceID` is valid, will return:
 
 ```js
 {
+    "clientName": String,
+    "companyName": String,
+    "isPaid": Boolean,
     "phone": {
         "number": Number,
         "frequency": String
@@ -236,16 +216,14 @@ All data sent is optional. Only what you send will get updated:
         "address": String,
         "frequency": String
     },
-    "isPaid": Boolean,
-    "pdf": Array,
-    "clientName": String,
-    "companyName": String,
+    "pdf": [],
+    "_id": String,
     "number": String,
     "totalAmount": String,
+    "__v": 0
 }
+
 ```
 
-If update was a success, will return updated invoice, including all fields listed above as well as `_id`, `createdAt`, `updatedAt`, and `_v`, structured as above with those additional fields as well.
-
-If invoice failed to update, will return:
-`{ message: 'Failed to update invoice.' }`
+if `invoiceID` is not valid, will return:
+`{ message: 'Invoice not found.' }`
