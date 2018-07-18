@@ -1,7 +1,3 @@
-const express = require('express');
-const Invoice = require('../../models/invoices');
-const User = require('../../models/users');
-
 const getAllInvoices = (req, res) => {
   const { invoices } = req.user;
   res.json(invoices);
@@ -17,7 +13,6 @@ const getAllInvoices = (req, res) => {
 const getOneInvoice = (req, res) => {
   const { invoices } = req.user;
   const { number } = req.params;
-  console.log(req.params);
   for (invoice of invoices) {
     if (invoice.number === number) {
       return res.json(invoice);

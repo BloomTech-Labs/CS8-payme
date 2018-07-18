@@ -4,8 +4,24 @@ const Invoice = require('../../models/invoices');
 
 const addInvoice = (req, res) => {
   const { _id, username, invoices } = req.user;
-  const { number, pdf, totalAmount, phone, email } = req.body;
-  const invoice = new Invoice({ number, pdf, totalAmount, phone, email });
+  const {
+    clientName,
+    companyName,
+    number,
+    pdf,
+    totalAmount,
+    phone,
+    email,
+  } = req.body;
+  const invoice = new Invoice({
+    clientName,
+    companyName,
+    number,
+    pdf,
+    totalAmount,
+    phone,
+    email,
+  });
 
   // Checks to see if the current user already has this invoice number in use.
 
@@ -30,9 +46,7 @@ const addInvoice = (req, res) => {
           });
       });
     })
-    .catch(err =>
-      res.status(501).json({ message: 'Failed to save invoice to database.' })
-    )
+    .catch(err => res.status(501).json(err))
     .catch(err => res.status(500).json(err));
 };
 
