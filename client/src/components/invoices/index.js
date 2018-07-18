@@ -11,6 +11,15 @@ class Invoices extends Component {
     return (
       <div className="invoice">
         <Sidebar />
+        <div className="invoice-search">
+          <input
+          type="text"
+          placeholder="Search Invoices"
+          className="invoice-search_input"
+          value={this.state.search}
+          onChange={this.updateSearch}
+          />
+        </div>
         <div className="invoice-box">
           <p className="invoice-id">#23242342</p>
           <p>Name</p>

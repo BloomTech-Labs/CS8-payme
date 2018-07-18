@@ -78,6 +78,6 @@ const mapStateToProps = state => {
 Signin = (connect(mapStateToProps, { login })(Signin));
 
 export default reduxForm({
-  form: 'logginIn', // Unique name for the form
+  form: 'logIn', // Unique name for the form
   fields: ['username', 'password'],
 })(Signin);
