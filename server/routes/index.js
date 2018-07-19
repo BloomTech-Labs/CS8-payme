@@ -5,7 +5,6 @@ const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
-  getOneInvoice,
   payInvoice,
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
@@ -16,7 +15,7 @@ const { restricted, authenticate } = require('../config/auth');
 const {
   createReminder,
   getReminder,
-  deleteReminder
+  deleteReminder,
 } = require('../controllers/sendText');
 
 module.exports = app => {
