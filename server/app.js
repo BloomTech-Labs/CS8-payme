@@ -10,6 +10,8 @@ const keys = require('./config/keys');
 const port = process.env.PORT || 5000;
 const app = express();
 
+const scheduler = require('./scheduler.js');
+
 // Connecting to mLab/port
 mongoose
   .connect(
@@ -31,6 +33,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
+
+// Unncomment to have scheduler run continuously
+// scheduler.start();
 
 // Routes
 routes(app);

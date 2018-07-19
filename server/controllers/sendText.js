@@ -1,35 +1,74 @@
 require('dotenv').load();
 
-const twilio = require('twilio');
-const accountSid = process.env.TWILIO_SID;
-const authToken = process.env.TWILIO_TOKEN;
-const twilioNumber = process.env.TWILIO_NUMBER;
-const myNumber = process.env.MY_NUMBER;
-const client = new twilio(accountSid, authToken);
+// const twilio = require('twilio');
+// const accountSid = process.env.TWILIO_SID;
+// const authToken = process.env.TWILIO_TOKEN;
 
-const Reminder = require('../models/Reminder');
+const moment = require('moment');
+const momentTimeZone = require('moment-timezone');
+const Reminder = require('../models/reminder');
 
-// Just sends a POST request message to myNumber
+const getTimeZones = function() {
+  return momentTimeZone.tz.names();
+};
+
+// POST: /api/sms create a reminder
 const createReminder = (req, res) => {
-  const reminder = new Reminder(req.body);
+  const { name, phoneNumber, notification, timeZone } = req.body;
+  // const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
+  const reminder = new Reminder({
+    name: name,
+    phoneNumber: phoneNumber,
+    notification: notification,
+    timeZone: timeZone
+    // time: time
+  });
   reminder
     .save()
-    .then(newReminder => {
-      client.messages
-        .create({
-          body: `Hi soso, your due date is`,
-          to: `${myNumber}`,
-          from: twilioNumber
-        })
-        .then(message => console.log(message.sid))
-        .catch(err => console.log('error here:', err));
-      res.status(200).json(newReminder);
+    .then(reminder => {
+      res.redirect('/');
+      // res.json(reminder);
+      console.log(reminder);
     })
     .catch(err => {
-      res.status(400).send({ error: err });
+      res.status(500).json({ message: 'Server error couldnt send' });
+    });
+};
+// GET: /api/sms/:id
+// if reminder was deleted, it will redirect back to create
+const getReminder = (req, res) => {
+  const { id } = req.params;
+  Reminder.findOne({ _id: id })
+    .then(reminder => {
+      // if (reminder) {
+      res.json(reminder);
+      // }
+      // res.redirect('/api/sms');
+      console.log('this was deleted');
+    })
+    .catch(err => {
+      res.status(500).json(err);
+      // console.log(err);
+    });
+};
+// POST: /api/sms/:id
+// deletes reminder and redirects back to create
+const deleteReminder = (req, res) => {
+  const { id } = req.params;
+
+  Reminder.remove({ _id: id })
+    .then(reminder => {
+      // res.json(reminder);
+      res.redirect('/');
+      console.log('deleted');
+    })
+    .catch(err => {
+      res.status(500).json(err);
     });
 };
 
 module.exports = {
-  createReminder
+  getReminder,
+  createReminder,
+  deleteReminder
 };
