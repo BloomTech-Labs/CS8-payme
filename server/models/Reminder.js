@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 // const moment = require('moment');
 const Twilio = require('twilio');
 
-const ReminderSchema = new mongoose.Schema({
+const Reminder = new mongoose.Schema({
   name: String,
   phoneNumber: String,
   notification: Number,
   time: {
     type: Date,
-    index: true
+    index: true,
   },
-  timeZone: String
+  timeZone: String,
 });
 
 // ReminderSchema.methods.requiresNotification = function(date) {
@@ -28,7 +28,7 @@ const ReminderSchema = new mongoose.Schema({
 //   );
 // };
 
-ReminderSchema.statics.sendNotifications = function(callback) {
+Reminder.statics.sendNotifications = function(callback) {
   const searchDate = new Date();
   Reminder.find()
     .then(function(reminders) {
@@ -50,7 +50,7 @@ ReminderSchema.statics.sendNotifications = function(callback) {
       const options = {
         to: `+1 ${reminder.phoneNumber}`,
         from: twilioNumber,
-        body: `Reminder text` // Place holder.
+        body: `Reminder text`, // Place holder.
       };
       // send message
       client.messages.create(options, function(err, response) {
@@ -76,5 +76,7 @@ ReminderSchema.statics.sendNotifications = function(callback) {
   }
 };
 
-const Reminder = mongoose.model('Reminder', ReminderSchema);
-module.exports = Reminder;
+// const Reminder = mongoose.model('Reminder', ReminderSchema);
+// module.exports = Reminder;
+
+module.exports = mongoose.model('Reminder', Reminder);
