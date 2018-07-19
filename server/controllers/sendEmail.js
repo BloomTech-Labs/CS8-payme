@@ -6,22 +6,29 @@ const nodemailer = require("nodemailer");
 const Invoice = require("../models/invoices");
 const User = require("../models/users");
 
+
+
 // Generate test SMTP service account from ethereal.email
 // Only needed if you don't have a real mail account for testing
 
 const sendEmail = (req, res) => {
 	// pass in message to send, invoice ID, and user ID into post request
 	const {
-		message
-		// invoiceID, // uncomment these once you have appropriate IDs from database
+		message,
+		invoiceID  // uncomment these once you have appropriate IDs from database
 		// userID
 	} = req.body;
 
 	// ====== TODO =======
-	const invoice = Invoice.find({ id: invoiceID }); // find the user by id passed in on post
-    const user = User.find({ id: userID }); // find the user by id passed in on post
-	// when these are found, pass into mailoptions in appropriate fields
+
+    Invoice.findById(invoiceID) // find the user by id passed in on post
+    .then(invoice => {
+
     
+    // const user = User.find({ id: userID }); // find the user by id passed in on post
+	// when these are found, pass into mailoptions in appropriate fields
+    console.log(invoice)
+    console.log(invoice.email)
 	nodemailer.createTestAccount((err, account) => {
 		// create reusable transporter object using the default SMTP transport
 		const transporter = nodemailer.createTransport({
@@ -54,7 +61,8 @@ const sendEmail = (req, res) => {
 				messageURL: nodemailer.getTestMessageUrl(info)
 			});
 		});
-	});
+    });
+    })
 };
 
 module.exports = {
