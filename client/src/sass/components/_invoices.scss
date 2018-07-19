@@ -30,7 +30,7 @@
   &-box {
     display: flex;
     flex-flow: row wrap;
-    margin: 5rem 0 5rem 10rem;
+    margin: 5rem 5rem 5rem 10rem;
   }
   
   &-data {
@@ -111,4 +111,21 @@
   }
 }
 
+.view-invoice {
+  display: flex;
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  margin-left: 10rem;
+  width: 120rem;
+  margin: 0 auto;
+  position: relative;
+
+  &-details {
+    width: 20rem;
+    border: 0.5px solid rgb(218, 218, 218);
+    height: 30rem;
+    margin: 15rem auto;
+  }
+}
 

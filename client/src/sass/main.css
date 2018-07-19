@@ -79,7 +79,7 @@
   .invoice-box {
     display: flex;
     flex-flow: row wrap;
-    margin: 5rem 0 5rem 10rem; }
+    margin: 5rem 5rem 5rem 10rem; }
   .invoice-data {
     cursor: pointer;
     padding: 2rem 2rem;
@@ -133,6 +133,21 @@
   background-color: #E86C62;
   border-radius: .5rem; }
 
+.view-invoice {
+  display: flex;
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  margin-left: 10rem;
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+  .view-invoice-details {
+    width: 20rem;
+    border: 0.5px solid #dadada;
+    height: 30rem;
+    margin: 15rem auto; }
+
 .sidebar {
   color: white;
   background-color: #252525;
@@ -141,6 +156,7 @@
   flex-direction: column;
   padding-bottom: 30rem;
   position: relative;
+  min-width: 16rem;
   width: 16rem;
   text-align: center; }
   .sidebar--title {

@@ -125,14 +125,16 @@ export function getAllInvoices() {
 //////////////////////////
 // Misc
 //////////////////////////
-export const handleInvoiceIdx = inputID => {
+export const handleInvoiceIdx = (inputID, history) => {
   return (dispatch, getState) => {
+    console.log(inputID);
     const { invoices } = getState().auth;
     invoices.forEach((invoice, i) => {
-      if (invoices._id === inputID) {
+      if (invoice._id === inputID) {
         dispatch({ type: 'INVOICE_IDX', payload: i });
         dispatch({ type: 'CURRENT_INVOICE', payload: invoice });
       }
     });
+    history.push('/viewinvoice');
   };
 };

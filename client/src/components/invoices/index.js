@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../sidebar';
-import Invoice from './viewInvoice';
+import Invoice from './dataInvoice';
 import { connect } from 'react-redux';
-import { getAllInvoices } from '../../actions';
+import { getAllInvoices, handleInvoiceIdx } from '../../actions';
+
 class Invoices extends Component {
   state = {
     imageURL: '',
@@ -47,10 +48,12 @@ class Invoices extends Component {
               return (
                 <Invoice
                   key={inv._id}
+                  id={inv._id}
                   invoiceID={inv.number}
                   clientName={index}
                   company={inv.title}
-                  handleNoteIndex={this.props.handleIdx}
+                  handleNoteIndex={this.props.handleInvoiceIdx}
+                  history={this.props.history}
                 />
               );
             })}
@@ -70,4 +73,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getAllInvoices })(Invoices);
+export default connect(mapStateToProps, { getAllInvoices, handleInvoiceIdx })(Invoices);
