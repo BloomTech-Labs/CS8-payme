@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import Sidebar from '../sidebar';
 import Invoice from './dataInvoice';
-import { connect } from 'react-redux';
 import { getAllInvoices, handleInvoiceIdx } from '../../actions';
 
 class Invoices extends Component {
   state = {
     imageURL: '',
   }
-  async componentDidMount() {
+
+  async componentWillMount() {
     await this.props.getAllInvoices();
   }
   // handleUploadImage(ev) {
@@ -33,34 +35,36 @@ class Invoices extends Component {
     return (
       <div className="invoice">
         <Sidebar />
-        <div className="invoice-search">
-          <input
-          type="text"
-          placeholder="Search Invoices"
-          className="invoice-search_input"
-          value={this.state.search}
-          onChange={this.updateSearch}
-          />
-        </div>
-        {this.props.invoices ? (
-          <div className="invoice-box">
-            {this.props.invoices.map((inv, index) => {
-              return (
-                <Invoice
-                  key={inv._id}
-                  id={inv._id}
-                  invoiceID={inv.number}
-                  clientName={index}
-                  company={inv.title}
-                  handleNoteIndex={this.props.handleInvoiceIdx}
-                  history={this.props.history}
-                />
-              );
-            })}
+        <div className="invoice-main">
+          <div className="invoice-navigation">
+            <input 
+              className="invoice-search"
+              type="text"
+              placeholder="Search Invoices"
+              className="invoice-search_input"
+              value={this.state.search}
+              onChange={this.updateSearch}
+            />
+            <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
+            <p className="invoice-sort">Sort data</p>
           </div>
-        ) : null }
-        <div className="try">
-        <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
+          {this.props.invoices ? (
+            <div className="invoice-box">
+              {this.props.invoices.map((inv, index) => {
+                return (
+                  <Invoice
+                    key={inv._id}
+                    id={inv._id}
+                    invoiceID={inv.number}
+                    clientName={index}
+                    company={inv.title}
+                    handleNoteIndex={this.props.handleInvoiceIdx}
+                    history={this.props.history}
+                  />
+                );
+              })}
+            </div>
+          ) : null }
         </div>
       </div>
     );

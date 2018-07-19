@@ -8,24 +8,62 @@
   margin: 0 auto;
   position: relative;
 
+  &-main {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  &-navigation {
+    display: flex;
+    // border-left: 0.3px solid rgb(193, 193, 193);
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $color-nav;
+    height: 6rem;
+    // width: 1oorem;
+  }
+
   &-search {
-    position: absolute;
-    // top:
-    left: 18rem;
     &_input {
-      margin-top: 2rem;
-      // margin-left: 2rem;
+      margin-left: 4rem;
+      background-color: rgb(235, 235, 235);
       padding: 0.4rem;
-      width: 30rem;
+      width: 20rem;
       height: 4rem;
-      border-radius: 5%;
+      border-radius: 1rem;
       border: 0.7px solid rgb(204, 204, 204);
       &:focus {
-        width: 40rem;
+        width: 25rem;
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
       }
     }
+  }
+
+  &-sort {
+    color:white;
+    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
+    padding: 2rem 2rem;
+    cursor: pointer;
+    &:hover {
+      color:$color-primary;
+    }
+  }
+  &-new {
+    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
+    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    color: white;
+    display: flex;
+    cursor: pointer;
+    padding: 2rem 2rem;
+    margin-top: 15rem;
+    margin-left: 2rem;  
+    // justify-content: center;
+    width:  10rem;
+    &:hover {
+      color:$color-primary;
+    }
+
   }
   &-box {
     display: flex;
@@ -55,31 +93,12 @@
     font-weight: 700;
     font-size: 1.2;
   }
-
-  &-new {
-    position: absolute;
-    top: -9.5rem;
-    left: -20rem;
-    display: flex;
-    cursor: pointer;
-    padding: 2rem 2rem;
-    margin-top: 15rem;
-    margin-left: 2rem;  
-    // justify-content: center;
-    width:  10rem;
-
-  }
   &-form {
     width: 35rem;
     height: 35rem;
     // border: 0.5px solid rgb(220, 220, 220);
     margin: 15rem auto;
   }
-}
-.try {
-  // width: 5rem;
-  margin-top: 10rem;
-  position: relative;
 }
 
 .fa-arrow-left {

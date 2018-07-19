@@ -12,7 +12,7 @@ export const CURRENT_INVOICE = 'CURRENT_INVOICE';
 
 
 const token =  localStorage.getItem('id');
-axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
+axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
 
 ////////Auth
 export function setId(id) {
@@ -40,7 +40,7 @@ export function login(credentials, history) {
       })
       .catch(err => {
         if (err) console.log('error: ', err);
-        if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
+        if (err.response.data === 'Unauthorized') { dispatch(authError('Username/Password invalid.')); }
       });
   };
 }
@@ -83,6 +83,7 @@ export function changePassword(newPassword, history) {
       })
       .catch(error => {
         if (error)console.log('error: ', error.response);
+        dispatch(authError('Error changing your password', error));
       });
   };
 }
@@ -99,10 +100,7 @@ export function addInvoice(credentials, history) {
         dispatch(getAllInvoices());
         history.push('/invoices');
       })
-      .catch(err => {
-        if (err) console.log('error: ', err);
-        if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
-      });
+      .catch(err => dispatch(authError('Error adding an invoice', err)));
   };
 }
 
@@ -116,7 +114,7 @@ export function getAllInvoices() {
       })
       .catch(err => {
         if (err) console.log('error: ', err);
-        if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
+        dispatch(authError('Error retrieving invoices', err));
       });
   };
 }
