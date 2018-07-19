@@ -37,7 +37,7 @@ const sendEmail = (req, res) => {
 				});
 
 				if (invoice.email.address === undefined)
-					res.json({ error: "No email found on Invoice." });
+					return res.status(404).json({ error: "No email found on Invoice." });
 				// setup email data with unicode symbols
 				let mailOptions = {
 					from: '"GiveMeMyMoney" <Now@givememymoney.com>', // sender address
