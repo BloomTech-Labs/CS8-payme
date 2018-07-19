@@ -45,6 +45,8 @@ class ViewInvoice extends Component {
                   <DeleteInvoice
                     toggleModal={this.toggleModal}
                     handleDeleteNote={this.props.handleDeleteNote}
+                    id={invoice.number}
+                    history={this.props.history}
                   />
                 </div>
               ) : null}

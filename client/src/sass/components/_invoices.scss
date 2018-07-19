@@ -153,14 +153,22 @@
     height: 7rem;
 
     &_delete {
+      cursor: pointer;
       color: white;
       padding: 1rem;
       margin-left: 3rem;
+      &:hover {
+        color:$color-primary;
+      }
       
     }
     &_update {
+      cursor: pointer;
       color: white;
       padding: 1rem;
+      &:hover {
+        color:$color-primary;
+      }
     }
   }
   &-details {

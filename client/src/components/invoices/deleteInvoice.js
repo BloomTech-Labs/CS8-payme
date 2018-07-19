@@ -2,24 +2,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { deleteInvoice, getAllInvoices } from '../../actions';
 
 const DeleteInvoice = (props) => {
   return (
     <div className='DeleteModal'>
       <div className='DeleteModal-Box'>
         <p> Are you sure you want to delete this? </p>
-        <Link to='/'>
           <button
             type='button'
             onClick={() => {
-              props.deleteNote(props._id);
+              props.deleteInvoice(props.id, props.history);
             }}
             className='DeleteModal-Box-Delete'
           >
           Delete
           </button>
-        </Link>
         <button
           type='button'
           onClick={() => {
@@ -34,5 +32,5 @@ const DeleteInvoice = (props) => {
   );
 };
 
-export default connect(null, )(DeleteInvoice);
+export default connect(null,{ deleteInvoice } )(DeleteInvoice);
 /* eslint-enable */

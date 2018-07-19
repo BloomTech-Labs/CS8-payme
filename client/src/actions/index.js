@@ -107,7 +107,7 @@ export function addInvoice(credentials, history) {
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
     console.log(invoiceNumber);
-    axios.post(`/api/deleteinvoice/${invoiceNumber}`)
+    axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
       .then(res => {
         console.log(res);
         dispatch(getAllInvoices());

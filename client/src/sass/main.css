@@ -161,12 +161,18 @@
     background-color: #2E2E2E;
     height: 7rem; }
     .view-invoice-navigation_delete {
+      cursor: pointer;
       color: white;
       padding: 1rem;
       margin-left: 3rem; }
+      .view-invoice-navigation_delete:hover {
+        color: #22CFB1; }
     .view-invoice-navigation_update {
+      cursor: pointer;
       color: white;
       padding: 1rem; }
+      .view-invoice-navigation_update:hover {
+        color: #22CFB1; }
   .view-invoice-details {
     width: 20rem;
     border: 0.5px solid #dadada;
