@@ -6,7 +6,7 @@ require('dotenv').load();
 
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
-const Reminder = require('../models/reminder');
+const Reminder = require('../models/Reminder');
 
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
