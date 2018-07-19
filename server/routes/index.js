@@ -4,8 +4,12 @@ const { changePassword } = require('../controllers/user/changePassword');
 const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
-  getOneInvoice
+  getOneInvoice,
+  getOneInvoice,
+  payInvoice,
 } = require('../controllers/invoice/getInvoice');
+const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
+const { updateInvoice } = require('../controllers/invoice/updateInvoice');
 
 const { restricted, authenticate } = require('../config/auth');
 
@@ -26,4 +30,7 @@ module.exports = app => {
   app.post('/api/sms', createReminder);
   app.get('/api/sms/:id', getReminder);
   app.post('/api/sms/:id', deleteReminder);
+  app.delete('/api/deleteinvoice/:number', restricted, deleteInvoice);
+  app.put('/api/updateinvoice/:invNumber', restricted, updateInvoice);
+  app.get('/api/payinvoice/:invoiceID', payInvoice);
 };

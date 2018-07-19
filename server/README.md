@@ -86,9 +86,10 @@ Failure will return:
 
 Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
-| Property    | Type   | Required |
-| ----------- | ------ | -------- |
-| newPassword | String | Yes      |
+| Property        | Type   | Required |
+| --------------- | ------ | -------- |
+| newPassword     | String | Yes      |
+| currentPassword | String | Yes      |
 
 Success will return:
 
@@ -110,19 +111,25 @@ Success will return:
 };
 ```
 
+If `currentPassword` is incorrect, will return:
+`{ message: "Not authorized." }`
+
 ## POST -- `/api/addinvoice/` -- POST
 
 Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
-| Property        | Type   | Required |
-| --------------- | ------ | -------- |
-| number          | Number | Yes      |
-| pdf             | Array  | No       |
-| totalAmount     | String | Yes      |
-| phone.number    | Number | No       |
-| phone.frequency | String | No       |
-| email.address   | String | No       |
-| email.frequency | String | No       |
+| Property        | Type    | Required |
+| --------------- | ------- | -------- |
+| clientName      | String  | Yes      |
+| companyName     | String  | Yes      |
+| isPaid          | Boolean | No       |
+| number          | Number  | Yes      |
+| pdf             | Array   | No       |
+| totalAmount     | String  | Yes      |
+| phone.number    | Number  | No       |
+| phone.frequency | String  | No       |
+| email.address   | String  | No       |
+| email.frequency | String  | No       |
 
 Success will return:
 
@@ -131,6 +138,9 @@ Success will return:
     user: {
     subscription: 'perdiem',
     invoices: [{
+            "clientName": "Austen Allred",
+            "companyName": "Lambda School",
+            "isPaid": false,
             "phone": {
                 "number": 123456789,
                 "frequency": "daily"
@@ -178,7 +188,7 @@ If JWT is active, will return:
 }
 ```
 
-## GET --`/api/invoices/:number` -- GET
+## GET -- `/api/invoices/:number` -- GET
 
 JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
@@ -188,3 +198,35 @@ If JWT is active, and `number` is a valid invoice number, will return just the r
 
 if JWT is active, and `number` is NOT a valid invoice number, will return:
 `{ message: 'Invoice number does not exist.' }`
+
+## GET -- `/api/payinvoice/:invoiceID` -- GET
+
+JWT is not required.
+
+`invoiceID` is the \_id number of the invoice you want to view. This route is used so our client's client does not need to have an account or be logged in to view or pay an invoice that they were sent.
+
+If `invoiceID` is valid, will return:
+
+```js
+{
+    "clientName": String,
+    "companyName": String,
+    "isPaid": Boolean,
+    "phone": {
+        "number": Number,
+        "frequency": String
+    },
+    "email": {
+        "address": String,
+        "frequency": String
+    },
+    "pdf": [],
+    "_id": String,
+    "number": String,
+    "totalAmount": String,
+    "__v": 0
+}
+```
+
+if `invoiceID` is not valid, will return:
+`{ message: 'Invoice not found.' }`

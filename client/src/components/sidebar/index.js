@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions';
 import Nico from './Nico.jpg';
@@ -34,11 +34,11 @@ class Sidebar extends Component {
             <p><NavLink to='/invoices'><i className="fas fa-envelope-open fa-fw" />Invoices</NavLink></p>
             <p><NavLink exact to='/reminders'><i className="fas fa-bell fa-fw" />Reminders</NavLink></p>
             <p><NavLink exact to="/settings"><i className="fas fa-cog fa-fw" />Settings</NavLink></p>
-            <p><NavLink exact to='/billing'><i className="far fa-credit-card fa-fw" />Billings</NavLink></p>
+            <p><NavLink exact to='/billing'><i className="far fa-credit-card fa-fw" />Billing</NavLink></p>
             <p
               // style={{ cursor: 'pointer', color: 'rgb(129, 129, 129)' }}
               onClick={() => this.logoutUser()}
-            ><NavLink to=''><i className="fas fa-sign-out-alt fa-fw" />Sign Out</NavLink>
+            ><Link to=''><i className="fas fa-sign-out-alt fa-fw" />Sign Out</Link>
             </p>
           </div>
         </div>
