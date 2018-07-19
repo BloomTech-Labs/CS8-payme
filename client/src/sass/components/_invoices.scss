@@ -8,34 +8,78 @@
   margin: 0 auto;
   position: relative;
 
+  &-main {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  &-navigation {
+    display: flex;
+    // border-left: 0.3px solid rgb(193, 193, 193);
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $color-nav;
+    height: 6rem;
+    // width: 1oorem;
+  }
+
   &-search {
-    position: absolute;
-    // top:
-    left: 18rem;
     &_input {
-      margin-top: 2rem;
-      // margin-left: 2rem;
+      margin-left: 4rem;
+      background-color: rgb(235, 235, 235);
       padding: 0.4rem;
-      width: 30rem;
-      height: 40px;
-      border-radius: 5%;
+      width: 20rem;
+      height: 4rem;
+      border-radius: 1rem;
       border: 0.7px solid rgb(204, 204, 204);
       &:focus {
-        width: 40rem;
+        width: 25rem;
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
       }
     }
   }
-  
+
+  &-sort {
+    color:white;
+    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
+    padding: 2rem 2rem;
+    cursor: pointer;
+    &:hover {
+      color:$color-primary;
+    }
+  }
+  &-new {
+    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
+    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    color: white;
+    display: flex;
+    cursor: pointer;
+    padding: 2rem 2rem;
+    margin-top: 15rem;
+    margin-left: 2rem;  
+    // justify-content: center;
+    width:  10rem;
+    &:hover {
+      color:$color-primary;
+    }
+
+  }
   &-box {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 5rem 5rem 5rem 10rem;
+  }
+  
+  &-data {
+    cursor: pointer;
     padding: 2rem 2rem;
     // background-color: blue;
-    margin-top: 10rem;
+    margin-top: 2rem;
     margin-left: 2rem;  
     justify-content: center;
     width: 40rem;
-    height: 100%;
+    // height: 100%;
     border: 0.3px solid rgb(194, 194, 194);
   }
 
@@ -49,29 +93,12 @@
     font-weight: 700;
     font-size: 1.2;
   }
-
-  &-new {
-    display: flex;
-    cursor: pointer;
-    padding: 2rem 2rem;
-    // background-color: blue;
-    margin-top: 15rem;
-    margin-left: 2rem;  
-    // justify-content: center;
-    width:  10rem;
-    // height: 10rem;
-    // border: 1px solid $color-primary;
-    // height: 100%;
-  }
   &-form {
     width: 35rem;
     height: 35rem;
     // border: 0.5px solid rgb(220, 220, 220);
     margin: 15rem auto;
   }
-}
-.try {
-  margin-top: 10rem;
 }
 
 .fa-arrow-left {
@@ -103,4 +130,21 @@
   }
 }
 
+.view-invoice {
+  display: flex;
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  margin-left: 10rem;
+  width: 120rem;
+  margin: 0 auto;
+  position: relative;
+
+  &-details {
+    width: 20rem;
+    border: 0.5px solid rgb(218, 218, 218);
+    height: 30rem;
+    margin: 15rem auto;
+  }
+}
 
