@@ -1,6 +1,4 @@
-require("dotenv").load();
 const nodemailer = require("nodemailer");
-
 const Invoice = require("../models/invoices");
 
 // Generate test SMTP service account from ethereal.email
