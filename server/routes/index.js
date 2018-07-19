@@ -13,11 +13,13 @@ const { updateInvoice } = require('../controllers/invoice/updateInvoice');
 const { restricted, authenticate } = require('../config/auth');
 
 const { createReminder } = require('../controllers/sendText');
+const { sendEmail } = require('../controllers/sendEmail'); // created by john
 
 module.exports = app => {
   app.post('/api/register', register);
   app.post('/api/login', authenticate, login);
   app.post('/api/sms', restricted, createReminder);
+  app.post('/api/email', sendEmail); // created by john
   app.get('/api/login', restricted, checkToken);
   app.post('/api/changepassword', restricted, changePassword);
   app.post('/api/addinvoice', restricted, addInvoice);
