@@ -6,4 +6,26 @@
   width: 120rem;
   margin: 0 auto;
   position: relative;
+  display: flex;
+
+  &-form {
+    width: 35rem;
+    height: 35rem;
+    // border: 0.5px solid rgb(220, 220, 220);
+    margin: 15rem auto;
+  }
+
+  &_field {
+    border: 0.3px solid rgb(216, 216, 216);
+    height: 4rem;
+    width: 100%;
+  }
+  &_submit {
+    color: white;
+    height: 3rem;
+    width: 100%;
+    border: none;
+    background-color: $color-error;
+    border-radius: .5rem;
+  }
 }
