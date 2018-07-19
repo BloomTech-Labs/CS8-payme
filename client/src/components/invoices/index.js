@@ -46,7 +46,7 @@ class Invoices extends Component {
               onChange={this.updateSearch}
             />
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
-            <p className="invoice-sort">Sort data</p>
+            <p className="invoice-sort">Sort  <br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
           {this.props.invoices ? (
             <div className="invoice-box">
