@@ -4,7 +4,7 @@ require('dotenv').load();
 const nodemailer = require("nodemailer");
 
 const Invoice = require("../models/invoices");
-const User = require("../models/users");
+// const User = require("../models/users");
 
 
 
@@ -12,23 +12,17 @@ const User = require("../models/users");
 // Only needed if you don't have a real mail account for testing
 
 const sendEmail = (req, res) => {
-	// pass in message to send, invoice ID, and user ID into post request
+	// pass in message to send, invoice ID into post request
 	const {
 		message,
 		invoiceID  // uncomment these once you have appropriate IDs from database
 		// userID
 	} = req.body;
 
-	// ====== TODO =======
-
     Invoice.findById(invoiceID) // find the user by id passed in on post
-    .then(invoice => {
+    .then(invoice => { // searches the database of invoices by a specific ID
+    console.log(invoice) 
 
-    
-    // const user = User.find({ id: userID }); // find the user by id passed in on post
-	// when these are found, pass into mailoptions in appropriate fields
-    console.log(invoice)
-    console.log(invoice.email)
 	nodemailer.createTestAccount((err, account) => {
 		// create reusable transporter object using the default SMTP transport
 		const transporter = nodemailer.createTransport({
@@ -45,7 +39,7 @@ const sendEmail = (req, res) => {
 			from: '"GiveMeMyMoney" <Now@givememymoney.com>', // sender address
 			to: "bar@example.com, baz@example.com", // list of receivers
 			subject: "Hello ✔", // Subject line
-			text: message, // plain text body
+			text: `${message} ${invoice}`, // plain text body
 			html: `<b>${message}</b>` // html body
 		};
 
@@ -57,12 +51,12 @@ const sendEmail = (req, res) => {
 			}
 			res.send({
 				success: "Email sent",
-				messageID: info.messageId,
+				messageInfo: info,
 				messageURL: nodemailer.getTestMessageUrl(info)
 			});
 		});
     });
-    })
+    });
 };
 
 module.exports = {
