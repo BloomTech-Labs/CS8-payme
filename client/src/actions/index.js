@@ -3,11 +3,17 @@ import axios from 'axios';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const ISAUTH = 'ISAUTH';
 export const SET_ID = 'SET_ID';
+
 export const SUCCESS = 'SUCCESS';
 export const ADD_INVOICE = 'ADD_INVOICE';
+export const ALL_INVOICE = 'ALL_INVOICE';
+export const INVOICE_IDX = 'INVOICE_IDX';
+export const CURRENT_INVOICE = 'CURRENT_INVOICE';
+
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common["Authorization"] = `bearer ${token}`;
+
 ////////Auth
 export function setId(id) {
   return {
@@ -29,7 +35,7 @@ export function login(credentials, history) {
     axios.post('/api/login', credentials)
       .then(res => {
         localStorage.setItem('id', res.data.token);
-        // dispatch({ type: LOGIN, payload: res.data });
+        dispatch(getAllInvoices());
         history.push('/invoices');
       })
       .catch(err => {
@@ -80,13 +86,17 @@ export function changePassword(newPassword, history) {
       });
   };
 }
+/////////////////////////////////////
+// Invoices
+////////////////////////////////////
 
 export function addInvoice(credentials, history) {
   return dispatch => {
+    console.log(credentials);
     axios.post('/api/addinvoice', credentials)
       .then(res => {
         console.log(res);
-        dispatch({ type: INVOICE, payload: res.data });
+        dispatch(getAllInvoices());
         history.push('/invoices');
       })
       .catch(err => {
@@ -95,3 +105,34 @@ export function addInvoice(credentials, history) {
       });
   };
 }
+
+export function getAllInvoices() {
+  return dispatch => {
+    axios.get('/api/invoices')
+      .then(res => {
+        console.log(res);
+        dispatch({ type: ALL_INVOICE, payload: res.data });
+        // history.push('/invoices');
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        if (err.response.data === "Unauthorized") { dispatch(authError('Username/Password invalid.')); }
+      });
+  };
+}
+
+
+//////////////////////////
+// Misc
+//////////////////////////
+export const handleInvoiceIdx = inputID => {
+  return (dispatch, getState) => {
+    const { invoices } = getState().auth;
+    invoices.forEach((invoice, i) => {
+      if (invoices._id === inputID) {
+        dispatch({ type: 'INVOICE_IDX', payload: i });
+        dispatch({ type: 'CURRENT_INVOICE', payload: invoice });
+      }
+    });
+  };
+};

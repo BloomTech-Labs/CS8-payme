@@ -14,7 +14,7 @@ class AddInvoice extends Component {
     pdf.append('file', this.uploadInput.files[0]);
     pdf.append('filename', 'this.fileName.value');
   
-    this.props.addInvoice({ ...credentials, pdf: pdf.file }, this.props.history);
+    this.props.addInvoice({ ...credentials, pdf }, this.props.history);
   };
 
 

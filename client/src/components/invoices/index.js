@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from '../sidebar';
-
+import Invoice from './viewInvoice';
+import { connect } from 'react-redux';
+import { getAllInvoices } from '../../actions';
 class Invoices extends Component {
   state = {
     imageURL: '',
   }
-
-  handleUploadImage(ev) {
-    ev.preventDefault();
-
-    const data = new FormData();
-    data.append('file', this.uploadInput.files[0]);
-    data.append('filename', this.fileName.value);
-
-    fetch('/upload', {
-      method: 'POST',
-      body: data,
-    }).then((response) => {
-      response.json().then((body) => {
-        this.setState({ imageURL: `http://localhost:8000/${body.file}` });
-      });
-    });
+  async componentDidMount() {
+    await this.props.getAllInvoices();
   }
+  // handleUploadImage(ev) {
+  //   ev.preventDefault();
+
+  //   const data = new FormData();
+  //   data.append('file', this.uploadInput.files[0]);
+  //   data.append('filename', this.fileName.value);
+
+  //   fetch('/upload', {
+  //     method: 'POST',
+  //     body: data,
+  //   }).then((response) => {
+  //     response.json().then((body) => {
+  //       this.setState({ imageURL: `http://localhost:8000/${body.file}` });
+  //     });
+  //   });
+  // }
 
   render() {
     return (
@@ -37,15 +41,21 @@ class Invoices extends Component {
           onChange={this.updateSearch}
           />
         </div>
-        <div className="invoice-box">
-          <p className="invoice-id">#23242342</p>
-          <p>Name</p>
-          <p>Company Inc</p>
-          <p>Email@gmail.com</p>
-          <p>phone number <span className="invoice-pdf"> Invoice PDF</span></p>
-          <hr />
-          <p>Weekly</p>
+        {this.props.invoices ? (
+          <div className="invoice-box">
+            {this.props.invoices.map((inv, index) => {
+              return (
+                <Invoice
+                  key={inv._id}
+                  invoiceID={inv.number}
+                  clientName={index}
+                  company={inv.title}
+                  handleNoteIndex={this.props.handleIdx}
+                />
+              );
+            })}
           </div>
+        ) : null }
         <div className="try">
         <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
         </div>
@@ -54,4 +64,10 @@ class Invoices extends Component {
   }
 }
 
-export default Invoices;
+const mapStateToProps = state => {
+  return {
+    invoices: state.auth.invoices,
+  };
+};
+
+export default connect(mapStateToProps, { getAllInvoices })(Invoices);
