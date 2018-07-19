@@ -28,7 +28,7 @@ const changePassword = (req, res) => {
               // Removes the password property without accessing the database again.
               const ro = { ...response._doc };
               delete ro.password;
-              res.json({ token, ro });
+              res.json({ token, user: ro });
             })
             .catch(err => res.status(501).json(err));
         } else {
