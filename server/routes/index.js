@@ -5,33 +5,25 @@ const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
-  getOneInvoice,
   payInvoice,
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
 
 const { restricted, authenticate } = require('../config/auth');
+const { sendEmail } = require('../controllers/sendEmail');
 
-<<<<<<< HEAD
-const { createReminder } = require('../controllers/sendText');
-const { sendEmail } = require('../controllers/sendEmail'); // created by john
-=======
 const {
   createReminder,
   getReminder,
   deleteReminder
 } = require('../controllers/sendText');
->>>>>>> master
 
 module.exports = app => {
   app.post('/api/register', register);
   app.post('/api/login', authenticate, login);
-<<<<<<< HEAD
   app.post('/api/sms', restricted, createReminder);
   app.post('/api/email', sendEmail); // created by john
-=======
->>>>>>> master
   app.get('/api/login', restricted, checkToken);
   app.post('/api/changepassword', restricted, changePassword);
   app.post('/api/addinvoice', restricted, addInvoice);
