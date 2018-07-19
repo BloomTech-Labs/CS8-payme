@@ -16,7 +16,7 @@ const { sendEmail } = require('../controllers/sendEmail');
 const {
   createReminder,
   getReminder,
-  deleteReminder
+  deleteReminder,
 } = require('../controllers/sendText');
 
 module.exports = app => {

@@ -6,7 +6,7 @@ require('dotenv').load();
 
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
-const Reminder = require('../models/reminder');
+const Reminder = require('../models/Reminder');
 
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
@@ -20,7 +20,7 @@ const createReminder = (req, res) => {
     name: name,
     phoneNumber: phoneNumber,
     notification: notification,
-    timeZone: timeZone
+    timeZone: timeZone,
     // time: time
   });
   reminder
@@ -70,5 +70,5 @@ const deleteReminder = (req, res) => {
 module.exports = {
   getReminder,
   createReminder,
-  deleteReminder
+  deleteReminder,
 };
