@@ -62,27 +62,57 @@
   width: 120rem;
   margin: 0 auto;
   position: relative; }
-  .invoice-search {
-    position: absolute;
-    left: 18rem; }
-    .invoice-search_input {
-      margin-top: 2rem;
-      padding: 0.4rem;
-      width: 30rem;
-      height: 40px;
-      border-radius: 5%;
-      border: 0.7px solid #cccccc; }
-      .invoice-search_input:focus {
-        width: 40rem;
-        -webkit-transition: width 0.4s ease-in-out;
-        transition: width 0.4s ease-in-out; }
-  .invoice-box {
+  .invoice-main {
+    display: flex;
+    flex-direction: column; }
+  .invoice-navigation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #2d2d2d;
+    height: 6rem; }
+  .invoice-search_input {
+    margin-left: 4rem;
+    background-color: #ebebeb;
+    padding: 0.4rem;
+    width: 20rem;
+    height: 4rem;
+    border-radius: 1rem;
+    border: 0.7px solid #cccccc; }
+    .invoice-search_input:focus {
+      width: 25rem;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out; }
+  .invoice-sort {
+    color: white;
+    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
     padding: 2rem 2rem;
-    margin-top: 10rem;
+    cursor: pointer; }
+    .invoice-sort:hover {
+      color: #22CFB1; }
+  .invoice-new {
+    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
+    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    color: white;
+    display: flex;
+    cursor: pointer;
+    padding: 2rem 2rem;
+    margin-top: 15rem;
+    margin-left: 2rem;
+    width: 10rem; }
+    .invoice-new:hover {
+      color: #22CFB1; }
+  .invoice-box {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 5rem 5rem 5rem 10rem; }
+  .invoice-data {
+    cursor: pointer;
+    padding: 2rem 2rem;
+    margin-top: 2rem;
     margin-left: 2rem;
     justify-content: center;
     width: 40rem;
-    height: 100%;
     border: 0.3px solid #c2c2c2; }
   .invoice-pdf {
     display: flex;
@@ -91,20 +121,10 @@
   .invoice-id {
     font-weight: 700;
     font-size: 1.2; }
-  .invoice-new {
-    display: flex;
-    cursor: pointer;
-    padding: 2rem 2rem;
-    margin-top: 15rem;
-    margin-left: 2rem;
-    width: 10rem; }
   .invoice-form {
     width: 35rem;
     height: 35rem;
     margin: 15rem auto; }
-
-.try {
-  margin-top: 10rem; }
 
 .fa-arrow-left {
   margin-left: 2rem;
@@ -125,19 +145,38 @@
   background-color: #E86C62;
   border-radius: .5rem; }
 
+.view-invoice {
+  display: flex;
+  background-color: #ffffff;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  margin-left: 10rem;
+  width: 120rem;
+  margin: 0 auto;
+  position: relative; }
+  .view-invoice-details {
+    width: 20rem;
+    border: 0.5px solid #dadada;
+    height: 30rem;
+    margin: 15rem auto; }
+
 .sidebar {
   color: white;
   background-color: #252525;
-  white-space: nowrap;
   position: relative;
   display: flex;
   flex-direction: column;
   padding-bottom: 30rem;
   position: relative;
+  min-width: 16rem;
   width: 16rem;
   text-align: center; }
   .sidebar--title {
-    font-size: 3rem; }
+    color: white;
+    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    font-size: 3rem;
+    height: 6rem;
+    background-color: #252525; }
   .sidebar--dot {
     color: #22CFB1;
     font-size: 6rem; }
@@ -160,7 +199,11 @@
   margin-bottom: 2rem; }
 
 .sidebar-links {
-  margin-top: 2rem; }
+  margin-top: 2rem;
+  padding-top: 1rem;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(63, 63, 63, 0.336); }
 
 .fa-fw {
   padding-right: 0.5rem; }
@@ -342,6 +385,55 @@
     font-size: 3rem;
     position: absolute;
     top: 4.9rem; }
+
+.DeleteModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(162, 162, 162, 0.5);
+  width: 100%;
+  height: 100%; }
+
+.DeleteModal-Box {
+  border-radius: .7rem;
+  font-size: 1.3rem;
+  text-align: center;
+  background: white;
+  border: 0.3px solid #c2c2c2;
+  height: 13rem;
+  padding: 1rem; }
+
+.DeleteModal-Box-Delete {
+  border-radius: .5rem;
+  color: white;
+  background: #22CFB1;
+  margin: .6rem;
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 15rem;
+  height: 4.5rem;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif; }
+
+.DeleteModal-Box-Delete:hover {
+  background: #83000f; }
+
+.NoDelete {
+  border-radius: .5rem;
+  color: white;
+  background-color: #E86C62;
+  margin: .6rem;
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 15rem;
+  height: 4.5rem;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif; }
 
 body {
   margin: 0;

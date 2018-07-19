@@ -12,6 +12,7 @@ import Reminders from './components/reminders';
 import Invoices from './components/invoices';
 import Billing from './components/billing';
 import AddInvoice from './components/invoices/addInvoice';
+import ViewInvoice from './components/invoices/viewInvoice';
 
 // Import higher order components
 import RequireAuth from './hoc/requireAuth';
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/settings" component={RequireAuth(Settings)} />
         <Route path="/billing" component={RequireAuth(Billing)} />
         <Route path="/addInvoice" component={RequireAuth(AddInvoice)} />
+        <Route path="/viewinvoice" component={RequireAuth(ViewInvoice)} />
       </Switch>
     </Router>
   );
