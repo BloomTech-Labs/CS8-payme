@@ -27,7 +27,7 @@ const DeleteInvoice = (props) => {
           }}
           className="NoDelete"
         >
-          No
+          Cancel
         </button>
       </div>
     </div>

@@ -1,43 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleInvoiceIdx } from '../../actions';
+import { Link } from 'react-router-dom';
+import { handleInvoiceIdx, getAllInvoices } from '../../actions';
 
 import Sidebar from '../sidebar';
 import DeleteInvoice from './deleteInvoice';
 
 class ViewInvoice extends Component {
-  state = { 
+  state = {
     modalTrigger: false,
+  }
+
+  async componentWillMount() {
+    await this.props.getAllInvoices();
   }
 
   toggleModal = _ => {
     this.setState({ modalTrigger: !this.state.modalTrigger });
   };
 
-  render() { 
-    // console.log(this.props.invoice.companyName);
+  render() {
     const { invoice } = this.props;
-    return ( 
+    console.log(invoice.number);
+    return (
       <div className="view-invoice">
         <Sidebar />
-        {this.state.modalTrigger ? (
-            <div>
-              <DeleteInvoice
-                toggleModal={this.toggleModal}
-                handleDeleteNote={this.props.handleDeleteNote}
-              />
+        <div className="view-invoice-main">
+          <div className="view-invoice-navigation">
+              <p className="view-invoice-navigation_delete" onClick={() => this.toggleModal()}>Delete <i class="far fa-trash-alt fa-fw"></i><br />Invoice</p>
+              <hr className="navigation-line"/>
+              <p className="view-invoice-navigation_update">Update <i class="fas fa-pen-square fa-fw"></i><br /> Invoice</p>
+          </div>
+          <Link to="/invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
+          <div>  
+            <div className="view-invoice-box">
+              <div className="view-invoice-details">
+                <p>{invoice.number}</p>
+                <p>{invoice.clientName}</p>
+                <p>{invoice.companyName}</p>
+                <p>{invoice.totalAmount}</p>
+              </div>
+              {this.state.modalTrigger ? (
+                <div>
+                  <DeleteInvoice
+                    toggleModal={this.toggleModal}
+                    handleDeleteNote={this.props.handleDeleteNote}
+                  />
+                </div>
+              ) : null}
             </div>
-        ) : null}
-        <p>Update</p>
-        <p onClick={() => this.toggleModal()}>Delete</p>
-        <div className="view-invoice-details">
-          <p>{invoice.number}</p>
-          <p>{invoice.clientName}</p>
-          <p>{invoice.companyName}</p>
-          <p>{invoice.totalAmount}</p>
+          </div>
         </div>
       </div>
-     );
+    );
   }
 }
 
@@ -47,4 +62,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx })(ViewInvoice);
+export default connect(mapStateToProps, { handleInvoiceIdx, getAllInvoices })(ViewInvoice);
