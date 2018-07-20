@@ -1,0 +1,62 @@
+.invoice-update{
+  display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  margin: 0 auto;
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+      width: 50rem;
+      height: 40rem;
+      // border: 0.5px solid rgb(220, 220, 220);
+      margin: 5rem auto;
+    }
+    &-title {
+      margin: 0 auto;
+      font-size: 3rem;
+      margin-bottom: 5rem;
+    }
+    &-flex {
+      display: flex;
+      padding: 0.5rem;
+      & p {
+        margin-top: 1rem;
+        font-size: 1.5rem;
+        width: 30rem;
+        // margin-right: 3rem;
+        // color:white;
+      }
+      // align-content: center;
+    }
+
+    &_field {
+      border: 0.3px solid rgb(216, 216, 216);
+      height: 4rem;
+      width: 100%;
+
+      &_input {
+        text-align: center;
+        margin-top: 1rem;
+      }
+    }
+
+    &_field--pdf {
+      margin-left: 15.5rem;
+      height: 4rem;
+      border: none;
+      border: 0.3px solid rgb(216, 216, 216);
+
+    }
+    &_submit {
+      color: white;
+      height: 4rem;
+      width: 100%;
+      border: none;
+      background-color: $color-error;
+      border-radius: .5rem;
+  
+    }
+
+}

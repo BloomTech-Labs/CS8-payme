@@ -9,11 +9,17 @@ import { getAllInvoices, handleInvoiceIdx } from '../../actions';
 class Invoices extends Component {
   state = {
     imageURL: '',
+    search: '',
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.props.getAllInvoices();
   }
+
+  updateSearch = e => {
+    this.setState({ search: e.target.value });
+  };
+
   // handleUploadImage(ev) {
   //   ev.preventDefault();
 
@@ -32,13 +38,19 @@ class Invoices extends Component {
   // }
 
   render() {
+    let filteredInvoices = [];
+    if (this.props.invoices) {
+      filteredInvoices = this.props.invoices.filter(invoice => {
+        return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
+      });
+    }
     return (
       <div className="invoice">
         <Sidebar />
         <div className="invoice-main">
           <div className="invoice-navigation">
             <input 
-              className="invoice-search"
+              // className="invoice-search"
               type="text"
               placeholder="Search Invoices"
               className="invoice-search_input"
@@ -48,16 +60,16 @@ class Invoices extends Component {
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
             <p className="invoice-sort">Sort  <br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
-          {this.props.invoices ? (
+          {filteredInvoices ? (
             <div className="invoice-box">
-              {this.props.invoices.map((inv, index) => {
+              {filteredInvoices.map((inv, index) => {
                 return (
                   <Invoice
                     key={inv._id}
                     id={inv._id}
                     invoiceID={inv.number}
-                    clientName={index}
-                    company={inv.title}
+                    clientName={inv.clientName}
+                    company={inv.companyName}
                     handleNoteIndex={this.props.handleInvoiceIdx}
                     history={this.props.history}
                   />
