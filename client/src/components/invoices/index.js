@@ -9,11 +9,16 @@ import { getAllInvoices, handleInvoiceIdx } from '../../actions';
 class Invoices extends Component {
   state = {
     imageURL: '',
+    search: '',
   }
 
   async componentWillMount() {
     await this.props.getAllInvoices();
   }
+
+  updateSearch = e => {
+    this.setState({ search: e.target.value });
+  };
 
   // handleUploadImage(ev) {
   //   ev.preventDefault();
@@ -33,7 +38,12 @@ class Invoices extends Component {
   // }
 
   render() {
-    console.log(this.props.invoices);
+    let filteredInvoices = [];
+    if (this.props.invoices) {
+      filteredInvoices = this.props.invoices.filter(invoice => {
+        return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
+      });
+    }
     return (
       <div className="invoice">
         <Sidebar />
@@ -50,9 +60,9 @@ class Invoices extends Component {
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
             <p className="invoice-sort">Sort  <br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
-          {this.props.invoices ? (
+          {filteredInvoices ? (
             <div className="invoice-box">
-              {this.props.invoices.map((inv, index) => {
+              {filteredInvoices.map((inv, index) => {
                 return (
                   <Invoice
                     key={inv._id}
