@@ -16,31 +16,15 @@ import ViewInvoice from './components/invoices/viewInvoice';
 import UpdateInvoice from './components/invoices/updateInvoice';
 
 // Import higher order components
-import RequireAuth from './HOC/requireAuth';
+import RequireAuth from './hoc/requireAuth';
 
 const App = () => {
   return (
     <Router>
       <Switch>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <Route exact path="/" component={Landing} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/signup" component={Signup} />
-
-=======
         <Route exact path="/" component={(Landing)} />
         <Route path="/signin" component={(Signin)} />
         <Route path="/signup" component={(Signup)} />
->>>>>>> master
-=======
-        <Route exact path="/" component={Landing} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/signup" component={Signup} />
-        <Route exact path="/" component={(Landing)} />
-        <Route path="/signin" component={(Signin)} />
-        <Route path="/signup" component={(Signup)} />
->>>>>>> refs/remotes/origin/luis-branch
         <Route path="/reminders" component={RequireAuth(Reminders)} />
         <Route path="/settings" component={RequireAuth(Settings)} />
         <Route path="/billing" component={RequireAuth(Billing)} />
