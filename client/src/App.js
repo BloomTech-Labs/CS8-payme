@@ -23,6 +23,7 @@ const App = () => {
     <Router>
       <Switch>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Route exact path="/" component={Landing} />
         <Route path="/signin" component={Signin} />
         <Route path="/signup" component={Signup} />
@@ -32,6 +33,14 @@ const App = () => {
         <Route path="/signin" component={(Signin)} />
         <Route path="/signup" component={(Signup)} />
 >>>>>>> master
+=======
+        <Route exact path="/" component={Landing} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
+        <Route exact path="/" component={(Landing)} />
+        <Route path="/signin" component={(Signin)} />
+        <Route path="/signup" component={(Signup)} />
+>>>>>>> refs/remotes/origin/luis-branch
         <Route path="/reminders" component={RequireAuth(Reminders)} />
         <Route path="/settings" component={RequireAuth(Settings)} />
         <Route path="/billing" component={RequireAuth(Billing)} />
