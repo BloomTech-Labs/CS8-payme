@@ -2,7 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat',sans-serif;
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  // font-family: 'Montserrat',sans-serif;
   background-size: fill;
 
 }
@@ -19,6 +20,10 @@ button {
 a {
   text-decoration: none;
   color: rgb(129, 129, 129);
+  &:hover {
+    color: $color-primary;
+  }
+
 }
 
 ul {

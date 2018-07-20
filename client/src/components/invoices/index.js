@@ -14,6 +14,7 @@ class Invoices extends Component {
   async componentWillMount() {
     await this.props.getAllInvoices();
   }
+
   // handleUploadImage(ev) {
   //   ev.preventDefault();
 
@@ -32,6 +33,7 @@ class Invoices extends Component {
   // }
 
   render() {
+    console.log(this.props.invoices);
     return (
       <div className="invoice">
         <Sidebar />
@@ -56,8 +58,8 @@ class Invoices extends Component {
                     key={inv._id}
                     id={inv._id}
                     invoiceID={inv.number}
-                    clientName={index}
-                    company={inv.title}
+                    clientName={inv.clientName}
+                    company={inv.companyName}
                     handleNoteIndex={this.props.handleInvoiceIdx}
                     history={this.props.history}
                   />

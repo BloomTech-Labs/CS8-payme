@@ -29,6 +29,22 @@ export function authError(error) {
     };
   }
 };
+// This function is here bc it must be declared before login
+// Will export it soon 
+export function getAllInvoices() {
+  return dispatch => {
+    axios.get('/api/invoices')
+      .then(res => {
+        console.log(res);
+        dispatch({ type: ALL_INVOICE, payload: res.data });
+        // history.push('/invoices');
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        dispatch(authError('Error retrieving invoices', err));
+      });
+  };
+}
 
 export function login(credentials, history) {
   return dispatch => {
@@ -40,7 +56,7 @@ export function login(credentials, history) {
       })
       .catch(err => {
         if (err) console.log('error: ', err);
-        if (err.response.data === 'Unauthorized') { dispatch(authError('Username/Password invalid.')); }
+        if (err.response) { dispatch(authError('Username/Password invalid.')); }
       });
   };
 }
@@ -104,6 +120,19 @@ export function addInvoice(credentials, history) {
   };
 }
 
+export function updateInvoice(credentials, history) {
+  return dispatch => {
+    console.log(credentials);
+    axios.post('/api/updateinvoice/:invNumber', credentials)
+      .then(res => {
+        console.log(res);
+        dispatch(getAllInvoices());
+        history.push('/invoices');
+      })
+      .catch(err => dispatch(authError('Error adding an invoice', err)));
+  };
+}
+
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
     console.log(invoiceNumber);
@@ -116,22 +145,6 @@ export function deleteInvoice(invoiceNumber, history) {
       .catch(err => dispatch(authError('Error deleting invoice', err)));
   };
 }
-
-export function getAllInvoices() {
-  return dispatch => {
-    axios.get('/api/invoices')
-      .then(res => {
-        console.log(res);
-        dispatch({ type: ALL_INVOICE, payload: res.data });
-        // history.push('/invoices');
-      })
-      .catch(err => {
-        if (err) console.log('error: ', err);
-        dispatch(authError('Error retrieving invoices', err));
-      });
-  };
-}
-
 
 //////////////////////////
 // Misc

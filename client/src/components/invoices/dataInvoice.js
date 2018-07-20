@@ -6,12 +6,15 @@ import { changePassword } from '../../actions';
 const Datainvoice = (props) => {
   return ( 
       <div className="invoice-data" onClick={() => props.handleNoteIndex(props.id, props.history)}>
-      <p>{props.invoiceID}</p>
-          <p>{props.clientName}</p>
-          <p>{props.company}</p>
-          <p>phone number <span className="invoice-pdf"> Invoice PDF</span></p>
-          <hr />
-          <p>Weekly</p>
+        <div className="invoice-data-flex">
+          <p className="invoice-data-id">#{props.invoiceID}</p>
+          <i className="far fa-edit"></i>
+        </div>
+        <p className="invoice-data-name">{props.clientName}</p>
+        <p className="invoice-data-company">{props.company}</p>
+        <p><span className="invoice-data-pdf"> Invoice PDF</span></p>
+        <hr className="invoice-data-hr"/>
+        <p>Weekly</p>
       </div>
   );
 };

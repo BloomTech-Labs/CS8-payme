@@ -1,13 +1,10 @@
 import { AUTHENTICATION_ERROR,
   ISAUTH, SET_ID, SUCCESS,
   ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
-  CURRENT_INVOICE 
+  CURRENT_INVOICE,
 } from '../actions';
 
-const initialState = {
-  message: '',
-};
-
+const initialState = {};
 export default function (state = initialState, action) {
   switch (action.type) {
     case AUTHENTICATION_ERROR:
