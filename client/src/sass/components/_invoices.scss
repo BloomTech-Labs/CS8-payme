@@ -156,9 +156,34 @@
     }
   }
   &-details {
-    width: 20rem;
-    border: 0.5px solid rgb(218, 218, 218);
-    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 30rem;
+    // border: 0.5px solid rgb(218, 218, 218);
+    margin: 0 auto;
+    &-total {
+      font-size: 2rem;
+      color: white;
+      background-color: $color-error;
+    }
+    &-flex {
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+
+      & p:first-of-type {
+        font-size: 2rem;
+        font-weight: 700;
+        width: 15rem;
+      }
+
+      & p:nth-child(2) {
+        // font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        // margin-left: 
+      }
+    }
   }
 
   &-box {

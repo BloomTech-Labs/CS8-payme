@@ -50,11 +50,26 @@ class ViewInvoice extends Component {
               (
                 <div className="view-invoice-box">
                   <div className="view-invoice-details">
-
-                    <p>{invoice.number}</p>
-                    <p>{invoice.clientName}</p>
-                    <p>{invoice.companyName}</p>
-                    <p>{invoice.totalAmount}</p>
+                  <div className="view-invoice-details-flex">
+                      <p>Invoice pdf(not working)</p>
+                      <p>{invoice.pdf}</p>
+                    </div>
+                    <div className="view-invoice-details-flex">
+                      <p>Invoice Number:</p>
+                      <p>{invoice.number}</p>
+                    </div>
+                    <div className="view-invoice-details-flex">
+                      <p>Client Name:</p>
+                      <p>{invoice.clientName}</p>
+                    </div>
+                    <div className="view-invoice-details-flex">
+                      <p>Company Name</p>
+                      <p>invoice.companyName</p>
+                    </div>
+                    <div className="view-invoice-details-flex">
+                      <p>Total Amount: $</p>
+                      <p className="view-invoice-details-total">{invoice.totalAmount}</p>
+                    </div>
                   </div>
                 </div>
               )
