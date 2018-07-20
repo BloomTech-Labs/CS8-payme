@@ -6,8 +6,6 @@ import Nico from './Nico.jpg';
 
 
 class Sidebar extends Component {
-  state = {}
-
   logoutUser = () => {
     this.props.logout(this.props.history);
   };
