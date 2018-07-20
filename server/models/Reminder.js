@@ -5,6 +5,7 @@ const Twilio = require('twilio');
 const ReminderSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
+  message: String,
   notification: Number,
   time: {
     type: Date,
@@ -38,6 +39,7 @@ ReminderSchema.statics.sendNotifications = function(callback) {
       sendNotifications(reminders);
     })
     .catch(err => {
+      console.log(err);
       console.log('error in sendN');
     });
 
@@ -46,11 +48,10 @@ ReminderSchema.statics.sendNotifications = function(callback) {
     const client = new Twilio(accountSid, authToken);
     reminders.forEach(function(reminder) {
       // options for according to each client
-      console.log('inside sender', reminder);
       const options = {
         to: `+1 ${reminder.phoneNumber}`,
         from: twilioNumber,
-        body: `Reminder text` // Place holder.
+        body: `${reminder.message}` // Place holder.
       };
       // send message
       client.messages.create(options, function(err, response) {

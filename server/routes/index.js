@@ -5,8 +5,7 @@ const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
-  getOneInvoice,
-  payInvoice,
+  payInvoice
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
