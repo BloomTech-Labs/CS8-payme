@@ -1,3 +1,5 @@
+const Invoice = require('../../models/invoices');
+
 const getAllInvoices = (req, res) => {
   const { invoices } = req.user;
   res.json(invoices);

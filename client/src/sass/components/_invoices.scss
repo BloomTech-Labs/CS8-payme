@@ -18,9 +18,11 @@
     // border-left: 0.3px solid rgb(193, 193, 193);
     justify-content: flex-start;
     align-items: center;
-    background-color: $color-nav;
-    height: 6rem;
+    // border:  0.3px solid rgb(193, 193, 193);
+    background-color: #2E2E2E;
+    height: 7rem;
     // width: 1oorem;
+
   }
 
   &-search {
@@ -31,7 +33,7 @@
       width: 20rem;
       height: 4rem;
       border-radius: 1rem;
-      border: 0.7px solid rgb(204, 204, 204);
+      border: $main-border;
       &:focus {
         width: 25rem;
         -webkit-transition: width 0.4s ease-in-out;
@@ -45,18 +47,18 @@
     border-left: 0.3px solid rgba(255, 255, 255, 0.66);
     padding: 2rem 2rem;
     cursor: pointer;
+    display: flex;
     &:hover {
       color:$color-primary;
     }
   }
   &-new {
-    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
-    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    border-left: 0.3px solid rgba(184, 184, 184, 0.66);
+    border-right:0.3px solid rgba(184, 184, 184, 0.66);
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
-    margin-top: 15rem;
     margin-left: 2rem;  
     // justify-content: center;
     width:  10rem;
@@ -135,16 +137,69 @@
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  margin-left: 10rem;
   width: 120rem;
   margin: 0 auto;
   position: relative;
 
+  &-main {
+    width: inherit;
+  }
+
+  &-navigation {
+    display: flex;
+    justify-content: flex-start;
+    // align-items: center;
+    background-color: #2E2E2E;
+    height: 7rem;
+
+    &_delete {
+      cursor: pointer;
+      color: white;
+      padding: 1rem;
+      margin-left: 3rem;
+      &:hover {
+        color:$color-primary;
+      }
+      
+    }
+    &_update {
+      cursor: pointer;
+      color: white;
+      padding: 1rem;
+      &:hover {
+        color:$color-primary;
+      }
+    }
+  }
   &-details {
     width: 20rem;
     border: 0.5px solid rgb(218, 218, 218);
     height: 30rem;
-    margin: 15rem auto;
+  }
+
+  &-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+  &-editDelete {
+    display: flex;
   }
 }
 
+.navigation-line {
+  margin: 0;
+  height: 7rem;
+  border: 0.5px solid rgba(255, 255, 255, 0.139);
+}
+.fa-sort {
+  margin-left: 1px;
+  font-size: 2rem;
+}
+
+.fa-trash {
+  color: white;
+  font-size: 5rem;
+}
