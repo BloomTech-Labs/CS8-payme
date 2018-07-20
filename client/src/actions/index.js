@@ -8,24 +8,9 @@ export const ADD_INVOICE = 'ADD_INVOICE';
 export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-const token = localStorage.getItem('id');
-axios.defaults.headers.common.Authorization = `bearer ${token}`;
-=======
 // JWT
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
->>>>>>> master
-=======
-
-const token = localStorage.getItem('id');
-axios.defaults.headers.common.Authorization = `bearer ${token}`;
-// JWT
-const token =  localStorage.getItem('id');
-axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
->>>>>>> refs/remotes/origin/luis-branch
 
 ////////////////////////////////////
 // Auth
@@ -38,7 +23,7 @@ export function authError(error) {
       payload: error,
     };
   }
-}
+};
 
 // This function is here bc it must be declared before login
 // Will export it soon 
@@ -58,8 +43,7 @@ export function getAllInvoices() {
 
 export function login(credentials, history) {
   return dispatch => {
-    axios
-      .post('/api/login', credentials)
+    axios.post('/api/login', credentials)
       .then(res => {
         localStorage.setItem('id', res.data.token);
         dispatch(getAllInvoices());
@@ -67,35 +51,21 @@ export function login(credentials, history) {
       })
       .catch(err => {
         if (err) console.log('error: ', err);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        if (err.response.data === 'Unauthorized') {
-          dispatch(authError('Username/Password invalid.'));
-        }
-=======
         if (err.response) { dispatch(authError('Username/Password invalid.')); }
->>>>>>> master
-=======
-        if (err.response.data === 'Unauthorized') {
-          dispatch(authError('Username/Password invalid.'));
-        }
-        if (err.response) { dispatch(authError('Username/Password invalid.')); }
->>>>>>> refs/remotes/origin/luis-branch
       });
   };
 }
 
 export function register(credentials, history) {
   return dispatch => {
-    axios
-      .post('/api/register', credentials)
+    axios.post('/api/register', credentials)
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
         history.push('/invoices');
       })
       .catch(error => {
-        if (error) console.log('error: ', error.response);
+        if (error)console.log('error: ', error.response);
         else if (error.response.data.err.errors) {
           dispatch(authError('Your username must be a valid email address.'));
         } else if (error.response.data.err.errmsg) {
@@ -111,36 +81,18 @@ export function logout(history) {
     localStorage.removeItem('id');
     history.push('/');
   };
-}
+};
 // { header: { Authorization: `bearer ${token}` } }
 
 export function changePassword(newPassword, history) {
   return dispatch => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> refs/remotes/origin/luis-branch
-    console.log(newPassword);
-    axios
-      .post('/api/changepassword', newPassword)
-      .then(res => {
-        console.log(res);
-        dispatch({ type: 'SUCCESS', payload: 'Successfully changed your password' });
-<<<<<<< HEAD
-=======
     axios.post('/api/changepassword', newPassword)
       .then(res => {
         dispatch({type: 'SUCCESS', payload: 'Successfully changed your password' });
->>>>>>> master
-=======
-    axios.post('/api/changepassword', newPassword)
-      .then(res => {
-        dispatch({type: 'SUCCESS', payload: 'Successfully changed your password' });
->>>>>>> refs/remotes/origin/luis-branch
         // history.push('/invoices');
       })
       .catch(error => {
-        if (error) console.log('error: ', error.response);
+        if (error)console.log('error: ', error.response);
         dispatch(authError('Error changing your password', error));
       });
   };
@@ -151,24 +103,9 @@ export function changePassword(newPassword, history) {
 
 export function addInvoice(credentials, history) {
   return dispatch => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    console.log(credentials);
-    axios
-      .post('/api/addinvoice', credentials)
-=======
     // adjusting credentials to fit Invoice schema
     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
     axios.post('/api/addinvoice', data)
->>>>>>> master
-=======
-    console.log(credentials);
-    axios
-      .post('/api/addinvoice', credentials)
-    // adjusting credentials to fit Invoice schema
-    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-    axios.post('/api/addinvoice', data)
->>>>>>> refs/remotes/origin/luis-branch
       .then(res => {
         dispatch(getAllInvoices());
         history.push('/invoices');
@@ -194,20 +131,8 @@ export function updateInvoice(credentials, history) {
 
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    axios
-      .get('/api/invoices')
-=======
     console.log(invoiceNumber);
     axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
->>>>>>> master
-=======
-    axios
-      .get('/api/invoices')
-    console.log(invoiceNumber);
-    axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
->>>>>>> refs/remotes/origin/luis-branch
       .then(res => {
         console.log(res);
         dispatch(getAllInvoices());
