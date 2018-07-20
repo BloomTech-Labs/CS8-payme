@@ -15,16 +15,16 @@ import AddInvoice from './components/invoices/addInvoice';
 import ViewInvoice from './components/invoices/viewInvoice';
 
 // Import higher order components
-import RequireAuth from './hoc/requireAuth';
+import RequireAuth from './HOC/requireAuth';
 
 const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={(Landing)} />
-        <Route path="/signin" component={(Signin)} />
-        <Route path="/signup" component={(Signup)} />
-     
+        <Route exact path="/" component={Landing} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
+
         <Route path="/reminders" component={RequireAuth(Reminders)} />
         <Route path="/invoices" component={RequireAuth(Invoices)} />
         <Route path="/settings" component={RequireAuth(Settings)} />
