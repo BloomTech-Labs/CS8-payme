@@ -1,3 +1,4 @@
+require('dotenv').load();
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -6,7 +7,7 @@ const cors = require('cors');
 const path = require('path');
 
 const routes = require('./routes/');
-const keys = require('./config/keys');
+// const keys = require('./config/keys');
 const port = process.env.PORT || 5000;
 const app = express();
 
@@ -15,7 +16,7 @@ const scheduler = require('./scheduler.js');
 // Connecting to mLab/port
 mongoose
   .connect(
-    process.env.DATA_BASE || keys.mongoURI,
+    process.env.DATA_BASE,
     { useNewUrlParser: true }
   )
   .then(() => {

@@ -109,6 +109,19 @@ export function addInvoice(credentials, history) {
   };
 }
 
+export function deleteInvoice(invoiceNumber, history) {
+  return dispatch => {
+    console.log(invoiceNumber);
+    axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
+      .then(res => {
+        console.log(res);
+        dispatch(getAllInvoices());
+        history.push('/invoices');
+      })
+      .catch(err => dispatch(authError('Error deleting invoice', err)));
+  };
+}
+
 export function getAllInvoices() {
   return dispatch => {
     axios
@@ -128,7 +141,7 @@ export function getAllInvoices() {
 //////////////////////////
 // Misc
 //////////////////////////
-export const handleInvoiceIdx = (inputID, history) => {
+export function handleInvoiceIdx(inputID, history) {
   return (dispatch, getState) => {
     console.log(inputID);
     const { invoices } = getState().auth;
