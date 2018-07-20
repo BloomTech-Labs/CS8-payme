@@ -1,10 +1,10 @@
-const Reminder = require('./models/reminder.js');
+const Reminder = require('./models/Reminder.js');
 
 const notificationWorker = function() {
   return {
     run: function() {
       Reminder.sendNotifications();
-    }
+    },
   };
 };
 

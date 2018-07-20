@@ -1,7 +1,7 @@
 const express = require('express');
 // const router = express.Router();
 const User = require('../../models/users');
-const keys = require('../../config/keys');
+// const keys = require('../../config/keys');
 const { makeToken } = require('../../config/auth');
 
 const register = (req, res) => {

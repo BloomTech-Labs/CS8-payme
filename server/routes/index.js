@@ -11,16 +11,19 @@ const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
 
 const { restricted, authenticate } = require('../config/auth');
+const { sendEmail } = require('../controllers/sendEmail');
 
 const {
   createReminder,
   getReminder,
-  deleteReminder
+  deleteReminder,
 } = require('../controllers/sendText');
 
 module.exports = app => {
   app.post('/api/register', register);
   app.post('/api/login', authenticate, login);
+  app.post('/api/sms', restricted, createReminder);
+  app.post('/api/email', restricted, sendEmail);
   app.get('/api/login', restricted, checkToken);
   app.post('/api/changepassword', restricted, changePassword);
   app.post('/api/addinvoice', restricted, addInvoice);
