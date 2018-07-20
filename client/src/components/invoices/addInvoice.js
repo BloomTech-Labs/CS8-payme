@@ -58,7 +58,7 @@ class AddInvoice extends Component {
             <br />
             <Field
               type="number"
-              name="totalAmount"
+              name="number"
               component="input"
               className="add-invoice_field"
               placeholder="Invoice Number"
@@ -66,7 +66,7 @@ class AddInvoice extends Component {
             <br />
             <Field
               type="number"
-              name="number"
+              name="totalAmount"
               component="input"
               className="add-invoice_field"
               placeholder="Total Amount"
