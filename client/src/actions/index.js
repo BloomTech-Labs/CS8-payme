@@ -1,25 +1,27 @@
 import axios from 'axios';
-
+// Auth
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
-export const ISAUTH = 'ISAUTH';
-export const SET_ID = 'SET_ID';
-
+export const DE_AUTH = 'DE_AUTH';
+// INVOICES
 export const SUCCESS = 'SUCCESS';
 export const ADD_INVOICE = 'ADD_INVOICE';
 export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
+<<<<<<< HEAD
 
 const token = localStorage.getItem('id');
 axios.defaults.headers.common.Authorization = `bearer ${token}`;
+=======
+// JWT
+const token =  localStorage.getItem('id');
+axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
+>>>>>>> master
 
-////////Auth
-export function setId(id) {
-  return {
-    type: SET_ID,
-    payload: id,
-  };
-}
+////////////////////////////////////
+// Auth
+////////////////////////////////////
+
 export function authError(error) {
   if (error) {
     return {
@@ -27,6 +29,22 @@ export function authError(error) {
       payload: error,
     };
   }
+}
+
+// This function is here bc it must be declared before login
+// Will export it soon 
+export function getAllInvoices() {
+  return dispatch => {
+    axios.get('/api/invoices', { header: { Authorization: `bearer ${token}` } })
+      .then(res => {
+        dispatch({ type: ALL_INVOICE, payload: res.data });
+        // history.push('/invoices');
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        dispatch(authError('Error retrieving invoices', err));
+      });
+  };
 }
 
 export function login(credentials, history) {
@@ -40,9 +58,13 @@ export function login(credentials, history) {
       })
       .catch(err => {
         if (err) console.log('error: ', err);
+<<<<<<< HEAD
         if (err.response.data === 'Unauthorized') {
           dispatch(authError('Username/Password invalid.'));
         }
+=======
+        if (err.response) { dispatch(authError('Username/Password invalid.')); }
+>>>>>>> master
       });
   };
 }
@@ -69,6 +91,7 @@ export function register(credentials, history) {
 
 export function logout(history) {
   return dispatch => {
+    dispatch({ type: 'DE_AUTH' });
     localStorage.removeItem('id');
     history.push('/');
   };
@@ -77,12 +100,18 @@ export function logout(history) {
 
 export function changePassword(newPassword, history) {
   return dispatch => {
+<<<<<<< HEAD
     console.log(newPassword);
     axios
       .post('/api/changepassword', newPassword)
       .then(res => {
         console.log(res);
         dispatch({ type: 'SUCCESS', payload: 'Successfully changed your password' });
+=======
+    axios.post('/api/changepassword', newPassword)
+      .then(res => {
+        dispatch({type: 'SUCCESS', payload: 'Successfully changed your password' });
+>>>>>>> master
         // history.push('/invoices');
       })
       .catch(error => {
@@ -97,11 +126,16 @@ export function changePassword(newPassword, history) {
 
 export function addInvoice(credentials, history) {
   return dispatch => {
+<<<<<<< HEAD
     console.log(credentials);
     axios
       .post('/api/addinvoice', credentials)
+=======
+    // adjusting credentials to fit Invoice schema
+    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
+    axios.post('/api/addinvoice', data)
+>>>>>>> master
       .then(res => {
-        console.log(res);
         dispatch(getAllInvoices());
         history.push('/invoices');
       })
@@ -109,32 +143,36 @@ export function addInvoice(credentials, history) {
   };
 }
 
+export function updateInvoice(credentials, history) {
+  return dispatch => {
+    console.log(credentials);
+    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
+    const invNumber = credentials.number;
+    axios.put(`/api/updateinvoice/${invNumber}`, data)
+      .then(res => {
+        dispatch(getAllInvoices());
+        history.push('/invoices');
+        console.log(res);
+      })
+      .catch(err => dispatch(authError('Error adding an invoice', err)));
+  };
+}
+
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
+<<<<<<< HEAD
+    axios
+      .get('/api/invoices')
+=======
     console.log(invoiceNumber);
     axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
+>>>>>>> master
       .then(res => {
         console.log(res);
         dispatch(getAllInvoices());
         history.push('/invoices');
       })
       .catch(err => dispatch(authError('Error deleting invoice', err)));
-  };
-}
-
-export function getAllInvoices() {
-  return dispatch => {
-    axios
-      .get('/api/invoices')
-      .then(res => {
-        console.log(res);
-        dispatch({ type: ALL_INVOICE, payload: res.data });
-        // history.push('/invoices');
-      })
-      .catch(err => {
-        if (err) console.log('error: ', err);
-        dispatch(authError('Error retrieving invoices', err));
-      });
   };
 }
 
