@@ -12,7 +12,7 @@ class Invoices extends Component {
     search: '',
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     await this.props.getAllInvoices();
   }
 
@@ -50,7 +50,7 @@ class Invoices extends Component {
         <div className="invoice-main">
           <div className="invoice-navigation">
             <input 
-              className="invoice-search"
+              // className="invoice-search"
               type="text"
               placeholder="Search Invoices"
               className="invoice-search_input"

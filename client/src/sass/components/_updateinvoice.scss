@@ -8,7 +8,7 @@
     &-form {
       display: flex;
       flex-direction: column;
-      width: 60rem;
+      width: 50rem;
       height: 40rem;
       // border: 0.5px solid rgb(220, 220, 220);
       margin: 5rem auto;
@@ -22,9 +22,9 @@
       display: flex;
       padding: 0.5rem;
       & p {
-
+        margin-top: 1rem;
         font-size: 1.5rem;
-        width: 40rem;
+        width: 30rem;
         // margin-right: 3rem;
         // color:white;
       }
@@ -35,6 +35,19 @@
       border: 0.3px solid rgb(216, 216, 216);
       height: 4rem;
       width: 100%;
+
+      &_input {
+        text-align: center;
+        margin-top: 1rem;
+      }
+    }
+
+    &_field--pdf {
+      margin-left: 15.5rem;
+      height: 4rem;
+      border: none;
+      border: 0.3px solid rgb(216, 216, 216);
+
     }
     &_submit {
       color: white;

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
 import { updateInvoice } from '../../actions';
-import Sidebar from '../sidebar';
+
 
 class UpdateInvoice extends Component {
-  state = { }
-
   handleFormSubmit = (credentials) => {
     const pdf = new FormData();
     pdf.append('file', this.uploadInput.files[0]);
@@ -42,6 +40,24 @@ class UpdateInvoice extends Component {
               />
             </div>
             <div className="invoice-update-flex">
+            <p>Email</p>
+              <Field
+                name="email"
+                component="input"
+                className="invoice-update_field"
+                placeholder="Email"
+              />
+            </div>
+            <div className="invoice-update-flex">
+            <p>Phone Number</p>
+              <Field
+                name="phone"
+                component="input"
+                className="invoice-update_field"
+                placeholder="Phone Number"
+              />
+            </div>
+            <div className="invoice-update-flex">
               <p>Invoice Number</p>
               <Field
                 type="number"
@@ -52,24 +68,24 @@ class UpdateInvoice extends Component {
               />
             </div>
             <div className="invoice-update-flex">
-              <p>Paid</p>
+              <p>Total Amount</p>
               <Field
                 type="number"
                 name="totalAmount"
                 component="input"
                 className="invoice-update_field"
-                placeholder="Total Amount"
+                placeholder="Invoice Number"
               />
             </div>
             <div className="invoice-update-flex">
               <p>PDF</p>
-              <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
+              <input className="invoice-update_field--pdf"ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Desired name of file" />
               <input
                 // component="input"
                 type="file"
                 accept="image/png, image/jpeg, application/pdf"
                 ref={(ref) => { this.uploadInput = ref; }}
-                className="invoice-update_field"
+                className="invoice-update_field--pdf_input"
                 placeholder="Upload PDF"
               />
             </div>
@@ -86,14 +102,23 @@ class UpdateInvoice extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    invoice: state.auth.currentInvoice,
-  };
-};
 
-UpdateInvoice = connect(null, { updateInvoice })(UpdateInvoice);
-
-export default reduxForm({
-  form: 'updateInvoice', // Unique name for the form
+// This retrieving existing data from Redux 
+let InitializeFromStateForm = reduxForm({
+  form: 'initializeFromState', // unique name for form
+  enableReinitialize : true
 })(UpdateInvoice);
+
+InitializeFromStateForm = connect(
+  state => ({
+    profile: state.profile,
+    initialValues: {
+      ...state.auth.currentInvoice,
+      email: state.auth.currentInvoice.email.address, // Had to add email and phone because they are nested objects
+      phone: state.auth.currentInvoice.phone.number,
+    }, // gathering our intial values and conencting it to comp
+  }),
+  { updateInvoice },
+)(InitializeFromStateForm);
+
+export default withRouter(InitializeFromStateForm);

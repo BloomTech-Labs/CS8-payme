@@ -34,9 +34,7 @@ class ViewInvoice extends Component {
             <p className="view-invoice-navigation_delete" onClick={() => this.toggleModal()}>Delete <i className="far fa-trash-alt fa-fw" /><br />Invoice</p>
             <hr className="navigation-line" />
             <p className="view-invoice-navigation_update"
-                className="view-invoice-navigation_update"
                 onClick={() => this.showUpdate()}
-                className="view-invoice-navigation_update"
               >
                 Update
                 <i className="fas fa-pen-square fa-fw" />
@@ -64,7 +62,7 @@ class ViewInvoice extends Component {
                     </div>
                     <div className="view-invoice-details-flex">
                       <p>Company Name</p>
-                      <p>invoice.companyName</p>
+                      <p>{invoice.companyName}</p>
                     </div>
                     <div className="view-invoice-details-flex">
                       <p>Total Amount: $</p>

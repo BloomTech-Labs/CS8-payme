@@ -141,6 +141,7 @@
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   width: 120rem;
+  height: 100rem;
   margin: 0 auto;
   position: relative; }
   .view-invoice-main {
@@ -244,6 +245,7 @@
   margin-bottom: 2rem; }
 
 .sidebar-links {
+  font-size: 1.5rem;
   margin-top: 2rem;
   padding-top: 1rem;
   height: 100%;
@@ -486,7 +488,7 @@
   .invoice-update-form {
     display: flex;
     flex-direction: column;
-    width: 60rem;
+    width: 50rem;
     height: 40rem;
     margin: 5rem auto; }
   .invoice-update-title {
@@ -497,12 +499,21 @@
     display: flex;
     padding: 0.5rem; }
     .invoice-update-flex p {
+      margin-top: 1rem;
       font-size: 1.5rem;
-      width: 40rem; }
+      width: 30rem; }
   .invoice-update_field {
     border: 0.3px solid #d8d8d8;
     height: 4rem;
     width: 100%; }
+    .invoice-update_field_input {
+      text-align: center;
+      margin-top: 1rem; }
+  .invoice-update_field--pdf {
+    margin-left: 15.5rem;
+    height: 4rem;
+    border: none;
+    border: 0.3px solid #d8d8d8; }
   .invoice-update_submit {
     color: white;
     height: 4rem;
