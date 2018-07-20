@@ -10,10 +10,8 @@ class AdminBilling extends Component {
           className="modal"
           style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}
         >
-          <StripeProvider apiKey={process.env.STRIPE_KEY || 'pk_test_LwL4RUtinpP3PXzYirX2jNfR'}>
+          <StripeProvider apiKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}>
             <div className="example">
-              <p>this is a test</p>
-              <div>another test</div>
               <h1>React Stripe Elements Example</h1>
               <Elements>
                 <CheckoutForm />

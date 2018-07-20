@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { addSub, addCredit } from '../../actions/stripe';
+
+const subCost = 2000;
+const invoiceCost = 199;
+
+// const token = localStorage.getItem('id');
+axios.defaults.headers.common.Authorization = 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YjUyMzUyYWM5MGNkYTEyOTZhYWRiNzciLCJpYXQiOjE1MzIxMTQyMTg1MzAsInVzZXJuYW1lIjoiMkB0ZXN0LmNvbSIsImV4cCI6MTUzMjIwMDYxODUzMH0.fBddrd-xjv3pDBwA85LnGgWsCLwipFTX0JZoHk9IBHs';
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
+    this.state = {
+      amount: 50,
+    };
   }
 
   async submit(ev) {
@@ -19,6 +30,17 @@ class CheckoutForm extends Component {
     // });
 
     // if (response.ok) console.log('Purchase Complete!');
+    axios
+      .post('http://localhost:5000/api/charge', {
+        type: 'sub',
+        units: 30,
+        id: token.id,
+        amount: this.state.amount,
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -32,4 +54,7 @@ class CheckoutForm extends Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+export default connect(
+  null,
+  { addSub, addCredit },
+)(injectStripe(CheckoutForm));
