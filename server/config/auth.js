@@ -4,7 +4,7 @@ const User = require('../models/users');
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const JwtStrategy = require('passport-jwt').Strategy;
 const jwt = require('jsonwebtoken');
-const keys = require('./keys');
+// const keys = require('./keys');
 
 function makeToken(user) {
   const timestamp = new Date().getTime();
@@ -18,11 +18,11 @@ function makeToken(user) {
     expiresIn: 1000 * 60 * 60 * 24, // 24 hour expiration.
   };
 
-  return jwt.sign(payload, keys.secret, options);
+  return jwt.sign(payload, process.env.SECRET, options);
 }
 // This is Authorization this uses the username/pass to login
 const localStrategy = new LocalStrategy(function(username, password, done) {
-  // console.log(username, password);
+  console.log(username, password);
   User.findOne({ username }, function(err, user) {
     // console.log(`user: ${user.checkpassword}`);
     if (err) {
@@ -48,9 +48,9 @@ const localStrategy = new LocalStrategy(function(username, password, done) {
 // Bearer is where it pulls token from
 const jwtOptions = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: keys.secret,
+  secretOrKey: process.env.SECRET,
 };
-// This is the restricted middleware. This uses jwt 
+// This is the restricted middleware. This uses jwt
 const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
   // console.log(jwtOptions, 'jwtOptions');
   // console.log(load, 'load');

@@ -13,6 +13,10 @@ const styles = {
 
 class Signin extends Component {
 
+  componentDidMount() {
+    if (localStorage.getItem('id')) this.props.history.push('/invoices');
+  }
+  
   handleFormSubmit = (ele) => {
     this.props.login(ele, this.props.history);
   };

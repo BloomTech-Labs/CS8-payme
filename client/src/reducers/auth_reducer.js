@@ -1,6 +1,6 @@
 import {
   AUTHENTICATION_ERROR,
-  DE_AUTH, AUTH_SUCCESS,
+  DE_AUTH, AUTH_SUCCESS, USER,
 } from '../actions/auth';
 
 // const initialState = {
@@ -11,10 +11,14 @@ import {
 //   currentInvoice: '',
 // };
 
-const initialState = {};
+const initialState = {
+  admin: [],
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case USER:
+      return { ...state, admin: [] };
     case DE_AUTH:
       return { ...state, invoices: [] };
     case AUTHENTICATION_ERROR:

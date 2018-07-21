@@ -1,12 +1,12 @@
 import axios from 'axios';
-// INVOICES
+
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const SUCCESS = 'SUCCESS';
 export const ADD_INVOICE = 'ADD_INVOICE';
 export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
-// JWT
+
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
 
@@ -21,11 +21,12 @@ export function authError(error) {
       payload: error,
     };
   }
-};
+}
 
-export function getAllInvoices() {
+export function getInvoice() {
   return dispatch => {
-    axios.get('/api/invoices', { header: { Authorization: `bearer ${token}` } })
+    console.log(token);
+    axios.get('/api/invoices/:number', { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         dispatch({ type: ALL_INVOICE, payload: res.data });
         // history.push('/invoices');
@@ -37,28 +38,38 @@ export function getAllInvoices() {
   };
 }
 
+export function getAllInvoices() {
+  return dispatch => {
+    console.log(token);
+    axios.get('/api/invoices', { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
+        dispatch({ type: ALL_INVOICE, payload: res.data });
+        // history.push('/invoices');
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        dispatch(authError('Error retrieving invoices', err));
+      });
+  };
+}
+
+
 export function addInvoice(credentials, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
-    console.log(credentials);
     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-    axios.post('/api/addinvoice', data, { header: { Authorization: `bearer ${token}` } })
-      .then(res => {
-        dispatch(getAllInvoices());
-        history.push('/invoices');
-      })
+    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${token}` } })
+      .then(res => history.push('/invoices'))
       .catch(err => dispatch(authError('Error adding an invoice', err)));
   };
 }
 
 export function updateInvoice(credentials, history) {
   return dispatch => {
-    console.log(credentials);
     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
     const invNumber = credentials.number;
-    axios.put(`/api/updateinvoice/${invNumber}`, data)
+    axios.put(`/api/updateinvoice/${invNumber}`, data, { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
-        dispatch(getAllInvoices());
         history.push('/invoices');
         console.log(res);
       })
@@ -69,10 +80,9 @@ export function updateInvoice(credentials, history) {
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
     console.log(invoiceNumber);
-    axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
+    axios.delete(`/api/deleteinvoice/${invoiceNumber}`, { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         console.log(res);
-        dispatch(getAllInvoices());
         history.push('/invoices');
       })
       .catch(err => dispatch(authError('Error deleting invoice', err)));
@@ -81,14 +91,15 @@ export function deleteInvoice(invoiceNumber, history) {
 
 export function handleInvoiceIdx(inputID, history) {
   return (dispatch, getState) => {
-    console.log(inputID);
     const { invoices } = getState().invoice;
+    let id;
     invoices.forEach((invoice, i) => {
       if (invoice._id === inputID) {
+        id = invoice
         dispatch({ type: 'INVOICE_IDX', payload: i });
         dispatch({ type: 'CURRENT_INVOICE', payload: invoice });
       }
     });
     history.push('/viewinvoice');
   };
-};
+}

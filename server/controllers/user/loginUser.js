@@ -9,6 +9,7 @@ const login = (req, res) => {
   const token = makeToken(tknUser);
   User.findOne(_id)
     .select('-password')
+    .populate('invoices')
     .then(user => {
       res.json({ token, user });
     });

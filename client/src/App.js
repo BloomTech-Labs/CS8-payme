@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/billing" component={RequireAuth(Billing)} />
         <Route path="/invoices" component={RequireAuth(Invoices)} />
         <Route path="/addInvoice" component={RequireAuth(AddInvoice)} />
-        <Route path="/viewinvoice" component={RequireAuth(ViewInvoice)} />
+        <Route exact path="/viewinvoice" component={RequireAuth(ViewInvoice)} />
         <Route path="/updateinvoice" component={RequireAuth(UpdateInvoice)} />
       </Switch>
     </Router>

@@ -2,10 +2,12 @@ import axios from 'axios';
 import { getAllInvoices } from './invoices';
 
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
+export const USER_INVOICES = 'USER_INVOICES';
+export const USER = 'USER';
 export const DE_AUTH = 'DE_AUTH';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 
-const token =  localStorage.getItem('id');
+const token = localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
 
 ////////////////////////////////////
@@ -19,7 +21,7 @@ export function authError(error) {
       payload: error,
     };
   }
-};
+}
 
 
 export function login(credentials, history) {
@@ -28,7 +30,9 @@ export function login(credentials, history) {
       .then(res => {
         localStorage.setItem('id', res.data.token);
         axios.defaults.headers.common['Authorization'] = `bearer ${res.data.token}`;
-        dispatch(getAllInvoices());
+        console.log(res.data.user)
+        dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
+        dispatch({ type: 'USER', payload: res.data.user });
         history.push('/invoices');
       })
       .catch(err => {
@@ -63,14 +67,14 @@ export function logout(history) {
     localStorage.removeItem('id');
     history.push('/');
   };
-};
+}
 // { header: { Authorization: `bearer ${token}` } }
 
 export function changePassword(newPassword, history) {
   return dispatch => {
     axios.post('/api/changepassword', newPassword)
       .then(res => {
-        dispatch({type: 'AUTH_SUCCESS', payload: 'Successfully changed your password' });
+        dispatch({ type: 'AUTH_SUCCESS', payload: 'Successfully changed your password' });
         // history.push('/invoices');
       })
       .catch(error => {
@@ -79,64 +83,3 @@ export function changePassword(newPassword, history) {
       });
   };
 }
-// /////////////////////////////////////
-// // Invoices
-// ////////////////////////////////////
-
-// export function addInvoice(credentials, history) {
-//   return dispatch => {
-//     // adjusting credentials to fit Invoice schema
-//     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-//     axios.post('/api/addinvoice', data)
-//       .then(res => {
-//         dispatch(getAllInvoices());
-//         history.push('/invoices');
-//       })
-//       .catch(err => dispatch(authError('Error adding an invoice', err)));
-//   };
-// }
-
-// export function updateInvoice(credentials, history) {
-//   return dispatch => {
-//     console.log(credentials);
-//     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-//     const invNumber = credentials.number;
-//     axios.put(`/api/updateinvoice/${invNumber}`, data)
-//       .then(res => {
-//         dispatch(getAllInvoices());
-//         history.push('/invoices');
-//         console.log(res);
-//       })
-//       .catch(err => dispatch(authError('Error adding an invoice', err)));
-//   };
-// }
-
-// export function deleteInvoice(invoiceNumber, history) {
-//   return dispatch => {
-//     console.log(invoiceNumber);
-//     axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
-//       .then(res => {
-//         console.log(res);
-//         dispatch(getAllInvoices());
-//         history.push('/invoices');
-//       })
-//       .catch(err => dispatch(authError('Error deleting invoice', err)));
-//   };
-// }
-
-//////////////////////////
-// Misc
-//////////////////////////
-// export function handleInvoiceIdx(inputID, history) {
-//   return (dispatch, getState) => {
-//     console.log(inputID);
-//     const { invoices } = getState().auth;
-//     invoices.forEach((invoice, i) => {
-//       if (invoice._id === inputID) {
-//         dispatch({ type: 'INVOICE_IDX', payload: i });
-//         dispatch({ type: 'CURRENT_INVOICE', payload: invoice });
-//       }
-//     });
-//     history.push('/viewinvoice');
-//   };
-// };

@@ -3,6 +3,7 @@ import {
   ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
   CURRENT_INVOICE,
 } from '../actions/invoices';
+import { USER_INVOICES } from '../actions/auth';
 
 // const initialState = {
 //   message: '',
@@ -12,12 +13,16 @@ import {
 //   currentInvoice: '',
 // };
 
-const initialState = {};
+const initialState = {
+  invoices: [],
+};
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case SUCCESS:
       return { ...state, success: action.payload };
+    case USER_INVOICES:
+      return { ...state, invoices: action.payload };
     case ADD_INVOICE:
       return { ...state, success: action.payload };
     case ALL_INVOICE:

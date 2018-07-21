@@ -38,9 +38,10 @@ class Invoices extends Component {
   // }
 
   render() {
+    const { invoices } = this.props;
     let filteredInvoices = [];
-    if (this.props.invoices) {
-      filteredInvoices = this.props.invoices.filter(invoice => {
+    if (invoices) {
+      filteredInvoices = invoices.filter(invoice => {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
@@ -62,7 +63,7 @@ class Invoices extends Component {
             <hr className="navigation-line" />
             <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
-          {filteredInvoices.length > 0 ? (
+          {invoices.length >= 1 ? (
             <div className="invoice-box">
               {filteredInvoices.map((inv, index) => {
                 return (
@@ -78,8 +79,8 @@ class Invoices extends Component {
                 );
               })}
             </div>
-          ) : <p className="invoice-letstart">Looks like you dont have any Invoices! Click here to get started</p>}
-          
+          ) : null}
+        {/* <p className="invoice-letstart">Looks like you dont have any Invoices! Click here to get started</p> */}
         </div>
       </div>
     );

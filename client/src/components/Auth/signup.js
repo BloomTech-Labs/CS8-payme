@@ -6,7 +6,10 @@ import { register } from '../../actions/auth';
 // import logo from './google.png';
 
 class Signup extends Component {
-
+  
+  componentDidMount() {
+    if (localStorage.getItem('id')) this.props.history.push('/invoices');
+  }
   handleFormSubmit = (credentials) => {
     this.props.register(credentials, this.props.history);
   };
