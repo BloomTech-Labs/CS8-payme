@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import landPic from './landing.jpg';
-// import { Input, Button } from 'semantic-ui-react';
 
-// See if we can import bebas font
 const styles = {
   backgroundImage: `url(${landPic})`,
 };
