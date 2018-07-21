@@ -9,8 +9,8 @@ export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
 // JWT
-const token =  localStorage.getItem('id');
-axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
+// const token = localStorage.getItem('id');
+// axios.defaults.headers.common.Authorization = `bearer ${token}`;
 
 ////////////////////////////////////
 // Auth
@@ -23,13 +23,14 @@ export function authError(error) {
       payload: error,
     };
   }
-};
+}
 
 // This function is here bc it must be declared before login
-// Will export it soon 
+// Will export it soon
 export function getAllInvoices() {
   return dispatch => {
-    axios.get('/api/invoices', { header: { Authorization: `bearer ${token}` } })
+    axios
+      .get('/api/invoices', { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         dispatch({ type: ALL_INVOICE, payload: res.data });
         // history.push('/invoices');
@@ -43,29 +44,36 @@ export function getAllInvoices() {
 
 export function login(credentials, history) {
   return dispatch => {
-    axios.post('/api/login', credentials)
+    axios
+      .post('/api/login', credentials)
       .then(res => {
         localStorage.setItem('id', res.data.token);
+        console.log(res.data.token);
         dispatch(getAllInvoices());
         history.push('/invoices');
       })
       .catch(err => {
         if (err) console.log('error: ', err);
-        if (err.response) { dispatch(authError('Username/Password invalid.')); }
+        if (err.response) {
+          dispatch(authError('Username/Password invalid.'));
+        }
       });
   };
 }
 
 export function register(credentials, history) {
   return dispatch => {
-    axios.post('/api/register', credentials)
+    axios
+      .post('/api/register', credentials, {
+        headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
+      })
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
         history.push('/invoices');
       })
       .catch(error => {
-        if (error)console.log('error: ', error.response);
+        if (error) console.log('error: ', error.response);
         else if (error.response.data.err.errors) {
           dispatch(authError('Your username must be a valid email address.'));
         } else if (error.response.data.err.errmsg) {
@@ -81,18 +89,21 @@ export function logout(history) {
     localStorage.removeItem('id');
     history.push('/');
   };
-};
+}
 // { header: { Authorization: `bearer ${token}` } }
 
 export function changePassword(newPassword, history) {
   return dispatch => {
-    axios.post('/api/changepassword', newPassword)
+    axios
+      .post('/api/changepassword', newPassword, {
+        headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
+      })
       .then(res => {
-        dispatch({type: 'SUCCESS', payload: 'Successfully changed your password' });
+        dispatch({ type: 'SUCCESS', payload: 'Successfully changed your password' });
         // history.push('/invoices');
       })
       .catch(error => {
-        if (error)console.log('error: ', error.response);
+        if (error) console.log('error: ', error.response);
         dispatch(authError('Error changing your password', error));
       });
   };
@@ -104,8 +115,15 @@ export function changePassword(newPassword, history) {
 export function addInvoice(credentials, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
-    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-    axios.post('/api/addinvoice', data)
+    const data = {
+      ...credentials,
+      email: { address: credentials.email },
+      phone: { number: credentials.phone },
+    };
+    axios
+      .post('/api/addinvoice', data, {
+        headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
+      })
       .then(res => {
         dispatch(getAllInvoices());
         history.push('/invoices');
@@ -117,9 +135,16 @@ export function addInvoice(credentials, history) {
 export function updateInvoice(credentials, history) {
   return dispatch => {
     console.log(credentials);
-    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
+    const data = {
+      ...credentials,
+      email: { address: credentials.email },
+      phone: { number: credentials.phone },
+    };
     const invNumber = credentials.number;
-    axios.put(`/api/updateinvoice/${invNumber}`, data)
+    axios
+      .put(`/api/updateinvoice/${invNumber}`, data, {
+        headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
+      })
       .then(res => {
         dispatch(getAllInvoices());
         history.push('/invoices');
@@ -132,7 +157,10 @@ export function updateInvoice(credentials, history) {
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
     console.log(invoiceNumber);
-    axios.delete(`/api/deleteinvoice/${invoiceNumber}`)
+    axios
+      .delete(`/api/deleteinvoice/${invoiceNumber}`, {
+        headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
+      })
       .then(res => {
         console.log(res);
         dispatch(getAllInvoices());
@@ -157,4 +185,4 @@ export function handleInvoiceIdx(inputID, history) {
     });
     history.push('/viewinvoice');
   };
-};
+}
