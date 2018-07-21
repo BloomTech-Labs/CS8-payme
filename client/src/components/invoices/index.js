@@ -57,7 +57,9 @@ class Invoices extends Component {
               value={this.state.search}
               onChange={this.updateSearch}
             />
+            <hr className="navigation-line" />
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
+            <hr className="navigation-line" />
             <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
           {filteredInvoices.length > 0 ? (

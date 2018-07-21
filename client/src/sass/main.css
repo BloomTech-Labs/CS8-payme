@@ -192,9 +192,10 @@
     justify-content: flex-start;
     align-items: center;
     background-color: #2E2E2E;
-    height: 7rem; }
+    height: 6rem; }
   .invoice-search_input {
     margin-left: 4rem;
+    margin-right: 2rem;
     background-color: #ebebeb;
     padding: 0.4rem;
     width: 20rem;
@@ -207,20 +208,16 @@
       transition: width 0.4s ease-in-out; }
   .invoice-sort {
     color: white;
-    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex; }
     .invoice-sort:hover {
       color: #22CFB1; }
   .invoice-new {
-    border-left: 0.3px solid rgba(184, 184, 184, 0.66);
-    border-right: 0.3px solid rgba(184, 184, 184, 0.66);
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
-    margin-left: 2rem;
     width: 10rem; }
     .invoice-new:hover {
       color: #22CFB1; }
@@ -257,7 +254,7 @@
 
 .navigation-line {
   margin: 0;
-  height: 7rem;
+  height: 6rem;
   border: 0.5px solid rgba(255, 255, 255, 0.139); }
 
 .fa-sort {
@@ -283,7 +280,7 @@
     display: flex;
     justify-content: flex-start;
     background-color: #2E2E2E;
-    height: 7rem; }
+    height: 6rem; }
     .view-invoice-navigation_delete {
       cursor: pointer;
       color: white;
@@ -479,7 +476,7 @@
     color: white;
     border-right: 0.3px solid rgba(255, 255, 255, 0.66);
     font-size: 3rem;
-    height: 7rem;
+    height: 6rem;
     background-color: rgba(63, 63, 63, 0.336); }
   .sidebar--dot {
     color: #22CFB1;
