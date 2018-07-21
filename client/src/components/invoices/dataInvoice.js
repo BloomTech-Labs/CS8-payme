@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changePassword } from '../../actions';
+import { changePassword } from '../../actions/auth';
 
 const Datainvoice = (props) => {
   return ( 
@@ -19,7 +19,7 @@ const Datainvoice = (props) => {
 };
 const mapStateToProps = state => {
   return {
-    success: state.auth.success,
+    success: state.invoice.success,
   };
 };
 

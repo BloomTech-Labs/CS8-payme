@@ -1,9 +1,7 @@
 import {
   AUTHENTICATION_ERROR,
-  DE_AUTH, SUCCESS,
-  ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
-  CURRENT_INVOICE,
-} from '../actions';
+  DE_AUTH, AUTH_SUCCESS,
+} from '../actions/auth';
 
 // const initialState = {
 //   message: '',
@@ -21,16 +19,8 @@ export default function (state = initialState, action) {
       return { ...state, invoices: [] };
     case AUTHENTICATION_ERROR:
       return { ...state, message: action.payload };
-    case SUCCESS:
+    case AUTH_SUCCESS:
       return { ...state, success: action.payload };
-    case ADD_INVOICE:
-      return { ...state, success: action.payload };
-    case ALL_INVOICE:
-      return { ...state, invoices: action.payload };
-    case INVOICE_IDX:
-      return { ...state, invoiceIdx: action.payload };
-    case CURRENT_INVOICE:
-      return { ...state, currentInvoice: action.payload };
     default:
       return state;
   }

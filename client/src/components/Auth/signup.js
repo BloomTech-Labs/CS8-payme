@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { register } from '../../actions';
+import { register } from '../../actions/auth';
 // import logo from './google.png';
 
 class Signup extends Component {

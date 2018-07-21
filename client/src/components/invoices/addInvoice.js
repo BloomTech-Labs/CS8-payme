@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
 import Sidebar from '../sidebar';
-import { addInvoice } from '../../actions';
+import { addInvoice } from '../../actions/invoices';
 
 class AddInvoice extends Component {
   state = {}

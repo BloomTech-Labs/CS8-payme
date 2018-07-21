@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Sidebar from '../sidebar';
 import Invoice from './dataInvoice';
-import { getAllInvoices, handleInvoiceIdx } from '../../actions';
+import { getAllInvoices, handleInvoiceIdx } from '../../actions/invoices';
 
 class Invoices extends Component {
   state = {
@@ -58,9 +58,9 @@ class Invoices extends Component {
               onChange={this.updateSearch}
             />
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
-            <p className="invoice-sort">Sort  <br /> Data<i class="fas fa-sort fa-fw"></i></p>
+            <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
-          {filteredInvoices ? (
+          {filteredInvoices.length > 0 ? (
             <div className="invoice-box">
               {filteredInvoices.map((inv, index) => {
                 return (
@@ -76,7 +76,8 @@ class Invoices extends Component {
                 );
               })}
             </div>
-          ) : null }
+          ) : <p className="invoice-letstart">Looks like you dont have any Invoices! Click here to get started</p>}
+          
         </div>
       </div>
     );
@@ -85,7 +86,7 @@ class Invoices extends Component {
 
 const mapStateToProps = state => {
   return {
-    invoices: state.auth.invoices,
+    invoices: state.invoice.invoices,
   };
 };
 

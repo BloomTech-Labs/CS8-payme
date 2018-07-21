@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Sidebar from '../sidebar/';
-import { changePassword } from '../../actions';
+import { changePassword } from '../../actions/auth';
 
 
 class Settings extends Component {

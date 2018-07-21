@@ -1,8 +1,6 @@
 import axios from 'axios';
-// Auth
-export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
-export const DE_AUTH = 'DE_AUTH';
 // INVOICES
+export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const SUCCESS = 'SUCCESS';
 export const ADD_INVOICE = 'ADD_INVOICE';
 export const ALL_INVOICE = 'ALL_INVOICE';
@@ -12,8 +10,8 @@ export const CURRENT_INVOICE = 'CURRENT_INVOICE';
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
 
-////////////////////////////////////
-// Auth
+/////////////////////////////////////
+// Invoices
 ////////////////////////////////////
 
 export function authError(error) {
@@ -25,8 +23,6 @@ export function authError(error) {
   }
 };
 
-// This function is here bc it must be declared before login
-// Will export it soon 
 export function getAllInvoices() {
   return dispatch => {
     axios.get('/api/invoices', { header: { Authorization: `bearer ${token}` } })
@@ -41,71 +37,12 @@ export function getAllInvoices() {
   };
 }
 
-export function login(credentials, history) {
-  return dispatch => {
-    axios.post('/api/login', credentials)
-      .then(res => {
-        localStorage.setItem('id', res.data.token);
-        dispatch(getAllInvoices());
-        history.push('/invoices');
-      })
-      .catch(err => {
-        if (err) console.log('error: ', err);
-        if (err.response) { dispatch(authError('Username/Password invalid.')); }
-      });
-  };
-}
-
-export function register(credentials, history) {
-  return dispatch => {
-    axios.post('/api/register', credentials)
-      .then(res => {
-        localStorage.setItem('id', res.data.token);
-        // dispatch({ type: LOGIN, payload: res.data });
-        history.push('/invoices');
-      })
-      .catch(error => {
-        if (error)console.log('error: ', error.response);
-        else if (error.response.data.err.errors) {
-          dispatch(authError('Your username must be a valid email address.'));
-        } else if (error.response.data.err.errmsg) {
-          dispatch(authError('This username already exists.'));
-        }
-      });
-  };
-}
-
-export function logout(history) {
-  return dispatch => {
-    dispatch({ type: 'DE_AUTH' });
-    localStorage.removeItem('id');
-    history.push('/');
-  };
-};
-// { header: { Authorization: `bearer ${token}` } }
-
-export function changePassword(newPassword, history) {
-  return dispatch => {
-    axios.post('/api/changepassword', newPassword)
-      .then(res => {
-        dispatch({type: 'SUCCESS', payload: 'Successfully changed your password' });
-        // history.push('/invoices');
-      })
-      .catch(error => {
-        if (error)console.log('error: ', error.response);
-        dispatch(authError('Error changing your password', error));
-      });
-  };
-}
-/////////////////////////////////////
-// Invoices
-////////////////////////////////////
-
 export function addInvoice(credentials, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
+    console.log(credentials);
     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-    axios.post('/api/addinvoice', data)
+    axios.post('/api/addinvoice', data, { header: { Authorization: `bearer ${token}` } })
       .then(res => {
         dispatch(getAllInvoices());
         history.push('/invoices');
@@ -142,13 +79,10 @@ export function deleteInvoice(invoiceNumber, history) {
   };
 }
 
-//////////////////////////
-// Misc
-//////////////////////////
 export function handleInvoiceIdx(inputID, history) {
   return (dispatch, getState) => {
     console.log(inputID);
-    const { invoices } = getState().auth;
+    const { invoices } = getState().invoice;
     invoices.forEach((invoice, i) => {
       if (invoice._id === inputID) {
         dispatch({ type: 'INVOICE_IDX', payload: i });

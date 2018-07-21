@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { handleInvoiceIdx, getAllInvoices } from '../../actions';
+import { handleInvoiceIdx, getAllInvoices } from '../../actions/invoices';
 
 import Sidebar from '../sidebar';
 import DeleteInvoice from './deleteInvoice';
@@ -93,7 +93,7 @@ class ViewInvoice extends Component {
 
 const mapStateToProps = state => {
   return {
-    invoice: state.auth.currentInvoice,
+    invoice: state.invoice.currentInvoice,
   };
 };
 

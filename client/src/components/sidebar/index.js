@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../../actions';
+import { logout } from '../../actions/auth';
 import Nico from './Nico.jpg';
 
 

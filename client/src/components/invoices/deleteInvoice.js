@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteInvoice, getAllInvoices } from '../../actions';
+import { deleteInvoice, getAllInvoices } from '../../actions/invoices';
 
 const DeleteInvoice = (props) => {
   return (
