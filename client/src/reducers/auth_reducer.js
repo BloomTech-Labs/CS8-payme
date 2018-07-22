@@ -18,7 +18,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case USER:
-      return { ...state, admin: [] };
+      return { ...state, admin: action.payload };
     case DE_AUTH:
       return { ...state, invoices: [] };
     case AUTHENTICATION_ERROR:

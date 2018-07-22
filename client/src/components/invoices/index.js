@@ -1,41 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 
 import Sidebar from '../sidebar';
 import Invoice from './dataInvoice';
-import { getAllInvoices, handleInvoiceIdx } from '../../actions/invoices';
+import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../actions/invoices';
 
 class Invoices extends Component {
   state = {
-    imageURL: '',
     search: '',
   }
 
-  async componentDidMount() {
-    await this.props.getAllInvoices();
+  componentDidMount() {
+      this.props.getAllInvoices();
   }
+
+  onSortEnd = ({ oldIndex, newIndex }) => {
+    const newOrderList = arrayMove(this.props.invoices, oldIndex, newIndex);
+    this.props.onSortEnd(newOrderList, this.props.invoices);
+  };
 
   updateSearch = e => {
     this.setState({ search: e.target.value });
   };
-
-  // handleUploadImage(ev) {
-  //   ev.preventDefault();
-
-  //   const data = new FormData();
-  //   data.append('file', this.uploadInput.files[0]);
-  //   data.append('filename', this.fileName.value);
-
-  //   fetch('/upload', {
-  //     method: 'POST',
-  //     body: data,
-  //   }).then((response) => {
-  //     response.json().then((body) => {
-  //       this.setState({ imageURL: `http://localhost:8000/${body.file}` });
-  //     });
-  //   });
-  // }
 
   render() {
     const { invoices } = this.props;
@@ -45,6 +33,26 @@ class Invoices extends Component {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
+
+    const SortableList = SortableContainer(props => {
+      return (
+        <div className="invoice-box">
+          {filteredInvoices.map((inv, index) => {
+            return (
+              <Invoice
+                key={inv._id}
+                id={inv._id}
+                index={index}
+                invoiceID={inv.number}
+                clientName={inv.clientName}
+                company={inv.companyName}
+                history={this.props.history}
+              />
+            );
+          })}
+        </div>
+      );
+    });
     return (
       <div className="invoice">
         <Sidebar />
@@ -64,20 +72,13 @@ class Invoices extends Component {
             <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
           {invoices.length >= 1 ? (
-            <div className="invoice-box">
-              {filteredInvoices.map((inv, index) => {
-                return (
-                  <Invoice
-                    key={inv._id}
-                    id={inv._id}
-                    invoiceID={inv.number}
-                    clientName={inv.clientName}
-                    company={inv.companyName}
-                    history={this.props.history}
-                  />
-                );
-              })}
-            </div>
+            <SortableList
+              pressDelay={150}
+              lockToContainerEdges
+              axis="xy"
+              invoices={invoices}
+              onSortEnd={this.onSortEnd}
+            />
           ) : null}
         {/* <p className="invoice-letstart">Looks like you dont have any Invoices! Click here to get started</p> */}
         </div>
@@ -92,4 +93,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getAllInvoices, handleInvoiceIdx })(Invoices);
+export default connect(mapStateToProps, { onSortEnd, getAllInvoices, handleInvoiceIdx })(Invoices);

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { SortableElement } from 'react-sortable-hoc';
 import { handleInvoiceIdx, getInvoice } from '../../actions/invoices';
 
-const Datainvoice = (props) => {
-  return ( 
+const Datainvoice = SortableElement(props => {
+  return (
     <div className="invoice-data">
       <div className="invoice-data-flex" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
         <p className="invoice-data-id">#{props.invoiceID}</p>
@@ -17,7 +18,8 @@ const Datainvoice = (props) => {
       <p>Weekly</p>
     </div>
   );
-};
+});
+
 const mapStateToProps = state => {
   return {
     success: state.invoice.success,

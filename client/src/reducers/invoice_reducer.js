@@ -1,7 +1,7 @@
 import {
   SUCCESS,
   ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
-  CURRENT_INVOICE,
+  CURRENT_INVOICE, ARRAY_MOVE,
 } from '../actions/invoices';
 import { USER_INVOICES } from '../actions/auth';
 
@@ -31,6 +31,8 @@ export default function (state = initialState, action) {
       return { ...state, invoiceIdx: action.payload };
     case CURRENT_INVOICE:
       return { ...state, currentInvoice: action.payload };
+    case ARRAY_MOVE:
+      return { ...state, invoices: action.payload };
     default:
       return state;
   }

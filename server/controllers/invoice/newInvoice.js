@@ -13,16 +13,17 @@ const addInvoice = (req, res) => {
     phone,
     email,
   } = req.body;
+  
   const invoice = new Invoice({
     clientName,
     companyName,
     number,
-    pdf,
+    pdf: pdf.get('image'),
     totalAmount,
     phone,
     email,
   });
-
+  console.log(pdf.image);
   // Checks to see if the current user already has this invoice number in use.
 
   const invoiceNumbers = invoices.map(invoice => invoice.number);

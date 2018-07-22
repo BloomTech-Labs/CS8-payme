@@ -6,6 +6,8 @@ export const ADD_INVOICE = 'ADD_INVOICE';
 export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
+export const ARRAY_MOVE = 'ARRAY_MOVE';
+
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
@@ -25,7 +27,6 @@ export function authError(error) {
 
 export function getAllInvoices() {
   return dispatch => {
-    console.log(token);
     axios.get('/api/invoices', { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         dispatch({ type: ALL_INVOICE, payload: res.data });
@@ -39,7 +40,7 @@ export function getAllInvoices() {
 }
 
 
-export function addInvoice(credentials, history) {
+export function addInvoice(credentials, history, config) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
     const data = { ...credentials,
@@ -50,7 +51,8 @@ export function addInvoice(credentials, history) {
         number: credentials.phone
       },
     };
-    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${token}` } })
+    console.log(data);
+    axios.post('/api/addinvoice', data, config, { headers: { Authorization: `bearer ${token}` } })
       .then(res => history.push('/invoices'))
       .catch(err => dispatch(authError('Error adding an invoice', err)));
   };
@@ -109,3 +111,10 @@ export function handleInvoiceIdx(inputID, history) {
     });
   };
 }
+
+export const onSortEnd = orderList => {
+  return {
+    type: 'ARRAY_MOVE',
+    payload: orderList,
+  };
+};

@@ -7,15 +7,24 @@ import Sidebar from '../sidebar';
 import { addInvoice } from '../../actions/invoices';
 
 class AddInvoice extends Component {
-  state = {}
+  state = {
+    selectedFile: null,
+  }
 
   handleFormSubmit = (credentials) => {
-    const pdf = new FormData();
-    pdf.append('file', this.uploadInput.files[0]);
-    pdf.append('filename', 'this.fileName.value');
-  
-    this.props.addInvoice({ ...credentials, pdf }, this.props.history);
+    let pdf = new FormData();
+    pdf.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    console.log(pdf.get('image'));
+    const config = {
+      headers: { 'content-type': 'multipart/form-data' },
+    };
+    this.props.addInvoice({ ...credentials, pdf }, this.props.history, config);
   };
+
+  fileHandler = event => {
+    const data = event.target.files[0];
+    this.setState({ selectedFile: data });
+  }
 
 
   render() {
@@ -73,19 +82,13 @@ class AddInvoice extends Component {
             />
             <br />
             <input
-              // component="input"
               type="file"
-              accept="image/png, image/jpeg, application/pdf"
-              ref={(ref) => { this.uploadInput = ref; }}
               className="add-invoice_field"
-              placeholder="Upload PDF"
+              onChange={this.fileHandler}
             />
-            <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
-            <br />
             <button
               className="add-invoice_submit"
               type="submit"
-              value="Submit"
             >Add Invoice
             </button>
           </form>
@@ -100,3 +103,11 @@ AddInvoice = connect(null, { addInvoice })(AddInvoice);
 export default reduxForm({
   form: 'addInvoice', // Unique name for the form
 })(AddInvoice);
+
+              // accept="image/png, image/jpeg, application/pdf"
+                          {/* <Field
+              name="pdf"
+              component="input"
+              type="file"
+              className="add-invoice_field"
+            /> */}

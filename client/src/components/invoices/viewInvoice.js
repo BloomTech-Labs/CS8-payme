@@ -14,15 +14,6 @@ class ViewInvoice extends Component {
     updateField: false,
   }
 
-  componentDidMount() {
-    // const { history } = this.props;
-    // const { invoice } = this.props;
-    // const params = this.props.match.params.id;
-    // if (!invoice) {
-    //   this.props.getInvoice(params);
-    // }
-  }
-
   showUpdate = () => {
     this.setState({ updateField: !this.state.updateField });
   }

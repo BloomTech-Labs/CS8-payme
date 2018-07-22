@@ -67,6 +67,7 @@
   }
   &-box {
     display: flex;
+    // flex-direction: column;
     flex-flow: row wrap;
     margin: 5rem 5rem 5rem 10rem;
   }
