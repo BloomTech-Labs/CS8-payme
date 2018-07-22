@@ -6,6 +6,7 @@ import Landing from './components/landing';
 import Signin from './components/Auth/signin';
 import Signup from './components/Auth/signup';
 import Settings from './components/settings';
+import NotFound from './components/Auth/notFound.js';
 
 // Import dashboard pages
 import Reminders from './components/reminders';
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/addInvoice" component={RequireAuth(AddInvoice)} />
         <Route path="/invoice/:id" component={RequireAuth(ViewInvoice)} />
         <Route path="/updateinvoice" component={RequireAuth(UpdateInvoice)} />
+        <Route component={NotFound} />
       </Switch>
     </Router>
   );
