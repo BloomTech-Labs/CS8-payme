@@ -23,21 +23,6 @@ export function authError(error) {
   }
 }
 
-export function getInvoice() {
-  return dispatch => {
-    console.log(token);
-    axios.get('/api/invoices/:number', { headers: { Authorization: `bearer ${token}` } })
-      .then(res => {
-        dispatch({ type: ALL_INVOICE, payload: res.data });
-        // history.push('/invoices');
-      })
-      .catch(err => {
-        if (err) console.log('error: ', err);
-        dispatch(authError('Error retrieving invoices', err));
-      });
-  };
-}
-
 export function getAllInvoices() {
   return dispatch => {
     console.log(token);
@@ -57,7 +42,14 @@ export function getAllInvoices() {
 export function addInvoice(credentials, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
-    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
+    const data = { ...credentials,
+      email: {
+        address: credentials.email
+      },
+      phone: {
+        number: credentials.phone
+      },
+    };
     axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${token}` } })
       .then(res => history.push('/invoices'))
       .catch(err => dispatch(authError('Error adding an invoice', err)));
@@ -89,17 +81,31 @@ export function deleteInvoice(invoiceNumber, history) {
   };
 }
 
+export function getInvoice(id) {
+  return dispatch => {
+    axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
+        console.log(res.data);
+        dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
+        // history.push({ pathname: `/invoice/${res.data.number}` });
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        dispatch(authError('Error retrieving invoices', err));
+      });
+  };
+}
+
 export function handleInvoiceIdx(inputID, history) {
   return (dispatch, getState) => {
     const { invoices } = getState().invoice;
-    let id;
+    console.log(inputID);
     invoices.forEach((invoice, i) => {
-      if (invoice._id === inputID) {
-        id = invoice
+      if (invoice.number === inputID) {
         dispatch({ type: 'INVOICE_IDX', payload: i });
         dispatch({ type: 'CURRENT_INVOICE', payload: invoice });
+        history.push({ pathname: `/invoice/${invoice.number}` });
       }
     });
-    history.push('/viewinvoice');
   };
 }

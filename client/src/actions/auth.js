@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getAllInvoices } from './invoices';
 
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const USER_INVOICES = 'USER_INVOICES';
@@ -26,7 +25,7 @@ export function authError(error) {
 
 export function login(credentials, history) {
   return dispatch => {
-    axios.post('/api/login', credentials)
+    axios.post('/api/login', credentials, { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         localStorage.setItem('id', res.data.token);
         axios.defaults.headers.common['Authorization'] = `bearer ${res.data.token}`;
@@ -44,7 +43,7 @@ export function login(credentials, history) {
 
 export function register(credentials, history) {
   return dispatch => {
-    axios.post('/api/register', credentials)
+    axios.post('/api/register', credentials, { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         localStorage.setItem('id', res.data.token);
         // dispatch({ type: LOGIN, payload: res.data });
@@ -72,7 +71,7 @@ export function logout(history) {
 
 export function changePassword(newPassword, history) {
   return dispatch => {
-    axios.post('/api/changepassword', newPassword)
+    axios.post('/api/changepassword', newPassword, { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         dispatch({ type: 'AUTH_SUCCESS', payload: 'Successfully changed your password' });
         // history.push('/invoices');

@@ -13,8 +13,13 @@ class ViewInvoice extends Component {
     updateField: false,
   }
 
-  async componentWillMount() {
-    // await this.props.getInvoice();
+  componentDidMount() {
+    // const { history } = this.props;
+    // const { invoice } = this.props;
+    // const params = this.props.match.params.id;
+    // if (!invoice) {
+    //   this.props.getInvoice(params);
+    // }
   }
 
   showUpdate = () => {
@@ -25,7 +30,12 @@ class ViewInvoice extends Component {
   };
 
   render() {
+
     const { invoice } = this.props;
+    const params = this.props.match.params.id;
+    if (!invoice) {
+      this.props.getInvoice(params);
+    }
     return (
       <div className="view-invoice">
         <Sidebar />
@@ -43,7 +53,8 @@ class ViewInvoice extends Component {
             </p>
           </div>
           <Link to="/invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
-          <div>
+          {invoice ? (
+            <div>
             {!this.state.updateField ? 
               (
                 <div className="view-invoice-box">
@@ -85,6 +96,8 @@ class ViewInvoice extends Component {
                 </div>
             ) : null}
           </div>
+          ) : null }
+          
         </div>
       </div>
     );
@@ -97,4 +110,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx, getAllInvoices })(ViewInvoice);
+export default connect(mapStateToProps, { handleInvoiceIdx, getInvoice, getAllInvoices })(ViewInvoice);

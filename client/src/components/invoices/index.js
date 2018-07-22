@@ -73,7 +73,6 @@ class Invoices extends Component {
                     invoiceID={inv.number}
                     clientName={inv.clientName}
                     company={inv.companyName}
-                    handleNoteIndex={this.props.handleInvoiceIdx}
                     history={this.props.history}
                   />
                 );
