@@ -578,3 +578,43 @@ button:focus {
 
 .active {
   color: #22CFB1; }
+
+.loader {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #E86C62;
+  letter-spacing: 0.2em; }
+  .loader::before, .loader::after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: #555555;
+    position: absolute;
+    animation: load .7s infinite alternate ease-in-out; }
+  .loader::before {
+    top: 0; }
+  .loader::after {
+    bottom: 0rem; }
+
+@keyframes load {
+  0% {
+    left: 0;
+    height: 30px;
+    width: 15px; }
+  50% {
+    height: 8px;
+    width: 40px; }
+  100% {
+    left: 235px;
+    height: 30px;
+    width: 15px; } }
