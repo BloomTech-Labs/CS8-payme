@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import { addSub, addCredit } from '../../actions/stripe';
+// import { connect } from 'react-redux';
+// import { addSub, addCredit } from '../../actions/stripe';
 
 const subCost = 2000;
 const invoiceCost = 199;
@@ -31,12 +31,14 @@ class CheckoutForm extends Component {
 
     // if (response.ok) console.log('Purchase Complete!');
     axios
-      .post('http://localhost:5000/api/charge', {
-        type: 'sub',
-        units: 30,
-        id: token.id,
-        amount: this.state.amount,
-      })
+      .post(
+        'http://localhost:5000/api/charge',
+        {
+          id: token.id,
+          amount: invoiceCost * 13,
+        },
+        { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } },
+      )
       .then(response => {
         console.log(response);
       })
@@ -54,7 +56,4 @@ class CheckoutForm extends Component {
   }
 }
 
-export default connect(
-  null,
-  { addSub, addCredit },
-)(injectStripe(CheckoutForm));
+export default injectStripe(CheckoutForm);

@@ -5,16 +5,38 @@ const User = require('../../models/users');
 const stripeCharge = async function(req, res) {
   try {
     // console.log(req.body);
-    let { status } = await stripe.charges.create({
-      amount: req.body.amount,
-      currency: 'usd',
-      description: 'An example charge',
-      source: req.body.id,
-    });
 
-    const user = await addSub(req);
-    console.log('1 :', user);
-    res.json({ status });
+    // If amount is $20, charge and add 30 days to sub
+    if (req.body.amount === 2000) {
+      let { status } = await stripe.charges.create({
+        amount: req.body.amount,
+        currency: 'usd',
+        description: 'An example charge',
+        source: req.body.id,
+      });
+
+      const user = await addSub(req);
+      console.log(new Date(user.subscription).toString());
+      res.json({ status, user });
+
+      // If amount is a multiple of $1.99, charge and add the credits to the user.
+    } else if (req.body.amount % 199 === 0) {
+      let { status } = await stripe.charges.create({
+        amount: req.body.amount,
+        currency: 'usd',
+        description: 'An example charge',
+        source: req.body.id,
+      });
+      const credits = req.body.amount / 199;
+      console.log(`Adding ${credits} credits.`);
+      const user = await addCredits(req, credits);
+      res.json({ status, user });
+    } else {
+      res
+        .status(422)
+        .json({ message: 'Charge must be $20 or multiple of $1.99' });
+    }
+    // console.log('1 :', user);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -34,7 +56,7 @@ async function addSub(req) {
       } else {
         subscription = currentTime + subLength;
       }
-      return User.findByIdAndUpdate(_id, { subscription })
+      return User.findByIdAndUpdate(_id, { subscription }, { new: true })
         .select('-password')
         .populate('invoices')
         .then(user => user)
@@ -51,6 +73,24 @@ async function addSub(req) {
     })
     .catch(err => console.log(err));
   console.log(' rv:   ', rv);
+  return rv;
+}
+
+async function addCredits(req, credits) {
+  const { _id } = req.user;
+  const rv = await User.findById(_id)
+    .select('-password')
+    .then(user => {
+      let { invoiceCredits } = user;
+      invoiceCredits += credits;
+      return User.findByIdAndUpdate(_id, { invoiceCredits }, { new: true })
+        .select('-password')
+        .populate('invoices')
+        .then(user => user)
+        .catch(err => err);
+    })
+    .catch(err => console.log(err));
+  console.log('addedCredits: ', rv);
   return rv;
 }
 
