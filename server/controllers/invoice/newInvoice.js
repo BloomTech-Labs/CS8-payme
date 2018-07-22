@@ -18,7 +18,7 @@ const addInvoice = (req, res) => {
     clientName,
     companyName,
     number,
-    pdf: pdf.get('image'),
+    pdf,
     totalAmount,
     phone,
     email,

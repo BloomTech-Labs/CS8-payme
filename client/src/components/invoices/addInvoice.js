@@ -13,12 +13,14 @@ class AddInvoice extends Component {
 
   handleFormSubmit = (credentials) => {
     let pdf = new FormData();
-    pdf.append('image', this.state.selectedFile, this.state.selectedFile.name);
-    console.log(pdf.get('image'));
-    const config = {
-      headers: { 'content-type': 'multipart/form-data' },
-    };
-    this.props.addInvoice({ ...credentials, pdf }, this.props.history, config);
+    if (this.state.selectedFile) {
+      pdf.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    }
+    // console.log(pdf.get('image'));
+    // const config = {
+    //   headers: { 'content-type': 'multipart/form-data' },
+    // };
+    this.props.addInvoice({ ...credentials, pdf }, this.props.history);
   };
 
   fileHandler = event => {
@@ -103,11 +105,3 @@ AddInvoice = connect(null, { addInvoice })(AddInvoice);
 export default reduxForm({
   form: 'addInvoice', // Unique name for the form
 })(AddInvoice);
-
-              // accept="image/png, image/jpeg, application/pdf"
-                          {/* <Field
-              name="pdf"
-              component="input"
-              type="file"
-              className="add-invoice_field"
-            /> */}

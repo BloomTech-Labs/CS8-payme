@@ -40,7 +40,7 @@ export function getAllInvoices() {
 }
 
 
-export function addInvoice(credentials, history, config) {
+export function addInvoice(credentials, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
     const data = { ...credentials,
@@ -52,8 +52,12 @@ export function addInvoice(credentials, history, config) {
       },
     };
     console.log(data);
-    axios.post('/api/addinvoice', data, config, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
-      .then(res => history.push('/invoices'))
+    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${token}` } })
+      .then(res => {
+        history.push('/invoices');
+        console.log(res.data);
+        dispatch({ type: SUCCESS, payload: 'Added a new invoice'});
+      })
       .catch(err => dispatch(authError('Error adding an invoice', err)));
   };
 }
@@ -65,6 +69,7 @@ export function updateInvoice(credentials, history) {
     axios.put(`/api/updateinvoice/${number}`, data, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
+        dispatch({ type: SUCCESS, payload: 'Updated your invoice' });
         console.log(res);
       })
       .catch(err => dispatch(authError('Error adding an invoice', err)));
@@ -78,6 +83,8 @@ export function deleteInvoice(invoiceNumber, history) {
       .then(res => {
         console.log(res);
         history.push('/invoices');
+        dispatch({ type: SUCCESS, payload: `Deleted invoice #${invoiceNumber}` });
+
       })
       .catch(err => dispatch(authError('Error deleting invoice', err)));
   };

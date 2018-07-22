@@ -232,6 +232,31 @@
     width: 35rem;
     height: 35rem;
     margin: 15rem auto; }
+  .invoice-success {
+    color: black;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.5rem;
+    animation: invoice-success 3s 1;
+    -webkit-animation: invoice-success 3s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+    -webkit-animation-delay: 1s;
+    /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards; }
+
+@keyframes invoice-success {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+
+@-webkit-keyframes invoice-success {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
 
 .fa-arrow-left {
   margin-left: 2rem;

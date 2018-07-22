@@ -11,9 +11,9 @@ class Invoices extends Component {
   state = {
     search: '',
   }
-
+  
   componentDidMount() {
-      this.props.getAllInvoices();
+    this.props.getAllInvoices();
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -71,6 +71,7 @@ class Invoices extends Component {
             <hr className="navigation-line" />
             <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
+          <div className="invoice-success"><p>{this.props.message}</p></div>
           {invoices.length >= 1 ? (
             <SortableList
               pressDelay={150}
@@ -90,6 +91,7 @@ class Invoices extends Component {
 const mapStateToProps = state => {
   return {
     invoices: state.invoice.invoices,
+    message: state.invoice.success,
   };
 };
 
