@@ -11,7 +11,7 @@ const stripeCharge = async function(req, res) {
       let { status } = await stripe.charges.create({
         amount: req.body.amount,
         currency: 'usd',
-        description: 'An example charge',
+        description: 'GMMM 30 day subscription',
         source: req.body.id,
       });
 
@@ -21,13 +21,13 @@ const stripeCharge = async function(req, res) {
 
       // If amount is a multiple of $1.99, charge and add the credits to the user.
     } else if (req.body.amount % 199 === 0) {
+      const credits = req.body.amount / 199;
       let { status } = await stripe.charges.create({
         amount: req.body.amount,
         currency: 'usd',
-        description: 'An example charge',
+        description: `GMMM: ${credits} credits for ${req.body.amount}`,
         source: req.body.id,
       });
-      const credits = req.body.amount / 199;
       console.log(`Adding ${credits} credits.`);
       const user = await addCredits(req, credits);
       res.json({ status, user });
