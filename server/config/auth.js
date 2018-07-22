@@ -22,7 +22,7 @@ function makeToken(user) {
 }
 // This is Authorization this uses the username/pass to login
 const localStrategy = new LocalStrategy(function(username, password, done) {
-  console.log(username, password);
+  // console.log(username, password);
   User.findOne({ username }, function(err, user) {
     // console.log(`user: ${user.checkpassword}`);
     if (err) {
