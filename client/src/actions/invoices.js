@@ -27,7 +27,7 @@ export function authError(error) {
 
 export function getAllInvoices() {
   return dispatch => {
-    axios.get('/api/invoices', { headers: { Authorization: `bearer ${token}` } })
+    axios.get('/api/invoices', { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         dispatch({ type: ALL_INVOICE, payload: res.data });
         // history.push('/invoices');
@@ -45,24 +45,24 @@ export function addInvoice(credentials, history, config) {
     // adjusting credentials to fit Invoice schema
     const data = { ...credentials,
       email: {
-        address: credentials.email
+        address: credentials.email,
       },
       phone: {
-        number: credentials.phone
+        number: credentials.phone,
       },
     };
     console.log(data);
-    axios.post('/api/addinvoice', data, config, { headers: { Authorization: `bearer ${token}` } })
+    axios.post('/api/addinvoice', data, config, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => history.push('/invoices'))
       .catch(err => dispatch(authError('Error adding an invoice', err)));
   };
 }
 
 export function updateInvoice(credentials, history) {
-  return dispatch => {
+  return (dispatch, getState) => {
     const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
-    const invNumber = credentials.number;
-    axios.put(`/api/updateinvoice/${invNumber}`, data, { headers: { Authorization: `bearer ${token}` } })
+    const { number } = getState().invoice.currentInvoice;
+    axios.put(`/api/updateinvoice/${number}`, data, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
         console.log(res);
@@ -74,7 +74,7 @@ export function updateInvoice(credentials, history) {
 export function deleteInvoice(invoiceNumber, history) {
   return dispatch => {
     console.log(invoiceNumber);
-    axios.delete(`/api/deleteinvoice/${invoiceNumber}`, { headers: { Authorization: `bearer ${token}` } })
+    axios.delete(`/api/deleteinvoice/${invoiceNumber}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         console.log(res);
         history.push('/invoices');
@@ -85,7 +85,7 @@ export function deleteInvoice(invoiceNumber, history) {
 
 export function getInvoice(id) {
   return dispatch => {
-    axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${token}` } })
+    axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         console.log(res.data);
         dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
