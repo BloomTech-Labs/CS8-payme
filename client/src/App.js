@@ -23,9 +23,9 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={(Landing)} />
-        <Route path="/signin" component={(Signin)} />
-        <Route path="/signup" component={(Signup)} />
+        <Route exact path="/" component={Landing} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
         <Route path="/reminders" component={RequireAuth(Reminders)} />
         <Route path="/settings" component={RequireAuth(Settings)} />
         <Route path="/billing" component={RequireAuth(Billing)} />

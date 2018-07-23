@@ -6,11 +6,12 @@ const Reminder = new mongoose.Schema({
   name: String,
   phoneNumber: String,
   notification: Number,
+  message: String,
   time: {
     type: Date,
-    index: true,
+    index: true
   },
-  timeZone: String,
+  timeZone: String
 });
 
 // ReminderSchema.methods.requiresNotification = function(date) {
@@ -50,7 +51,7 @@ Reminder.statics.sendNotifications = function(callback) {
       const options = {
         to: `+1 ${reminder.phoneNumber}`,
         from: twilioNumber,
-        body: `Reminder text`, // Place holder.
+        body: reminder.message
       };
       // send message
       client.messages.create(options, function(err, response) {
