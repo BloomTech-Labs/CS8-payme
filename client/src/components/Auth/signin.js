@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { login } from '../../actions';
+import { login } from '../../actions/auth';
 
 // import logo from './google.png';
 import backgroundImage from './background.jpg';
@@ -13,6 +13,10 @@ const styles = {
 
 class Signin extends Component {
 
+  componentDidMount() {
+    if (localStorage.getItem('id')) this.props.history.push('/invoices');
+  }
+  
   handleFormSubmit = (ele) => {
     this.props.login(ele, this.props.history);
   };

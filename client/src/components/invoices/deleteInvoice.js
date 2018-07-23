@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { deleteInvoice } from '../../actions/invoices';
 
 const DeleteInvoice = (props) => {
   return (
@@ -13,7 +13,7 @@ const DeleteInvoice = (props) => {
           <button
             type='button'
             onClick={() => {
-              props.deleteNote(props._id);
+              props.deleteInvoice(props.id, props.history);
             }}
             className='DeleteModal-Box-Delete'
           >
@@ -34,5 +34,5 @@ const DeleteInvoice = (props) => {
   );
 };
 
-export default connect(null, )(DeleteInvoice);
+export default connect(null, { deleteInvoice })(DeleteInvoice);
 /* eslint-enable */

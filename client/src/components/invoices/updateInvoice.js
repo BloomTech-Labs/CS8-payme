@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { updateInvoice } from '../../actions';
+import { updateInvoice } from '../../actions/invoices';
 
 
 class UpdateInvoice extends Component {
@@ -42,6 +42,7 @@ class UpdateInvoice extends Component {
             <div className="invoice-update-flex">
             <p>Email</p>
               <Field
+                type="email"
                 name="email"
                 component="input"
                 className="invoice-update_field"
@@ -113,9 +114,9 @@ InitializeFromStateForm = connect(
   state => ({
     profile: state.profile,
     initialValues: {
-      ...state.auth.currentInvoice,
-      email: state.auth.currentInvoice.email.address, // Had to add email and phone because they are nested objects
-      phone: state.auth.currentInvoice.phone.number,
+      ...state.invoice.currentInvoice,
+      email: state.invoice.currentInvoice.email ? state.invoice.currentInvoice.email.address : '', // Had to add email and phone because they are nested objects
+      phone: state.invoice.currentInvoice.phone ? state.invoice.currentInvoice.phone.number : '',
     }, // gathering our intial values and conencting it to comp
   }),
   { updateInvoice },
