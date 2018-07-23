@@ -199,7 +199,7 @@ If JWT is active, and `number` is a valid invoice number, will return just the r
 if JWT is active, and `number` is NOT a valid invoice number, will return:
 `{ message: 'Invoice number does not exist.' }`
 
-## GET -- `/api/payinvoice/:invoiceID` -- GET
+## GET -- `/api/clientinvoice/:invoiceID` -- GET
 
 JWT is not required.
 
@@ -230,3 +230,54 @@ If `invoiceID` is valid, will return:
 
 if `invoiceID` is not valid, will return:
 `{ message: 'Invoice not found.' }`
+
+## POST -- `/api/charge' -- POST
+
+This route is used for charging the customer for invoice credits or 30 day subscription fee.
+
+JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+
+| Property | Type                                 | Required |
+| -------- | ------------------------------------ | -------- |
+| amount   | Number                               | Yes      |
+| id       | `token.id` from `stripe.createToken` | YES      |
+
+`amount` is the number of cents to charge the customer. i.e. $20.00 is `2000`, $1.99 is `199`. This value must be `2000` for a 30 day subscription or an exact multiple of `199` to add credits. If you send `2000`, it will add 30 days to the subscription. If you send any multiple of `199`, the server will calculate the number of credits to add. if you send a value that is NOT a multiple of `199`, or exactly `2000`, then you will receive a response of `{ message: 'Charge must be $20 or multiple of $1.99' }`. If successful, you will receive the entire user object as well as the succes message, as formatted below:
+
+```js
+{
+  status: String,
+  user: User // Same properties as every other time I return you a user object.
+}
+```
+
+# PAY INVOICE HAS YET TO BE TESTED. NEED FRONT END COMPONENT IN ORDER TO TEST IT
+
+## POST -- `/api/payinvoice` -- POST
+
+This route is for the client to pay an invoice that was sent to them from the admin.
+
+JWT is not required.
+
+| Property    | Type                                 | Required |
+| ----------- | ------------------------------------ | -------- |
+| amount      | Number                               | Yes      |
+| description | String                               | Yes      |
+| id          | `token.id` from `stripe.createToken` | YES      |
+
+If successful, will return:
+
+```js
+{
+  status: String,
+  user: User // Same properties as every other time I return you a user object.
+}
+```
+
+If failure, will return:
+
+```js
+{
+  status: String;
+}
+```
