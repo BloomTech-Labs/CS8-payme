@@ -93,6 +93,43 @@
     background-color: #E86C62;
     border-radius: .5rem; }
 
+.invoice-box {
+  margin-top: 5rem;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 5rem 5rem 5rem 10rem; }
+
+.invoice-data {
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  padding: 2rem 2rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  justify-content: center;
+  width: 40rem;
+  border: 0.3px solid #c2c2c2; }
+  .invoice-data-flex {
+    display: flex;
+    justify-content: space-between; }
+  .invoice-data-id {
+    font-weight: 700; }
+  .invoice-data-name {
+    margin-left: 2rem;
+    font-size: 1.5rem; }
+  .invoice-data-company {
+    margin-left: 2rem;
+    font-size: 1.5rem; }
+  .invoice-data-hr {
+    border: 0.3px solid #c2c2c2; }
+  .invoice-data-pdf {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer; }
+
+.fa-edit {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: #343654; }
+
 .invoice-list {
   justify-content: center;
   padding: 2rem 2rem;
@@ -223,10 +260,19 @@
       transition: width 0.4s ease-in-out; }
   .invoice-sort {
     color: white;
+    margin-top: 1rem;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex; }
     .invoice-sort:hover {
+      color: #22CFB1; }
+  .invoice-view {
+    color: white;
+    text-align: center;
+    padding: 2rem 2rem;
+    cursor: pointer;
+    display: flex; }
+    .invoice-view:hover {
       color: #22CFB1; }
   .invoice-new {
     color: white;

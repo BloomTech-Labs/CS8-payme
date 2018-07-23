@@ -10,6 +10,7 @@ import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../actions/invoi
 class Invoices extends Component {
   state = {
     search: '',
+    viewToggle: false,
   }
   
   componentDidMount() {
@@ -25,6 +26,10 @@ class Invoices extends Component {
     this.setState({ search: e.target.value });
   };
 
+  changeView =() => {
+    this.setState({ viewToggle: !this.state.viewToggle})
+  }
+
   render() {
     const { invoices } = this.props;
     let filteredInvoices = [];
@@ -33,10 +38,13 @@ class Invoices extends Component {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
-
+    let className=''
+    if (this.state.viewToggle) {
+      className="invoice-box";
+    }
     const SortableList = SortableContainer(props => {
       return (
-        <div className="invoice-box">
+        <div className={className}>
           {filteredInvoices.map((inv, index) => {
             return (
               <Invoice
@@ -47,6 +55,8 @@ class Invoices extends Component {
                 clientName={inv.clientName}
                 company={inv.companyName}
                 history={this.props.history}
+                toggle={this.changeView}
+                toggleState={this.state.viewToggle}
               />
             );
           })}
@@ -70,17 +80,21 @@ class Invoices extends Component {
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
             <hr className="navigation-line" />
             <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
+            <hr className="navigation-line" />
+            <p className="invoice-view" onClick={this.changeView}>View<i class="fas fa-eye fa-fw"></i></p>
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
-          <div className="invoice-list-headerdiv">
-            <ul className="invoice-list-headers">
-              <li style={{width:'10rem'}}>Inovice Number</li>
-              <li>Client Name</li>
-              <li>Company</li>
-              <li>PDF</li>
-              <li >Reminder</li>
-            </ul>
-          </div>
+          {!this.state.viewToggle ? (
+            <div className="invoice-list-headerdiv">
+              <ul className="invoice-list-headers">
+                <li >Inovice Number</li>
+                <li>Client Name</li>
+                <li>Company</li>
+                <li>PDF</li>
+                <li>Reminder</li>
+              </ul>
+            </div>
+          ) : null }
           {invoices.length >= 1 ? (
             <SortableList
               pressDelay={150}

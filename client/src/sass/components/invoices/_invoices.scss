@@ -46,6 +46,18 @@
 
   &-sort {
     color:white;
+    margin-top: 1rem;
+    padding: 2rem 2rem;
+    cursor: pointer;
+    display: flex;
+    &:hover {
+      color:$color-primary;
+    }
+  }
+
+  &-view {
+    color:white;
+    text-align: center;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex;
