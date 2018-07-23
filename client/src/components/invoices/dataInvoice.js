@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
 import { handleInvoiceIdx, getInvoice } from '../../actions/invoices';
+import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
   return (
@@ -20,16 +21,20 @@ const Datainvoice = SortableElement(props => {
           <p>Weekly</p>
         </div>
 
-      ) : (<div className="invoice-list" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
-          <p className="invoice-list-id">#{props.invoiceID}</p>
-          <div className="invoice-list-box">
-            <p className="invoice-list-box_name">{props.clientName}</p>
+      ) : (<div className="invoice-list">
+              <p className="invoice-list-id" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
+              <div className="invoice-list-box" >
+                <p className="invoice-list-box_name">{props.clientName}</p>
+              </div>
+              <p className="invoice-list-company">{props.company}</p>
+            <div>
+              <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF</span></p>
+            </div>
+            {props.isPdfToggled ? (
+              <Pdf togglePdf={props.togglePdf}/>
+            ) : null}
+            <p className="invoice-list-reminder">Weekly</p>
           </div>
-          <p className="invoice-list-company">{props.company}</p>
-          <Link to='/pdf'><p><span className="invoice-data-pdf"> Invoice PDF</span></p></Link>
-          {/* {/* <hr className="invoice-list-hr"/> */}
-          <p className="invoice-list-reminder">Weekly</p>
-        </div>
       )}
     </React.Fragment>
   );

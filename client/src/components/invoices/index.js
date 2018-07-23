@@ -11,6 +11,7 @@ class Invoices extends Component {
   state = {
     search: '',
     viewToggle: false,
+    pdfToggle: false,
   }
   
   componentDidMount() {
@@ -27,7 +28,11 @@ class Invoices extends Component {
   };
 
   changeView =() => {
-    this.setState({ viewToggle: !this.state.viewToggle})
+    this.setState({ viewToggle: !this.state.viewToggle});
+  }
+
+  togglePDF = () => {
+    this.setState({ pdfToggle: !this.state.pdfToggle });
   }
 
   render() {
@@ -55,7 +60,8 @@ class Invoices extends Component {
                 clientName={inv.clientName}
                 company={inv.companyName}
                 history={this.props.history}
-                toggle={this.changeView}
+                isPdfToggled={this.state.pdfToggle}
+                togglePdf={this.togglePDF}
                 toggleState={this.state.viewToggle}
               />
             );
