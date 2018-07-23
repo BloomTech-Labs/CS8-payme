@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { handleInvoiceIdx, getAllInvoices } from '../../actions';
+import { handleInvoiceIdx } from '../../actions';
 
 import Sidebar from '../sidebar';
 import DeleteInvoice from './deleteInvoice';
 import UpdateInvoice from './updateInvoice';
 
 class ViewInvoice extends Component {
-  state = {
+  state = { 
     modalTrigger: false,
     updateField: false,
   }
@@ -24,8 +23,10 @@ class ViewInvoice extends Component {
     this.setState({ modalTrigger: !this.state.modalTrigger });
   };
 
-  render() {
+  render() { 
+    // console.log(this.props.invoice.companyName);
     const { invoice } = this.props;
+
     return (
       <div className="view-invoice">
         <Sidebar />
@@ -87,7 +88,7 @@ class ViewInvoice extends Component {
           </div>
         </div>
       </div>
-    );
+     );
   }
 }
 
@@ -97,4 +98,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx, getAllInvoices })(ViewInvoice);
+export default connect(mapStateToProps, { handleInvoiceIdx })(ViewInvoice);
