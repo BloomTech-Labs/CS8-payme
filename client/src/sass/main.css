@@ -352,6 +352,9 @@
   color: white;
   font-size: 5rem; }
 
+.compact {
+  font-size: 3rem; }
+
 .view-invoice {
   display: flex;
   background-color: #ffffff;

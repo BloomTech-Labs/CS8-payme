@@ -7,13 +7,25 @@ import Sidebar from '../sidebar';
 import Invoice from './dataInvoice';
 import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../actions/invoices';
 
+//NOTE- Tried exporting these style to classes 
+// but it wasn't functioning correctly. Look into-
+const styles ={
+  backgroundColor: 'rgb(45, 45, 45)',
+  color: 'white',
+  border: 'none',
+  fontSize: '1.5rem',
+  paddingBottom: '2rem',
+  paddingTop: '1.5rem',
+};
+
 class Invoices extends Component {
   state = {
     search: '',
-    viewToggle: false,
+    listView: false,
+    boxView: true,
     pdfToggle: false,
   }
-  
+
   componentDidMount() {
     this.props.getAllInvoices();
   }
@@ -27,8 +39,11 @@ class Invoices extends Component {
     this.setState({ search: e.target.value });
   };
 
-  changeView =() => {
-    this.setState({ viewToggle: !this.state.viewToggle});
+  listView =() => {
+    this.setState({ listView: true, boxView: false });
+  }
+  boxView =() => {
+    this.setState({ listView: false, boxView: true });
   }
 
   togglePDF = () => {
@@ -44,7 +59,7 @@ class Invoices extends Component {
       });
     }
     let className=''
-    if (this.state.viewToggle) {
+    if (this.state.boxView) {
       className="invoice-box";
     }
     const SortableList = SortableContainer(props => {
@@ -62,7 +77,8 @@ class Invoices extends Component {
                 history={this.props.history}
                 isPdfToggled={this.state.pdfToggle}
                 togglePdf={this.togglePDF}
-                toggleState={this.state.viewToggle}
+                boxView={this.state.boxView}
+                listView={this.state.listView}
               />
             );
           })}
@@ -87,10 +103,19 @@ class Invoices extends Component {
             <hr className="navigation-line" />
             <p className="invoice-sort">Sort<br /> Data<i className="fas fa-sort fa-fw"></i></p>
             <hr className="navigation-line" />
-            <p className="invoice-view" onClick={this.changeView}>View<i className="fas fa-eye fa-fw"></i></p>
+            <div className="own-class ui compact menu" style={{ border: 'none' }}>
+              <div className="ui simple dropdown item own-class" style={styles}>
+                View
+                <i className="fas fa-eye fa-fw"/>
+                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                  <div className="item" onClick={this.listView}>List</div>
+                  <div className="item" onClick={this.boxView}>Box</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
-          {!this.state.viewToggle ? (
+          {this.state.listView ? (
             <div className="invoice-list-headerdiv">
               <ul className="invoice-list-headers">
                 <li >Inovice Number</li>
