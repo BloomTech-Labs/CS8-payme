@@ -6,10 +6,10 @@ import { handleInvoiceIdx, getAllInvoices, getInvoice } from '../../actions/invo
 import Sidebar from '../sidebar';
 import DeleteInvoice from './deleteInvoice';
 import UpdateInvoice from './updateInvoice';
-import ViewExport from './viewexport';;
+import ViewExport from './viewexport';
 
 class ViewInvoice extends Component {
-  state = {
+  state = { 
     modalTrigger: false,
     updateField: false,
   }
@@ -64,7 +64,7 @@ class ViewInvoice extends Component {
           ) : <div className="loader">Loading..</div> }
         </div>
       </div>
-    );
+     );
   }
 }
 

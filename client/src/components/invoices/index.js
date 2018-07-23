@@ -85,9 +85,9 @@ class Invoices extends Component {
             <hr className="navigation-line" />
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
             <hr className="navigation-line" />
-            <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
+            <p className="invoice-sort">Sort<br /> Data<i className="fas fa-sort fa-fw"></i></p>
             <hr className="navigation-line" />
-            <p className="invoice-view" onClick={this.changeView}>View<i class="fas fa-eye fa-fw"></i></p>
+            <p className="invoice-view" onClick={this.changeView}>View<i className="fas fa-eye fa-fw"></i></p>
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
           {!this.state.viewToggle ? (

@@ -20,6 +20,7 @@ class AddInvoice extends Component {
     // const config = {
     //   headers: { 'content-type': 'multipart/form-data' },
     // };
+    console.log(credentials);
     this.props.addInvoice({ ...credentials, pdf }, this.props.history);
   };
 

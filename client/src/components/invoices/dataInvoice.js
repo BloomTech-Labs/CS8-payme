@@ -16,7 +16,7 @@ const Datainvoice = SortableElement(props => {
           </div>
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
-          <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i class="fas fa-paperclip"></i></span></p>
+          <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
           {props.isPdfToggled ? (
               <Pdf togglePdf={props.togglePdf}/>
             ) : null}
@@ -31,7 +31,7 @@ const Datainvoice = SortableElement(props => {
               </div>
               <p className="invoice-list-company">{props.company}</p>
             <div>
-              <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i class="fas fa-paperclip"></i></span></p>
+              <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
             </div>
             {props.isPdfToggled ? (
               <Pdf togglePdf={props.togglePdf}/>

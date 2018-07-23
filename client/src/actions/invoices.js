@@ -52,7 +52,7 @@ export function addInvoice(credentials, history) {
       },
     };
     console.log(data);
-    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${token}` } })
+    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
         console.log(res.data);

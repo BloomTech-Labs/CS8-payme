@@ -29,7 +29,7 @@ export function login(credentials, history) {
       .then(res => {
         localStorage.setItem('id', res.data.token);
         axios.defaults.headers.common['Authorization'] = `bearer ${res.data.token}`;
-        console.log(res.data.user)
+        console.log(res.data.user);
         dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
         dispatch({ type: 'USER', payload: res.data.user });
         history.push('/invoices');

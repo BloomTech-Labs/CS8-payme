@@ -115,8 +115,8 @@ InitializeFromStateForm = connect(
     profile: state.profile,
     initialValues: {
       ...state.invoice.currentInvoice,
-      email: state.invoice.currentInvoice.email.address, // Had to add email and phone because they are nested objects
-      phone: state.invoice.currentInvoice.phone.number,
+      email: state.invoice.currentInvoice.email ? state.invoice.currentInvoice.email.address : '', // Had to add email and phone because they are nested objects
+      phone: state.invoice.currentInvoice.phone ? state.invoice.currentInvoice.phone.number : '',
     }, // gathering our intial values and conencting it to comp
   }),
   { updateInvoice },
