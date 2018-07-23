@@ -7,7 +7,44 @@
   margin: 0 auto;
   position: relative;
   display: flex;
+  
+  &-container {
+    width: inherit;
+  }
+  
+  &-navigation {
+    display: flex;
+    justify-content: flex-start;
+    border: 0.3px solid rgb(210, 210, 210);
+    height: 6rem;
+  
+    &_password {
+      cursor: pointer;
+      color: black;
+      padding: 1rem;
+      margin-left: 3rem;
+      &:hover {
+        color:$color-primary;
+      }
+      
+    }
+    &_themes {
+      cursor: pointer;
+      color: black;
+      margin-top: .5rem;
+      padding: 1rem;
+      text-align: center;
+      &:hover {
+        color:$color-primary;
+      }
+    }
 
+    // &-line {
+    //   height: 8rem;
+    //   background-color: blue;
+    //   // border: 5px solid rgba(0, 0, 0, 0.139);
+    // }
+  }
   &-form {
     width: 35rem;
     height: 35rem;
@@ -25,7 +62,8 @@
     height: 3rem;
     width: 100%;
     border: none;
-    background-color: $color-error;
+    background-color: $color-secondary;
     border-radius: .5rem;
   }
 }
+
