@@ -23,7 +23,7 @@ const getOneInvoice = (req, res) => {
   res.status(404).json({ message: 'Invoice number does not exist.' });
 };
 
-const payInvoice = (req, res) => {
+const clientInvoice = (req, res) => {
   const { invoiceID } = req.params;
   Invoice.findById(invoiceID)
     .then(response => {
@@ -38,5 +38,5 @@ const payInvoice = (req, res) => {
 module.exports = {
   getOneInvoice,
   getAllInvoices,
-  payInvoice,
+  clientInvoice,
 };
