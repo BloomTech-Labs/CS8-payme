@@ -72,6 +72,15 @@ class Invoices extends Component {
             <p className="invoice-sort">Sort<br /> Data<i class="fas fa-sort fa-fw"></i></p>
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
+          <div className="invoice-list-headerdiv">
+            <ul className="invoice-list-headers">
+              <li style={{width:'10rem'}}>Inovice Number</li>
+              <li>Client Name</li>
+              <li>Company</li>
+              <li>PDF</li>
+              <li >Reminder</li>
+            </ul>
+          </div>
           {invoices.length >= 1 ? (
             <SortableList
               pressDelay={150}

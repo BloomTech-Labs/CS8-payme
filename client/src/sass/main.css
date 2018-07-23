@@ -93,31 +93,46 @@
     background-color: #E86C62;
     border-radius: .5rem; }
 
-.invoice-data {
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-  padding: 2rem 2rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
+.invoice-list {
   justify-content: center;
-  width: 40rem;
-  border: 0.3px solid #c2c2c2; }
-  .invoice-data-flex {
-    display: flex;
-    justify-content: space-between; }
-  .invoice-data-id {
-    font-weight: 700; }
-  .invoice-data-name {
+  padding: 2rem 2rem;
+  margin-left: 2rem;
+  width: 100rem;
+  height: 4rem;
+  border: 0.3px solid #c2c2c2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; }
+  .invoice-list-id {
+    margin-left: 5rem;
+    width: 15rem;
+    font-weight: 700;
+    text-align: left; }
+  .invoice-list-box_name {
+    width: 15rem;
     margin-left: 2rem;
     font-size: 1.5rem; }
-  .invoice-data-company {
+  .invoice-list-company {
+    width: 15rem;
     margin-left: 2rem;
     font-size: 1.5rem; }
-  .invoice-data-hr {
+  .invoice-list-hr {
     border: 0.3px solid #c2c2c2; }
-  .invoice-data-pdf {
-    display: flex;
-    justify-content: flex-end;
+  .invoice-list-pdf {
+    width: 15rem;
     cursor: pointer; }
+  .invoice-list-reminder {
+    width: 10rem;
+    margin-left: 10rem;
+    display: flex; }
+
+.invoice-list-headers {
+  display: flex;
+  justify-content: space-between; }
+
+.invoice-list-headerdiv {
+  margin-left: 5rem;
+  margin-right: 12rem; }
 
 .fa-edit {
   cursor: pointer;
@@ -221,10 +236,6 @@
     width: 10rem; }
     .invoice-new:hover {
       color: #22CFB1; }
-  .invoice-box {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 5rem 5rem 5rem 10rem; }
   .invoice-id {
     font-weight: 700;
     font-size: 1.2; }
