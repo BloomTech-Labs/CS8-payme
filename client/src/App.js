@@ -24,7 +24,6 @@ const App = () => {
         <Route exact path="/" component={(Landing)} />
         <Route path="/signin" component={(Signin)} />
         <Route path="/signup" component={(Signup)} />
-     
         <Route path="/reminders" component={RequireAuth(Reminders)} />
         <Route path="/invoices" component={RequireAuth(Invoices)} />
         <Route path="/settings" component={RequireAuth(Settings)} />
