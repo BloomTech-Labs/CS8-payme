@@ -34,8 +34,12 @@ const User = new mongoose.Schema(
       required: true,
     },
     subscription: {
-      type: String,
-      default: 'perdiem',
+      type: Number,
+      default: 0,
+    },
+    invoiceCredits: {
+      type: Number,
+      default: 0,
     },
     invoices: [{ type: ObjectId, ref: 'Invoice' }],
   },

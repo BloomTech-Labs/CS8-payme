@@ -4,18 +4,30 @@ import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
 import Sidebar from '../sidebar';
-import { addInvoice } from '../../actions';
+import { addInvoice } from '../../actions/invoices';
 
 class AddInvoice extends Component {
-  state = {}
+  state = {
+    selectedFile: null,
+  }
 
   handleFormSubmit = (credentials) => {
-    const pdf = new FormData();
-    pdf.append('file', this.uploadInput.files[0]);
-    pdf.append('filename', 'this.fileName.value');
-  
+    let pdf = new FormData();
+    if (this.state.selectedFile) {
+      pdf.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    }
+    // console.log(pdf.get('image'));
+    // const config = {
+    //   headers: { 'content-type': 'multipart/form-data' },
+    // };
+    console.log(credentials);
     this.props.addInvoice({ ...credentials, pdf }, this.props.history);
   };
+
+  fileHandler = event => {
+    const data = event.target.files[0];
+    this.setState({ selectedFile: data });
+  }
 
 
   render() {
@@ -58,7 +70,7 @@ class AddInvoice extends Component {
             <br />
             <Field
               type="number"
-              name="totalAmount"
+              name="number"
               component="input"
               className="add-invoice_field"
               placeholder="Invoice Number"
@@ -66,26 +78,20 @@ class AddInvoice extends Component {
             <br />
             <Field
               type="number"
-              name="number"
+              name="totalAmount"
               component="input"
               className="add-invoice_field"
               placeholder="Total Amount"
             />
             <br />
             <input
-              // component="input"
               type="file"
-              accept="image/png, image/jpeg, application/pdf"
-              ref={(ref) => { this.uploadInput = ref; }}
               className="add-invoice_field"
-              placeholder="Upload PDF"
+              onChange={this.fileHandler}
             />
-            <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
-            <br />
             <button
               className="add-invoice_submit"
               type="submit"
-              value="Submit"
             >Add Invoice
             </button>
           </form>

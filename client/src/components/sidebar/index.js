@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../../actions';
+import { logout } from '../../actions/auth';
 import Nico from './Nico.jpg';
 
 
 class Sidebar extends Component {
-  state = {}
-
   logoutUser = () => {
     this.props.logout(this.props.history);
   };
@@ -28,7 +26,7 @@ class Sidebar extends Component {
             <div className="sidebar-profile">
               <img src={Nico} alt="profile" className="sidebar-pic" />
             </div>
-            <p>'USERNAME'</p>
+            <p>{this.props.admin.username}</p>
           </div>
           <div className="sidebar-links">
             <p><NavLink to='/invoices'><i className="fas fa-envelope-open fa-fw" />Invoices</NavLink></p>
@@ -49,7 +47,7 @@ class Sidebar extends Component {
 }
 const mapStateToProps = state => {
   return {
-    admin: state.admin,
+    admin: state.auth.admin,
   };
 };
 

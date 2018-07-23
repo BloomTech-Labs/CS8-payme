@@ -11,16 +11,17 @@
   &-main {
     display: flex;
     flex-direction: column;
-    
+    width: inherit;
   }
   &-navigation {
     display: flex;
+    width: 100%;
     // border-left: 0.3px solid rgb(193, 193, 193);
     justify-content: flex-start;
     align-items: center;
     // border:  0.3px solid rgb(193, 193, 193);
     background-color: #2E2E2E;
-    height: 7rem;
+    height: 6rem;
     // width: 1oorem;
 
   }
@@ -28,6 +29,7 @@
   &-search {
     &_input {
       margin-left: 4rem;
+      margin-right: 2rem;
       background-color: rgb(235, 235, 235);
       padding: 0.4rem;
       width: 20rem;
@@ -44,7 +46,18 @@
 
   &-sort {
     color:white;
-    border-left: 0.3px solid rgba(255, 255, 255, 0.66);
+    margin-top: 1rem;
+    padding: 2rem 2rem;
+    cursor: pointer;
+    display: flex;
+    &:hover {
+      color:$color-primary;
+    }
+  }
+
+  &-view {
+    color:white;
+    text-align: center;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex;
@@ -53,13 +66,10 @@
     }
   }
   &-new {
-    border-left: 0.3px solid rgba(184, 184, 184, 0.66);
-    border-right:0.3px solid rgba(184, 184, 184, 0.66);
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
-    margin-left: 2rem;  
     // justify-content: center;
     width:  10rem;
     &:hover {
@@ -67,29 +77,12 @@
     }
 
   }
-  &-box {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 5rem 5rem 5rem 10rem;
-  }
-  
-  &-data {
-    cursor: pointer;
-    padding: 2rem 2rem;
-    // background-color: blue;
-    margin-top: 2rem;
-    margin-left: 2rem;  
-    justify-content: center;
-    width: 40rem;
-    // height: 100%;
-    border: 0.3px solid rgb(194, 194, 194);
-  }
-
-  &-pdf {
-    display: flex;
-    justify-content: flex-end;
-    cursor: pointer;
-  }
+  // &-box {
+  //   display: flex;
+  //   flex-flow: row wrap;
+  //   margin: 5rem 5rem 5rem 10rem;
+  //   // flex-direction: column;
+  // }
 
   &-id {
     font-weight: 700;
@@ -101,6 +94,33 @@
     // border: 0.5px solid rgb(220, 220, 220);
     margin: 15rem auto;
   }
+
+  &-success {
+    color: black;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.5rem;
+
+    // height: 4rem;
+
+    animation:invoice-success 3s 1;
+    -webkit-animation:invoice-success 3s 1;
+    animation-fill-mode: forwards;
+
+    animation-delay:2s;
+    -webkit-animation-delay:1s; /* Safari and Chrome */
+    -webkit-animation-fill-mode: forwards;
+  } 
+}
+@keyframes invoice-success{
+  from {opacity :1;}
+  to {opacity :0;}
+}
+
+@-webkit-keyframes invoice-success{
+  from {opacity :1;}
+  to {opacity :0;}
 }
 
 .fa-arrow-left {
@@ -126,72 +146,15 @@
     height: 4rem;
     width: 100%;
     border: none;
-    background-color: $color-error;
+    background-color: $color-secondary;
     border-radius: .5rem;
 
   }
 }
 
-.view-invoice {
-  display: flex;
-  background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
-  margin: 0 auto;
-  position: relative;
-
-  &-main {
-    width: inherit;
-  }
-
-  &-navigation {
-    display: flex;
-    justify-content: flex-start;
-    // align-items: center;
-    background-color: #2E2E2E;
-    height: 7rem;
-
-    &_delete {
-      cursor: pointer;
-      color: white;
-      padding: 1rem;
-      margin-left: 3rem;
-      &:hover {
-        color:$color-primary;
-      }
-      
-    }
-    &_update {
-      cursor: pointer;
-      color: white;
-      padding: 1rem;
-      &:hover {
-        color:$color-primary;
-      }
-    }
-  }
-  &-details {
-    width: 20rem;
-    border: 0.5px solid rgb(218, 218, 218);
-    height: 30rem;
-  }
-
-  &-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  }
-  &-editDelete {
-    display: flex;
-  }
-}
-
 .navigation-line {
   margin: 0;
-  height: 7rem;
+  height: 6rem;
   border: 0.5px solid rgba(255, 255, 255, 0.139);
 }
 .fa-sort {

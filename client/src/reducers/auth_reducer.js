@@ -1,31 +1,30 @@
-import { AUTHENTICATION_ERROR,
-  ISAUTH, SET_ID, SUCCESS,
-  ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
-  CURRENT_INVOICE 
-} from '../actions';
+import {
+  AUTHENTICATION_ERROR,
+  DE_AUTH, AUTH_SUCCESS, USER,
+} from '../actions/auth';
+
+// const initialState = {
+//   message: '',
+//   success: '',
+//   invoices: [],
+//   invoiceIdx: 0,
+//   currentInvoice: '',
+// };
 
 const initialState = {
-  message: '',
+  admin: [],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case USER:
+      return { ...state, admin: action.payload };
+    case DE_AUTH:
+      return { ...state, invoices: [] };
     case AUTHENTICATION_ERROR:
       return { ...state, message: action.payload };
-    case ISAUTH:
-      return { ...state, authenticated: true };
-    case SET_ID:
-      return { ...state, authenticated: true, user: action.payload };
-    case SUCCESS:
+    case AUTH_SUCCESS:
       return { ...state, success: action.payload };
-    case ADD_INVOICE:
-      return { ...state, success: action.payload };
-    case ALL_INVOICE:
-      return { ...state, invoices: action.payload };
-    case INVOICE_IDX:
-      return { ...state, invoiceIdx: action.payload };
-    case CURRENT_INVOICE:
-      return { ...state, currentInvoice: action.payload };
     default:
       return state;
   }

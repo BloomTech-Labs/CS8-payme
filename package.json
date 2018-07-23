@@ -21,6 +21,7 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "stripe": "^6.3.0",
     "twilio": "^3.18.0"
   },
   "scripts": {

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { setId } from '../actions';
 
 export default ComposedComponent => {
   class RequireAuthentication extends Component {
     componentWillMount() {
       if (!localStorage.getItem('id')) this.props.history.push('/signin');
-      else this.props.setId(localStorage.getItem('id'));
     }
 
     render() {
@@ -20,5 +17,5 @@ export default ComposedComponent => {
     }
   }
 
-  return connect(null, { setId })(RequireAuthentication);
+  return (RequireAuthentication);
 };

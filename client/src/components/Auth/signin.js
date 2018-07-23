@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { login } from '../../actions';
+import { login } from '../../actions/auth';
 
 // import logo from './google.png';
 import backgroundImage from './background.jpg';
@@ -12,21 +12,22 @@ const styles = {
 };
 
 class Signin extends Component {
-
-  handleFormSubmit = (ele) => {
+  handleFormSubmit = ele => {
     this.props.login(ele, this.props.history);
   };
 
   render() {
     const { handleSubmit } = this.props;
-    return ( 
+    return (
       <div className="signup" style={styles}>
-        <p className="signup-headline">Lorem ipsum <br/> <span className="signup-headline2">dolor sit amet</span></p>
+        <p className="signup-headline">
+          Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
+        </p>
         <div className="signup--box">
           <h1 className="signin--header">Sign In</h1>
           <h3>{this.props.message}</h3>
           <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
-            <Field 
+            <Field
               name="username"
               component="input"
               className="signin--signin__username"
@@ -42,11 +43,9 @@ class Signin extends Component {
               required
             />
             <br />
-            <button
-              className="signin--signin__button"
-              action="submit"
-              value="Sign In"
-            >Sign In</button>
+            <button className="signin--signin__button" action="submit" value="Sign In">
+              Sign In
+            </button>
           </form>
           <p className="signin--orsign"> Or sign In with </p>
           {/* <div className="signin--buttons">
@@ -62,11 +61,11 @@ class Signin extends Component {
             </button>
           </div> */}
           <p className="signin--notmember">
-              Not a member? <Link to="/signup"> Sign up </Link>
-            </p>
+            Not a member? <Link to="/signup"> Sign up </Link>
+          </p>
         </div>
       </div>
-     )
+    );
   }
 }
 const mapStateToProps = state => {
@@ -75,7 +74,10 @@ const mapStateToProps = state => {
   };
 };
 
-Signin = (connect(mapStateToProps, { login })(Signin));
+Signin = connect(
+  mapStateToProps,
+  { login },
+)(Signin);
 
 export default reduxForm({
   form: 'logIn', // Unique name for the form
