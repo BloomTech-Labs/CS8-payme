@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import landPic from './landing.jpg';
+import { autoLogin } from '../../actions/auth';
 
 const styles = {
   backgroundImage: `url(${landPic})`,
 };
 class Landing extends Component {
   componentDidMount() {
-    if (localStorage.getItem('id')) this.props.history.push('/invoices');
+    const token = localStorage.getItem('id');
+    if (token) {
+      this.props.autoLogin(token, this.props.history);
+    } // this.props.history.push('/invoices');
   }
 
   render() {
@@ -17,18 +22,17 @@ class Landing extends Component {
         <h1 className="landing-slogan">Lorem Ipsum</h1>
         <img src={landPic} style={styles} alt="SideLogo" className="landing-image" />
         <Link to="/signin">
-          <button className="landing-signin">
-            Sign In
-          </button>
+          <button className="landing-signin">Sign In</button>
         </Link>
         <Link to="/signup">
-          <button className="landing-signup">
-            Sign up
-          </button>
+          <button className="landing-signup">Sign up</button>
         </Link>
       </div>
     );
   }
 }
 
-export default (Landing);
+export default connect(
+  null,
+  { autoLogin },
+)(Landing);
