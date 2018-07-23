@@ -434,6 +434,10 @@
   font-size: 3rem;
   cursor: pointer; }
 
+.fa-paperclip {
+  margin-left: .5rem;
+  color: rgba(34, 207, 178, 0.413); }
+
 .sign-layout {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
