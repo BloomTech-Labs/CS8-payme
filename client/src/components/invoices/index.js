@@ -9,7 +9,7 @@ import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../actions/invoi
 
 //NOTE- Tried exporting these style to classes 
 // but it wasn't functioning correctly. Look into-
-const styles ={
+const styles = {
   backgroundColor: 'rgb(45, 45, 45)',
   color: 'white',
   border: 'none',
@@ -21,8 +21,8 @@ const styles ={
 class Invoices extends Component {
   state = {
     search: '',
-    listView: false,
-    boxView: true,
+    listView: true,
+    boxView: false,
     pdfToggle: false,
   }
 
