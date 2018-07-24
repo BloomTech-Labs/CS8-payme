@@ -36,7 +36,7 @@ app.use(helmet());
 app.use(cors());
 
 // Unncomment to have scheduler run continuously
-// scheduler.start();
+scheduler.start();
 
 // Routes
 routes(app);
