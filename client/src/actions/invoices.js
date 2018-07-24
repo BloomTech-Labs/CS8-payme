@@ -92,6 +92,7 @@ export function deleteInvoice(invoiceNumber, history) {
 
 export function getInvoice(id) {
   return dispatch => {
+    console.log(id);
     axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         console.log(res.data);

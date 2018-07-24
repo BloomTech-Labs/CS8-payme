@@ -6,4 +6,15 @@
   width: 120rem;
   margin: 0 auto;
   position: relative;
+  display: flex;
+
+  &-container {
+    width: 100%;
+  }
+
+  &-drop {
+    margin-left: 5rem;
+    margin-top: 10rem;
+  }
 }
+

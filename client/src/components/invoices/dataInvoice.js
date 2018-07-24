@@ -8,7 +8,7 @@ import Pdf from './pdf';
 const Datainvoice = SortableElement(props => {
   return (
     <React.Fragment>
-      {props.toggleState ? (
+      {props.boxView ? (
         <div className="invoice-data">
           <div className="invoice-data-flex" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
             <p className="invoice-data-id">#{props.invoiceID}</p>
@@ -24,7 +24,9 @@ const Datainvoice = SortableElement(props => {
           <p>Weekly</p>
         </div>
 
-      ) : (<div className="invoice-list">
+      ) : 
+      (
+          <div className="invoice-list">
               <p className="invoice-list-id" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
               <div className="invoice-list-box" >
                 <p className="invoice-list-box_name">{props.clientName}</p>
