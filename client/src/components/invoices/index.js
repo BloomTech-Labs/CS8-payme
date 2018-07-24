@@ -115,7 +115,7 @@ class Invoices extends Component {
             </div>
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
-          {this.state.listView ? (
+          {this.state.listView && invoices.length > 0 ? (
             <div className="invoice-list-headerdiv">
               <ul className="invoice-list-headers">
                 <li >Inovice Number</li>
@@ -126,7 +126,7 @@ class Invoices extends Component {
               </ul>
             </div>
           ) : null }
-          {invoices.length >= 1 ? (
+          {invoices.length > 0 ? (
             <SortableList
               pressDelay={150}
               lockToContainerEdges
@@ -134,8 +134,7 @@ class Invoices extends Component {
               invoices={invoices}
               onSortEnd={this.onSortEnd}
             />
-          ) : null}
-        {/* <p className="invoice-letstart">Looks like you dont have any Invoices! Click here to get started</p> */}
+          ) : <p className="invoice-letstart">Looks like you dont have any Invoices! Click <Link to='/addinvoice'>here</Link> to get started</p>}
         </div>
       </div>
     );

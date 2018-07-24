@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from '../sidebar/';
+import Adminbilling from '../stripe/AdminBilling';
 
 class Billing extends Component {
   state = {}
@@ -7,6 +8,9 @@ class Billing extends Component {
     return ( 
       <div className="billing">
         <Sidebar />
+        <div className="billing-container">
+          <Adminbilling />
+        </div>
       </div>
      )
   }
