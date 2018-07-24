@@ -39,7 +39,7 @@ module.exports = app => {
   app.post('/api/email', restricted, sendEmail);
   // SMS ROUTES
   app.post('/api/sms', restricted, createReminder);
-  app.post('/api/sms/:id', restricted, deleteReminder);
+  app.post('/api/deletesms/:id', restricted, deleteReminder);
   app.get('/api/sms/:id', restricted, getReminder);
   // STRIPE ROUTES
   app.post('/api/charge', restricted, stripeCharge);
