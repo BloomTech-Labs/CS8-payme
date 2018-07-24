@@ -53,11 +53,19 @@ export function autoLogin(token, history) {
         localStorage.setItem('id', res.data.token);
         dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
         dispatch({ type: 'USER', payload: res.data.user });
-        history.push('/invoices');
+        // console.log(history.location.pathname);
+        if (history.location.pathname === '/') history.push('/invoices');
       })
       .catch(err => {
         if (err) console.log('error: ', err);
       });
+  };
+}
+
+export function updateUser(user) {
+  return {
+    type: USER,
+    payload: user,
   };
 }
 

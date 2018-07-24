@@ -57,9 +57,11 @@ class ClientBilling extends Component {
     return (
       <div className="window" style={{ display: 'flex' }}>
         <div
-          className="modal"
+          className="payInvoice"
           style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}
         >
+          <h1>Invoice # {this.state.invoice.number}</h1>
+          <h3>View PDF invoice link</h3>
           <StripeCheckout
             name="Name"
             email={email}
