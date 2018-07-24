@@ -12,7 +12,7 @@ class AdminBilling extends Component {
         >
           <StripeProvider apiKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}>
             <div className="example">
-              <h1>React Stripe Elements Example</h1>
+              <h1>Can change</h1>
               <Elements>
                 <CheckoutForm />
               </Elements>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Sidebar from '../sidebar/';
-import Adminbilling from '../stripe/AdminBilling';
+import Adminbilling from './AdminBilling';
 
 class Billing extends Component {
   state = {}

@@ -8,7 +8,7 @@ class Pdf extends Component {
       <div className='doc-preview'>
         <div className='doc-structure'>
         <div className="loader change" styles={{marginRight:'10rem'}}>Loading..</div> 
-          <p classname="pasdda" onClick={() => this.props.togglePdf()}>x</p>
+          <p className="pasdda" onClick={() => this.props.togglePdf()}>x</p>
         </div>
       </div>
     );

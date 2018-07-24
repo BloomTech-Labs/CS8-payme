@@ -48,9 +48,9 @@ class CheckoutForm extends Component {
   render() {
     return (
       <div className="checkout">
-        <p>Would you like to complete the purchase?</p>
+        <p>Would you like to complete the purchase?// can change</p>
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <button onClick={this.submit}>Send/purchase</button>
       </div>
     );
   }
