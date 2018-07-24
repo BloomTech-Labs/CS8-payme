@@ -9,7 +9,9 @@ class Billing extends Component {
     return (
       <div className="billing">
         <Sidebar />
-        <AdminBilling />
+        <div className="billing-container">
+          <Adminbilling />
+        </div>
       </div>
     );
   }

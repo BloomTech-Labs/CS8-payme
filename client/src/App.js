@@ -18,7 +18,7 @@ import UpdateInvoice from './components/invoices/updateInvoice';
 import ClientBilling from './components/payInvoice/ClientBilling';
 
 // Import higher order components
-import RequireAuth from './hoc/requireAuth';
+import RequireAuth from './HOC/requireAuth';
 
 const App = () => {
   return (
