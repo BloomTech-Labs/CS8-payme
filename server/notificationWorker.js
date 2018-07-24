@@ -1,9 +1,18 @@
-const Reminder = require('./models/Reminder.js');
+const Invoices = require('./models/invoices.js');
 
 const notificationWorker = function() {
   return {
-    run: function() {
-      Reminder.sendNotifications();
+    daily: function() {
+      console.log("notification worker running")
+      Invoices.sendNotifications("daily");
+    },
+    weekly: function() {
+      console.log("notification worker running")
+      Invoices.sendNotifications("weekly");
+    },
+    monthly: function() {
+      console.log("notification worker running")
+      Invoices.sendNotifications("monthly");
     },
   };
 };

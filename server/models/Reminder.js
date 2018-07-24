@@ -5,7 +5,8 @@ const Twilio = require('twilio');
 const ReminderSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
-  notification: Number,
+  notification: {
+  },
   message: String,
   time: {
     type: Date,
@@ -15,23 +16,29 @@ const ReminderSchema = new mongoose.Schema({
 });
 
 ReminderSchema.methods.requiresNotification = function(date) {
+  console.log("inside requiresnotifications")
   return (
     Math.round(
+      // this checks the difference between the current time 
+      // and the date/time passed in, turns it into minutes, 
+      // and compares it to the number in "notification" which
+      // represents minutes.
       moment
         .duration(
-          moment(this.time)
+          moment(this.time)         
             // .tz(this.timeZone)
             // .utc()
             .diff(moment(date).utc())
         )
         .asMinutes()
-    ) === this.notification
+    ) >= this.notification
   );
 };
 
 ReminderSchema.statics.sendNotifications = function(callback) {
   Reminder.find()
     .then(function(reminders) {
+      console.log("inside sendnotifications");
       const searchDate = new Date();
       reminders = reminders.filter(reminder => {
         return reminder.requiresNotification(searchDate);
