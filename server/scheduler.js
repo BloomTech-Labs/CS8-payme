@@ -9,9 +9,9 @@ const scheduler = function() {
   return {
     start: function() {
       new CronJob(
-        '00 * * * * * ',
+        '00 12 * * * * ',
         function() {
-          console.log('Running send at ' + moment().format());
+          console.log('Running every day, sent at ' + moment().format());
           notificationWorker.run();
         },
         null,
