@@ -25,6 +25,7 @@ mongoose
   .catch(err => {
     console.log('Error connecting to DB', err);
   });
+
 app.listen(port, err => {
   console.log(`connected to the server port ${port}`);
 });
@@ -44,5 +45,5 @@ routes(app);
 // For Heroku Build
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../', 'client', 'build', 'index.html'));
 });
