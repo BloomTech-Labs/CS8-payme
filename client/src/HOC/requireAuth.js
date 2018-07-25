@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 import { autoLogin } from '../actions/auth';
 
 export default ComposedComponent => {

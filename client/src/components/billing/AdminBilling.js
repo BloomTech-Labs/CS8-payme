@@ -7,34 +7,90 @@ import { updateUser } from '../../actions/auth';
 
 class AdminBilling extends Component {
   state = {
-    amount: 199,
+    quantity: 1,
     description: 'Test',
+    type: 'sub',
+  };
+
+  toggleRadioButton = ev => {
+    // ev.preventDefault();
+    console.log(ev.target.value);
+    this.setState({ type: ev.target.value });
+  };
+
+  updateQuantity = ev => {
+    // ev.preventDefault();
+    this.setState({ quantity: ev.target.value });
   };
 
   render() {
-    console.log(this.props.admin);
-    const { amount, description } = this.state;
-    const email = this.props.admin.username;
+    console.log(this.state.type);
+
     return (
-      <div className="window" style={{ display: 'flex' }}>
-        <div
-          className="modal"
-          style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}
-        >
-          <StripeCheckout
-            name="payMe"
-            email={email}
-            allowRememberMe={false}
-            description={description}
-            amount={amount}
-            token={this.onToken(amount, description)}
-            currency="USD"
-            stripeKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}
-          />
-        </div>
+      <div className="window">
+        <h1>Billing</h1>
+        <h3>Purchase invoice credits below.</h3>
+        <form>
+          <div className="radio">
+            <label className="billing-label">
+              <input
+                type="radio"
+                value="sub"
+                checked={this.state.type === 'sub'}
+                onChange={this.toggleRadioButton}
+              />
+              30 Days unlimited invoices - $20.00
+            </label>
+          </div>
+          <div className="radio">
+            <label className="billing-label">
+              <input
+                type="radio"
+                value="credit"
+                checked={this.state.type === 'credit'}
+                onChange={this.toggleRadioButton}
+              />
+              1 invoice - $1.99
+            </label>
+            <div
+              className="quantity"
+              style={{ visibility: this.state.type === 'sub' ? 'hidden' : 'visible' }}
+            >
+              <label>Quantity: </label>
+              <label className="billing-label">
+                <input
+                  type="number"
+                  name="quantity"
+                  value={this.state.quantity}
+                  onChange={this.updateQuantity}
+                />
+              </label>
+            </div>
+          </div>
+        </form>
+        {this.checkoutButton()}
       </div>
     );
   }
+
+  checkoutButton = () => {
+    const { description } = this.state;
+    const email = this.props.admin.username;
+    const amount = this.state.type === 'sub' ? 2000 : 199 * this.state.quantity;
+
+    return (
+      <StripeCheckout
+        name="payMe"
+        email={email}
+        allowRememberMe={false}
+        description={description}
+        amount={amount}
+        token={this.onToken(amount, description)}
+        currency="USD"
+        stripeKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}
+      />
+    );
+  };
 
   onToken = (amount, description) => token => axios
     .post('/api/charge', {
