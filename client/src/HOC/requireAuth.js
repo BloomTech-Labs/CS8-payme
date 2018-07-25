@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import axios from 'axios';
+import queryString from 'query-string';
 import { autoLogin } from '../actions/auth';
 
 export default ComposedComponent => {
@@ -22,6 +23,11 @@ export default ComposedComponent => {
       } else {
         this.props.history.push('/signin');
       }
+      const query = queryString.parse(this.props.history.location.search);
+      if (query.code && query.scope) {
+        //  need to update active user to add code and scope
+      }
+      console.log(query);
     }
 
     render() {
