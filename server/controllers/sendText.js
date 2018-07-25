@@ -10,15 +10,13 @@ const getTimeZones = function() {
 
 // POST: /api/sms create a reminder
 const createReminder = (req, res) => {
-  const { name, phoneNumber, frequency, message, timeZone } = req.body;
-  const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
+  const { name, phoneNumber, message, remind } = req.body;
+  // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
     name: name,
     phoneNumber: phoneNumber,
-    frequency: frequency,
     message: message,
-    timeZone: timeZone,
-    time: time
+    remind: remind
   });
   reminder
     .save()
@@ -26,6 +24,7 @@ const createReminder = (req, res) => {
       // res.redirect('/');
       res.json(reminder);
       console.log(reminder);
+      console.log('POST: ' + reminder.remind);
     })
     .catch(err => {
       res.status(500).json({ message: 'Server error couldnt post' });
