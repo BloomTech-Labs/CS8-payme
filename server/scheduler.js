@@ -10,7 +10,37 @@ const scheduler = function() {
         '00 * * * * * ',
         function() {
           console.log('Running send at ' + moment().format());
-          notify.notificationWorker.run();
+          notify.minuteWorker.run();
+        },
+        null,
+        true,
+        ''
+      );
+      new CronJob(
+        '00 00 23 * * * ', // runs everyday
+        function() {
+          console.log('Running send at ' + moment().format());
+          notify.dailyWorker.run();
+        },
+        null,
+        true,
+        ''
+      );
+      new CronJob(
+        '00 12 * * * mon ', // runs every week, noon on mondays
+        function() {
+          console.log('Running send at ' + moment().format());
+          notify.weeklyWorker.run();
+        },
+        null,
+        true,
+        ''
+      );
+      new CronJob(
+        '00 12 * 1 * * ', // runs monthly at noon every 1st
+        function() {
+          console.log('Running send at ' + moment().format());
+          notify.monthlyWorker.run();
         },
         null,
         true,
