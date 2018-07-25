@@ -1,9 +1,5 @@
 require('dotenv').load();
 
-// const twilio = require('twilio');
-// const accountSid = process.env.TWILIO_SID;
-// const authToken = process.env.TWILIO_TOKEN;
-
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
 const Reminder = require('../models/Reminder');
@@ -14,12 +10,12 @@ const getTimeZones = function() {
 
 // POST: /api/sms create a reminder
 const createReminder = (req, res) => {
-  const { name, phoneNumber, notification, message, timeZone } = req.body;
+  const { name, phoneNumber, frequency, message, timeZone } = req.body;
   const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
   const reminder = new Reminder({
     name: name,
     phoneNumber: phoneNumber,
-    notification: notification,
+    frequency: frequency,
     message: message,
     timeZone: timeZone,
     time: time
@@ -32,7 +28,7 @@ const createReminder = (req, res) => {
       console.log(reminder);
     })
     .catch(err => {
-      res.status(500).json({ message: 'Server error couldnt send' });
+      res.status(500).json({ message: 'Server error couldnt post' });
     });
 };
 // GET: /api/sms/:id
