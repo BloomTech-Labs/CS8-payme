@@ -1,44 +1,47 @@
 const mongoose = require('mongoose');
-// const moment = require('moment');
+const moment = require('moment');
 const Twilio = require('twilio');
 
-const Reminder = new mongoose.Schema({
+const ReminderSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
   notification: Number,
+  message: String,
   time: {
     type: Date,
-    index: true,
+    index: true
   },
-  timeZone: String,
+  timeZone: String
 });
 
-// ReminderSchema.methods.requiresNotification = function(date) {
-//   return (
-//     Math.round(
-//       moment
-//         .duration(
-//           moment(this.time)
-//             .tz(this.timeZone)
-//             .utc()
-//             .diff(moment(date).utc())
-//         )
-//         .asMinutes()
-//     ) === this.notification
-//   );
-// };
+ReminderSchema.methods.requiresNotification = function(date) {
+  return (
+    Math.round(
+      moment
+        .duration(
+          moment(this.time)
+            // .tz(this.timeZone)
+            // .utc()
+            .diff(moment(date).utc())
+        )
+        .asMinutes()
+    ) === this.notification
+  );
+};
 
-Reminder.statics.sendNotifications = function(callback) {
-  const searchDate = new Date();
+ReminderSchema.statics.sendNotifications = function(callback) {
   Reminder.find()
     .then(function(reminders) {
-      // reminders = reminders.filter(reminder => {
-      //   return reminder.requiresNotification(searchDate);
-      // });
-      sendNotifications(reminders);
+      const searchDate = new Date();
+      reminders = reminders.filter(reminder => {
+        return reminder.requiresNotification(searchDate);
+      });
+      if (reminders.length > 0) {
+        sendNotifications(reminders);
+      }
     })
     .catch(err => {
-      console.log('error in sendN');
+      console.log(err);
     });
 
   // reminders array
@@ -50,7 +53,7 @@ Reminder.statics.sendNotifications = function(callback) {
       const options = {
         to: `+1 ${reminder.phoneNumber}`,
         from: twilioNumber,
-        body: `Reminder text`, // Place holder.
+        body: reminder.message
       };
       // send message
       client.messages.create(options, function(err, response) {
@@ -76,7 +79,5 @@ Reminder.statics.sendNotifications = function(callback) {
   }
 };
 
-// const Reminder = mongoose.model('Reminder', ReminderSchema);
-// module.exports = Reminder;
-
-module.exports = mongoose.model('Reminder', Reminder);
+const Reminder = mongoose.model('Reminder', ReminderSchema);
+module.exports = Reminder;

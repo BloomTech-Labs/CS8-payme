@@ -295,11 +295,11 @@
     height: 35rem;
     margin: 15rem auto; }
   .invoice-success {
-    color: black;
+    color: #E86C62;
     display: flex;
     justify-content: center;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     animation: invoice-success 3s 1;
     -webkit-animation: invoice-success 3s 1;
     animation-fill-mode: forwards;
