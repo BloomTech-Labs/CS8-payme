@@ -3,21 +3,31 @@ const Invoice = require('../../models/invoices');
 
 const payInvoice = async function(req, res) {
   try {
-    const { amount, invoiceId, id, description } = req.body;
+    const { amount, invoiceId, source, description } = req.body;
     let { status } = await stripe.charges.create({
       amount,
       currency: 'usd',
       description,
-      source: id,
+      source,
     });
-    if (status === 'successful') {
-      Invoice.findByIdAndUpdate(invoiceId, { isPaid: true }).then(invoice => {
+    console.log(`status: ${status}`);
+    if (status === 'succeeded') {
+      console.log(invoiceId);
+      Invoice.findByIdAndUpdate(
+        invoiceId,
+        {
+          isPaid: true,
+          totalAmount: 0,
+        },
+        { new: true }
+      ).then(invoice => {
         res.json({ status, invoice });
       });
     } else {
       res.json({ status });
     }
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 };
