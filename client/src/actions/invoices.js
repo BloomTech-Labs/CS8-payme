@@ -105,6 +105,21 @@ export function getInvoice(id) {
       });
   };
 }
+export function getPdf(id) {
+  return dispatch => {
+    console.log(id);
+    axios.get(`/api/getpdf/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
+      .then(res => {
+        console.log(res.data);
+        // dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
+        // history.push({ pathname: `/invoice/${res.data.number}` });
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        dispatch(authError('Error retrieving invoices', err));
+      });
+  };
+}
 
 export function handleInvoiceIdx(inputID, history) {
   return (dispatch, getState) => {

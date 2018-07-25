@@ -7,8 +7,6 @@ import Sidebar from '../sidebar';
 import { addInvoice } from '../../actions/invoices';
 
 class AddInvoice extends Component {
-  state = {
-  }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -16,12 +14,6 @@ class AddInvoice extends Component {
       info.append('filename', event.target.file.name);
     this.props.addInvoice(info, this.props.history);
   };
-
-  fileHandler = event => {
-    const data = event.target.files[0];
-    this.setState({ selectedFile: data });
-  }
-
 
   render() {
     const { handleSubmit } = this.props;

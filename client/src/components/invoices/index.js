@@ -77,6 +77,7 @@ class Invoices extends Component {
                 history={this.props.history}
                 isPdfToggled={this.state.pdfToggle}
                 togglePdf={this.togglePDF}
+                link={`http://localhost:5000/api/getpdf/${inv._id}`}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
               />

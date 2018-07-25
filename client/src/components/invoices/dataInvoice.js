@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
-import { handleInvoiceIdx, getInvoice } from '../../actions/invoices';
+import { handleInvoiceIdx, getPdf } from '../../actions/invoices';
 import Pdf from './pdf';
+
 
 const Datainvoice = SortableElement(props => {
   return (
@@ -16,10 +17,10 @@ const Datainvoice = SortableElement(props => {
           </div>
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
-          <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
-          {props.isPdfToggled ? (
+          <p><span className="invoice-data-pdf" onClick={() => props.getPdf(props.id)}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
+          {/* {props.isPdfToggled ? (
               <Pdf togglePdf={props.togglePdf}/>
-            ) : null}
+            ) : null} */}
           <hr className="invoice-data-hr"/>
           <p>Weekly</p>
         </div>
@@ -33,11 +34,11 @@ const Datainvoice = SortableElement(props => {
               </div>
               <p className="invoice-list-company">{props.company}</p>
             <div>
-              <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
+              <a href={props.link}><span className="invoice-data-pdf" onClick={() => props.getPdf(props.id)}> Invoice PDF<i className="fas fa-paperclip"></i></span></a>
             </div>
-            {props.isPdfToggled ? (
+            {/* {props.isPdfToggled ? (
               <Pdf togglePdf={props.togglePdf}/>
-            ) : null}
+            ) : null} */}
             <p className="invoice-list-reminder">Weekly</p>
           </div>
       )}
@@ -51,4 +52,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx, getInvoice })(Datainvoice);
+export default connect(mapStateToProps, { handleInvoiceIdx, getPdf })(Datainvoice);
