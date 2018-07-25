@@ -9,37 +9,35 @@ const twilioNumber = process.env.TWILIO_NUMBER;
 const ReminderSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
-  frequency: String, // minute, daily, weekly, monthly
+  remind: String, // minute, daily, weekly, monthly
   message: String,
   time: {
     type: Date,
-    index: true
-  },
-  timeZone: String
+    default: Date.now
+  }
 });
 
 ReminderSchema.statics.Minute = function() {
-  Reminder.find({ frequency: 'minute' }).then(reminders => {
+  Reminder.find({ remind: 'minute' }).then(reminders => {
     sendNotifications(reminders);
   });
 };
 ReminderSchema.statics.Daily = function() {
-  Reminder.find({ frequency: 'daily' }).then(reminders => {
+  Reminder.find({ remind: 'daily' }).then(reminders => {
     sendNotifications(reminders);
   });
 };
 ReminderSchema.statics.Weekly = function() {
-  Reminder.find({ frequency: 'weekly' }).then(reminders => {
+  Reminder.find({ remind: 'weekly' }).then(reminders => {
     sendNotifications(reminders);
   });
 };
 ReminderSchema.statics.Monthly = function() {
-  Reminder.find({ frequency: 'monthly' }).then(reminders => {
+  Reminder.find({ remind: 'monthly' }).then(reminders => {
     sendNotifications(reminders);
   });
 };
 
-// reminders array
 function sendNotifications(reminders) {
   const client = new Twilio(accountSid, authToken);
   reminders.forEach(function(reminder) {
