@@ -21,6 +21,10 @@ Success will return
 {
   token: 'JWT String',
   user: {
+    stripe: {
+      code: '',
+      scope: '',
+    },
     subscription: 'perdiem',
     invoices: [],
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
@@ -60,6 +64,10 @@ Success will return:
 {
   token: 'JWT String',
   user: {
+    stripe: {
+      code: '',
+      scope: '',
+    },
     subscription: 'perdiem',
     invoices: [],
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
@@ -97,6 +105,10 @@ Success will return:
 {
   token: 'JWT String',
   user: {
+    stripe: {
+      code: '',
+      scope: '',
+    },
     subscription: 'perdiem',
     invoices: [],
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
@@ -136,30 +148,12 @@ Success will return:
 ```js
 {
     user: {
+    stripe: {
+      code: '',
+      scope: '',
+    },
     subscription: 'perdiem',
-    invoices: [{
-            "clientName": "Austen Allred",
-            "companyName": "Lambda School",
-            "isPaid": false,
-            "phone": {
-                "number": 123456789,
-                "frequency": "daily"
-            },
-            "email": {
-                "address": "bob@bob.com",
-                "frequency": "weekly"
-            },
-            "pdf": [
-                42,
-                14,
-                78,
-                52
-            ],
-            "_id": "5b4e33af0bfad9fcd8893c17",
-            "number": "123456",
-            "totalAmount": "$423.84",
-            "__v": 0
-        }],
+    invoices: [],
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
     username: 'testing@test.com',
     phone: '1234567890',
@@ -280,4 +274,38 @@ If failure, will return:
 {
   status: String;
 }
+```
+
+## POST -- `/api/usi` -- POST
+
+JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
+
+| Property     | Type   | Required |
+| ------------ | ------ | -------- |
+| stripe.code  | String | Yes      |
+| stripe.scope | String | Yes      |
+
+If both properties are not received, will return:
+`{ message: 'Stripe info required.' }`
+
+Success will return:
+
+```js
+{
+    user: {
+    stripe: {
+      code: String,
+      scope: String,
+    },
+    subscription: 'perdiem',
+    invoices: [],
+    _id: '5b4d02ac6b3ee4ba0b0dd5f2',
+    username: 'testing@test.com',
+    phone: '1234567890',
+    firstName: 'John',
+    lastName: 'Doe',
+    createdAt: '2018-07-16T20:40:12.758Z',
+    updatedAt: '2018-07-16T20:40:12.758Z',
+    __v: 0,
+};
 ```
