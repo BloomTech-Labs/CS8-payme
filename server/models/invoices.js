@@ -3,7 +3,7 @@ const mongooseTypes = require('mongoose-types');
 
 mongooseTypes.loadTypes(mongoose, 'email');
 
-const { Email } = mongoose.Schema.Types;
+const { Email, ObjectId } = mongoose.Schema.Types;
 
 const Invoice = new mongoose.Schema(
   {
@@ -42,6 +42,10 @@ const Invoice = new mongoose.Schema(
       //   text: String, // plain text body
       //   html: String, // html body
       // },
+    },
+    admin: {
+      type: ObjectId,
+      required: true,
     },
   },
   {

@@ -245,8 +245,6 @@ JWT must be placed on the Authorization headers. If JWT is not active, "Unauthor
 }
 ```
 
-# PAY INVOICE HAS YET TO BE TESTED. NEED FRONT END COMPONENT IN ORDER TO TEST IT
-
 ## POST -- `/api/payinvoice` -- POST
 
 This route is for the client to pay an invoice that was sent to them from the admin.

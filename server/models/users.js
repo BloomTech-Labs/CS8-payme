@@ -4,8 +4,7 @@ const bcrypt = require('bcrypt');
 
 mongooseTypes.loadTypes(mongoose, 'email');
 
-const { Email } = mongoose.Schema.Types;
-const { ObjectId } = mongoose.Schema.Types;
+const { Email, ObjectId } = mongoose.Schema.Types;
 
 const SALT_ROUNDS = 11;
 
