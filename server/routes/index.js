@@ -11,7 +11,6 @@ const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
 const { sendEmail } = require('../controllers/sendEmail');
 const { restricted, authenticate } = require('../config/auth');
-const { sendEmail } = require('../controllers/sendEmail');
 
 const {
   createReminder,

@@ -1,13 +1,25 @@
 const nodemailer = require("nodemailer");
 const Invoice = require("../models/invoices");
+const fs = require('fs');
 
 // Generate test SMTP service account from ethereal.email
 // Only needed if you don't have a real mail account for testing
 
 const sendEmail = (req, res) => {
 	// pass in message to send, invoice ID into post request
-	const {
-		message,
+	const { // references the emailMessage.html file
+		message = function onRequest(req, res) {
+			res.status(200, {'Content-Type': 'text/html'});
+			fs.readFile('./emailMessage.html', null, function(error, data) {
+				if (error) {
+					res.status(404);
+					res.json('File Not found');
+				} else {
+					res.json(data);
+				}
+				res.end();
+			});
+		},
 		invoiceID // uncomment these once you have appropriate IDs from database
 		// userID
 	} = req.body;
