@@ -40,19 +40,19 @@ export function getAllInvoices() {
 }
 
 
-export function addInvoice(credentials, history) {
+export function addInvoice(info, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
-    const data = { ...credentials,
-      email: {
-        address: credentials.email,
-      },
-      phone: {
-        number: credentials.phone,
-      },
-    };
-    console.log(data);
-    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
+    // const data = { ...credentials,
+    //   email: {
+    //     address: credentials.email,
+    //   },
+    //   phone: {
+    //     number: credentials.phone,
+    //   },
+    // };
+    console.log(info);
+    axios.post('/api/addinvoice', info, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
         console.log(res.data);

@@ -23,7 +23,7 @@ const Invoice = new mongoose.Schema(
       type: String,
       required: true,
     },
-    pdf: Array,
+    img:  { data: Buffer, contentType: String },
     totalAmount: {
       type: Number,
       required: true,

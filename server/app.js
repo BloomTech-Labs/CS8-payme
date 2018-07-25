@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const fileUpload = require('express-fileupload');
 
 const routes = require('./routes/');
 // const keys = require('./config/keys');
@@ -34,6 +35,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
+app.use(fileUpload());
 
 // Unncomment to have scheduler run continuously
 scheduler.start();
