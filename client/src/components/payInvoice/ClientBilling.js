@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Elements, StripeProvider } from 'react-stripe-elements';
+// import { Elements, StripeProvider } from 'react-stripe-elements';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import ClientCheckout from './ClientCheckout';
+// import ClientCheckout from './ClientCheckout';
 import NoInvoice from './noInvoice';
 import PaidInvoice from './paidInvoice';
 
