@@ -1,11 +1,13 @@
 const { register } = require('../controllers/user/registerUser');
 const { login, checkToken } = require('../controllers/user/loginUser');
 const { changePassword } = require('../controllers/user/changePassword');
+const { updateStripeInfo } = require('../controllers/user/updateUser');
+
 const { addInvoice } = require('../controllers/invoice/newInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
-  clientInvoice
+  clientInvoice,
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
@@ -16,7 +18,7 @@ const { sendEmail } = require('../controllers/sendEmail');
 const {
   createReminder,
   getReminder,
-  deleteReminder
+  deleteReminder,
 } = require('../controllers/sendText');
 
 const { stripeCharge } = require('../controllers/stripe/stripeCharge');
@@ -28,6 +30,7 @@ module.exports = app => {
   app.post('/api/login', authenticate, login);
   app.get('/api/login', restricted, checkToken);
   app.post('/api/changepassword', restricted, changePassword);
+  app.post('/api/usi', restricted, updateStripeInfo);
   // INVOICE ROUTES
   app.post('/api/addinvoice', restricted, addInvoice);
   app.get('/api/invoices', restricted, getAllInvoices);
