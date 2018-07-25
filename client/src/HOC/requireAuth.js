@@ -17,12 +17,12 @@ export default ComposedComponent => {
       //   .catch(err => {
       //     this.props.history.push('/signin');
       //   });
-      const query = queryString.parse(this.props.history.location.search);
-      if (query.code && query.scope) {
+      const { code, scope } = queryString.parse(this.props.history.location.search);
+      if (code && scope) {
         //  need to update active user to add code and scope
         // console.log({ stripe: query });
         axios
-          .post('/api/usi', { stripe: query })
+          .post('/api/usi', { stripe: { code, scope } })
           .then(res => {
             this.props.history.push('/billing');
           })
