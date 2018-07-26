@@ -65,6 +65,7 @@ const connectToken = (req, res) => {
 
         const stripe = {
           code: body.stripe_user_id,
+          scope: body.scope,
         };
         console.log(stripe);
         console.log(`body: `);
@@ -74,12 +75,12 @@ const connectToken = (req, res) => {
 
         User.findOneAndUpdate(
           { username: req.query.state },
-          { stripe },
+          { stripe: stripe },
           { new: true }
         )
           .select('-password')
           .populate('invoices')
-          .then(user => user)
+          .then(user => console.log('USERNAME', user.username))
           .catch(err => err);
       }
       // Redirect to the final stage.
