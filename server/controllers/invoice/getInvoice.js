@@ -38,5 +38,5 @@ const clientInvoice = (req, res) => {
 module.exports = {
   getOneInvoice,
   getAllInvoices,
-  clientInvoice,
+  clientInvoice
 };

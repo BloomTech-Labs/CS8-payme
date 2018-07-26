@@ -3,6 +3,7 @@ require('dotenv').load();
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
 const Reminder = require('../models/Reminder');
+const Invoice = require('../models/invoices');
 
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
@@ -12,23 +13,21 @@ const getTimeZones = function() {
 const createReminder = (req, res) => {
   const { name, phoneNumber, message, remind } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
+  console.log('invoices ' + Invoice.reminders);
   const reminder = new Reminder({
     name: name,
     phoneNumber: phoneNumber,
     message: message,
     remind: remind
   });
-  reminder
-    .save()
-    .then(reminder => {
-      // res.redirect('/');
-      res.json(reminder);
-      console.log(reminder);
-      console.log('POST: ' + reminder.remind);
-    })
-    .catch(err => {
-      res.status(500).json({ message: 'Server error couldnt post' });
-    });
+  const { id } = req.params;
+  reminder.save().then(newreminder => {
+    Invoice.findByIdAndUpdate(id, { $addToSet: { reminders: newreminder._id } })
+      .populate('reminders')
+      .then(newinvoice => {
+        res.send(newinvoice);
+      });
+  });
 };
 // GET: /api/sms/:id
 // if reminder was deleted, it will redirect back to create

@@ -11,9 +11,9 @@ const addInvoice = (req, res) => {
     pdf,
     totalAmount,
     phone,
-    email,
+    email
   } = req.body;
-  
+
   const invoice = new Invoice({
     clientName,
     companyName,
@@ -21,7 +21,7 @@ const addInvoice = (req, res) => {
     pdf,
     totalAmount,
     phone,
-    email,
+    email
   });
   console.log(pdf.image);
   // Checks to see if the current user already has this invoice number in use.

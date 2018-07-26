@@ -6,18 +6,18 @@ const Reminder = require('./models/Reminder.js');
 const scheduler = function() {
   return {
     start: function() {
+      // new CronJob(
+      //   '00 * * * * * ',
+      //   function() {
+      //     console.log('Running send at ' + moment().format());
+      //     notify.minuteWorker.run();
+      //   },
+      //   null,
+      //   true,
+      //   ''
+      // );
       new CronJob(
-        '00 * * * * * ',
-        function() {
-          console.log('Running send at ' + moment().format());
-          notify.minuteWorker.run();
-        },
-        null,
-        true,
-        ''
-      );
-      new CronJob(
-        '00 00 23 * * * ', // runs everyday
+        '00 09 23 * * * ', // runs everyday
         function() {
           console.log('Running send at ' + moment().format());
           notify.dailyWorker.run();
