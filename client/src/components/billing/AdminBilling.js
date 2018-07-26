@@ -17,23 +17,7 @@ class AdminBilling extends Component {
                 <CheckoutForm />
               </Elements>
             </div>
-<<<<<<< HEAD
-          </div>
-        </form>
-        {this.checkoutButton()}
-        <div
-          onClick={() => {
-            axios
-              .get('/stripe/authorize', {
-                headers: { Authorization: localStorage.getItem('id') },
-              })
-              .then(response => console.log(response));
-          }}
-        >
-          TESTING FOR NOW
-=======
           </StripeProvider>
->>>>>>> master
         </div>
       </div>
     );
