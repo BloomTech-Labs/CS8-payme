@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { Document, Page } from 'react-pdf';
 
 import { resetCurrInv } from '../../../actions/invoices';
 
 class Pdf extends Component {
+  state = {
+    numPages: null,
+    pageNumber: 1,
+  }
+
+  onDocumentLoadSuccess = ({ numPages }) => {
+    this.setState({ numPages });
+  }
+
 
   render() {
+    const { pageNumber, numPages } = this.state;
     let url;
     let noimg;
     const { invoice } = this.props;
@@ -24,8 +34,18 @@ class Pdf extends Component {
         <div className='doc-content'>
           {/* <div className="loader change" styles={{marginRight:'10rem'}}>Loading..</div>  */}
           <p className="pasdda" onClick={() => this.props.togglePdf()}><i className="fas fa-arrow-left fa-fw" /></p>
+          <a className="doc-newtab"href={url}> View invoice in a new tab</a>
           {this.props.invoice ?
-            <img className="doc-image"src={url} alt='img'/>
+           <React.Fragment>
+            <Document
+              file={url}
+              className="doc-image"
+              onLoadSuccess={this.onDocumentLoadSuccess}
+            >
+             <Page pageNumber={pageNumber} />
+            </Document>
+            <p>Page {pageNumber} of {numPages}</p>
+          </React.Fragment>
             : <div className="loader change" style={{color:'white'}}>Loading..</div>
           }
           <p style={{color:'white', margin:'15rem auto', fontSize:'2rem'}}>{noimg}</p>
@@ -42,3 +62,4 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { resetCurrInv })(Pdf);
+  // <img className="doc-image"src={url} alt='img'/>

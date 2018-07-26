@@ -430,24 +430,27 @@
   overflow: auto; }
 
 .doc-content {
-  border-radius: .7rem;
   display: flex;
   flex-direction: column;
-  font-size: 1.3rem;
-  background: rgba(52, 52, 52, 0.167);
+  background: rgba(91, 91, 91, 0.167);
   height: 100%;
-  width: 120rem;
-  margin: 0 auto;
+  width: 100%;
   padding: 1rem; }
 
 .doc-image {
-  margin-left: 10rem;
+  margin-left: 30rem;
   margin-right: 10rem; }
 
 .pasdda {
   margin: 0 auto;
   font-size: 3rem;
   cursor: pointer; }
+
+.doc-newtab {
+  margin: 0 auto;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem; }
 
 .fa-paperclip {
   margin-left: .5rem;

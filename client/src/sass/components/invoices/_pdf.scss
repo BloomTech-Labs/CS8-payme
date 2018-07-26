@@ -14,22 +14,22 @@
 }
 
 .doc-content {
-  border-radius: .7rem;
+  // border-radius: .7rem;
   display: flex;
   flex-direction: column;
-  font-size: 1.3rem;
-  // text-align: center;
-  background: rgba(52, 52, 52, 0.167);
-  // border: 0.3px solid rgb(194, 194, 194);
+  // font-size: 1.3rem;
+  // // text-align: center;
+  background: rgba(91, 91, 91, 0.167);
+  // // border: 0.3px solid rgb(194, 194, 194);
   height: 100%;
-  width: 120rem;
-  margin: 0 auto;
+  width: 100%;
+  // margin: 0 auto;
   padding: 1rem;
-
+  // margin-left: 30rem;
 }
 
 .doc-image {
-  margin-left: 10rem;
+  margin-left: 30rem;
   margin-right: 10rem;
 }
 
@@ -39,6 +39,14 @@
   // margin-top: 10rem;
   font-size: 3rem;
   cursor: pointer;
+}
+
+.doc-newtab {
+  margin: 0 auto;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+
 }
 
 .change{
