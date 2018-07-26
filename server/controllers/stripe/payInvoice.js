@@ -5,7 +5,7 @@ const payInvoice = async function(req, res) {
   try {
     const { amount, invoiceId, source, description, code, scope } = req.body;
     // const { code, scope } = req.body.admin;
-    // console.log(req.body);
+    console.log(req.body);
     let { status } = await stripe.charges.create({
       amount,
       currency: 'usd',
