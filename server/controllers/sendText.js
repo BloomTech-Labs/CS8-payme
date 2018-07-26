@@ -13,7 +13,6 @@ const getTimeZones = function() {
 const createReminder = (req, res) => {
   const { name, phoneNumber, message, remind } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
-  console.log('invoices ' + Invoice.reminders);
   const reminder = new Reminder({
     name: name,
     phoneNumber: phoneNumber,
