@@ -2,14 +2,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteInvoice } from '../../actions/invoices';
+import { deleteInvoice } from '../../../actions/invoices';
 
 const DeleteInvoice = (props) => {
   return (
     <div className='DeleteModal'>
       <div className='DeleteModal-Box'>
         <p> Are you sure you want to delete this? </p>
-        <Link to='/'>
+        <Link to='/invoices'>
           <button
             type='button'
             onClick={() => {

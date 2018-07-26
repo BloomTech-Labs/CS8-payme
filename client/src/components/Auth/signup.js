@@ -18,7 +18,7 @@ class Signup extends Component {
         <p className="signup-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p>
-        <div className="signup--box">
+        <div className="signup--container">
           <h1 className="signin-notey">payME</h1>
           <h1 className="signin--header">Sign Up With</h1>
           <h3>{this.props.error}</h3>

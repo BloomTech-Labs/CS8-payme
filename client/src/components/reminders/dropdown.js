@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown, Input } from 'semantic-ui-react';
+import { Dropdown } from 'semantic-ui-react';
 
 const DropdownExampleSearchSelectionTwo = (props) => (
   <Dropdown 
@@ -9,7 +9,7 @@ const DropdownExampleSearchSelectionTwo = (props) => (
     options={
       props.invoices.map((invoice) => {
         return (
-          <p onClick={() => props.getInvoice(invoice.number)}>{invoice.number}</p>
+          <p onClick={() => props.getInvoice(invoice.number)}>{invoice.clientName}</p>
         );
       })
     }

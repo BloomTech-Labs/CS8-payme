@@ -7,7 +7,7 @@ export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
 export const ARRAY_MOVE = 'ARRAY_MOVE';
-
+export const RESET_CURRINV = 'RESET_CURRINV';
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
@@ -25,6 +25,14 @@ export function authError(error) {
   }
 }
 
+export function resetCurrInv() {
+  return {
+    type: RESET_CURRINV,
+    payload: '',
+  };
+};
+
+
 export function getAllInvoices() {
   return dispatch => {
     axios.get('/api/invoices', { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
@@ -40,19 +48,19 @@ export function getAllInvoices() {
 }
 
 
-export function addInvoice(credentials, history) {
+export function addInvoice(info, history) {
   return dispatch => {
     // adjusting credentials to fit Invoice schema
-    const data = { ...credentials,
-      email: {
-        address: credentials.email,
-      },
-      phone: {
-        number: credentials.phone,
-      },
-    };
-    console.log(data);
-    axios.post('/api/addinvoice', data, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
+    // const data = { ...credentials,
+    //   email: {
+    //     address: credentials.email,
+    //   },
+    //   phone: {
+    //     number: credentials.phone,
+    //   },
+    // };
+    console.log(info);
+    axios.post('/api/addinvoice', info, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
         console.log(res.data);
@@ -97,6 +105,21 @@ export function getInvoice(id) {
       .then(res => {
         console.log(res.data);
         dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
+        // history.push({ pathname: `/invoice/${res.data.number}` });
+      })
+      .catch(err => {
+        if (err) console.log('error: ', err);
+        dispatch(authError('Error retrieving invoices', err));
+      });
+  };
+}
+export function getPdf(id) {
+  return dispatch => {
+    console.log(id);
+    axios.get(`/api/getpdf/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
+      .then(res => {
+        console.log(res.data);
+        // dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
         // history.push({ pathname: `/invoice/${res.data.number}` });
       })
       .catch(err => {

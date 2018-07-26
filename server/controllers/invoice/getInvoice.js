@@ -37,8 +37,23 @@ const clientInvoice = (req, res) => {
     .catch(err => res.status(500).json(err));
 };
 
+const getpdf = (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  Invoice.findById(id)
+    .select('img')
+    .then((doc) =>{
+    res.contentType(doc.img.contentType);
+    res.send(doc.img.data);
+    })
+  .catch((err) => {
+    if (err) return (err);
+  })
+};
+
 module.exports = {
   getOneInvoice,
   getAllInvoices,
   clientInvoice,
+  getpdf,
 };

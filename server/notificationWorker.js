@@ -1,11 +1,38 @@
 const Reminder = require('./models/Reminder.js');
 
-const notificationWorker = function() {
+const minuteWorker = function() {
   return {
     run: function() {
-      Reminder.sendNotifications();
-    },
+      Reminder.Minute();
+    }
   };
 };
 
-module.exports = notificationWorker();
+const dailyWorker = function() {
+  return {
+    run: function() {
+      Reminder.Daily();
+    }
+  };
+};
+const weeklyWorker = function() {
+  return {
+    run: function() {
+      Reminder.Weekly();
+    }
+  };
+};
+const monthlyWorker = function() {
+  return {
+    run: function() {
+      Reminder.Monthly();
+    }
+  };
+};
+
+module.exports = {
+  minuteWorker: minuteWorker(),
+  dailyWorker: dailyWorker(),
+  weeklyWorker: weeklyWorker(),
+  monthlyWorker: monthlyWorker()
+};

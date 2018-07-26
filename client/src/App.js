@@ -2,19 +2,19 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Import authentication related pages
-import Landing from './components/landing';
+import Landing from './components/landing/landing';
 import Signin from './components/Auth/signin';
 import Signup from './components/Auth/signup';
 import Settings from './components/settings';
 import NotFound from './components/Auth/notFound.js';
 
 // Import dashboard pages
-import Reminders from './components/reminders';
-import Invoices from './components/invoices';
+import Reminders from './components/reminders/reminders';
+import Invoices from './components/invoices/home';
 import Billing from './components/billing';
-import AddInvoice from './components/invoices/addInvoice';
-import ViewInvoice from './components/invoices/viewInvoice';
-import UpdateInvoice from './components/invoices/updateInvoice';
+import AddInvoice from './components/invoices/crud/addInvoice';
+import ViewInvoice from './components/invoices/crud/viewInvoice';
+import UpdateInvoice from './components/invoices/crud/updateInvoice';
 import ClientBilling from './components/payInvoice/ClientBilling';
 
 // Import higher order components
