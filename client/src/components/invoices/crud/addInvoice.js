@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 
-import Sidebar from '../sidebar';
-import { addInvoice } from '../../actions/invoices';
+import Sidebar from '../../sidebar';
+import { addInvoice } from '../../../actions/invoices';
 
 class AddInvoice extends Component {
 

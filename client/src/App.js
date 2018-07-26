@@ -12,9 +12,9 @@ import NotFound from './components/Auth/notFound.js';
 import Reminders from './components/reminders';
 import Invoices from './components/invoices/home';
 import Billing from './components/billing';
-import AddInvoice from './components/invoices/addInvoice';
-import ViewInvoice from './components/invoices/viewInvoice';
-import UpdateInvoice from './components/invoices/updateInvoice';
+import AddInvoice from './components/invoices/crud/addInvoice';
+import ViewInvoice from './components/invoices/crud/viewInvoice';
+import UpdateInvoice from './components/invoices/crud/updateInvoice';
 import ClientBilling from './components/payInvoice/ClientBilling';
 
 // Import higher order components

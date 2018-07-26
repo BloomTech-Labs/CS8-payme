@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { handleInvoiceIdx, getAllInvoices, getInvoice } from '../../actions/invoices';
+import { handleInvoiceIdx, getAllInvoices, getInvoice } from '../../../actions/invoices';
 
-import Sidebar from '../sidebar';
+import Sidebar from '../../sidebar';
 import DeleteInvoice from './deleteInvoice';
 import UpdateInvoice from './updateInvoice';
 import ViewExport from './viewexport';

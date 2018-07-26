@@ -417,26 +417,34 @@
     display: flex; }
 
 .doc-preview {
+  margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: rgba(162, 162, 162, 0.05);
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: auto; }
 
-.doc-structure {
+.doc-content {
   border-radius: .7rem;
+  display: flex;
+  flex-direction: column;
   font-size: 1.3rem;
-  background: rgba(255, 255, 255, 0.167);
-  border: 0.3px solid #c2c2c2;
-  height: 70rem;
+  background: rgba(91, 91, 91, 0.167);
+  height: 100%;
   width: 120rem;
+  margin: 0 auto;
   padding: 1rem; }
 
+.doc-image {
+  margin-left: 10rem;
+  margin-right: 10rem; }
+
 .pasdda {
+  margin: 0 auto;
   font-size: 3rem;
   cursor: pointer; }
 
