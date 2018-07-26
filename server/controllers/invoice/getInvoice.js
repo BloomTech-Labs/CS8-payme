@@ -26,10 +26,12 @@ const getOneInvoice = (req, res) => {
 const clientInvoice = (req, res) => {
   const { invoiceID } = req.params;
   Invoice.findById(invoiceID)
+    .populate('admin', 'stripe -_id')
     .then(response => {
       if (!response) {
         return res.status(404).json({ message: 'Invoice not found.' });
       }
+      // const {code, scope} = response.admin.stripe
       res.json(response);
     })
     .catch(err => res.status(500).json(err));

@@ -45,6 +45,7 @@ const Invoice = new mongoose.Schema(
     },
     admin: {
       type: ObjectId,
+      ref: 'User',
       required: true,
     },
   },

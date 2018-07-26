@@ -7,7 +7,9 @@ import NoInvoice from './noInvoice';
 import PaidInvoice from './paidInvoice';
 
 class ClientBilling extends Component {
-  state = {};
+  state = {
+    invoice: false,
+  };
 
   componentWillMount() {
     const { id } = this.props.match.params;
@@ -22,6 +24,8 @@ class ClientBilling extends Component {
 
   onToken = (amount, description) => token => axios
     .post('/api/payinvoice', {
+      code: this.state.invoice.admin.stripe.code,
+      scope: this.state.invoice.admin.stripe.scope,
       description,
       source: token.id,
       currency: 'USD',
