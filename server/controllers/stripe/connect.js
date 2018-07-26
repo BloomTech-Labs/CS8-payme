@@ -20,6 +20,7 @@ const authorizeConnect = (req, res) => {
     client_id: process.env.STRIPE_CLIENT_ID,
     state: req.state,
     scope: 'read_write',
+    redirect_uri: `${process.env.HOST}/stripe/token`,
     // user: req.userId,
     response_type: 'code',
   };
