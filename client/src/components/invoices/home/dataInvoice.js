@@ -28,7 +28,7 @@ const Datainvoice = SortableElement(props => {
       ) : 
       (
         <div className="invoice-list">
-          <p className="invoice-list-id" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
+          <p className="invoice-list-id"onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
           <div className="invoice-list-box" >
             <p className="invoice-list-box_name">{props.clientName}</p>
           </div>
@@ -36,7 +36,7 @@ const Datainvoice = SortableElement(props => {
           <div>
             {/* <Link to="/pdf"> */}
               <span className="invoice-data-pdf"
-                onClick={() => props.togglePdf()}> 
+                onClick={() => props.togglePdf(props.invoiceID)}> 
                 Invoice PDF
                 <i className="fas fa-paperclip"></i>
               </span>

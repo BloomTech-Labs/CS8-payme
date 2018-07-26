@@ -5,9 +5,11 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
-import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../../actions/invoices';
+import {
+ getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice 
+} from '../../../actions/invoices';
 
-//NOTE- Tried exporting these style to classes 
+//NOTE- Tried exporting these style to classes
 // but it wasn't functioning correctly. Look into-
 const styles = {
   backgroundColor: 'rgb(45, 45, 45)',
@@ -30,27 +32,35 @@ class Invoices extends Component {
     this.props.getAllInvoices();
   }
 
+  // React sortable elements
   onSortEnd = ({ oldIndex, newIndex }) => {
     const newOrderList = arrayMove(this.props.invoices, oldIndex, newIndex);
     this.props.onSortEnd(newOrderList, this.props.invoices);
   };
 
+  // Search
   updateSearch = e => {
     this.setState({ search: e.target.value });
   };
 
+  //views
   listView =() => {
     this.setState({ listView: true, boxView: false });
   }
+
   boxView =() => {
     this.setState({ listView: false, boxView: true });
   }
 
-  togglePDF = () => {
+  // PDF handler
+  togglePDF = (id, history) => {
+    console.log(id);
+    this.props.getInvoice(id);
     this.setState({ pdfToggle: !this.state.pdfToggle });
   }
 
   render() {
+    // Serach Invoices
     const { invoices } = this.props;
     let filteredInvoices = [];
     if (invoices) {
@@ -58,9 +68,10 @@ class Invoices extends Component {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
-    let className=''
+    // Box view || list view ?
+    let className = '';
     if (this.state.boxView) {
-      className="invoice-box";
+      className = 'invoice-box';
     }
     const SortableList = SortableContainer(props => {
       return (
@@ -77,7 +88,6 @@ class Invoices extends Component {
                 history={this.props.history}
                 isPdfToggled={this.state.pdfToggle}
                 togglePdf={this.togglePDF}
-                link={`http://localhost:5000/api/getpdf/${inv._id}`}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
               />
@@ -91,7 +101,7 @@ class Invoices extends Component {
         <Sidebar />
         <div className="invoice-main">
           <div className="invoice-navigation">
-            <input 
+            <input
               // className="invoice-search"
               type="text"
               placeholder="Search Invoices"
@@ -102,12 +112,12 @@ class Invoices extends Component {
             <hr className="navigation-line" />
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
             <hr className="navigation-line" />
-            <p className="invoice-sort">Sort<br /> Data<i className="fas fa-sort fa-fw"></i></p>
+            <p className="invoice-sort">Sort<br /> Data<i className="fas fa-sort fa-fw" /></p>
             <hr className="navigation-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div className="ui simple dropdown item own-class" style={styles}>
                 View
-                <i className="fas fa-eye fa-fw"/>
+                <i className="fas fa-eye fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
                   <div className="item" onClick={this.listView}>List</div>
                   <div className="item" onClick={this.boxView}>Box</div>
@@ -119,7 +129,7 @@ class Invoices extends Component {
           {this.state.listView && invoices.length > 0 ? (
             <div className="invoice-list-headerdiv">
               <ul className="invoice-list-headers">
-                <li >Inovice Number</li>
+                <li>Inovice Number</li>
                 <li>Client Name</li>
                 <li>Company</li>
                 <li>PDF</li>
@@ -149,4 +159,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { onSortEnd, getAllInvoices, handleInvoiceIdx })(Invoices);
+export default connect(mapStateToProps, {
+ onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice 
+})(Invoices);

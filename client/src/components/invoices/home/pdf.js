@@ -25,13 +25,21 @@ class Pdf extends Component {
   // }
 
   render() {
-    const url = `http://localhost:5000/api/getpdf/${this.props.id}`;
+    let url;
+    if (this.props.invoice) {
+      const { _id } = this.props.invoice;
+      console.log(_id);
+      url = `http://localhost:5000/api/getpdf/${_id}`;
+    };
     return (
       <div className='doc-preview'>
         <div className='doc-content'>
           {/* <div className="loader change" styles={{marginRight:'10rem'}}>Loading..</div>  */}
           <p className="pasdda" onClick={() => this.props.togglePdf()}>x</p>
-          <img className="doc-image"src={url} alt='img'/>
+          {this.props.invoice ?
+            <img className="doc-image"src={url} alt='img'/>
+            : <div className="loader change" styles={{marginRight:'10rem'}}>Loading..</div>
+          }
         </div>
       </div>
     );
