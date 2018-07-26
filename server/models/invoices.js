@@ -3,7 +3,7 @@ const mongooseTypes = require('mongoose-types');
 
 mongooseTypes.loadTypes(mongoose, 'email');
 
-const { Email } = mongoose.Schema.Types;
+const { Email, objectId } = mongoose.Schema.Types;
 const Reminder = require('./Reminder.js');
 
 const Invoice = new mongoose.Schema(
