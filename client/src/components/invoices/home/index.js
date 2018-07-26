@@ -6,7 +6,7 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
 import {
- getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice 
+ getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice, resetCurrInv 
 } from '../../../actions/invoices';
 
 //NOTE- Tried exporting these style to classes
@@ -53,10 +53,14 @@ class Invoices extends Component {
   }
 
   // PDF handler
-  togglePDF = (id, history) => {
-    console.log(id);
-    this.props.getInvoice(id);
-    this.setState({ pdfToggle: !this.state.pdfToggle });
+  togglePDF = (id, show) => {
+    console.log(show);
+    if (show === 'showpdf') {
+      return this.props.getInvoice(id),
+      this.setState({ pdfToggle: true });
+    }
+    this.setState({ pdfToggle: false });
+    this.props.resetCurrInv();
   }
 
   render() {
@@ -160,5 +164,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
- onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice 
+ onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice, resetCurrInv,
 })(Invoices);

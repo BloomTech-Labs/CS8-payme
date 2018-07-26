@@ -6,9 +6,12 @@ const addInvoice = (req, res) => {
   const { _id, username, invoices } = req.user;
   const { body } = req;
   const { number } = body;
-  let data  = req.files.file.data;
-  let contentType = req.files.file.mimetype;
-
+  let data = null;
+  let contentType = null;
+  if (req.files.file) {
+    data  = req.files.file.data;
+    contentType = req.files.file.mimetype;
+  }
   const invoice = new Invoice({ 
     ...body,
     email: {

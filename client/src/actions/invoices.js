@@ -7,7 +7,7 @@ export const ALL_INVOICE = 'ALL_INVOICE';
 export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
 export const ARRAY_MOVE = 'ARRAY_MOVE';
-
+export const RESET_CURRINV = 'RESET_CURRINV';
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
@@ -24,6 +24,14 @@ export function authError(error) {
     };
   }
 }
+
+export function resetCurrInv() {
+  return {
+    type: RESET_CURRINV,
+    payload: '',
+  };
+};
+
 
 export function getAllInvoices() {
   return dispatch => {

@@ -2,27 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-// import { getPdf } from '../../../actions/invoices';
+import { resetCurrInv } from '../../../actions/invoices';
 
 class Pdf extends Component {
-  state = { }
-
-  // componentDidMount() {
-  //   this.getPdf(this.props.id);
-  // }
-
-  // getpdf = () => {
-  //   axios.get(`/api/getpdf/${id}`,
-  //     { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
-  //     .then(res => {
-  //       console.log(res.data);
-  //     // dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
-  //     // history.push({ pathname: `/invoice/${res.data.number}` });
-  //     })
-  //     .catch(err => {
-  //       if (err) console.log('error: ', err);
-  //     });
-  // }
 
   render() {
     let url;
@@ -52,4 +34,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Pdf);
+export default connect(mapStateToProps, { resetCurrInv })(Pdf);
