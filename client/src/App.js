@@ -10,7 +10,7 @@ import NotFound from './components/Auth/notFound.js';
 
 // Import dashboard pages
 import Reminders from './components/reminders';
-import Invoices from './components/invoices';
+import Invoices from './components/invoices/home';
 import Billing from './components/billing';
 import AddInvoice from './components/invoices/addInvoice';
 import ViewInvoice from './components/invoices/viewInvoice';

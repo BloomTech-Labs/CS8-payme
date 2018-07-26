@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 
-import Sidebar from '../sidebar';
+import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
-import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../actions/invoices';
+import { getAllInvoices, handleInvoiceIdx, onSortEnd } from '../../../actions/invoices';
 
 //NOTE- Tried exporting these style to classes 
 // but it wasn't functioning correctly. Look into-

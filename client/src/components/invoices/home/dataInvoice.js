@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
-import { handleInvoiceIdx, getPdf } from '../../actions/invoices';
+import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
 import Pdf from './pdf';
 
 
