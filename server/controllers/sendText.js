@@ -21,6 +21,7 @@ const createReminder = (req, res) => {
   });
   const { id } = req.params;
   reminder.save().then(newreminder => {
+    console.log(newreminder);
     Invoice.findByIdAndUpdate(id, { $addToSet: { reminders: newreminder._id } })
       .populate('reminders')
       .then(newinvoice => {
@@ -49,7 +50,8 @@ const getReminder = (req, res) => {
 const deleteReminder = (req, res) => {
   const { id } = req.params;
 
-  Reminder.remove({ _id: id })
+  Reminder.findById({ _id: id })
+    .remove()
     .then(reminder => {
       res.json(reminder);
       // res.redirect('/');

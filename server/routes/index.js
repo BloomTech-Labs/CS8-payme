@@ -6,7 +6,7 @@ const {
   getAllInvoices,
   getOneInvoice,
   clientInvoice,
-  getpdf,
+  getpdf
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
@@ -41,7 +41,7 @@ module.exports = app => {
   app.post('/api/email', restricted, sendEmail);
   // SMS ROUTES
   app.post('/api/sms/:id', restricted, createReminder);
-  app.post('/api/deletesms/:id', restricted, deleteReminder);
+  app.delete('/api/deletesms/:id', restricted, deleteReminder);
   app.get('/api/sms/:id', restricted, getReminder);
   // STRIPE ROUTES
   app.post('/api/charge', restricted, stripeCharge);
