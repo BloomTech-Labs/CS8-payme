@@ -295,11 +295,11 @@
     height: 35rem;
     margin: 15rem auto; }
   .invoice-success {
-    color: black;
+    color: #E86C62;
     display: flex;
     justify-content: center;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     animation: invoice-success 3s 1;
     -webkit-animation: invoice-success 3s 1;
     animation-fill-mode: forwards;
@@ -417,26 +417,34 @@
     display: flex; }
 
 .doc-preview {
+  margin-top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   top: 0px;
   left: 0px;
-  background-color: rgba(162, 162, 162, 0.05);
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  overflow: auto; }
 
-.doc-structure {
+.doc-content {
   border-radius: .7rem;
+  display: flex;
+  flex-direction: column;
   font-size: 1.3rem;
-  background: rgba(255, 255, 255, 0.167);
-  border: 0.3px solid #c2c2c2;
-  height: 70rem;
+  background: rgba(91, 91, 91, 0.167);
+  height: 100%;
   width: 120rem;
+  margin: 0 auto;
   padding: 1rem; }
 
+.doc-image {
+  margin-left: 10rem;
+  margin-right: 10rem; }
+
 .pasdda {
+  margin: 0 auto;
   font-size: 3rem;
   cursor: pointer; }
 
@@ -453,6 +461,7 @@
   position: relative; }
 
 .signin {
+  margin-right: 8rem;
   border: 1px solid black;
   box-shadow: none;
   width: 110rem;
@@ -467,16 +476,24 @@
   .signin--image {
     max-width: 150rem; }
   .signin--box {
-    margin-left: 10rem;
+    margin-right: 8rem;
     background-color: #ffffff;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     width: 40rem;
-    height: 60rem;
+    height: 55rem;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
     position: relative; }
+    .signin--box--title {
+      color: black;
+      border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+      font-size: 3rem;
+      height: 6rem; }
+    .signin--box--dot {
+      color: #22CFB1;
+      font-size: 6rem; }
   .signin--header {
     margin-bottom: 2rem; }
   .signin--buttons {
@@ -549,7 +566,7 @@
   align-items: center;
   background-size: cover;
   position: relative; }
-  .signup--box {
+  .signup--container {
     margin-right: 8rem;
     background-color: #ffffff;
     display: flex;

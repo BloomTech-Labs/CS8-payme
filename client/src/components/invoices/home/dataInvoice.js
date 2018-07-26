@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
-import { handleInvoiceIdx, getInvoice } from '../../actions/invoices';
+import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
 import Pdf from './pdf';
+
 
 const Datainvoice = SortableElement(props => {
   return (
@@ -18,7 +19,7 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-company">{props.company}</p>
           <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
           {props.isPdfToggled ? (
-              <Pdf togglePdf={props.togglePdf}/>
+              <Pdf togglePdf={props.togglePdf} id={props.id}/>
             ) : null}
           <hr className="invoice-data-hr"/>
           <p>Weekly</p>
@@ -26,20 +27,26 @@ const Datainvoice = SortableElement(props => {
 
       ) : 
       (
-          <div className="invoice-list">
-              <p className="invoice-list-id" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
-              <div className="invoice-list-box" >
-                <p className="invoice-list-box_name">{props.clientName}</p>
-              </div>
-              <p className="invoice-list-company">{props.company}</p>
-            <div>
-              <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
-            </div>
-            {props.isPdfToggled ? (
-              <Pdf togglePdf={props.togglePdf}/>
-            ) : null}
-            <p className="invoice-list-reminder">Weekly</p>
+        <div className="invoice-list">
+          <p className="invoice-list-id"onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
+          <div className="invoice-list-box" >
+            <p className="invoice-list-box_name">{props.clientName}</p>
           </div>
+          <p className="invoice-list-company">{props.company}</p>
+          <div>
+            {/* <Link to="/pdf"> */}
+              <span className="invoice-data-pdf"
+                onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
+                Invoice PDF
+                <i className="fas fa-paperclip"></i>
+              </span>
+            {/* </Link> */}
+          </div>
+          <p className="invoice-list-reminder">Weekly</p>
+          {props.isPdfToggled ? (
+            <Pdf togglePdf={props.togglePdf} />
+          ) : null}
+        </div>
       )}
     </React.Fragment>
   );
@@ -51,4 +58,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx, getInvoice })(Datainvoice);
+export default connect(mapStateToProps, { handleInvoiceIdx, getPdf })(Datainvoice);

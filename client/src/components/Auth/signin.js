@@ -23,7 +23,14 @@ class Signin extends Component {
         <p className="signup-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p>
-        <div className="signup--box">
+        <div className="signin--box">
+          <h1 className="signin--box--title">
+            payMe
+            <span className="signin--box--dot">
+            .
+            </span>
+            <br />
+          </h1>
           <h1 className="signin--header">Sign In</h1>
           <h3>{this.props.message}</h3>
           <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
