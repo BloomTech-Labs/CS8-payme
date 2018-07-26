@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
+import axios from 'axios';
+import queryString from 'query-string';
 import { autoLogin } from '../actions/auth';
 
 export default ComposedComponent => {
@@ -16,12 +17,25 @@ export default ComposedComponent => {
       //   .catch(err => {
       //     this.props.history.push('/signin');
       //   });
+      const { code, scope } = queryString.parse(this.props.history.location.search);
+      if (code && scope) {
+        //  need to update active user to add code and scope
+        // console.log({ stripe: query });
+        axios
+          .post('/api/usi', { stripe: { code, scope } })
+          .then(res => {
+            this.props.history.push('/billing');
+          })
+          .catch(err => console.log(err));
+      }
       const token = localStorage.getItem('id');
       if (token) {
         this.props.autoLogin(token, this.props.history);
       } else {
         this.props.history.push('/signin');
       }
+
+      // console.log(query);
     }
 
     render() {
