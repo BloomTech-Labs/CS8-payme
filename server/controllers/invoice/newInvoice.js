@@ -4,36 +4,15 @@ const Invoice = require('../../models/invoices');
 
 const addInvoice = (req, res) => {
   const { _id, username, invoices } = req.user;
-<<<<<<< HEAD
-  const {
-    clientName,
-    companyName,
-    number,
-    pdf,
-    totalAmount,
-    phone,
-    email,
-  } = req.body;
-
-  const invoice = new Invoice({
-    clientName,
-    companyName,
-    number,
-    pdf,
-    totalAmount,
-    phone,
-    email,
-    admin: _id,
-=======
   const { body } = req;
   const { number } = body;
   let data = null;
   let contentType = null;
   if (req.files.file) {
-    data  = req.files.file.data;
+    data = req.files.file.data;
     contentType = req.files.file.mimetype;
   }
-  const invoice = new Invoice({ 
+  const invoice = new Invoice({
     ...body,
     email: {
       address: body.email,
@@ -41,8 +20,7 @@ const addInvoice = (req, res) => {
     phone: {
       number: body.phone,
     },
-    img:{ data, contentType },
->>>>>>> master
+    img: { data, contentType },
   });
   // Checks to see if the current user already has this invoice number in use.
 
