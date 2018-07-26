@@ -12,7 +12,7 @@ const stripeCharge = async function(req, res) {
         amount: req.body.amount,
         currency: 'usd',
         description: 'GMMM 30 day subscription',
-        source: req.body.id,
+        source: req.body.source,
       });
 
       const user = await addSub(req);
@@ -26,7 +26,7 @@ const stripeCharge = async function(req, res) {
         amount: req.body.amount,
         currency: 'usd',
         description: `GMMM: ${credits} credits for ${req.body.amount}`,
-        source: req.body.id,
+        source: req.body.source,
       });
       console.log(`Adding ${credits} credits.`);
       const user = await addCredits(req, credits);

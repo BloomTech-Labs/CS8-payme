@@ -15,6 +15,7 @@ import Billing from './components/billing';
 import AddInvoice from './components/invoices/addInvoice';
 import ViewInvoice from './components/invoices/viewInvoice';
 import UpdateInvoice from './components/invoices/updateInvoice';
+import ClientBilling from './components/payInvoice/ClientBilling';
 
 // Import higher order components
 import RequireAuth from './hoc/requireAuth';
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/addInvoice" component={RequireAuth(AddInvoice)} />
         <Route path="/invoice/:id" component={RequireAuth(ViewInvoice)} />
         <Route path="/updateinvoice" component={RequireAuth(UpdateInvoice)} />
+        <Route path="/payinvoice/:id" component={ClientBilling} />
         <Route component={NotFound} />
       </Switch>
     </Router>

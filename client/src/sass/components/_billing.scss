@@ -6,4 +6,13 @@
   width: 120rem;
   margin: 0 auto;
   position: relative;
+  display: flex;
+  
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: blue;
+    width: 100%;
+  }
 }
