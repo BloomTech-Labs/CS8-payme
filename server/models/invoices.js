@@ -10,32 +10,32 @@ const Invoice = new mongoose.Schema(
   {
     clientName: {
       type: String,
-      required: true
+      required: true,
     },
     companyName: {
       type: String,
-      required: true
+      required: true,
     },
     isPaid: {
       type: Boolean,
-      default: false
+      default: false,
     },
     number: {
       type: String,
-      required: true
+      required: true,
     },
-    img:  { data: Buffer, contentType: String },
+    img: { data: Buffer, contentType: String },
     totalAmount: {
       type: Number,
-      required: true
+      required: true,
     },
     phone: {
       number: Number,
-      frequency: String
+      frequency: String,
     },
     email: {
       address: Email,
-      frequency: String
+      frequency: String,
       // mailOptions: {
       //   from: String, // sender address
       //   to: String, // list of receivers
@@ -44,10 +44,15 @@ const Invoice = new mongoose.Schema(
       //   html: String, // html body
       // },
     },
-    reminders: [{ type: ObjectId, ref: 'Reminder' }]
+    admin: {
+      type: ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    reminders: [{ type: ObjectId, ref: 'Reminder' }],
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

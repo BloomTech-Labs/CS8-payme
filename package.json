@@ -21,7 +21,9 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "querystring": "^0.2.0",
     "react-stripe-checkout": "^2.6.3",
+    "request": "^2.87.0",
     "stripe": "^6.3.0",
     "twilio": "^3.18.0"
   },

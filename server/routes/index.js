@@ -3,7 +3,7 @@ const { login, checkToken } = require('../controllers/user/loginUser');
 const { changePassword } = require('../controllers/user/changePassword');
 const { updateStripeInfo } = require('../controllers/user/updateUser');
 
-const { addInvoice } = require('../controllers/invoice/newInvoice');
+const { addInvoice } = require('../controllers/invoice/addInvoice');
 const {
   getAllInvoices,
   getOneInvoice,
