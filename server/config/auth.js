@@ -47,11 +47,17 @@ const localStrategy = new LocalStrategy(function(username, password, done) {
 });
 // Bearer is where it pulls token from
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromExtractors([
+    ExtractJwt.fromUrlQueryParameter('jwt'),
+    ExtractJwt.fromAuthHeaderAsBearerToken(),
+  ]),
+  // jwtFromRequest: ExtractJwt.fromUrlQueryParameter(),
   secretOrKey: process.env.SECRET,
 };
+
 // This is the restricted middleware. This uses jwt
 const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
+  // console.log(req);
   // console.log(jwtOptions, 'jwtOptions');
   // console.log(load, 'load');
   User.findById(load.sub)
@@ -59,6 +65,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
     .populate('invoices')
     .then(user => {
       // console.log(load.exp - new Date().getTime());
+      // console.log(user);
       if (user && load.exp - new Date().getTime() >= 0) {
         done(null, user);
       } else {
@@ -66,7 +73,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
       }
     })
     .catch(err => {
-      // console.log(err);
+      console.log(err);
       done(err, false);
     });
 });

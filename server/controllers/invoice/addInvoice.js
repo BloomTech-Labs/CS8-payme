@@ -6,6 +6,7 @@ const addInvoice = (req, res) => {
   const { _id, username, invoices } = req.user;
   const { body } = req;
   const { number } = body;
+  console.log(req.files);
   let data = null;
   let contentType = null;
   if (req.files.file) {
@@ -14,6 +15,7 @@ const addInvoice = (req, res) => {
   }
   const invoice = new Invoice({
     ...body,
+    admin: _id,
     email: {
       address: body.email,
     },
@@ -23,8 +25,9 @@ const addInvoice = (req, res) => {
     img: { data, contentType },
   });
   // Checks to see if the current user already has this invoice number in use.
-
+  console.log('test', invoice.number);
   const invoiceNumbers = invoices.map(invoice => invoice.number);
+
   if (invoiceNumbers.includes(number)) {
     return res.status(422).json({ message: 'Invoice number already exists.' });
   }
@@ -45,7 +48,6 @@ const addInvoice = (req, res) => {
           });
       });
     })
-    .catch(err => res.status(501).json(err))
     .catch(err => res.status(500).json(err));
 };
 

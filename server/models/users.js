@@ -4,13 +4,22 @@ const bcrypt = require('bcrypt');
 
 mongooseTypes.loadTypes(mongoose, 'email');
 
-const { Email } = mongoose.Schema.Types;
-const { ObjectId } = mongoose.Schema.Types;
+const { Email, ObjectId } = mongoose.Schema.Types;
 
 const SALT_ROUNDS = 11;
 
 const User = new mongoose.Schema(
   {
+    stripe: {
+      code: {
+        type: String,
+        default: '',
+      },
+      scope: {
+        type: String,
+        default: '',
+      },
+    },
     // E-mail address is used as a username
     username: {
       type: Email,
