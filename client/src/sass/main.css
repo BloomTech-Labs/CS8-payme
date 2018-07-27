@@ -18,63 +18,94 @@ e,'s are considered best option for media queries
 900/16= 56.25em
 */
 .landing {
-  background-color: #ffffff;
+  background-color: #fff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  margin: 0 auto;
-  position: relative; }
-  .landing-header {
-    background-color: #222;
-    color: white; }
+  margin: 0 auto; }
+  .landing-container {
+    position: relative;
+    width: 180rem;
+    overflow-y: hidden; }
   .landing-title {
-    font-size: 10rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
+    font-size: 15rem;
+    margin-left: 30rem;
     text-align: center;
     color: white;
     position: absolute;
     top: 19rem;
     left: 10rem; }
-    @media only screen and (max-width: 600px) {
+    @media (max-width: 75em) {
       .landing-title {
-        color: black; } }
+        left: -5rem; } }
+    @media (max-width: 56.25em) {
+      .landing-title {
+        left: -5rem; } }
+    @media (max-width: 37.5em) {
+      .landing-title {
+        left: -15rem; } }
   .landing-slogan {
-    color: #ff0a0a;
-    font-size: 2rem;
+    margin-left: 30rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
+    color: #E86C62;
+    font-size: 3rem;
     position: absolute;
-    top: 28rem;
-    left: 25rem; }
+    top: 34rem;
+    left: 33rem; }
+    @media (max-width: 75em) {
+      .landing-slogan {
+        left: 18rem; } }
+    @media (max-width: 37.5em) {
+      .landing-slogan {
+        left: 5rem; } }
   .landing-image {
-    max-width: 100%; }
-    @media only screen and (max-width: 600px) {
+    max-width: 100%;
+    clip: rect(500px, 500px, 120rem, 50px); }
+    @media (max-width: 37.5em) {
       .landing-image {
-        max-width: none; } }
+        max-width: none;
+        max-height: 120rem; } }
   .landing-signin {
-    border: none;
+    border: 1px solid #22CFB1;
     font-size: 1.2rem;
     background-color: #435c94;
-    color: white;
+    color: #fff;
     height: 4rem;
     width: 12rem;
     border-radius: .5rem;
     position: absolute;
     top: 68rem;
-    left: 52rem;
+    left: 75rem;
     font-size: 1.3rem;
-    color: white;
     background-color: rgba(0, 0, 0, 0.753); }
+    @media (max-width: 75em) {
+      .landing-signin {
+        left: 65rem; } }
+    @media (max-width: 37.5em) {
+      .landing-signin {
+        left: 20rem;
+        top: 50rem; } }
 
 .landing-signup {
   border: none;
   font-size: 1.2rem;
   background-color: #435c94;
-  color: white;
+  color: #fff;
   height: 4rem;
   width: 12rem;
   border-radius: .5rem;
   position: absolute;
   top: 68rem;
-  left: 65rem;
+  left: 90rem;
   font-size: 1.3rem;
   color: black;
-  background-color: white; }
+  background-color: #fff; }
+  @media (max-width: 75em) {
+    .landing-signup {
+      left: 80rem; } }
+  @media (max-width: 37.5em) {
+    .landing-signup {
+      left: 35rem;
+      top: 50rem; } }
 
 .invoice-update {
   display: flex;
@@ -777,13 +808,18 @@ e,'s are considered best option for media queries
 body {
   margin: 0;
   padding: 0;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-  background-size: fill; }
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif; }
 
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
-  @media (max-width: 37.5em) {
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
     html {
       font-size: 50%; } }
 

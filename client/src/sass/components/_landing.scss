@@ -1,59 +1,90 @@
 .landing {
-  background-color: #ffffff;
+  background-color: $color-white;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-
   margin: 0 auto;
-  position: relative;
-
-  &-header {
-    background-color: #222;
-    color: white;
+  // position: relative;
+  // &-header {
+  //   background-color: #222;
+  //   color: white;
+  // }
+  
+  &-container {
+    position: relative;
+    width: 180rem;
+    overflow-y: hidden;
   }
 
   &-title {
-    font-size: 10rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
+    font-size: 15rem;
+    margin-left: 30rem;
     text-align: center;
     color: white;
     position: absolute;
     top: 19rem;
     left: 10rem;
-    @media only screen and (max-width: 600px) {
-      color: black;
+    @include respond(tab-land) { // width < 1200 ?
+      left: -5rem;// 1rem = 9px, 9/16 = 50%
+    }
+    @include respond(tab-port) {
+      left: -5rem;
+    }
+    @include respond(phone)  {
+      left: -15rem;
+      // background-color: blue;
     }
   }
 
   &-slogan {
-    color: rgb(255, 10, 10);
-    font-size: 2rem;
+    margin-left: 30rem;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
+    color: $color-secondary;
+    font-size: 3rem;
     position: absolute;
-    top: 28rem;
-    left: 25rem;
+    top: 34rem;
+    left: 33rem;
+    @include respond(tab-land) { // width < 1200 ?
+      left: 18rem;// 1rem = 9px, 9/16 = 50%
+    }
+    @include respond(phone) {
+      left: 5rem;
+    }
   }
 
   &-image {
     max-width: 100%;
-    @media only screen and (max-width: 600px) {
+    clip:rect(500px,500px,120rem,50px);
+    @include respond(phone) { // width < 1200 ?
       max-width: none;
-
+      max-height: 120rem;
     }
 
   }
 
   &-signin {
-    border: none;
+    border: 1px solid $color-primary;
     font-size: 1.2rem;
     background-color: #435c94;
-    color: white;
+    color: $color-white;
     height: 4rem;
     width: 12rem;
     border-radius: .5rem;
     position: absolute;
     top: 68rem;
-    left: 52rem;
+    left: 75rem;
     font-size: 1.3rem;
-    color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0.753);
+
+    @include respond(tab-land) { // width < 1200 ?
+      // top: 32rem;
+      left: 65rem;// 1rem = 9px, 9/16 = 50%
+    }
+    @include respond(phone) { // width < 1200 ?
+      left: 20rem;
+      top: 50rem;
+    }
+
   }
 }
 
@@ -62,16 +93,26 @@
   // padding: 10px;
   font-size: 1.2rem;
   background-color: #435c94;
-  color: white;
+  color: $color-white;
   height: 4rem;
   width: 12rem;
   border-radius: .5rem;
   position: absolute;
   top: 68rem;
-  left: 65rem;
+  left: 90rem;
   font-size: 1.3rem;
   color: rgb(0, 0, 0);
-  background-color: rgb(255, 255, 255);
+  background-color: $color-white;
+
+  @include respond(tab-land) { // width < 1200 ?
+    // top: 32rem;
+    left: 80rem;// 1rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(phone) { // width < 1200 ?
+    left: 35rem;
+    top: 50rem;
+  }
 }
 
 

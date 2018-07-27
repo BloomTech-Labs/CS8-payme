@@ -4,7 +4,7 @@ body {
   padding: 0;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   // font-family: 'Montserrat',sans-serif;
-  background-size: fill;
+  // background-size: fill;
 
 }
 
@@ -12,8 +12,15 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; // 1rem = 10px, 10px/16px = 32.5%; 16px is browser default
   
-  @include respond(phone) {
-    font-size: 50%;
+  @include respond(tab-land) { // width < 1200 ?
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 50%
+  }
+  // the last media query is the on that applies 
+  @include respond(tab-port) { // width < 900 ?
+    font-size: 50%; // 1rem = 8px, 8/16 = 50%
+  }
+  @include respond(desktop) {
+    font-size: 50%; // 1rem = 12px, 12/16 = 50%
   }
 }
 
