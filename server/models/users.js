@@ -26,13 +26,13 @@ const User = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    firstName: {
+    fullName: {
       type: String,
       required: true,
     },
-    lastName: {
+    companyName: {
       type: String,
-      required: true,
+      default: null,
     },
     password: {
       type: String,
