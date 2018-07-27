@@ -22,25 +22,29 @@ class ClientBilling extends Component {
       .catch(err => this.setState({ invoice: false }));
   }
 
-  onToken = (amount, description) => token => axios
-    .post('/api/payinvoice', {
-      code: this.state.invoice.admin.stripe.code,
-      scope: this.state.invoice.admin.stripe.scope,
-      description,
-      source: token.id,
-      currency: 'USD',
-      amount,
-      invoiceId: this.state.invoice._id,
-    })
-    .then(res => {
-      alert('Payment successful');
-      this.setState({ invoice: res.data.invoice });
-      console.log(res);
-    })
-    .catch(data => {
-      alert('Payment declined');
-      console.log(data);
-    });
+  onToken = (amount, description) => token => {
+    console.log(this.state.invoice);
+
+    return axios
+      .post('/api/payinvoice', {
+        code: this.state.invoice.admin.stripe.code,
+        scope: this.state.invoice.admin.stripe.scope,
+        description,
+        source: token.id,
+        currency: 'USD',
+        amount,
+        invoiceId: this.state.invoice._id,
+      })
+      .then(res => {
+        alert('Payment successful');
+        this.setState({ invoice: res.data.invoice });
+        console.log(res);
+      })
+      .catch(data => {
+        alert('Payment declined');
+        console.log(data);
+      });
+  };
 
   render() {
     if (!this.state.invoice) {
