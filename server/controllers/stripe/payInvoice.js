@@ -12,7 +12,7 @@ const payInvoice = async function(req, res) {
       description,
       source,
       destination: {
-        amount: amount,
+        amount: amount * 0.95,
         account: code,
       },
     });
