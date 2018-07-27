@@ -6,8 +6,8 @@ import { autoLogin } from '../../actions/auth';
 
 const styles = {
   backgroundImage: `url(${landPic})`,
-  backgroundSize: 'fill',
-  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  // backgroundPosition: 'center',
 };
 class Landing extends Component {
   componentDidMount() {

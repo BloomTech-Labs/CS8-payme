@@ -12,7 +12,6 @@
   &-container {
     position: relative;
     width: 180rem;
-    overflow-y: hidden;
   }
 
   &-title {
@@ -54,10 +53,10 @@
 
   &-image {
     max-width: 100%;
-    clip:rect(500px,500px,120rem,50px);
+    height: 106rem;
     @include respond(phone) { // width < 1200 ?
       max-width: none;
-      max-height: 120rem;
+      // max-height: 120rem;
     }
 
   }

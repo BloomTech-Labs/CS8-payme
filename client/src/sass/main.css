@@ -23,8 +23,7 @@ e,'s are considered best option for media queries
   margin: 0 auto; }
   .landing-container {
     position: relative;
-    width: 180rem;
-    overflow-y: hidden; }
+    width: 180rem; }
   .landing-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     font-size: 15rem;
@@ -59,11 +58,10 @@ e,'s are considered best option for media queries
         left: 5rem; } }
   .landing-image {
     max-width: 100%;
-    clip: rect(500px, 500px, 120rem, 50px); }
+    height: 106rem; }
     @media (max-width: 37.5em) {
       .landing-image {
-        max-width: none;
-        max-height: 120rem; } }
+        max-width: none; } }
   .landing-signin {
     border: 1px solid #22CFB1;
     font-size: 1.2rem;
