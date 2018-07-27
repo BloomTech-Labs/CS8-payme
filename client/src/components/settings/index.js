@@ -5,6 +5,15 @@ import Sidebar from '../sidebar/';
 import { changePassword } from '../../actions/auth';
 
 
+const styles = {
+  borderBottom: 'none',
+  color: 'black',
+  border: 'none',
+  fontSize: '1.5rem',
+  paddingBottom: '2rem',
+  paddingTop: '1rem',
+};
+
 class Settings extends Component {
   state = {
     error: '',
@@ -26,11 +35,22 @@ class Settings extends Component {
           <div className="settings-navigation">
             <p className="settings-navigation_password">Change <br />Password <i className="fas fa-key" /></p>
             <p className="setting-line" />
-            <p className="settings-navigation_themes">
+            {/* <p className="settings-navigation_themes">
               Themes
+              
               <i className="fas fa-pencil-alt fa-fw" />
               <br />
-            </p>
+            </p> */}
+            <div className="own-class ui compact menu" style={{ border: 'none' }}>
+              <div className="ui simple dropdown item own-class" style={styles}>
+                Themes
+                <i className="fas fa-pencil-alt fa-fw" />
+                <div className="menu" style={{ paddingTop: '0.3rem', fontSize: '1.3rem' }}>
+                  <div className="item" onClick={this.listView}>Dark</div>
+                  <div className="item" onClick={this.boxView}>Light</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="settings-form">
             <h1>Change Password</h1>

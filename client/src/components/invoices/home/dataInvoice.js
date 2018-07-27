@@ -19,7 +19,7 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-company">{props.company}</p>
           <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
           {props.isPdfToggled ? (
-              <Pdf togglePdf={props.togglePdf} id={props.id}/>
+            props.history.push('/pdf')
             ) : null}
           <hr className="invoice-data-hr"/>
           <p>Weekly</p>
@@ -42,10 +42,15 @@ const Datainvoice = SortableElement(props => {
               </span>
             {/* </Link> */}
           </div>
-          <p className="invoice-list-reminder">Weekly</p>
+          <p className="invoice-list-reminder">Weekly
+          <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
+          <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
+          </p>
+          <div>
           {props.isPdfToggled ? (
-            <Pdf togglePdf={props.togglePdf} />
+            props.history.push('/pdf')
           ) : null}
+          </div>
         </div>
       )}
     </React.Fragment>

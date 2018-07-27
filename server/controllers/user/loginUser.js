@@ -8,7 +8,7 @@ const login = (req, res) => {
   const tknUser = { _id, username };
   const token = makeToken(tknUser);
   User.findOne(_id)
-    .select('-password')
+    .select('-password -img')
     .populate('invoices')
     .then(user => {
       res.json({ token, user });
