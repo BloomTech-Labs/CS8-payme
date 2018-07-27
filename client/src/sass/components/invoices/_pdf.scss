@@ -6,9 +6,6 @@
   margin: 0 auto;
 
   background-color: black;
-  // position: fixed;
-  // top: 0px;
-  // left: 0px;
   background: rgba(0, 0, 0, 0.756);
   width: 100%;
   min-height: 120rem;
@@ -17,41 +14,26 @@
 
 .doc-container {
   margin: 0 auto;
-
-  // border-radius: .7rem;
-  // display: flex;
-  // flex-direction: column;
-  // font-size: 1.3rem;
-  // // text-align: center;
-  // background: rgba(29, 29, 29, 0.167);
-  // // border: 0.3px solid rgb(194, 194, 194);
   height: 100%;
-  // width: 100%;
-  // margin: 0 auto;
   padding: 1rem;
-  // margin-left: 30rem;
 }
 
 
 .doc-content {
-
   display:flex;
   justify-content: space-evenly;
   align-items: center;
   &_back{
-    // margin-left: 4rem;
     color: white;
     cursor: pointer;
   }
 
   &_newtab {
     color: $color-primary;
-    // margin-right: 4rem;
   }
 
   &_button {
     border: none;
-    // padding: 10px;
     font-size: 1.2rem;
     background-color: $color-secondary;
     color: white;
