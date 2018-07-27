@@ -30,7 +30,7 @@ export function resetCurrInv() {
     type: RESET_CURRINV,
     payload: '',
   };
-};
+}
 
 
 export function getAllInvoices() {
@@ -38,7 +38,6 @@ export function getAllInvoices() {
     axios.get('/api/invoices', { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         dispatch({ type: ALL_INVOICE, payload: res.data });
-        // history.push('/invoices');
       })
       .catch(err => {
         if (err) console.log('error: ', err);
@@ -50,16 +49,6 @@ export function getAllInvoices() {
 
 export function addInvoice(info, history) {
   return dispatch => {
-    // adjusting credentials to fit Invoice schema
-    // const data = { ...credentials,
-    //   email: {
-    //     address: credentials.email,
-    //   },
-    //   phone: {
-    //     number: credentials.phone,
-    //   },
-    // };
-    console.log(info);
     axios.post('/api/addinvoice', info, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
@@ -100,7 +89,6 @@ export function deleteInvoice(invoiceNumber, history) {
 
 export function getInvoice(id) {
   return dispatch => {
-    console.log(id);
     axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         console.log(res.data);
@@ -115,7 +103,6 @@ export function getInvoice(id) {
 }
 export function getPdf(id) {
   return dispatch => {
-    console.log(id);
     axios.get(`/api/getpdf/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         console.log(res.data);

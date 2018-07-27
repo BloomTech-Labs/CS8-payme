@@ -418,39 +418,41 @@
     display: flex; }
 
 .doc-preview {
-  margin-top: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0px;
-  left: 0px;
+  margin: 0 auto;
+  background-color: black;
+  background: rgba(0, 0, 0, 0.756);
   width: 100%;
+  min-height: 120rem;
+  overflow: scroll; }
+
+.doc-container {
+  margin: 0 auto;
   height: 100%;
-  overflow: auto; }
+  padding: 1rem; }
 
 .doc-content {
   display: flex;
-  flex-direction: column;
-  background: rgba(91, 91, 91, 0.167);
-  height: 100%;
-  width: 100%;
-  padding: 1rem; }
+  justify-content: space-evenly;
+  align-items: center; }
+  .doc-content_back {
+    color: white;
+    cursor: pointer; }
+  .doc-content_newtab {
+    color: #22CFB1; }
+  .doc-content_button {
+    border: none;
+    font-size: 1.2rem;
+    background-color: #E86C62;
+    color: white;
+    height: 3.5rem;
+    width: 9rem;
+    margin-right: 1.5rem;
+    border-radius: .5rem; }
 
 .doc-image {
-  margin-left: 30rem;
-  margin-right: 10rem; }
-
-.pasdda {
-  margin: 0 auto;
-  font-size: 3rem;
-  cursor: pointer; }
-
-.doc-newtab {
-  margin: 0 auto;
-  cursor: pointer;
-  color: white;
-  font-size: 2rem; }
+  color: rgba(0, 0, 0, 0.756); }
 
 .fa-paperclip {
   margin-left: .5rem;

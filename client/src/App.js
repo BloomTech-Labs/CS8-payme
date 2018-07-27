@@ -11,6 +11,7 @@ import NotFound from './components/Auth/notFound.js';
 // Import dashboard pages
 import Reminders from './components/reminders/reminders';
 import Invoices from './components/invoices/home';
+import PDF from './components/invoices/home/pdf';
 import Billing from './components/billing';
 import AddInvoice from './components/invoices/crud/addInvoice';
 import ViewInvoice from './components/invoices/crud/viewInvoice';
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/addInvoice" component={RequireAuth(AddInvoice)} />
         <Route path="/invoice/:id" component={RequireAuth(ViewInvoice)} />
         <Route path="/updateinvoice" component={RequireAuth(UpdateInvoice)} />
+        <Route path="/pdf" component={RequireAuth(PDF)} />
         <Route path="/payinvoice/:id" component={ClientBilling} />
         <Route component={NotFound} />
       </Switch>

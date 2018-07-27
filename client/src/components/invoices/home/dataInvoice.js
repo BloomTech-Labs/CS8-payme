@@ -43,12 +43,14 @@ const Datainvoice = SortableElement(props => {
             {/* </Link> */}
           </div>
           <p className="invoice-list-reminder">Weekly
-          <i class="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
-          <i class="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
+          <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
+          <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
           </p>
+          <div>
           {props.isPdfToggled ? (
-            <Pdf togglePdf={props.togglePdf} />
+            props.history.push('/pdf')
           ) : null}
+          </div>
         </div>
       )}
     </React.Fragment>

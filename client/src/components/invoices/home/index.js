@@ -94,6 +94,7 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
+                history={this.props.history}
               />
             );
           })}
