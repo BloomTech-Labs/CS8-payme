@@ -81,7 +81,6 @@ export function deleteInvoice(invoiceNumber, history) {
         console.log(res);
         history.push('/invoices');
         dispatch({ type: SUCCESS, payload: `Deleted invoice #${invoiceNumber}` });
-
       })
       .catch(err => dispatch(authError('Error deleting invoice', err)));
   };
@@ -91,9 +90,7 @@ export function getInvoice(id) {
   return dispatch => {
     axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
-        console.log(res.data);
         dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
-        // history.push({ pathname: `/invoice/${res.data.number}` });
       })
       .catch(err => {
         if (err) console.log('error: ', err);
@@ -104,11 +101,7 @@ export function getInvoice(id) {
 export function getPdf(id) {
   return dispatch => {
     axios.get(`/api/getpdf/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
-      .then(res => {
-        console.log(res.data);
-        // dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
-        // history.push({ pathname: `/invoice/${res.data.number}` });
-      })
+      .then(res => console.log(res.data))
       .catch(err => {
         if (err) console.log('error: ', err);
         dispatch(authError('Error retrieving invoices', err));
