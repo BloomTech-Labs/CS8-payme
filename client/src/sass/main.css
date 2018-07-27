@@ -1,8 +1,25 @@
+/*
+0-600px: Phone
+600-900px: Tablet portrait
+900 - 1200px: Tablet landscape
+[1200- 1800]- norma styles
+1800 +: Desktop
+*/
+/* breakpoint arc choices 
+- phone
+- tab-port
+- tab-land
+- desktop 
+We're using em's instead of rems because rem tends to fail in som browsers
+e,'s are considered best option for media queries 
+
+1em = 16px
+600/16 = 37.5em
+900/16= 56.25em
+*/
 .landing {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
   margin: 0 auto;
   position: relative; }
   .landing-header {
@@ -15,6 +32,9 @@
     position: absolute;
     top: 19rem;
     left: 10rem; }
+    @media only screen and (max-width: 600px) {
+      .landing-title {
+        color: black; } }
   .landing-slogan {
     color: #ff0a0a;
     font-size: 2rem;
@@ -22,7 +42,10 @@
     top: 28rem;
     left: 25rem; }
   .landing-image {
-    width: 100%; }
+    max-width: 100%; }
+    @media only screen and (max-width: 600px) {
+      .landing-image {
+        max-width: none; } }
   .landing-signin {
     border: none;
     font-size: 1.2rem;
@@ -760,6 +783,9 @@ body {
 html {
   box-sizing: border-box;
   font-size: 62.5%; }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 50%; } }
 
 button {
   cursor: pointer; }

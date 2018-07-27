@@ -6,13 +6,15 @@ import { autoLogin } from '../../actions/auth';
 
 const styles = {
   backgroundImage: `url(${landPic})`,
+  backgroundSize: 'fill',
+  backgroundPosition: 'center',
 };
 class Landing extends Component {
   componentDidMount() {
     const token = localStorage.getItem('id');
     if (token) {
       this.props.autoLogin(token, this.props.history);
-    } // this.props.history.push('/invoices');
+    }
   }
 
   render() {

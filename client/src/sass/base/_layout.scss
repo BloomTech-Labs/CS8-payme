@@ -11,6 +11,10 @@ body {
 html {
   box-sizing: border-box;
   font-size: 62.5%; // 1rem = 10px, 10px/16px = 32.5%; 16px is browser default
+  
+  @include respond(phone) {
+    font-size: 50%;
+  }
 }
 
 button {
