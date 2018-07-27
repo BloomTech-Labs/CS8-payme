@@ -130,18 +130,16 @@ If `currentPassword` is incorrect, will return:
 
 Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
-| Property        | Type    | Required |
-| --------------- | ------- | -------- |
-| clientName      | String  | Yes      |
-| companyName     | String  | Yes      |
-| isPaid          | Boolean | No       |
-| number          | Number  | Yes      |
-| pdf             | Array   | No       |
-| totalAmount     | String  | Yes      |
-| phone.number    | Number  | No       |
-| phone.frequency | String  | No       |
-| email.address   | String  | No       |
-| email.frequency | String  | No       |
+| Property    | Type    | Required |
+| ----------- | ------- | -------- |
+| clientName  | String  | Yes      |
+| companyName | String  | Yes      |
+| isPaid      | Boolean | No       |
+| number      | Number  | Yes      |
+| pdf         | Array   | No       |
+| totalAmount | String  | Yes      |
+| phone       | Number  | No       |
+| email       | String  | No       |
 
 Success will return:
 
@@ -164,6 +162,9 @@ Success will return:
     __v: 0,
 };
 ```
+
+If the user dows not have an active subscription, or an active invoice credit, will return:
+`{ message: 'No active subscription or invoice credits avaliable.', }`
 
 If invoice number is already in use, will return:
 `{ message: 'Invoice number already exists.' }`
