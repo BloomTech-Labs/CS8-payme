@@ -28,7 +28,7 @@ class Signup extends Component {
               name="username"
               component="input"
               className="signin--signin__username"
-              placeholder="Username"
+              placeholder="E-Mail Address"
             />
             <br />
             <Field
@@ -39,17 +39,17 @@ class Signup extends Component {
             />
             <br />
             <Field
-              name="firstName"
+              name="fullName"
               component="input"
               className="signin--signin__password"
-              placeholder="firstName"
+              placeholder="Full Name"
             />
             <br />
             <Field
-              name="lastName"
+              name="companyName"
               component="input"
               className="signin--signin__password"
-              placeholder="lastName"
+              placeholder="Company Name"
             />
             <br />
             <Field
@@ -57,14 +57,14 @@ class Signup extends Component {
               component="input"
               type="number"
               className="signin--signin__password"
-              placeholder="phone"
+              placeholder="Phone Number"
             />
             <br />
             <button className="signin--signin__button" action="submit">
               Sign Up{' '}
             </button>
           </form>
-          <p className="signin--orsign"> Or sign up with </p>
+          {/* <p className="signin--orsign"> Or sign up with </p> */}
           {/* <div className="signin--buttons">
             <button className="signin--buttons__facebook">
               <i className="fab fa-facebook-square" />facebook
@@ -99,5 +99,5 @@ Signup = connect(
 
 export default reduxForm({
   form: 'register', // Unique name for the form
-  fields: ['username', 'password', 'firstName', 'lastName', 'phone'],
+  fields: ['username', 'password', 'fullName', 'companyName', 'phone'],
 })(Signup);
