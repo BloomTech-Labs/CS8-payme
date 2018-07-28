@@ -25,7 +25,7 @@ class Signin extends Component {
         {/* <p className="signin-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p> */}
-          <img style={{maxHeight:'100%', width:'50%'}}src={signin} alt="img"/>
+          <img className="signin--img" src={signin} alt="img" />
           <div className="signin--box">
             <h1 className="signin--box--title">
               payMe

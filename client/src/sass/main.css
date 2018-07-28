@@ -533,6 +533,9 @@ e,'s are considered best option for media queries
     .signin {
       justify-content: flex-start;
       margin-left: 10rem; } }
+  @media (max-width: 56.25em) {
+    .signin {
+      margin-left: 5rem; } }
   .signin-headline {
     position: absolute;
     font-size: 5rem;
@@ -550,6 +553,9 @@ e,'s are considered best option for media queries
       .signin-foreground {
         width: 90rem;
         height: 80rem; } }
+  .signin--img {
+    maxHeight: 100%;
+    width: 50%; }
   .signin--box {
     background-color: #ffffff;
     display: flex;
