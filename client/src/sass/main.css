@@ -10,7 +10,7 @@
 - tab-port
 - tab-land
 - desktop 
-We're using em's instead of rems because rem tends to fail in som browsers
+We're using em's instead of rems because rem tends to fail in some browsers
 e,'s are considered best option for media queries 
 
 1em = 16px
@@ -196,48 +196,40 @@ e,'s are considered best option for media queries
 .invoice-list {
   justify-content: center;
   padding: 2rem 2rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  width: 96%;
+  height: 4rem;
+  border-bottom: 0.3px solid #c2c2c2;
+  display: flex;
+  align-items: center; }
+  .invoice-list-id {
+    font-weight: 700;
+    cursor: pointer; }
+    .invoice-list-id:hover {
+      color: #22CFB1; }
+  .invoice-list-box {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    width: 15rem; }
+  .invoice-list-hr {
+    border: 0.3px solid #c2c2c2; }
+  .invoice-list-pdf {
+    cursor: pointer; }
+    .invoice-list-pdf:hover {
+      color: #22CFB1; }
+  .invoice-list-reminder {
+    display: flex; }
+
+.invoice-list-headerdiv {
+  justify-content: center;
+  padding: 2rem 2rem;
   margin-left: 2rem;
   width: 100rem;
   height: 4rem;
   border: 0.3px solid #c2c2c2;
   display: flex;
-  justify-content: space-evenly;
   align-items: center; }
-  .invoice-list-id {
-    margin-left: 5rem;
-    width: 15rem;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: left; }
-    .invoice-list-id:hover {
-      color: #22CFB1; }
-  .invoice-list-box_name {
-    width: 15rem;
-    margin-left: 2rem;
-    font-size: 1.5rem; }
-  .invoice-list-company {
-    width: 15rem;
-    margin-left: 2rem;
-    font-size: 1.5rem; }
-  .invoice-list-hr {
-    border: 0.3px solid #c2c2c2; }
-  .invoice-list-pdf {
-    width: 15rem;
-    cursor: pointer; }
-    .invoice-list-pdf:hover {
-      color: #22CFB1; }
-  .invoice-list-reminder {
-    width: 10rem;
-    margin-left: 10rem;
-    display: flex; }
-
-.invoice-list-headers {
-  display: flex;
-  justify-content: space-between; }
-
-.invoice-list-headerdiv {
-  margin-left: 5rem;
-  margin-right: 12rem; }
 
 .fa-edit {
   cursor: pointer;
@@ -297,15 +289,14 @@ e,'s are considered best option for media queries
   display: flex;
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  margin-left: 10rem;
-  width: 120rem;
-  margin: 0 auto;
+  overflow: hidden;
+  height: 105rem;
+  margin: 0;
   position: relative; }
   .invoice-main {
     display: flex;
     flex-direction: column;
-    width: inherit; }
+    width: 100%; }
   .invoice-navigation {
     display: flex;
     width: 100%;
@@ -314,16 +305,16 @@ e,'s are considered best option for media queries
     background-color: #2E2E2E;
     height: 6rem; }
   .invoice-search_input {
-    margin-left: 4rem;
-    margin-right: 2rem;
+    margin-left: 10rem;
+    margin-right: 30rem;
     background-color: #ebebeb;
     padding: 0.4rem;
-    width: 20rem;
+    width: 30%;
     height: 4rem;
     border-radius: 1rem;
     border: 0.3px solid #c1c1c1; }
     .invoice-search_input:focus {
-      width: 25rem;
+      width: 40%;
       -webkit-transition: width 0.4s ease-in-out;
       transition: width 0.4s ease-in-out; }
   .invoice-sort {
@@ -426,8 +417,8 @@ e,'s are considered best option for media queries
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
-  height: 100rem;
+  width: 100%;
+  height: 105rem;
   margin: 0 auto;
   position: relative; }
   .view-invoice-main {
@@ -699,12 +690,14 @@ e,'s are considered best option for media queries
 .sidebar {
   color: white;
   background-color: #252525;
+  height: 100%;
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   padding-bottom: 30rem;
   position: relative;
-  min-width: 16rem;
+  min-width: 19rem;
   width: 16rem;
   text-align: center; }
   .sidebar--title {
@@ -722,10 +715,11 @@ e,'s are considered best option for media queries
     position: relative; }
 
 .sidebar-profile {
+  margin-top: 3rem;
   display: flex;
-  margin-left: 4rem;
+  margin-left: 6rem;
   border: 5px solid white;
-  box-shadow: 0px 0px 0px 5px lightgray;
+  box-shadow: 0px 0px 0px 5px rgba(211, 211, 211, 0.468);
   justify-content: center;
   width: 80px;
   height: 80px;
@@ -735,9 +729,10 @@ e,'s are considered best option for media queries
   margin-bottom: 2rem; }
 
 .sidebar-links {
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  padding-top: 1rem;
+  font-size: 1.6rem;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   height: 100%;
   width: 100%;
   background-color: rgba(63, 63, 63, 0.336); }
@@ -749,7 +744,7 @@ e,'s are considered best option for media queries
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
+  height: 105rem;
   margin: 0 auto;
   position: relative;
   display: flex; }
@@ -763,12 +758,12 @@ e,'s are considered best option for media queries
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
+  height: 105rem;
   margin: 0 auto;
   position: relative;
   display: flex; }
   .settings-container {
-    width: inherit; }
+    width: 100%; }
   .settings-navigation {
     display: flex;
     justify-content: flex-start;
@@ -809,7 +804,7 @@ e,'s are considered best option for media queries
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
+  height: 105rem;
   margin: 0 auto;
   position: relative;
   display: flex; }
@@ -823,11 +818,14 @@ e,'s are considered best option for media queries
   font-size: 4rem; }
 
 body {
+  height: 100vh;
+  color: black;
   margin: 0;
   padding: 0;
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif; }
 
 html {
+  height: 100vh;
   box-sizing: border-box;
   font-size: 62.5%; }
   @media (max-width: 75em) {

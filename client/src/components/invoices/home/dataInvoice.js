@@ -25,31 +25,38 @@ const Datainvoice = SortableElement(props => {
           <p>Weekly</p>
         </div>
 
-      ) : 
+      ) :
       (
         <div className="invoice-list">
-          <p className="invoice-list-id"onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>#{props.invoiceID}</p>
+          <div className="invoice-list-box" >
+            <p className="invoice-list-id"
+              onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
+              #{props.invoiceID}
+            </p>
+          </div>
           <div className="invoice-list-box" >
             <p className="invoice-list-box_name">{props.clientName}</p>
           </div>
-          <p className="invoice-list-company">{props.company}</p>
-          <div>
-            {/* <Link to="/pdf"> */}
-              <span className="invoice-data-pdf"
-                onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
-                Invoice PDF
-                <i className="fas fa-paperclip"></i>
-              </span>
-            {/* </Link> */}
+          <div className="invoice-list-box" >
+            <p className="invoice-list-company">{props.company}</p>
           </div>
-          <p className="invoice-list-reminder">Weekly
-          <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
-          <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
-          </p>
+          <div className="invoice-list-box" >
+            <span className="invoice-list-pdf"
+              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
+              Invoice PDF
+              <i className="fas fa-paperclip"></i>
+            </span>
+          </div>
+          <div className="invoice-list-box" >
+            <p className="invoice-list-reminder">Weekly
+            <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
+            <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
+            </p>
+          </div>
           <div>
-          {props.isPdfToggled ? (
-            props.history.push('/pdf')
-          ) : null}
+            {props.isPdfToggled ? (
+              props.history.push('/pdf')
+            ) : null}
           </div>
         </div>
       )}

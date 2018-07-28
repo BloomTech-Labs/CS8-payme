@@ -2,12 +2,14 @@
   color:white;
   background-color: $color-sidebar;
   // white-space: nowrap;
+  height: 100%;
+  overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   padding-bottom: 30rem;
   position: relative;
-  min-width: 16rem;
+  min-width: 19rem;
   width: 16rem;
   text-align: center;
   // align-items: center;
@@ -33,10 +35,11 @@
 }
 
 .sidebar-profile {
+  margin-top: 3rem;
   display: flex;
-  margin-left: 4rem;
+  margin-left: 6rem;
   border: 5px solid rgb(255, 255, 255);
-  box-shadow: 0px 0px 0px 5px rgb(211, 211, 211);
+  box-shadow: 0px 0px 0px 5px rgba(211, 211, 211, 0.468);
   justify-content: center;
   width: 80px;
   height: 80px;
@@ -47,9 +50,10 @@
 }
 
 .sidebar-links {
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  padding-top: 1rem;
+  font-size: 1.6rem;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   height: 100%;
   width: 100%;
   background-color: rgba(63, 63, 63, 0.336);

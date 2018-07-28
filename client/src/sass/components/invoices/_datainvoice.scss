@@ -59,71 +59,68 @@
 .invoice-list {
   justify-content: center;
   padding: 2rem 2rem;
-  margin-left: 2rem;
-  width: 100rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  width: 96%;
   height: 4rem;
-  border: 0.3px solid rgb(194, 194, 194);
+  border-bottom: 0.3px solid rgb(194, 194, 194);
   display: flex;
-  justify-content: space-evenly;
+  // justify-content: space-evenly;
   align-items: center;
 
 
   &-id {
-  margin-left: 5rem;
-  width: 15rem;
   font-weight: 700;
   cursor: pointer;
-  text-align: left;
 
-  &:hover {
-    color: $color-primary;
-  }
-  }
-
-  &-box {
-    &_name {
-      width: 15rem;
-      // text-align: center;
-      // background-color:pink;
-      margin-left: 2rem;
-      font-size: 1.5rem;    
+    &:hover {
+      color: $color-primary;
     }
   }
 
-  &-company {
+  &-box {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    // background-color: blue;
     width: 15rem;
-    margin-left: 2rem;
-    font-size: 1.5rem;    
+    &_name {
+      // text-align: center;
+      // background-color:pink;
+    }
   }
+
+  // &-company {
+  //   width: 15rem; 
+  // }
 
   &-hr {
     border: 0.3px solid rgb(194, 194, 194);
   }
 
   &-pdf {
-    width: 15rem;
     cursor: pointer;
     &:hover {
       color: $color-primary;
     }
   }
   &-reminder {
-    width: 10rem;
-    margin-left: 10rem;
     display: flex;
 
   }
 }
 
-.invoice-list-headers {
-  display: flex;
-  justify-content: space-between;
-
-}
 
 .invoice-list-headerdiv {
-  margin-left: 5rem;
-  margin-right: 12rem;
+  justify-content: center;
+  padding: 2rem 2rem;
+  margin-left: 2rem;
+  width: 100rem;
+  height: 4rem;
+  border: 0.3px solid rgb(194, 194, 194);
+  display: flex;
+  // justify-content: space-evenly;
+  align-items: center;
+
 }
 .fa-edit {
   cursor: pointer;

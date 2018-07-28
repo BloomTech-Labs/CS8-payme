@@ -106,7 +106,7 @@ class Invoices extends Component {
         <Sidebar />
         <div className="invoice-main">
           <div className="invoice-navigation">
-            <input
+            <input className="fas fa-search"
               // className="invoice-search"
               type="text"
               placeholder="Search Invoices"
@@ -132,14 +132,22 @@ class Invoices extends Component {
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
           {this.state.listView && invoices.length > 0 ? (
-            <div className="invoice-list-headerdiv">
-              <ul className="invoice-list-headers">
-                <li>Inovice Number</li>
-                <li>Client Name</li>
-                <li>Company</li>
-                <li>PDF</li>
-                <li>Reminder</li>
-              </ul>
+            <div className="invoice-list">
+              <div className="invoice-list-box">
+                <p>Inovice Number</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>ClientName</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>CompanyName</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>PDF</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>Reminder</p>
+              </div>
             </div>
           ) : null }
           {invoices.length > 0 ? (

@@ -19,36 +19,42 @@ class Signup extends Component {
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p>
         <div className="signup--container">
-          <h1 className="signin-notey">payME</h1>
-          <h1 className="signin--header">Sign Up With</h1>
+          <h1 className="signin--box--title">
+            payMe
+            <span className="signin--box--dot">
+            .
+            </span>
+            <br />
+          </h1>
+          <h1 className="signin--header">Sign Up</h1>
           <h3>{this.props.error}</h3>
-          <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
+          <form className="signin--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
             <Field
               type="email"
               name="username"
               component="input"
-              className="signin--signin__username"
+              className="signin--form_username"
               placeholder="Username"
             />
             <br />
             <Field
               name="password"
               component="input"
-              className="signin--signin__password"
+              className="signin--form_password"
               placeholder="Password"
             />
             <br />
             <Field
               name="firstName"
               component="input"
-              className="signin--signin__password"
+              className="signin--form_password"
               placeholder="firstName"
             />
             <br />
             <Field
               name="lastName"
               component="input"
-              className="signin--signin__password"
+              className="signin--form_password"
               placeholder="lastName"
             />
             <br />
@@ -56,11 +62,11 @@ class Signup extends Component {
               name="phone"
               component="input"
               type="number"
-              className="signin--signin__password"
+              className="signin--form_password"
               placeholder="phone"
             />
             <br />
-            <button className="signin--signin__button" action="submit">
+            <button className="signin--form_button" action="submit">
               Sign Up{' '}
             </button>
           </form>
