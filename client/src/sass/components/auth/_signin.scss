@@ -1,14 +1,22 @@
 
 .signin {
+  // height: 10rem;
   box-shadow: none;
-  height: 85rem;
+  width: 180rem;
+  height: 100rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  // border: 1px solid white;
   background-size: cover;
   position: relative;
-  
+  @include respond(tab-land) { // width < 1200 ?
+    justify-content: flex-start;// 1rem = 9px, 9/16 = 50%
+    margin-left: 10rem;
+  }
+  @include respond(tab-port) {
+  }
+  @include respond(phone)  {
+  }
   &-headline {
     position: absolute;
     font-size: 5rem;
@@ -16,17 +24,29 @@
     color: white;
     top: 18rem;
     left: 10rem;
+    
+  }
+
+  &-foreground {
+    display: flex;
+    width: 115rem;
+    height: 90rem;
+    color: white;
+    // background-color: blue;
+    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
+    @include respond(tab-port) {
+      width: 90rem;
+      height:80rem;
+    }
   }
   &--box {
-    margin-right: 8rem;
     background-color: #ffffff;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 40rem;
-    height: 55rem;
-    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
+    width: 100%;
+    height: 100%;
     position: relative;
 
     &--title {
@@ -42,6 +62,7 @@
 
   }
   &--header {
+    color: black;
     margin-bottom: 2rem;
   }
 
@@ -122,11 +143,12 @@
       border-radius: .5rem;
       border: 0.5px black;
     }
-    &--options {
+    &_options {
+      color: black;
       font-size: 1.2rem;
       margin-bottom: 2rem;
     }
-    &--notmember {
+    &_notmember {
       font-size: 1rem;
       margin-top: 5rem;
     }
