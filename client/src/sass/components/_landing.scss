@@ -46,6 +46,10 @@
     @include respond(tab-land) { // width < 1200 ?
       left: 18rem;// 1rem = 9px, 9/16 = 50%
     }
+    @include respond(tab-port) {
+      top: 32rem;
+      left: 15rem;
+    }
     @include respond(phone) {
       left: 5rem;
     }
@@ -66,8 +70,8 @@
     font-size: 1.2rem;
     background-color: #435c94;
     color: $color-white;
-    height: 4rem;
-    width: 12rem;
+    height: 5rem;
+    width: 15rem;
     border-radius: .5rem;
     position: absolute;
     top: 68rem;
@@ -78,6 +82,10 @@
     @include respond(tab-land) { // width < 1200 ?
       // top: 32rem;
       left: 65rem;// 1rem = 9px, 9/16 = 50%
+    }
+    @include respond(tab-port) {
+
+      left: 50rem;
     }
     @include respond(phone) { // width < 1200 ?
       left: 20rem;
@@ -93,23 +101,27 @@
   font-size: 1.2rem;
   background-color: #435c94;
   color: $color-white;
-  height: 4rem;
-  width: 12rem;
+  height: 5rem;
+  width: 15rem;
   border-radius: .5rem;
   position: absolute;
   top: 68rem;
-  left: 90rem;
+  left: 95rem;
   font-size: 1.3rem;
   color: rgb(0, 0, 0);
   background-color: $color-white;
 
   @include respond(tab-land) { // width < 1200 ?
     // top: 32rem;
-    left: 80rem;// 1rem = 9px, 9/16 = 50%
+    left: 85rem;// 1rem = 9px, 9/16 = 50%
+  }
+  @include respond(tab-port) {
+
+    left: 70rem;
   }
 
   @include respond(phone) { // width < 1200 ?
-    left: 35rem;
+    left: 40rem;
     top: 50rem;
   }
 }

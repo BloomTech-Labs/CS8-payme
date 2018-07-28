@@ -53,6 +53,10 @@ e,'s are considered best option for media queries
     @media (max-width: 75em) {
       .landing-slogan {
         left: 18rem; } }
+    @media (max-width: 56.25em) {
+      .landing-slogan {
+        top: 32rem;
+        left: 15rem; } }
     @media (max-width: 37.5em) {
       .landing-slogan {
         left: 5rem; } }
@@ -67,8 +71,8 @@ e,'s are considered best option for media queries
     font-size: 1.2rem;
     background-color: #435c94;
     color: #fff;
-    height: 4rem;
-    width: 12rem;
+    height: 5rem;
+    width: 15rem;
     border-radius: .5rem;
     position: absolute;
     top: 68rem;
@@ -78,6 +82,9 @@ e,'s are considered best option for media queries
     @media (max-width: 75em) {
       .landing-signin {
         left: 65rem; } }
+    @media (max-width: 56.25em) {
+      .landing-signin {
+        left: 50rem; } }
     @media (max-width: 37.5em) {
       .landing-signin {
         left: 20rem;
@@ -88,21 +95,24 @@ e,'s are considered best option for media queries
   font-size: 1.2rem;
   background-color: #435c94;
   color: #fff;
-  height: 4rem;
-  width: 12rem;
+  height: 5rem;
+  width: 15rem;
   border-radius: .5rem;
   position: absolute;
   top: 68rem;
-  left: 90rem;
+  left: 95rem;
   font-size: 1.3rem;
   color: black;
   background-color: #fff; }
   @media (max-width: 75em) {
     .landing-signup {
-      left: 80rem; } }
+      left: 85rem; } }
+  @media (max-width: 56.25em) {
+    .landing-signup {
+      left: 70rem; } }
   @media (max-width: 37.5em) {
     .landing-signup {
-      left: 35rem;
+      left: 40rem;
       top: 50rem; } }
 
 .invoice-update {
@@ -510,29 +520,21 @@ e,'s are considered best option for media queries
   margin-left: .5rem;
   color: rgba(34, 207, 178, 0.413); }
 
-.sign-layout {
-  background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
-  margin: 0 auto;
-  position: relative; }
-
 .signin {
-  margin-right: 8rem;
-  border: 1px solid black;
   box-shadow: none;
-  width: 110rem;
   height: 85rem;
   display: flex;
   justify-content: flex-end;
-  align-content: space-evenly;
   align-items: center;
-  border: solid white;
-  background-color: #ffffff;
-  border: 1px solid white; }
-  .signin--image {
-    max-width: 150rem; }
+  background-size: cover;
+  position: relative; }
+  .signin-headline {
+    position: absolute;
+    font-size: 5rem;
+    font-weight: 700;
+    color: white;
+    top: 18rem;
+    left: 10rem; }
   .signin--box {
     margin-right: 8rem;
     background-color: #ffffff;
@@ -581,38 +583,39 @@ e,'s are considered best option for media queries
         height: 1.3rem;
         align-self: auto;
         margin-right: .5rem; }
-  .signin--orsign {
+
+.signin--form {
+  font-size: 1.2rem;
+  cursor: pointer; }
+  .signin--form:hover {
+    cursor: pointer; }
+  .signin--form_username {
+    padding: .5rem;
+    height: 3.5rem;
+    width: 20rem;
+    border-radius: .5rem;
+    margin-bottom: .5rem;
+    border: 0.1rem solid #dfdfdf; }
+  .signin--form_password {
+    padding: .5rem;
+    height: 3.5rem;
+    width: 20rem;
+    border-radius: .5rem;
+    margin-bottom: .5rem;
+    border: 0.1rem solid #dfdfdf; }
+  .signin--form_button {
+    padding: .5rem;
+    height: 3rem;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-size: 1rem;
+    border-radius: .5rem;
+    border: 0.5px black; }
+  .signin--form--options {
     font-size: 1.2rem;
     margin-bottom: 2rem; }
-  .signin--signin {
-    font-size: 1.2rem;
-    cursor: pointer; }
-    .signin--signin:hover {
-      cursor: pointer; }
-    .signin--signin__username {
-      padding: .5rem;
-      height: 3.5rem;
-      width: 20rem;
-      border-radius: .5rem;
-      margin-bottom: .5rem;
-      border: 0.1rem solid #dfdfdf; }
-    .signin--signin__password {
-      padding: .5rem;
-      height: 3.5rem;
-      width: 20rem;
-      border-radius: .5rem;
-      margin-bottom: .5rem;
-      border: 0.1rem solid #dfdfdf; }
-    .signin--signin__button {
-      padding: .5rem;
-      height: 3rem;
-      width: 100%;
-      background-color: black;
-      color: white;
-      font-size: 1rem;
-      border-radius: .5rem;
-      border: 0.5px black; }
-  .signin--notmember {
+  .signin--form--notmember {
     font-size: 1rem;
     margin-top: 5rem; }
 
@@ -647,15 +650,6 @@ e,'s are considered best option for media queries
     font-size: 3rem;
     position: absolute;
     top: 4.9rem; }
-
-.signup {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.315);
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  width: 120rem;
-  margin: 0 auto;
-  position: relative; }
 
 .notfound-layout {
   display: flex;

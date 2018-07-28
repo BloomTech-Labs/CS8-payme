@@ -19,8 +19,8 @@ class Signin extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="signup" style={styles}>
-        <p className="signup-headline">
+      <div className="signin" style={styles}>
+        <p className="signin-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p>
         <div className="signin--box">
@@ -33,11 +33,11 @@ class Signin extends Component {
           </h1>
           <h1 className="signin--header">Sign In</h1>
           <h3>{this.props.message}</h3>
-          <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
+          <form className="signin--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
             <Field
               name="username"
               component="input"
-              className="signin--signin__username"
+              className="signin--form_username"
               placeholder="Username"
               required
             />
@@ -45,16 +45,16 @@ class Signin extends Component {
             <Field
               name="password"
               component="input"
-              className="signin--signin__password"
+              className="signin--form_password"
               placeholder="Password"
               required
             />
             <br />
-            <button className="signin--signin__button" action="submit" value="Sign In">
+            <button className="signin--form_button" action="submit" value="Sign In">
               Sign In
             </button>
           </form>
-          <p className="signin--orsign"> Or sign In with </p>
+          <p className="signin--form_options"> Or sign In with </p>
           {/* <div className="signin--buttons">
             <button className="signin--buttons__facebook">
               <i className="fab fa-facebook-square" />facebook
@@ -67,7 +67,7 @@ class Signin extends Component {
               />Google
             </button>
           </div> */}
-          <p className="signin--notmember">
+          <p className="signin--form_notmember">
             Not a member? <Link to="/signup"> Sign up </Link>
           </p>
         </div>
