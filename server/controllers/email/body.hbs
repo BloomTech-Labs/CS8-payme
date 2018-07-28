@@ -1,0 +1,67 @@
+<!DOCTYPE html public>
+<html>
+  <head>
+    <title>payMe. | Invoice</title>
+      <style>
+        html,body{
+          height:1000px;
+        }
+        .background {
+	        background: url("https://i.imgur.com/a4mPupi.jpg") no-repeat top;
+	        height: 100%;
+        }
+        .wrap {
+          position: absolute;
+          text-align: center;
+          width: 25%;
+          top: 30%;
+          right: 50%;
+        }
+        #feat {
+        	background: #22CFB1;
+        	font-size:x-large;
+        	width: 65%;
+        	padding: 4%;
+        	border-radius: 10px;
+        }
+        #feat:hover {
+        	background: #15959F;
+        }
+        #money {
+          font-size: 50px;
+        }
+        a {
+        	text-decoration: none;
+        	color: white;
+        }
+      </style>
+  </head>
+  <body>
+    <div class="background">
+      <div class="wrap">
+      <div class="greet">
+        <h1>Hello<br> {{name}}!</h1>
+      </div>
+      <br>
+      <div class="message">
+        <h2>&nbsp;Our records are showing<br>
+        that you have an outstanding<br>
+          invoice with {{company}}<br>
+          in the amount of:</h2>
+        </div>
+        <br>
+        <div class="amount">
+            <h1 id="money">${{amount}}</h1>
+        </div>
+        <br>
+        <div class="below">
+            <h3>&nbsp;To pay your invoice,<br>
+        simply click below...</h3>
+      </div>
+      <div class="button">
+        <button id="feat"><a href="https://givememymoney.herokuapp.com/payinvoice?id={{invoice}}"><b>Pay Invoice</b></a></button>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>

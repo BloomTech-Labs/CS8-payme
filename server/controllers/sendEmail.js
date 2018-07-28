@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const Invoice = require("../models/invoices");
-const fs = require('fs');
+const hbs = require('nodemailer-express-handlebars');
 
 // Generate test SMTP service account from ethereal.email
 // Only needed if you don't have a real mail account for testing
@@ -8,26 +8,15 @@ const fs = require('fs');
 const sendEmail = (req, res) => {
 	// pass in message to send, invoice ID into post request
 	const { // references the emailMessage.html file
-		message = function onRequest(req, res) {
-			res.status(200, {'Content-Type': 'text/html'});
-			fs.readFile('./emailMessage.html', null, function(error, data) {
-				if (error) {
-					res.status(404);
-					res.json('File Not found');
-				} else {
-					res.json(data);
-				}
-				res.end();
-			});
-		},
+		message,
 		invoiceID // uncomment these once you have appropriate IDs from database
 		// userID
 	} = req.body;
 
-	if (!message || !invoiceID) {
+	if (!invoiceID) {
 		return res
 			.status(422)
-			.json({ message: "Message and Invoice ID required." });
+			.json({ message: "Invoice ID required." });
 	}
 
 	Invoice.findById(invoiceID) // find the user by id passed in on post
@@ -46,16 +35,27 @@ const sendEmail = (req, res) => {
 					}
 				});
 
+				transporter.use('compile',hbs({
+					viewPath: 'server/controllers/email',
+					extName: '.hbs'
+				}))
+
 				if (invoice.email.address === undefined)
 					return res.status(404).json({ error: "No email found on Invoice." });
 				// setup email data with unicode symbols
 				let mailOptions = {
 					from: '"GiveMeMyMoney" <Now@givememymoney.com>', // sender address
 					to: `${invoice.email.address}`, // list of receivers
-					subject: "Hello ✔", // Subject line
-					text: `${message}`, // plain text body
-					html: `<b>${message} <br /> ${JSON.stringify(invoice)}</b>` // html body
+					subject: "You Have An Outstanding Invoice", // Subject line
+					template: 'body',
+					context: {
+						name: `${invoice.clientName}`,
+						amount: `${invoice.totalAmount}`,
+						invoice: `${invoiceID}`,
+						company: `${invoice.companyName}`
+					} // html body
 				};
+
 
 				// send mail with defined transport object
 				transporter.sendMail(mailOptions, (error, info) => {
