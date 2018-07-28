@@ -563,6 +563,9 @@ e,'s are considered best option for media queries
     width: 100%;
     height: 100%;
     position: relative; }
+    @media (max-width: 37.5em) {
+      .signin--box {
+        margin-right: 10rem; } }
     .signin--box--title {
       color: black;
       border-right: 0.3px solid rgba(255, 255, 255, 0.66);
