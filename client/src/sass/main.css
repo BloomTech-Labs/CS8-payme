@@ -553,9 +553,16 @@ e,'s are considered best option for media queries
       .signin-foreground {
         width: 90rem;
         height: 80rem; } }
+    @media (max-width: 37.5em) {
+      .signin-foreground {
+        width: 50rem;
+        box-shadow: none; } }
   .signin--img {
-    maxHeight: 100%;
+    max-Height: 100%;
     width: 50%; }
+    @media (max-width: 37.5em) {
+      .signin--img {
+        max-Height: 0; } }
   .signin--box {
     background-color: #ffffff;
     display: flex;
@@ -568,7 +575,7 @@ e,'s are considered best option for media queries
     .signin--box--title {
       color: black;
       border-right: 0.3px solid rgba(255, 255, 255, 0.66);
-      font-size: 3rem;
+      font-size: 6rem;
       height: 6rem; }
     .signin--box--dot {
       color: #22CFB1;
@@ -605,39 +612,36 @@ e,'s are considered best option for media queries
         margin-right: .5rem; }
 
 .signin--form {
-  font-size: 1.2rem;
   cursor: pointer; }
   .signin--form:hover {
     cursor: pointer; }
   .signin--form_username {
     padding: .5rem;
-    height: 3.5rem;
-    width: 20rem;
+    height: 5rem;
+    width: 28rem;
     border-radius: .5rem;
     margin-bottom: .5rem;
     border: 0.1rem solid #dfdfdf; }
   .signin--form_password {
     padding: .5rem;
-    height: 3.5rem;
-    width: 20rem;
+    height: 5rem;
+    width: 28rem;
     border-radius: .5rem;
     margin-bottom: .5rem;
     border: 0.1rem solid #dfdfdf; }
   .signin--form_button {
     padding: .5rem;
-    height: 3rem;
+    height: 4.5rem;
     width: 100%;
     background-color: black;
     color: white;
-    font-size: 1rem;
     border-radius: .5rem;
     border: 0.5px black; }
   .signin--form_options {
     color: black;
-    font-size: 1.2rem;
     margin-bottom: 2rem; }
   .signin--form_notmember {
-    font-size: 1rem;
+    color: black;
     margin-top: 5rem; }
 
 .signup {
