@@ -5,12 +5,12 @@ const User = require('../../models/users');
 const { makeToken } = require('../../config/auth');
 
 const register = (req, res) => {
-  const { username, password, phone, firstName, lastName } = req.body;
+  const { username, password, phone, fullName, companyName } = req.body;
   let user = {};
   if (!username || !password) {
     res.status(422).json({ message: 'Email and Password are required.' });
   } else {
-    user = { username, password, phone, firstName, lastName };
+    user = { username, password, phone, fullName, companyName };
   }
 
   User.findOne({ username }).then(response => {

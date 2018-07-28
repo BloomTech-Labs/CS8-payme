@@ -3,7 +3,8 @@ const mongooseTypes = require('mongoose-types');
 
 mongooseTypes.loadTypes(mongoose, 'email');
 
-const { Email } = mongoose.Schema.Types;
+const { Email, ObjectId } = mongoose.Schema.Types;
+const Reminder = require('./Reminder.js');
 
 const Invoice = new mongoose.Schema(
   {
@@ -23,7 +24,7 @@ const Invoice = new mongoose.Schema(
       type: String,
       required: true,
     },
-    pdf: Array,
+    img: { data: Buffer, contentType: String },
     totalAmount: {
       type: Number,
       required: true,
@@ -43,6 +44,12 @@ const Invoice = new mongoose.Schema(
       //   html: String, // html body
       // },
     },
+    admin: {
+      type: ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    reminders: [{ type: ObjectId, ref: 'Reminder' }],
   },
   {
     timestamps: true,

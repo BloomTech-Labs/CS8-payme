@@ -69,6 +69,7 @@ class AdminBilling extends Component {
           </div>
         </form>
         {this.checkoutButton()}
+        <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a>
       </div>
     );
   }

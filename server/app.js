@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const fileUpload = require('express-fileupload');
 
 const routes = require('./routes/');
 // const keys = require('./config/keys');
@@ -25,6 +26,7 @@ mongoose
   .catch(err => {
     console.log('Error connecting to DB', err);
   });
+
 app.listen(port, err => {
   console.log(`connected to the server port ${port}`);
 });
@@ -34,6 +36,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(helmet());
 app.use(cors());
+app.use(fileUpload());
 
 // Unncomment to have scheduler run continuously
 scheduler.start();
@@ -44,5 +47,5 @@ routes(app);
 // For Heroku Build
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../', 'client', 'build', 'index.html'));
 });

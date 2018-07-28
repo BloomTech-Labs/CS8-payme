@@ -123,7 +123,8 @@
   .invoice-data-pdf {
     display: flex;
     justify-content: flex-end;
-    cursor: pointer; }
+    cursor: pointer;
+    color: #22CFB1; }
 
 .fa-edit {
   cursor: pointer;
@@ -295,11 +296,11 @@
     height: 35rem;
     margin: 15rem auto; }
   .invoice-success {
-    color: black;
+    color: #E86C62;
     display: flex;
     justify-content: center;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     animation: invoice-success 3s 1;
     -webkit-animation: invoice-success 3s 1;
     animation-fill-mode: forwards;
@@ -419,26 +420,39 @@
 .doc-preview {
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: rgba(162, 162, 162, 0.05);
+  margin: 0 auto;
+  background-color: black;
+  background: rgba(0, 0, 0, 0.756);
   width: 100%;
-  height: 100%; }
+  min-height: 120rem;
+  overflow: scroll; }
 
-.doc-structure {
-  border-radius: .7rem;
-  font-size: 1.3rem;
-  background: rgba(255, 255, 255, 0.167);
-  border: 0.3px solid #c2c2c2;
-  height: 70rem;
-  width: 120rem;
+.doc-container {
+  margin: 0 auto;
+  height: 100%;
   padding: 1rem; }
 
-.pasdda {
-  font-size: 3rem;
-  cursor: pointer; }
+.doc-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center; }
+  .doc-content_back {
+    color: white;
+    cursor: pointer; }
+  .doc-content_newtab {
+    color: #22CFB1; }
+  .doc-content_button {
+    border: none;
+    font-size: 1.2rem;
+    background-color: #E86C62;
+    color: white;
+    height: 3.5rem;
+    width: 9rem;
+    margin-right: 1.5rem;
+    border-radius: .5rem; }
+
+.doc-image {
+  color: rgba(0, 0, 0, 0.756); }
 
 .fa-paperclip {
   margin-left: .5rem;
@@ -453,6 +467,7 @@
   position: relative; }
 
 .signin {
+  margin-right: 8rem;
   border: 1px solid black;
   box-shadow: none;
   width: 110rem;
@@ -467,16 +482,24 @@
   .signin--image {
     max-width: 150rem; }
   .signin--box {
-    margin-left: 10rem;
+    margin-right: 8rem;
     background-color: #ffffff;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
     width: 40rem;
-    height: 60rem;
+    height: 55rem;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
     position: relative; }
+    .signin--box--title {
+      color: black;
+      border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+      font-size: 3rem;
+      height: 6rem; }
+    .signin--box--dot {
+      color: #22CFB1;
+      font-size: 6rem; }
   .signin--header {
     margin-bottom: 2rem; }
   .signin--buttons {
@@ -549,7 +572,7 @@
   align-items: center;
   background-size: cover;
   position: relative; }
-  .signup--box {
+  .signup--container {
     margin-right: 8rem;
     background-color: #ffffff;
     display: flex;
@@ -724,6 +747,9 @@
     justify-content: center;
     align-items: center;
     width: 100%; }
+
+.admin-title {
+  font-size: 4rem; }
 
 body {
   margin: 0;

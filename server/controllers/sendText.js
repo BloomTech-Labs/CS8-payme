@@ -1,12 +1,9 @@
 require('dotenv').load();
 
-// const twilio = require('twilio');
-// const accountSid = process.env.TWILIO_SID;
-// const authToken = process.env.TWILIO_TOKEN;
-
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
 const Reminder = require('../models/Reminder');
+const Invoice = require('../models/invoices');
 
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
@@ -14,26 +11,22 @@ const getTimeZones = function() {
 
 // POST: /api/sms create a reminder
 const createReminder = (req, res) => {
-  const { name, phoneNumber, notification, message, timeZone } = req.body;
-  const time = moment(req.body.time, 'MM-DD-YYYY hh:mma');
+  const { name, phoneNumber, message, remind } = req.body;
+  // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
     name: name,
     phoneNumber: phoneNumber,
-    notification: notification,
     message: message,
-    timeZone: timeZone,
-    time: time
+    remind: remind
   });
-  reminder
-    .save()
-    .then(reminder => {
-      // res.redirect('/');
-      res.json(reminder);
-      console.log(reminder);
-    })
-    .catch(err => {
-      res.status(500).json({ message: 'Server error couldnt send' });
-    });
+  const { id } = req.params;
+  reminder.save().then(newreminder => {
+    Invoice.findByIdAndUpdate(id, { $addToSet: { reminders: newreminder._id } })
+      .populate('reminders')
+      .then(newinvoice => {
+        res.send(newinvoice);
+      });
+  });
 };
 // GET: /api/sms/:id
 // if reminder was deleted, it will redirect back to create

@@ -3,12 +3,18 @@ const Invoice = require('../../models/invoices');
 
 const payInvoice = async function(req, res) {
   try {
-    const { amount, invoiceId, source, description } = req.body;
+    const { amount, invoiceId, source, description, code, scope } = req.body;
+    // const { code, scope } = req.body.admin;
+    console.log(req.body);
     let { status } = await stripe.charges.create({
       amount,
       currency: 'usd',
       description,
       source,
+      destination: {
+        amount: amount * 0.95,
+        account: code,
+      },
     });
     console.log(`status: ${status}`);
     if (status === 'succeeded') {
