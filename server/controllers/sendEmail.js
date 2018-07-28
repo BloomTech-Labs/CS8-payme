@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const Invoice = require("../models/invoices");
+const user = require("../models/users");
 const hbs = require('nodemailer-express-handlebars');
 
 // Generate test SMTP service account from ethereal.email
@@ -52,7 +53,7 @@ const sendEmail = (req, res) => {
 						name: `${invoice.clientName}`,
 						amount: `${invoice.totalAmount}`,
 						invoice: `${invoiceID}`,
-						company: `${invoice.companyName}`
+						company: `${user.companyName}`
 					} // html body
 				};
 
