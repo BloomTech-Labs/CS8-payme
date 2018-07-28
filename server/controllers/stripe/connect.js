@@ -12,8 +12,9 @@ const authorizeConnect = (req, res) => {
   req.userId = req.user._id;
   console.log(`userid/req state: ${req.state}`);
 
-  const { fullName, companyName } = req.user;
-  fullName = fullName.split(' ');
+  const { companyName, phone } = req.user;
+  const fullName = req.user.fullName.split(' ');
+
   const email = req.user.username || undefined;
 
   // const phone = req.user.phone.number || undefined;
@@ -28,7 +29,7 @@ const authorizeConnect = (req, res) => {
   };
   parameters = Object.assign(parameters, {
     'stripe_user[first_name]': fullName[0] || undefined,
-    'stripe_user[last_name]': fullName[fullname.length - 1] || undefined,
+    'stripe_user[last_name]': fullName[fullName.length - 1] || undefined,
     'stripe_user[email]': email || undefined,
     'stripe_user[business_name]': companyName || undefined,
     'stripe_user[phone]': phone || undefined,

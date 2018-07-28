@@ -56,6 +56,16 @@ class Invoices extends Component {
     this.setState({ listView: false, boxView: true });
   };
 
+  addInvoiceCheck = () => {
+    const payment = new Date().getTime() - this.props.admin.subscription;
+    if (payment < 0 || this.props.admin.invoiceCredits > 0) {
+      this.props.history.push('/addinvoice');
+    } else {
+      alert('Please purchase a subscription or invoice credit.');
+      this.props.history.push('/billing');
+    }
+  };
+
   render() {
     // Serach Invoices
     const { invoices } = this.props;
@@ -107,11 +117,16 @@ class Invoices extends Component {
               onChange={this.updateSearch}
             />
             <hr className="navigation-line" />
-            <Link to="/addinvoice">
+            <div onClick={this.addInvoiceCheck}>
               <p className="invoice-new">
                 Add Invoice<i className="fas fa-plus  fa-fw" />
               </p>
-            </Link>
+            </div>
+            {/* <Link to="/addinvoice">
+              <p className="invoice-new">
+                Add Invoice<i className="fas fa-plus  fa-fw" />
+              </p>
+            </Link> */}
             <hr className="navigation-line" />
             <p className="invoice-sort">
               Sort<br /> Data<i className="fas fa-sort fa-fw" />
@@ -170,6 +185,7 @@ const mapStateToProps = state => {
   return {
     invoices: state.invoice.invoices,
     message: state.invoice.success,
+    admin: state.auth.admin,
   };
 };
 
