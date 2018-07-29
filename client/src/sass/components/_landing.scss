@@ -1,17 +1,15 @@
 .landing {
   background-color: $color-white;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  // justify-content: center;
   margin: 0 auto;
-  // position: relative;
-  // &-header {
-  //   background-color: #222;
-  //   color: white;
-  // }
   
   &-container {
     position: relative;
-    width: 180rem;
+    width: 200rem;
+    // @include respond(desktop) { // width < 1200 ?
+    //   width: 180rem;
+    // }
   }
 
   &-title {
@@ -47,17 +45,21 @@
       left: 18rem;// 1rem = 9px, 9/16 = 50%
     }
     @include respond(tab-port) {
-      top: 32rem;
       left: 15rem;
     }
     @include respond(phone) {
-      left: 5rem;
+      left: 7rem;
     }
   }
 
   &-image {
-    max-width: 100%;
-    height: 106rem;
+    margin: 0 auto;
+    
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+    width: 100%;
+    @include respond(tab-land) { // width < 1200 ?
+      width: 180rem;// 1rem = 9px, 9/16 = 50%
+    }
     @include respond(phone) { // width < 1200 ?
       max-width: none;
       // max-height: 120rem;

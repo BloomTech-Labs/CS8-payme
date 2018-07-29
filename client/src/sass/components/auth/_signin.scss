@@ -1,8 +1,9 @@
 
 .signin {
   // height: 10rem;
+  margin: 0 auto;
   box-shadow: none;
-  width: 180rem;
+  width: 160rem;
   height: 100rem;
   display: flex;
   justify-content: center;
@@ -25,8 +26,12 @@
     font-weight: 700;
     color: white;
     top: 18rem;
-    left: 10rem;
-    
+    left: 50rem;
+  }
+  
+  &-headline2 {
+    background-color: blue;
+
   }
 
   &-foreground {

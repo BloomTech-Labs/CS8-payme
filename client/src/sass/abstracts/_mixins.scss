@@ -30,6 +30,9 @@ e,'s are considered best option for media queries
     @media (max-width: 75em) { @content}; // 1200px
   }
   @if $breakpoint == desktop {
-    @media (min-width: 112.5em) { @content}; // 1800px
+    @media (min-width: 130em) { @content}; // 1800px
   }
+  // @if $breakpoint == xl {
+  //   @media (max-width: 130em) { @content}; // 1800px
+  // }
 }

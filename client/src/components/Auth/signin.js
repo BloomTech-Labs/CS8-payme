@@ -7,10 +7,10 @@ import { login } from '../../actions/auth';
 import signin from './signin.jpg';
 import backgroundImage from './background.jpg';
 
-// const styles = {
-//   backgroundImage: `url(${backgroundImage})`,
-//   backgroundSize: 'cover',
-// };
+const styles = {
+  backgroundImage: `url(${backgroundImage})`,
+  backgroundSize: 'cover',
+};
 
 class Signin extends Component {
   handleFormSubmit = ele => {
@@ -20,11 +20,11 @@ class Signin extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="signin">
+      <div className="signin" styles={{styles}}>
         <div className="signin-foreground">
-        {/* <p className="signin-headline">
-          Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
-        </p> */}
+        <p className="signin-headline">
+          Sign in<br /> <span className="signup-headline2">and join us</span>
+        </p>
           <img className="signin--img" src={signin} alt="img" />
           <div className="signin--box">
             <h1 className="signin--box--title">
