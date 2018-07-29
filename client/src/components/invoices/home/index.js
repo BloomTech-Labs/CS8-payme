@@ -52,17 +52,6 @@ class Invoices extends Component {
     this.setState({ listView: false, boxView: true });
   }
 
-  // PDF handler
-  togglePDF = (id, show) => {
-    console.log(show);
-    if (show === 'showpdf') {
-      return this.props.getInvoice(id),
-      this.setState({ pdfToggle: true });
-    }
-    this.setState({ pdfToggle: false });
-    this.props.resetCurrInv();
-  }
-
   render() {
     // Serach Invoices
     const { invoices } = this.props;

@@ -5,11 +5,12 @@ import { Field, reduxForm } from 'redux-form';
 import { login } from '../../actions/auth';
 
 import signin from './signin.jpg';
-import backgroundImage from './background.jpg';
+import backgroundImage from './signin.jpg';
 
 const styles = {
   backgroundImage: `url(${backgroundImage})`,
   backgroundSize: 'cover',
+  width: '100%',
 };
 
 class Signin extends Component {
@@ -20,7 +21,7 @@ class Signin extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="signin" styles={{styles}}>
+      <div className="signin" style={styles}>
         <div className="signin-foreground">
         <p className="signin-headline">
           Sign in<br /> <span className="signup-headline2">and join us</span>

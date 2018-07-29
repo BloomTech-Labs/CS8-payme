@@ -518,19 +518,12 @@ e,'s are considered best option for media queries
   margin: 0 auto;
   box-shadow: none;
   width: 160rem;
-  height: 100rem;
+  height: 110rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
   position: relative; }
-  @media (max-width: 75em) {
-    .signin {
-      justify-content: flex-start;
-      margin-left: 10rem; } }
-  @media (max-width: 56.25em) {
-    .signin {
-      margin-left: 5rem; } }
   .signin-headline {
     position: absolute;
     font-size: 5rem;
@@ -645,6 +638,7 @@ e,'s are considered best option for media queries
     margin-top: 5rem; }
 
 .signup {
+  background-color: blue;
   box-shadow: none;
   height: 85rem;
   margin: 0 auto;

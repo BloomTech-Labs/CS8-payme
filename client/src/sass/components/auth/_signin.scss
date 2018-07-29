@@ -4,18 +4,18 @@
   margin: 0 auto;
   box-shadow: none;
   width: 160rem;
-  height: 100rem;
+  height: 110rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
   position: relative;
   @include respond(tab-land) { // width < 1200 ?
-    justify-content: flex-start;// 1rem = 9px, 9/16 = 50%
-    margin-left: 10rem;
+    // justify-content: flex-start;// 1rem = 9px, 9/16 = 50%
+    // margin-left: 10rem;
   }
   @include respond(tab-port) {
-    margin-left: 5rem;
+    // margin-left: 5rem;
   }
   @include respond(phone)  {
     

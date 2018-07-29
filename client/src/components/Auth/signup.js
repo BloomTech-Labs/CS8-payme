@@ -5,11 +5,12 @@ import { Field, reduxForm } from 'redux-form';
 import { register } from '../../actions/auth';
 import signup from './signup.jpg';
 
-import backgroundImage from './signup.jpg';
+import backgroundImage from './bg.jpg';
 
 const styles = {
   backgroundImage: `url(${backgroundImage})`,
   backgroundSize: 'cover',
+  width: '100%',
 };
 
 class Signup extends Component {
@@ -21,7 +22,7 @@ class Signup extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="signup" >
+      <div className="signup" style={styles}>
         {/* <p className="signup-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p> */}
