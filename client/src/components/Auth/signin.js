@@ -9,8 +9,7 @@ import backgroundImage from './signin.jpg';
 
 const styles = {
   backgroundImage: `url(${backgroundImage})`,
-  backgroundSize: 'cover',
-  width: '100%',
+  // backgroundSize: 'cover',
 };
 
 class Signin extends Component {
@@ -23,10 +22,13 @@ class Signin extends Component {
     return (
       <div className="signin" style={styles}>
         <div className="signin-foreground">
-        <p className="signin-headline">
-          Sign in<br /> <span className="signup-headline2">and join us</span>
-        </p>
-          <img className="signin--img" src={signin} alt="img" />
+          <div className="signin-imgbox">
+            <img className="signin--img" src={signin} alt="img" />
+            <p className="signin-headline">
+              Sign in<br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris</span>
+            </p>
+          </div>
           <div className="signin--box">
             <h1 className="signin--box--title">
               payMe

@@ -517,42 +517,53 @@ e,'s are considered best option for media queries
 .signin {
   margin: 0 auto;
   box-shadow: none;
-  width: 160rem;
+  width: 100%;
   height: 110rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-size: cover;
-  position: relative; }
-  .signin-headline {
-    position: absolute;
-    font-size: 5rem;
-    font-weight: 700;
-    color: white;
-    top: 18rem;
-    left: 50rem; }
-  .signin-headline2 {
-    background-color: blue; }
+  background-size: cover; }
   .signin-foreground {
     display: flex;
     width: 115rem;
     height: 90rem;
     color: white;
+    background-color: blue;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294); }
     @media (max-width: 56.25em) {
       .signin-foreground {
-        width: 90rem;
-        height: 80rem; } }
+        width: 90rem; } }
     @media (max-width: 37.5em) {
       .signin-foreground {
         width: 50rem;
         box-shadow: none; } }
+  .signin-imgbox {
+    display: flex;
+    width: 115rem;
+    height: 90rem;
+    position: relative; }
   .signin--img {
     max-Height: 100%;
-    width: 50%; }
+    width: 100%; }
     @media (max-width: 37.5em) {
       .signin--img {
         max-Height: 0; } }
+  .signin-headline {
+    margin: 5rem 5rem;
+    position: absolute;
+    font-size: 5rem;
+    font-weight: 700;
+    color: white;
+    top: 15rem;
+    left: 0rem;
+    line-height: 50%; }
+    @media (max-width: 37.5em) {
+      .signin-headline {
+        width: 0;
+        color: transparent; } }
+  .signin-headline2 {
+    color: #243030;
+    font-size: 2rem; }
   .signin--box {
     background-color: #ffffff;
     display: flex;
@@ -562,9 +573,13 @@ e,'s are considered best option for media queries
     width: 100%;
     height: 100%;
     position: relative; }
+    @media (max-width: 56.25em) {
+      .signin--box {
+        height: 90rem;
+        width: 125%; } }
     @media (max-width: 37.5em) {
       .signin--box {
-        margin-right: 10rem; } }
+        min-width: 100%; } }
     .signin--box--title {
       color: black;
       border-right: 0.3px solid rgba(255, 255, 255, 0.66);
