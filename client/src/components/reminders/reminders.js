@@ -21,7 +21,6 @@ class Reminders extends Component {
   }
 
   handleInvoice(id, phone) {
-    // const stringNumber = phone.toString();
     this.setState(state => ({
       ...state,
       reminderr: {
@@ -30,8 +29,6 @@ class Reminders extends Component {
         ...phone,
       },
     }));
-
-    // console.log(invoice);
   }
 
   handleChange(e) {
@@ -53,15 +50,9 @@ class Reminders extends Component {
       <div className="reminder">
         <Sidebar />
         <div className="reminder-container">
-          <div className="reminder-drop">
-            {/* <Dropdown
-              invoices={invoices}
-              getInvoice={(id, phone) => this.handleInvoice({ invoiceId: id, rPhone: phone })}
-            /> */}
-          </div>
+          <div className="reminder-drop" />
           <div>
             <RemindForm
-              // handleRadio={this.handleRadio}
               handleMessage={e => this.handleChange({ message: e.target.value })}
               handleRadio={e => this.handleChange({ option: e.target.value })}
               option={reminderr.option}
@@ -81,7 +72,7 @@ const mapStateToProps = state => {
     invoices: state.invoice.invoices,
     invoice: state.invoice.currentInvoice,
     message: state.invoice.success,
-    reminders: state.invoice.reminders,
+    reminders: state.reminder.reminders,
   };
 };
 

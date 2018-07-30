@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
 import { addReminder } from '../../actions/smsReminders';
-import { getAllInvoices, getInvoice } from '../../actions/invoices';
 
 const ReminderForm = props => {
   return (
@@ -66,6 +65,7 @@ const ReminderForm = props => {
         })}
       />
       <button
+        type="submit"
         onClick={() => {
           props.addReminder(props.formData, props.history);
         }}
