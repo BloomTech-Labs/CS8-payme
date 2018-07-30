@@ -28,6 +28,9 @@ class Signin extends Component {
               Sign in<br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
               ullamco laboris</span>
             </p>
+            <p className="signin--form_notmember">
+              Not a member? <br/> <Link to="/signup"> <span className="signin-signup">Sign up</span> </Link>
+            </p>
           </div>
           <div className="signin--box">
             <h1 className="signin--box--title">
@@ -37,7 +40,7 @@ class Signin extends Component {
               </span>
               <br />
             </h1>
-            <h1 className="signin--header">Sign In</h1>
+            {/* <h1 className="signin--header">Sign In</h1> */}
             <h3>{this.props.message}</h3>
             <form className="signin--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
               <Field
@@ -60,7 +63,7 @@ class Signin extends Component {
                 Sign In
               </button>
             </form>
-            <p className="signin--form_options"> Or sign In with </p>
+            {/* <p className="signin--form_options"> Or sign In with </p> */}
             {/* <div className="signin--buttons">
               <button className="signin--buttons__facebook">
                 <i className="fab fa-facebook-square" />facebook
@@ -73,9 +76,9 @@ class Signin extends Component {
                 />Google
               </button>
             </div> */}
-            <p className="signin--form_notmember">
+            {/* <p className="signin--form_notmember">
               Not a member? <Link to="/signup"> Sign up </Link>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

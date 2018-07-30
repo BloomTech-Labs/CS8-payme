@@ -10,7 +10,7 @@
   align-items: center;
   background-size: cover;
   position: relative;
-  
+
   &-foreground {
     display: flex;
     width: 115rem;
@@ -25,14 +25,12 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: 100%;
     position: relative;
 
   }
 
-  &--form {
-  }
   &--header {
     font-size: 3rem;
     color: black;
@@ -41,7 +39,6 @@
 
 
   &--title {
-    
     color: black;
     font-size: 6rem;
     height: 6rem;
@@ -54,22 +51,53 @@
   &--img {
     width: 50%;
   }
-
-  &-headline {
-    color: #FF530D;
-    position: absolute;
-    font-size: 5rem;
-    font-weight: 700;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
-    top: 20rem;
-    left: 25rem;
+  
+  
+  &-imgbox {
+    background-color: rgba(255, 255, 255, 0.288);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 115rem;
+    height: 90rem;
   }
 
-  &-headline2 {
-    font-weight: 400;
-    font-size: 3rem;
+  &--img {
+    // background-color: rgba(255, 255, 255, 0.226);
+    // max-Height: 100%;
+    width: 100%;
+    // @include respond(phone)  {
+    //   max-Height: 0;
+    // }
+  }
+  &-headline {
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    top: 4.9rem;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 40rem;
+    color: rgb(78, 65, 65);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.11);
 
+    margin: 10rem 10rem;
+    font-size: 5rem;
+    font-weight: 700;
+    top: 15rem;
+    left: 0rem;
+    line-height: 50%;
+    @include respond(phone)  {
+      width: 0;
+      color: transparent;
+    }
+  }
+  
+  &-headline2 {
+    display: flex;
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+    font-size: 2rem;
   }
 }

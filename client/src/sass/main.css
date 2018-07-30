@@ -539,9 +539,10 @@ e,'s are considered best option for media queries
         box-shadow: none; } }
   .signin-imgbox {
     display: flex;
+    justify-content: center;
+    position: relative;
     width: 115rem;
-    height: 90rem;
-    position: relative; }
+    height: 90rem; }
   .signin--img {
     max-Height: 100%;
     width: 100%; }
@@ -549,8 +550,14 @@ e,'s are considered best option for media queries
       .signin--img {
         max-Height: 0; } }
   .signin-headline {
-    margin: 5rem 5rem;
+    display: flex;
+    flex-direction: column;
     position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
+    width: 40rem;
+    margin: 10rem 10rem;
     font-size: 5rem;
     font-weight: 700;
     color: white;
@@ -562,8 +569,23 @@ e,'s are considered best option for media queries
         width: 0;
         color: transparent; } }
   .signin-headline2 {
+    text-shadow: none;
+    display: flex;
+    text-align: center;
+    margin-top: 2rem;
     color: #243030;
     font-size: 2rem; }
+  .signin-signup {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14rem;
+    height: 4rem;
+    color: #243030;
+    background-color: white;
+    border-radius: .5rem; }
   .signin--box {
     background-color: #ffffff;
     display: flex;
@@ -649,6 +671,18 @@ e,'s are considered best option for media queries
     color: black;
     margin-bottom: 2rem; }
   .signin--form_notmember {
+    color: white;
+    font-size: 2rem;
+    margin: 10rem 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40rem;
+    height: 10rem;
+    top: 35rem;
+    left: 0;
+    position: absolute;
     color: black;
     margin-top: 5rem; }
 
@@ -676,7 +710,7 @@ e,'s are considered best option for media queries
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: 100%;
     position: relative; }
   .signup--header {
@@ -692,19 +726,41 @@ e,'s are considered best option for media queries
     font-size: 6rem; }
   .signup--img {
     width: 50%; }
+  .signup-imgbox {
+    background-color: rgba(255, 255, 255, 0.288);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 115rem;
+    height: 90rem; }
+  .signup--img {
+    width: 100%; }
   .signup-headline {
-    color: #FF530D;
+    display: flex;
+    flex-direction: column;
     position: absolute;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 40rem;
+    color: #4e4141;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.11);
+    margin: 10rem 10rem;
     font-size: 5rem;
     font-weight: 700;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
-    top: 20rem;
-    left: 25rem; }
+    top: 15rem;
+    left: 0rem;
+    line-height: 50%; }
+    @media (max-width: 37.5em) {
+      .signup-headline {
+        width: 0;
+        color: transparent; } }
   .signup-headline2 {
-    font-weight: 400;
-    font-size: 3rem;
-    position: absolute;
-    top: 4.9rem; }
+    display: flex;
+    text-align: center;
+    color: white;
+    margin-top: 2rem;
+    font-size: 2rem; }
 
 .notfound-layout {
   display: flex;

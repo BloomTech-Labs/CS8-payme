@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { register } from '../../actions/auth';
 import signup from './signup.jpg';
 
-import backgroundImage from './bg.jpg';
+import backgroundImage from './signup.jpg';
 
 const styles = {
   backgroundImage: `url(${backgroundImage})`,
@@ -27,7 +27,16 @@ class Signup extends Component {
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p> */}
         <div className="signup-foreground" >
-          <img className="signup--img" src={signup} alt="img" />
+          <div className="signup-imgbox">
+            <p className="signup--img" />
+            <p className="signup-headline">
+              Sign Up<br /> <span className="signup-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris</span>
+            </p>
+            <p className="signin--form_notmember" style={{color: 'white'}}>
+              Alread have an account ? <br/> <Link to="/signin"> <span className="signin-signup">Sign In</span> </Link>
+            </p>
+          </div>
           <div className="signup--container">
             <h1 className="signup--title">
               payMe
@@ -36,7 +45,7 @@ class Signup extends Component {
               </span>
               <br />
             </h1>
-            <h1 className="signup--header">Sign Up</h1>
+            {/* <h1 className="signup--header">Sign Up</h1> */}
             <h3>{this.props.error}</h3>
             <form className="signup--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
               <Field
@@ -93,10 +102,10 @@ class Signup extends Component {
                 />Google
               </button>
             </div> */}
-            <p className="signin--form_notmember">
+            {/* <p className="signin--form_notmember">
               {' '}
               Already a member? <Link to="/signin"> Sign in </Link>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
