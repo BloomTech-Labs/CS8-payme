@@ -5,8 +5,7 @@ export default class ConnectStripe extends Component {
     return (
       <div>
         <a
-          href={`${process.env.HOST
-            || 'http://localhost:5000'}/stripe/authorize?jwt=${localStorage.getItem('id')}`}
+          href={`${process.env.HOST}/stripe/authorize?jwt=${localStorage.getItem('id')}`}
         >
           This Component is for the user to connect their stripe account to their payMe account
         </a>
