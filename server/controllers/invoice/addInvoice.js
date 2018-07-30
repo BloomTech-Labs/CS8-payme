@@ -3,16 +3,27 @@ const User = require('../../models/users');
 const Invoice = require('../../models/invoices');
 
 const addInvoice = (req, res) => {
-  const { _id, username, invoices } = req.user;
+  const { _id, username, invoices, subscription, invoiceCredits } = req.user;
   const { body } = req;
   const { number } = body;
-  console.log(req.files);
+  // console.log(req.files);
   let data = null;
   let contentType = null;
-  if (req.files.file) {
+  if (req.files && req.files.file) {
     data = req.files.file.data;
     contentType = req.files.file.mimetype;
   }
+  let payment = new Date().getTime() - subscription;
+  if (payment < 0) {
+    payment = 'sub';
+  } else if (invoiceCredits > 0) {
+    payment = 'credit';
+  } else {
+    return res.status(403).json({
+      message: 'No active subscription or invoice credits avaliable.',
+    });
+  }
+
   const invoice = new Invoice({
     ...body,
     admin: _id,
@@ -40,12 +51,27 @@ const addInvoice = (req, res) => {
     })
     .then(invoices => {
       User.findByIdAndUpdate(_id, { invoices }).then(user => {
-        User.findById(user._id)
-          .select('-password')
-          .populate('invoices')
-          .then(finalUser => {
-            res.json(finalUser);
-          });
+        if (payment === 'credit') {
+          User.findByIdAndUpdate(
+            user._id,
+            {
+              invoiceCredits: invoiceCredits - 1,
+            },
+            { new: true }
+          )
+            .select('-password')
+            .populate('invoices')
+            .then(finalUser => {
+              res.json(finalUser);
+            });
+        } else {
+          User.findById(user._id)
+            .select('-password')
+            .populate('invoices')
+            .then(finalUser => {
+              res.json(finalUser);
+            });
+        }
       });
     })
     .catch(err => res.status(500).json(err));

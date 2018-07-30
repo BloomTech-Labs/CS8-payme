@@ -1,53 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 import Sidebar from '../../sidebar';
 import { addInvoice } from '../../../actions/invoices';
 
 class AddInvoice extends Component {
-
-  handleFormSubmit = (event) => {
+  handleFormSubmit = event => {
     event.preventDefault();
     const info = new FormData(event.target);
-      info.append('filename', event.target.file.name);
+    info.append('filename', event.target.file.name);
     this.props.addInvoice(info, this.props.history);
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    // const { handleSubmit } = this.props;
     return (
       <div className="invoice">
         <Sidebar />
-        <Link to="invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
+        <Link to="invoices">
+          <p>
+            <i className="fas fa-arrow-left fa-fw" />
+          </p>
+        </Link>
         <div className="invoice-form">
           <h1>Add Invoice</h1>
-          <form className="add-invoice" onSubmit={(this.handleFormSubmit)}>
-            <input
-              name="clientName"
-              className="add-invoice_field"
-              placeholder="Name"
-            />
+          <form className="add-invoice" onSubmit={this.handleFormSubmit}>
+            <input name="clientName" className="add-invoice_field" placeholder="Name" />
             <br />
-            <input
-              name="companyName"
-              className="add-invoice_field"
-              placeholder="Company"
-            />
+            <input name="companyName" className="add-invoice_field" placeholder="Company" />
             <br />
-            <input
-              name="email"
-              className="add-invoice_field"
-              placeholder="Email"
-            />
+            <input name="email" className="add-invoice_field" placeholder="Email" />
             <br />
-            <input
-              type="number"
-              name="phone"
-              className="add-invoice_field"
-              placeholder="Phone"
-            />
+            <input type="number" name="phone" className="add-invoice_field" placeholder="Phone" />
             <br />
             <input
               type="number"
@@ -63,15 +49,9 @@ class AddInvoice extends Component {
               placeholder="Total Amount"
             />
             <br />
-            <input
-              type="file"
-              name="file"
-              className="add-invoice_field"
-            />
-            <button
-              className="add-invoice_submit"
-              type="submit"
-            >Add Invoice
+            <input type="file" name="file" className="add-invoice_field" />
+            <button className="add-invoice_submit" type="submit">
+              Add Invoice
             </button>
           </form>
         </div>
@@ -80,7 +60,10 @@ class AddInvoice extends Component {
   }
 }
 
-AddInvoice = connect(null, { addInvoice })(AddInvoice);
+AddInvoice = connect(
+  null,
+  { addInvoice },
+)(AddInvoice);
 
 export default reduxForm({
   form: 'addInvoice', // Unique name for the form
