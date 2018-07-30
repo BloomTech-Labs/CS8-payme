@@ -1,7 +1,7 @@
 
 .signin {
   // height: 10rem;
-  margin: 0 auto;
+  // margin: 0 auto;
   box-shadow: none;
   width: 100%;
   height: 110rem;
@@ -9,23 +9,12 @@
   justify-content: center;
   align-items: center;
   background-size: cover;
-  @include respond(tab-land) { // width < 1200 ?
-    // justify-content: flex-start;// 1rem = 9px, 9/16 = 50%
-    // margin-left: 10rem;
-  }
-  @include respond(tab-port) {
-    // margin-left: 5rem;
-  }
-  @include respond(phone)  {
-    
-  }
 
   &-foreground {
     display: flex;
     width: 115rem;
     height: 90rem;
     color: white;
-    background-color: blue;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
     @include respond(tab-port) {
       width: 90rem;
@@ -65,6 +54,9 @@
     top: 15rem;
     left: 0rem;
     line-height: 50%;
+    @include respond(tab-port) {
+      width: 25rem;
+    }
     @include respond(phone)  {
       width: 0;
       color: transparent;
@@ -111,6 +103,7 @@
     }
     @include respond(phone)  {
       min-width: 100%;
+      height: 75rem;
     }
 
     &--title {
@@ -225,6 +218,10 @@
       position: absolute;
       color: black;
       margin-top: 5rem;
+
+      @include respond(tab-port) {
+        width: 25rem;
+      }
     }
 }
 

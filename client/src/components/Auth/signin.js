@@ -52,6 +52,7 @@ class Signin extends Component {
               />
               <br />
               <Field
+                type="password"
                 name="password"
                 component="input"
                 className="signin--form_password"

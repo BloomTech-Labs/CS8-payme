@@ -23,7 +23,8 @@ e,'s are considered best option for media queries
   margin: 0 auto; }
   .landing-container {
     position: relative;
-    width: 200rem; }
+    width: 150rem;
+    margin: 5rem auto; }
   .landing-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     font-size: 15rem;
@@ -515,7 +516,6 @@ e,'s are considered best option for media queries
   color: rgba(34, 207, 178, 0.413); }
 
 .signin {
-  margin: 0 auto;
   box-shadow: none;
   width: 100%;
   height: 110rem;
@@ -528,7 +528,6 @@ e,'s are considered best option for media queries
     width: 115rem;
     height: 90rem;
     color: white;
-    background-color: blue;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294); }
     @media (max-width: 56.25em) {
       .signin-foreground {
@@ -564,6 +563,9 @@ e,'s are considered best option for media queries
     top: 15rem;
     left: 0rem;
     line-height: 50%; }
+    @media (max-width: 56.25em) {
+      .signin-headline {
+        width: 25rem; } }
     @media (max-width: 37.5em) {
       .signin-headline {
         width: 0;
@@ -601,7 +603,8 @@ e,'s are considered best option for media queries
         width: 125%; } }
     @media (max-width: 37.5em) {
       .signin--box {
-        min-width: 100%; } }
+        min-width: 100%;
+        height: 75rem; } }
     .signin--box--title {
       color: black;
       border-right: 0.3px solid rgba(255, 255, 255, 0.66);
@@ -685,9 +688,11 @@ e,'s are considered best option for media queries
     position: absolute;
     color: black;
     margin-top: 5rem; }
+    @media (max-width: 56.25em) {
+      .signin--form_notmember {
+        width: 25rem; } }
 
 .signup {
-  background-color: blue;
   box-shadow: none;
   height: 85rem;
   margin: 0 auto;
@@ -704,6 +709,13 @@ e,'s are considered best option for media queries
     height: 90rem;
     color: white;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294); }
+    @media (max-width: 56.25em) {
+      .signup-foreground {
+        width: 90rem; } }
+    @media (max-width: 37.5em) {
+      .signup-foreground {
+        width: 50rem;
+        box-shadow: none; } }
   .signup--container {
     background-color: white;
     display: flex;
@@ -713,6 +725,10 @@ e,'s are considered best option for media queries
     width: 100%;
     height: 100%;
     position: relative; }
+    @media (max-width: 56.25em) {
+      .signup--container {
+        height: 70rem;
+        width: 90rem; } }
   .signup--header {
     font-size: 3rem;
     color: black;
@@ -733,6 +749,13 @@ e,'s are considered best option for media queries
     position: relative;
     width: 115rem;
     height: 90rem; }
+    @media (max-width: 56.25em) {
+      .signup-imgbox {
+        height: 70rem;
+        width: 90rem; } }
+    @media (max-width: 37.5em) {
+      .signup-imgbox {
+        width: 0; } }
   .signup--img {
     width: 100%; }
   .signup-headline {
@@ -751,6 +774,9 @@ e,'s are considered best option for media queries
     top: 15rem;
     left: 0rem;
     line-height: 50%; }
+    @media (max-width: 56.25em) {
+      .signup-headline {
+        width: 25rem; } }
     @media (max-width: 37.5em) {
       .signup-headline {
         width: 0;

@@ -1,5 +1,4 @@
 .signup {
-  background-color: blue;
   box-shadow: none;
   height: 85rem;
   margin: 0 auto;
@@ -17,7 +16,13 @@
     height: 90rem;
     color: rgb(255, 255, 255);
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
-
+    @include respond(tab-port) {
+      width: 90rem;
+    }
+    @include respond(phone)  {
+      width: 50rem;
+      box-shadow: none;
+    }
   }
   &--container {
     background-color: rgb(255, 255, 255);
@@ -28,6 +33,11 @@
     width: 100%;
     height: 100%;
     position: relative;
+    @include respond(tab-port) {
+      height: 70rem;
+      width: 90rem;
+      // width: 125%;
+    }
 
   }
 
@@ -60,6 +70,14 @@
     position: relative;
     width: 115rem;
     height: 90rem;
+    @include respond(tab-port) {
+      height: 70rem;
+      width: 90rem;
+      // width: 125%;
+    }
+    @include respond(phone)  {
+      width: 0;
+    }
   }
 
   &--img {
@@ -80,13 +98,15 @@
     width: 40rem;
     color: rgb(78, 65, 65);
     text-shadow: 2px 2px rgba(0, 0, 0, 0.11);
-
     margin: 10rem 10rem;
     font-size: 5rem;
     font-weight: 700;
     top: 15rem;
     left: 0rem;
     line-height: 50%;
+    @include respond(tab-port) {
+      width: 25rem;
+    }
     @include respond(phone)  {
       width: 0;
       color: transparent;
