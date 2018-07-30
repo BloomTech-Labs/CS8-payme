@@ -23,7 +23,6 @@ e,'s are considered best option for media queries
   margin: 0 auto; }
   .landing-container {
     position: relative;
-    width: 150rem;
     margin: 5rem auto; }
   .landing-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
@@ -808,7 +807,32 @@ e,'s are considered best option for media queries
     color: #22CFB1;
     font-size: 6rem; }
 
-.sidebar {
+.slideout {
+  padding-top: 1rem;
+  background-color: #2d2d2d; }
+  .slideout span {
+    display: block;
+    width: 3rem;
+    height: 5px;
+    background-color: rgba(124, 124, 124, 0.336);
+    margin: 5px 2rem; }
+  .slideout--title {
+    width: 12rem;
+    color: white;
+    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    font-size: 3rem;
+    height: 6rem;
+    background-color: #2d2d2d; }
+  .slideout--dot {
+    color: #22CFB1;
+    font-size: 6rem; }
+
+#sidebar.active {
+  margin-left: -50rem; }
+  #sidebar.active:hover {
+    margin-left: 0rem; }
+
+#sidebar {
   color: white;
   background-color: #252525;
   height: 100%;
@@ -819,21 +843,8 @@ e,'s are considered best option for media queries
   padding-bottom: 30rem;
   position: relative;
   min-width: 19rem;
-  width: 16rem;
+  width: 19rem;
   text-align: center; }
-  .sidebar--title {
-    color: white;
-    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
-    font-size: 3rem;
-    height: 6rem;
-    background-color: rgba(63, 63, 63, 0.336); }
-  .sidebar--dot {
-    color: #22CFB1;
-    font-size: 6rem; }
-  .sidebar-pic {
-    display: inline;
-    height: 100%;
-    position: relative; }
 
 .sidebar-profile {
   margin-top: 3rem;
@@ -848,6 +859,10 @@ e,'s are considered best option for media queries
   border-radius: 50%;
   position: relative;
   margin-bottom: 2rem; }
+  .sidebar-profile_pic {
+    display: inline;
+    height: 100%;
+    position: relative; }
 
 .sidebar-links {
   font-size: 1.6rem;

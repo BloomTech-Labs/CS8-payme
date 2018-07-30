@@ -1,7 +1,42 @@
-.sidebar {
+.slideout {
+  padding-top: 1rem;
+  background-color: $color-nav;
+
+  & span {
+  display: block;
+  width: 3rem;
+  height: 5px;
+  background-color: rgba(124, 124, 124, 0.336);
+  margin: 5px 2rem;
+  }
+
+  &--title {
+    width: 12rem;
+    color: rgb(255, 255, 255);
+    border-right:  0.3px solid rgba(255, 255, 255, 0.66);
+    font-size: 3rem;
+    height: 6rem;
+    background-color: $color-nav;
+  }
+  &--dot {
+    color: $color-primary;
+    font-size: 6rem;
+  }
+
+}
+
+#sidebar.active {
+  margin-left: -50rem;
+  &:hover {
+    margin-left: 0rem;
+  }
+}
+
+
+
+#sidebar {
   color:white;
   background-color: $color-sidebar;
-  // white-space: nowrap;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -10,28 +45,9 @@
   padding-bottom: 30rem;
   position: relative;
   min-width: 19rem;
-  width: 16rem;
+  width: 19rem;
   text-align: center;
-  // align-items: center;
 
-  &--title {
-    color: rgb(255, 255, 255);
-    border-right:  0.3px solid rgba(255, 255, 255, 0.66);
-    font-size: 3rem;
-    height: 6rem;
-    background-color: $color-logo-bg;
-  }
-  &--dot {
-    color: $color-primary;
-    font-size: 6rem;
-  }
-  
-  &-pic {
-  display: inline;
-  height: 100%;
-  // width: 100%;
-  position: relative;
-  }
 }
 
 .sidebar-profile {
@@ -47,6 +63,13 @@
   border-radius: 50%;
   position: relative;
   margin-bottom: 2rem;
+
+  &_pic {
+    display: inline;
+    height: 100%;
+    position: relative;
+
+  }
 }
 
 .sidebar-links {
