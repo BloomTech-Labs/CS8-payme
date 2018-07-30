@@ -6,7 +6,11 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
 import {
- getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice, resetCurrInv 
+  getAllInvoices,
+  handleInvoiceIdx,
+  onSortEnd,
+  getInvoice,
+  resetCurrInv,
 } from '../../../actions/invoices';
 
 //NOTE- Tried exporting these style to classes
@@ -26,7 +30,7 @@ class Invoices extends Component {
     listView: true,
     boxView: false,
     pdfToggle: false,
-  }
+  };
 
   componentDidMount() {
     this.props.getAllInvoices();
@@ -44,24 +48,23 @@ class Invoices extends Component {
   };
 
   //views
-  listView =() => {
+  listView = () => {
     this.setState({ listView: true, boxView: false });
-  }
+  };
 
-  boxView =() => {
+  boxView = () => {
     this.setState({ listView: false, boxView: true });
-  }
+  };
 
-  // PDF handler
-  togglePDF = (id, show) => {
-    console.log(show);
-    if (show === 'showpdf') {
-      return this.props.getInvoice(id),
-      this.setState({ pdfToggle: true });
+  addInvoiceCheck = () => {
+    const payment = new Date().getTime() - this.props.admin.subscription;
+    if (payment < 0 || this.props.admin.invoiceCredits > 0) {
+      this.props.history.push('/addinvoice');
+    } else {
+      alert('Please purchase a subscription or invoice credit.');
+      this.props.history.push('/billing');
     }
-    this.setState({ pdfToggle: false });
-    this.props.resetCurrInv();
-  }
+  };
 
   render() {
     // Serach Invoices
@@ -94,7 +97,6 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
-                history={this.props.history}
               />
             );
           })}
@@ -115,22 +117,39 @@ class Invoices extends Component {
               onChange={this.updateSearch}
             />
             <hr className="navigation-line" />
-            <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
+            <div onClick={this.addInvoiceCheck}>
+              <p className="invoice-new">
+                Add Invoice<i className="fas fa-plus  fa-fw" />
+              </p>
+            </div>
+            {/* <Link to="/addinvoice">
+              <p className="invoice-new">
+                Add Invoice<i className="fas fa-plus  fa-fw" />
+              </p>
+            </Link> */}
             <hr className="navigation-line" />
-            <p className="invoice-sort">Sort<br /> Data<i className="fas fa-sort fa-fw" /></p>
+            <p className="invoice-sort">
+              Sort<br /> Data<i className="fas fa-sort fa-fw" />
+            </p>
             <hr className="navigation-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div className="ui simple dropdown item own-class" style={styles}>
                 View
                 <i className="fas fa-eye fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.listView}>List</div>
-                  <div className="item" onClick={this.boxView}>Box</div>
+                  <div className="item" onClick={this.listView}>
+                    List
+                  </div>
+                  <div className="item" onClick={this.boxView}>
+                    Box
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="invoice-success"><p>{this.props.message}</p></div>
+          <div className="invoice-success">
+            <p>{this.props.message}</p>
+          </div>
           {this.state.listView && invoices.length > 0 ? (
             <div className="invoice-list-headerdiv">
               <ul className="invoice-list-headers">
@@ -141,7 +160,7 @@ class Invoices extends Component {
                 <li>Reminder</li>
               </ul>
             </div>
-          ) : null }
+          ) : null}
           {invoices.length > 0 ? (
             <SortableList
               pressDelay={150}
@@ -150,7 +169,12 @@ class Invoices extends Component {
               invoices={invoices}
               onSortEnd={this.onSortEnd}
             />
-          ) : <p className="invoice-letstart">Looks like you dont have any Invoices! Click <Link to='/addinvoice'>here</Link> to get started</p>}
+          ) : (
+            <p className="invoice-letstart">
+              Looks like you dont have any Invoices! Click <Link to="/addinvoice">here</Link> to get
+              started
+            </p>
+          )}
         </div>
       </div>
     );
@@ -161,9 +185,17 @@ const mapStateToProps = state => {
   return {
     invoices: state.invoice.invoices,
     message: state.invoice.success,
+    admin: state.auth.admin,
   };
 };
 
-export default connect(mapStateToProps, {
- onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice, resetCurrInv,
-})(Invoices);
+export default connect(
+  mapStateToProps,
+  {
+    onSortEnd,
+    getAllInvoices,
+    handleInvoiceIdx,
+    getInvoice,
+    resetCurrInv,
+  },
+)(Invoices);

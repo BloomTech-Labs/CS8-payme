@@ -31,18 +31,17 @@ const Invoice = new mongoose.Schema(
     },
     phone: {
       number: Number,
-      frequency: String,
+      frequency: {
+        type: String,
+        default: 'weekly',
+      },
     },
     email: {
       address: Email,
-      frequency: String,
-      // mailOptions: {
-      //   from: String, // sender address
-      //   to: String, // list of receivers
-      //   subject: String, // Subject line
-      //   text: String, // plain text body
-      //   html: String, // html body
-      // },
+      frequency: {
+        type: String,
+        default: 'weekly',
+      },
     },
     admin: {
       type: ObjectId,
