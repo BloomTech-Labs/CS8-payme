@@ -10,8 +10,8 @@ Registers a new client.
 | ------------ | --------------------------------------------------------- | -------- |
 | username     | Email address                                             | Yes      |
 | password     | String 6+ characters                                      | Yes      |
-| firstName    | String                                                    | Yes      |
-| lastName     | String                                                    | Yes      |
+| fullName     | String                                                    | Yes      |
+| companyName  | String                                                    | No       |
 | phone        | String -- US Phone numbers only. 10 characters.           | Yes      |
 | subscription | "perdiam" - $1.99 per invoice. "monthly" -- $20 per month | no       |
 
@@ -30,8 +30,8 @@ Success will return
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
     username: 'testing@test.com',
     phone: '1234567890',
-    firstName: 'John',
-    lastName: 'Doe',
+    fullName: 'John',
+    companyName: 'Doe',
     createdAt: '2018-07-16T20:40:12.758Z',
     updatedAt: '2018-07-16T20:40:12.758Z',
     __v: 0,
@@ -73,8 +73,8 @@ Success will return:
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
     username: 'testing@test.com',
     phone: '1234567890',
-    firstName: 'John',
-    lastName: 'Doe',
+    fullName: 'John',
+    companyName: 'Doe',
     createdAt: '2018-07-16T20:40:12.758Z',
     updatedAt: '2018-07-16T20:40:12.758Z',
     __v: 0,
@@ -114,8 +114,8 @@ Success will return:
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
     username: 'testing@test.com',
     phone: '1234567890',
-    firstName: 'John',
-    lastName: 'Doe',
+    fullName: 'John',
+    companyName: 'Doe',
     createdAt: '2018-07-16T20:40:12.758Z',
     updatedAt: '2018-07-16T20:40:12.758Z',
     __v: 0,
@@ -130,18 +130,16 @@ If `currentPassword` is incorrect, will return:
 
 Active JWT must be placed on the Authorization headers. If JWT is not active, "Unauthorized" will be returned.
 
-| Property        | Type    | Required |
-| --------------- | ------- | -------- |
-| clientName      | String  | Yes      |
-| companyName     | String  | Yes      |
-| isPaid          | Boolean | No       |
-| number          | Number  | Yes      |
-| pdf             | Array   | No       |
-| totalAmount     | String  | Yes      |
-| phone.number    | Number  | No       |
-| phone.frequency | String  | No       |
-| email.address   | String  | No       |
-| email.frequency | String  | No       |
+| Property    | Type    | Required |
+| ----------- | ------- | -------- |
+| clientName  | String  | Yes      |
+| companyName | String  | Yes      |
+| isPaid      | Boolean | No       |
+| number      | Number  | Yes      |
+| pdf         | Array   | No       |
+| totalAmount | String  | Yes      |
+| phone       | Number  | No       |
+| email       | String  | No       |
 
 Success will return:
 
@@ -157,13 +155,16 @@ Success will return:
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
     username: 'testing@test.com',
     phone: '1234567890',
-    firstName: 'John',
-    lastName: 'Doe',
+    fullName: 'John',
+    companyName: 'Doe',
     createdAt: '2018-07-16T20:40:12.758Z',
     updatedAt: '2018-07-16T20:40:12.758Z',
     __v: 0,
 };
 ```
+
+If the user dows not have an active subscription, or an active invoice credit, will return:
+`{ message: 'No active subscription or invoice credits avaliable.', }`
 
 If invoice number is already in use, will return:
 `{ message: 'Invoice number already exists.' }`
@@ -300,8 +301,8 @@ Success will return:
     _id: '5b4d02ac6b3ee4ba0b0dd5f2',
     username: 'testing@test.com',
     phone: '1234567890',
-    firstName: 'John',
-    lastName: 'Doe',
+    fullName: 'John',
+    companyName: 'Doe',
     createdAt: '2018-07-16T20:40:12.758Z',
     updatedAt: '2018-07-16T20:40:12.758Z',
     __v: 0,
