@@ -1,7 +1,7 @@
 import { ADD_REMINDER, ONE_REMINDER, DELETED_SMS } from '../actions/smsReminders.js';
 
 const initialState = {
-  reminders: {},
+  reminders: [],
 };
 
 export default function (state = initialState, action) {

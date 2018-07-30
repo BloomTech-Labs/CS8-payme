@@ -20,11 +20,6 @@ class Reminders extends Component {
     this.props.getAllInvoices();
   }
 
-  handleSubmit = content => {
-    // this.props.addReminder(content, this.props.history);
-    console.log(content);
-  };
-
   handleInvoice(id, phone) {
     // const stringNumber = phone.toString();
     this.setState(state => ({
@@ -52,9 +47,8 @@ class Reminders extends Component {
   render() {
     const { invoices } = this.props;
     const { reminderr } = this.state;
+    console.log(reminderr.id);
     console.log(reminderr);
-    // const { handleSubmit } = this.props;
-
     return (
       <div className="reminder">
         <Sidebar />
@@ -73,7 +67,8 @@ class Reminders extends Component {
               option={reminderr.option}
               invoices={invoices}
               getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
-              handleSubmit={() => this.handleSubmit(reminderr)}
+              formData={reminderr}
+              history={this.props.history}
             />
           </div>
         </div>
@@ -86,7 +81,7 @@ const mapStateToProps = state => {
     invoices: state.invoice.invoices,
     invoice: state.invoice.currentInvoice,
     message: state.invoice.success,
-    reminders: state.reminder.reminders,
+    reminders: state.invoice.reminders,
   };
 };
 

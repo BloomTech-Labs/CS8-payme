@@ -55,9 +55,9 @@ const ReminderForm = props => {
         placeholder="Invoices"
         search
         selection
-        options={props.invoices.map(invoice => {
+        options={props.invoices.map((invoice, i) => {
           return (
-            <div>
+            <div key={i}>
               <p onClick={() => props.getInvoice(invoice._id, invoice.phone.number)}>
                 {invoice.clientName}
               </p>
@@ -65,19 +65,16 @@ const ReminderForm = props => {
           );
         })}
       />
-      <button onSubmit={props.handleSubmit}>Submit</button>
+      <button
+        onClick={() => {
+          props.addReminder(props.formData, props.history);
+        }}
+      >
+        Submit
+      </button>
     </div>
   );
 };
-
-// const mapStateToProps = state => {
-//   return {
-//     invoices: state.invoice.invoices,
-//     invoice: state.invoice.currentInvoice,
-//     message: state.invoice.success,
-//     reminder: state.reminder.reminders,
-//   };
-// };
 
 export default connect(
   null,
