@@ -11,18 +11,20 @@ const getTimeZones = function() {
 
 // POST: /api/sms create a reminder
 const createReminder = (req, res) => {
-  const { name, phoneNumber, message, remind } = req.body;
+  console.log(req.body);
+  const { option, id, rPhone, message } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
-    name: name,
-    phoneNumber: phoneNumber,
+    phoneNumber: rPhone,
     message: message,
-    remind: remind
+    remind: option,
   });
-  const { id } = req.params;
+  const { _id } = req.params;
   reminder.save().then(newreminder => {
     console.log(newreminder);
-    Invoice.findByIdAndUpdate(id, { $addToSet: { reminders: newreminder._id } })
+    Invoice.findByIdAndUpdate(_id, {
+      $addToSet: { reminders: newreminder._id },
+    })
       .populate('reminders')
       .then(newinvoice => {
         res.send(newinvoice);
@@ -65,5 +67,5 @@ const deleteReminder = (req, res) => {
 module.exports = {
   getReminder,
   createReminder,
-  deleteReminder
+  deleteReminder,
 };
