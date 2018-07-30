@@ -7,11 +7,11 @@ export const DELETED_SMS = 'DELETED_SMS';
 const token = localStorage.getItem('id');
 axios.defaults.headers.common.Authorization = `bearer ${token}`;
 
-export function addReminder(content, history) {
-  return (dispatch, getState) => {
-    const { _id } = getState().invoice.currentInvoice;
+export function addReminder(id, history) {
+  return dispatch => {
+    // const { _id } = getState().invoice.currentInvoice;
     axios
-      .post(`/api/sms/${_id}`, content, {
+      .post(`/api/sms/${id}`, {
         headers: {
           Authorization: `bearer ${localStorage.getItem('id')}`,
         },

@@ -9,7 +9,7 @@ import RemindForm from './reminderForm';
 class Reminders extends Component {
   state = {
     reminderr: {
-      invoiceId: null,
+      id: null,
       option: '',
       message: '',
       rPhone: '',
@@ -20,7 +20,7 @@ class Reminders extends Component {
     this.props.getAllInvoices();
   }
 
-  formSubmit = content => {
+  handleSubmit = content => {
     // this.props.addReminder(content, this.props.history);
     console.log(content);
   };
@@ -60,10 +60,10 @@ class Reminders extends Component {
         <Sidebar />
         <div className="reminder-container">
           <div className="reminder-drop">
-            <Dropdown
+            {/* <Dropdown
               invoices={invoices}
               getInvoice={(id, phone) => this.handleInvoice({ invoiceId: id, rPhone: phone })}
-            />
+            /> */}
           </div>
           <div>
             <RemindForm
@@ -71,16 +71,11 @@ class Reminders extends Component {
               handleMessage={e => this.handleChange({ message: e.target.value })}
               handleRadio={e => this.handleChange({ option: e.target.value })}
               option={reminderr.option}
+              invoices={invoices}
+              getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
+              handleSubmit={() => this.handleSubmit(reminderr)}
             />
           </div>
-          <button
-            action="submit"
-            onSubmit={() => {
-              this.props.addReminder(reminderr, this.props.history);
-            }}
-          >
-            Submit
-          </button>
         </div>
       </div>
     );

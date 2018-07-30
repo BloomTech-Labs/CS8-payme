@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
+import { Dropdown } from 'semantic-ui-react';
 import { addReminder } from '../../actions/smsReminders';
 import { getAllInvoices, getInvoice } from '../../actions/invoices';
 
@@ -50,6 +51,21 @@ const ReminderForm = props => {
           </div>
         </form>
       </div>
+      <Dropdown
+        placeholder="Invoices"
+        search
+        selection
+        options={props.invoices.map(invoice => {
+          return (
+            <div>
+              <p onClick={() => props.getInvoice(invoice._id, invoice.phone.number)}>
+                {invoice.clientName}
+              </p>
+            </div>
+          );
+        })}
+      />
+      <button onSubmit={props.handleSubmit}>Submit</button>
     </div>
   );
 };
@@ -65,5 +81,5 @@ const ReminderForm = props => {
 
 export default connect(
   null,
-  {},
+  { addReminder },
 )(ReminderForm);
