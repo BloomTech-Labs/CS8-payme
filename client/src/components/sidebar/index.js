@@ -34,7 +34,7 @@ class Sidebar extends Component {
         </div>
       </div>
         <div id="sidebar">
-          <div className="sidebar--chat">
+          {/* <div className="sidebar--chat">
             <div className="sidebar--users">
               <p>Welcome</p>
               <div className="sidebar-profile">
@@ -51,6 +51,18 @@ class Sidebar extends Component {
                 // style={{ cursor: 'pointer', color: 'rgb(129, 129, 129)' }}
                 onClick={() => this.logoutUser()}
               ><Link to=''><i className="fas fa-sign-out-alt fa-fw" />Sign Out</Link>
+              </p>
+            </div>
+          </div> */}
+          <div className="sidebar--minimal">
+            <div className="sidebar-min-links">
+              <p><NavLink to='/invoices'><i className="fas fa-envelope-open fa-fw" /></NavLink></p>
+              <p><NavLink exact to='/reminders'><i className="fas fa-bell fa-fw" /></NavLink></p>
+              <p><NavLink exact to="/settings"><i className="fas fa-cog fa-fw" /></NavLink></p>
+              <p><NavLink exact to='/billing'><i className="far fa-credit-card fa-fw" /></NavLink></p>
+              <p
+                onClick={() => this.logoutUser()}
+              ><Link to=''><i className="fas fa-sign-out-alt fa-fw" /></Link>
               </p>
             </div>
           </div>

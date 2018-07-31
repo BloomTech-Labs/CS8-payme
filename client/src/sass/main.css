@@ -828,9 +828,9 @@ e,'s are considered best option for media queries
     font-size: 6rem; }
 
 #sidebar.active {
-  margin-left: -50rem; }
+  margin-left: -18rem; }
   #sidebar.active:hover {
-    margin-left: 0rem; }
+    margin-left: 50rem; }
 
 #sidebar {
   color: white;
@@ -875,6 +875,10 @@ e,'s are considered best option for media queries
 
 .fa-fw {
   padding-right: 0.5rem; }
+
+.sidebar--minimal {
+  width: 10rem;
+  background-color: blue; }
 
 .reminder {
   background-color: #ffffff;

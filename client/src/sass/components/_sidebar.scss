@@ -26,9 +26,9 @@
 }
 
 #sidebar.active {
-  margin-left: -50rem;
+  margin-left: -18rem;
   &:hover {
-    margin-left: 0rem;
+    margin-left: 50rem;
   }
 }
 
@@ -85,4 +85,13 @@
 
 .fa-fw {
   padding-right: 0.5rem;
+}
+
+.sidebar-min-links {
+  // width: 10rem;
+}
+
+.sidebar--minimal {
+  width: 10rem;
+  background-color: blue;
 }
