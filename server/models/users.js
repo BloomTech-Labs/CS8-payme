@@ -74,4 +74,5 @@ User.methods.checkPassword = function(pw, callBack) {
   });
 };
 
+
 module.exports = mongoose.model('User', User);
