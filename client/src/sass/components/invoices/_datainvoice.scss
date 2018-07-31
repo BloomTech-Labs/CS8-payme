@@ -21,6 +21,11 @@
   // height: 100%;
   border: 0.3px solid rgb(194, 194, 194);
   // display: flex;
+  @include respond(phone)  {
+    margin: 2rem 2rem 2rem 0rem;
+      width: 20rem;
+      // height: 20rem;
+    }
 
   &-flex {
     display: flex;

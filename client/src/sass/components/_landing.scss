@@ -3,11 +3,12 @@
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   // justify-content: center;
   margin: 0 auto;
+  height: 110rem;
   
   &-container {
     position: relative;
     // width: 150rem;
-    margin: 5rem auto;
+    // margin: 5rem auto;
 
     // @include respond(desktop) { // width < 1200 ?
     //   width: 180rem;
@@ -58,9 +59,14 @@
     margin: 0 auto;
     
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-    width: 100%;
+    width: 200rem;
+    min-height: 110rem;
     @include respond(tab-land) { // width < 1200 ?
-      width: 180rem;// 1rem = 9px, 9/16 = 50%
+      width: 200rem;// 1rem = 9px, 9/16 = 50%
+    }
+    @include respond(tab-port) {
+      min-height: 110rem;
+
     }
     @include respond(phone) { // width < 1200 ?
       max-width: none;

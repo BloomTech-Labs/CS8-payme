@@ -6,7 +6,8 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
 import {
- getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice, resetCurrInv 
+ getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice, resetCurrInv
+ ,sortData, sortByClientName
 } from '../../../actions/invoices';
 
 //NOTE- Tried exporting these style to classes
@@ -60,6 +61,16 @@ class Invoices extends Component {
 
   boxView =() => {
     this.setState({ listView: false, boxView: true });
+  }
+  // PDF
+  togglePDF = (id, show) => {
+    console.log(show);
+    if (show === 'showpdf') {
+      return this.props.getInvoice(id),
+      this.setState({ pdfToggle: true });
+    }
+    this.setState({ pdfToggle: false });
+    this.props.resetCurrInv();
   }
 
   render() {
@@ -118,7 +129,16 @@ class Invoices extends Component {
             <hr className="navigation-line" />
             <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
             <hr className="navigation-line" />
-            <p className="invoice-sort">Sort<br /> Data<i className="fas fa-sort fa-fw" /></p>
+            <div className="own-class ui compact menu" style={{ border: 'none' }}>
+              <div className="ui simple dropdown item own-class" style={styles}>
+                Sort
+                <i className="fas fa-sort fa-fw" />
+                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                  <div className="item" onClick={this.props.sortData}>Total Amount</div>
+                  <div className="item" onClick={this.props.sortByClientName}>ClientName</div>
+                </div>
+              </div>
+            </div>
             <hr className="navigation-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div className="ui simple dropdown item own-class" style={styles}>
@@ -174,5 +194,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
- onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice, resetCurrInv,
+ onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice, resetCurrInv, sortData,
+ sortByClientName
 })(Invoices);

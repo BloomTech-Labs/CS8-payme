@@ -20,10 +20,10 @@ e,'s are considered best option for media queries
 .landing {
   background-color: #fff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  margin: 0 auto; }
+  margin: 0 auto;
+  height: 110rem; }
   .landing-container {
-    position: relative;
-    margin: 5rem auto; }
+    position: relative; }
   .landing-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     font-size: 15rem;
@@ -62,10 +62,14 @@ e,'s are considered best option for media queries
   .landing-image {
     margin: 0 auto;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-    width: 100%; }
+    width: 200rem;
+    min-height: 110rem; }
     @media (max-width: 75em) {
       .landing-image {
-        width: 180rem; } }
+        width: 200rem; } }
+    @media (max-width: 56.25em) {
+      .landing-image {
+        min-height: 110rem; } }
     @media (max-width: 37.5em) {
       .landing-image {
         max-width: none; } }
@@ -121,6 +125,9 @@ e,'s are considered best option for media queries
 .invoice-update {
   display: flex;
   margin: 0 auto; }
+  @media (max-width: 37.5em) {
+    .invoice-update {
+      margin-left: -15rem; } }
   .invoice-update-form {
     display: flex;
     flex-direction: column;
@@ -175,6 +182,10 @@ e,'s are considered best option for media queries
   justify-content: center;
   width: 40rem;
   border: 0.3px solid #c2c2c2; }
+  @media (max-width: 37.5em) {
+    .invoice-data {
+      margin: 2rem 2rem 2rem 0rem;
+      width: 20rem; } }
   .invoice-data-flex {
     display: flex;
     justify-content: space-between; }
@@ -324,9 +335,6 @@ e,'s are considered best option for media queries
     align-items: center;
     background-color: #2E2E2E;
     height: 6rem; }
-    @media (max-width: 37.5em) {
-      .invoice-navigation {
-        height: 6.5rem; } }
   .invoice-search_input {
     margin-left: 10rem;
     margin-right: 30rem;

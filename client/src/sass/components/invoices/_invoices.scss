@@ -24,10 +24,6 @@
     background-color: #2E2E2E;
     height: 6rem;
     // width: 1oorem;
-    @include respond(phone)  {
-      height: 6.5rem;
-
-    }
 
   }
 
