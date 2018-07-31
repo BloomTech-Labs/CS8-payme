@@ -20,7 +20,7 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
           <p>
-            <span className="invoice-data-pdf" onClick={() => props.togglePdf()}>
+            <span className="invoice-data-pdf" onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
               {' '}
               Invoice PDF<i className="fas fa-paperclip" />
             </span>

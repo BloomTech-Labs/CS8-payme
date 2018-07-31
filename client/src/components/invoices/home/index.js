@@ -74,8 +74,6 @@ class Invoices extends Component {
       return this.props.getInvoice(id),
       this.setState({ pdfToggle: true });
     }
-    this.setState({ pdfToggle: false });
-    this.props.resetCurrInv();
   }
 
   addInvoiceCheck = () => {
@@ -89,7 +87,7 @@ class Invoices extends Component {
   };
 
   render() {
-    const isDesktop = this.state.isDesktop;
+    const { isDesktop } = this.state;
     // Serach Invoices
     const { invoices } = this.props;
     let filteredInvoices = [];
@@ -147,11 +145,6 @@ class Invoices extends Component {
                 Add Invoice<i className="fas fa-plus  fa-fw" />
               </p>
             </div>
-            {/* <Link to="/addinvoice">
-              <p className="invoice-new">
-                Add Invoice<i className="fas fa-plus  fa-fw" />
-              </p>
-            </Link> */}
             <hr className="navigation-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div className="ui simple dropdown item own-class" style={styles}>
