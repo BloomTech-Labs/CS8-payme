@@ -31,6 +31,12 @@ const createReminder = (req, res) => {
       });
   });
 };
+
+const allReminders = (req, res) => {
+  Reminder.find().then(reminders => {
+    res.json(reminders);
+  });
+};
 // GET: /api/sms/:id
 // if reminder was deleted, it will redirect back to create
 const getReminder = (req, res) => {
@@ -65,6 +71,7 @@ const deleteReminder = (req, res) => {
 };
 
 module.exports = {
+  allReminders,
   getReminder,
   createReminder,
   deleteReminder,
