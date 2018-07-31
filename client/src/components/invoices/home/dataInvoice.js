@@ -9,7 +9,7 @@ import Pdf from './pdf';
 const Datainvoice = SortableElement(props => {
   return (
     <React.Fragment>
-      {props.boxView ? (
+      {props.boxView || props.isDesktop? (
         <div className="invoice-data">
           <div className="invoice-data-flex" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
             <p className="invoice-data-id">#{props.invoiceID}</p>

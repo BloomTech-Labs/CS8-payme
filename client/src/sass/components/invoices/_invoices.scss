@@ -24,6 +24,10 @@
     background-color: #2E2E2E;
     height: 6rem;
     // width: 1oorem;
+    @include respond(phone)  {
+      height: 6.5rem;
+
+    }
 
   }
 
@@ -37,10 +41,23 @@
       height: 4rem;
       border-radius: 1rem;
       border: $main-border;
+      @include respond(tab-port) {
+        width: 30rem;
+        margin-right: 5rem;
+        margin-left: 5rem;
+      }
+      @include respond(phone) {
+        width: 15rem;
+        margin-left: 2rem;
+      }
       &:focus {
         width: 40%;
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
+        @include respond(tab-port) {
+          transition: none;
+          width:30rem;
+        }
       }
     }
   }

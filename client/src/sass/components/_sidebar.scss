@@ -34,43 +34,66 @@
 
 
 
-#sidebar {
+.sidebar {
   color:white;
-  background-color: $color-sidebar;
-  height: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-bottom: 30rem;
   position: relative;
+  text-align: center;
+  height: 100%;
+  padding-bottom: 30rem;
+  background-color: $color-sidebar;
   min-width: 19rem;
   width: 19rem;
-  text-align: center;
-
-}
-
-.sidebar-profile {
-  margin-top: 3rem;
-  display: flex;
-  margin-left: 6rem;
-  border: 5px solid rgb(255, 255, 255);
-  box-shadow: 0px 0px 0px 5px rgba(211, 211, 211, 0.468);
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 2rem;
-
-  &_pic {
-    display: inline;
+  @include respond(phone)  {
+    flex-direction: row;
+    max-width: 5rem;
     height: 100%;
-    position: relative;
-
   }
 }
+
+.sidebar--users {
+  display: none;
+  @include respond(phone)  {
+  }
+}
+.sidebar--chat {
+  @include respond(phone)  {
+  display: flex;
+  }
+}
+
+
+// .sidebar-profile {
+//   margin-top: 3rem;
+//   display: flex;
+//   margin-left: 6rem;
+//   border: 5px solid rgb(255, 255, 255);
+//   box-shadow: 0px 0px 0px 5px rgba(211, 211, 211, 0.468);
+//   justify-content: center;
+//   width: 80px;
+//   height: 80px;
+//   overflow: hidden;
+//   border-radius: 50%;
+//   position: relative;
+//   margin-bottom: 2rem;
+
+//   @include respond(phone)  {
+//     width: 0;
+//     height:0;
+//     box-shadow: none;
+//     border: 0;
+//   }
+
+//   &_pic {
+//     display: inline;
+//     height: 100%;
+//     position: relative;
+
+//   }
+// }
 
 .sidebar-links {
   font-size: 1.6rem;
@@ -80,13 +103,23 @@
   height: 100%;
   width: 100%;
   background-color: rgba(63, 63, 63, 0.336);
-  // display: flex;
+
+  @include respond(phone)  {
+    margin-left: 2rem;
+    width: 8rem;
+    height: 20rem;
+
+  }
 }
 
 .fa-fw {
   padding-right: 0.5rem;
 }
 
+
+///////////////////////////////
+// Minimal
+//////////////////////////////
 .sidebar-min-links {
   // width: 10rem;
   margin-top: 2rem;

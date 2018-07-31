@@ -163,6 +163,9 @@ e,'s are considered best option for media queries
   display: flex;
   flex-flow: row wrap;
   margin: 5rem 5rem 5rem 10rem; }
+  @media (max-width: 37.5em) {
+    .invoice-box {
+      margin: 2rem 2rem 2rem 0rem; } }
 
 .invoice-data {
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -201,11 +204,21 @@ e,'s are considered best option for media queries
   padding: 2rem 2rem;
   margin-left: 3rem;
   margin-right: 3rem;
-  width: 96%;
+  width: 100%;
   height: 4rem;
   border-bottom: 0.3px solid #c2c2c2;
   display: flex;
   align-items: center; }
+  @media (max-width: 75em) {
+    .invoice-list {
+      width: 95rem; } }
+  @media (max-width: 56.25em) {
+    .invoice-list {
+      margin-left: 0; } }
+  @media (max-width: 37.5em) {
+    .invoice-list {
+      margin-left: -14rem;
+      z-index: 0; } }
   .invoice-list-id {
     font-weight: 700;
     cursor: pointer; }
@@ -214,7 +227,11 @@ e,'s are considered best option for media queries
   .invoice-list-box {
     margin-left: 4rem;
     margin-right: 4rem;
+    overflow: hidden;
     width: 15rem; }
+    @media (max-width: 56.25em) {
+      .invoice-list-box {
+        width: 15rem; } }
   .invoice-list-hr {
     border: 0.3px solid #c2c2c2; }
   .invoice-list-pdf {
@@ -307,6 +324,9 @@ e,'s are considered best option for media queries
     align-items: center;
     background-color: #2E2E2E;
     height: 6rem; }
+    @media (max-width: 37.5em) {
+      .invoice-navigation {
+        height: 6.5rem; } }
   .invoice-search_input {
     margin-left: 10rem;
     margin-right: 30rem;
@@ -316,10 +336,23 @@ e,'s are considered best option for media queries
     height: 4rem;
     border-radius: 1rem;
     border: 0.3px solid #c1c1c1; }
+    @media (max-width: 56.25em) {
+      .invoice-search_input {
+        width: 30rem;
+        margin-right: 5rem;
+        margin-left: 5rem; } }
+    @media (max-width: 37.5em) {
+      .invoice-search_input {
+        width: 15rem;
+        margin-left: 2rem; } }
     .invoice-search_input:focus {
       width: 40%;
       -webkit-transition: width 0.4s ease-in-out;
       transition: width 0.4s ease-in-out; }
+      @media (max-width: 56.25em) {
+        .invoice-search_input:focus {
+          transition: none;
+          width: 30rem; } }
   .invoice-sort {
     color: white;
     margin-top: 1rem;
@@ -832,37 +865,31 @@ e,'s are considered best option for media queries
   #sidebar.active:hover {
     margin-left: 50rem; }
 
-#sidebar {
+.sidebar {
   color: white;
-  background-color: #252525;
-  height: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  position: relative;
+  text-align: center;
+  height: 100%;
   padding-bottom: 30rem;
-  position: relative;
+  background-color: #252525;
   min-width: 19rem;
-  width: 19rem;
-  text-align: center; }
+  width: 19rem; }
+  @media (max-width: 37.5em) {
+    .sidebar {
+      flex-direction: row;
+      max-width: 5rem;
+      height: 100%; } }
 
-.sidebar-profile {
-  margin-top: 3rem;
-  display: flex;
-  margin-left: 6rem;
-  border: 5px solid white;
-  box-shadow: 0px 0px 0px 5px rgba(211, 211, 211, 0.468);
-  justify-content: center;
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 2rem; }
-  .sidebar-profile_pic {
-    display: inline;
-    height: 100%;
-    position: relative; }
+.sidebar--users {
+  display: none; }
+
+@media (max-width: 37.5em) {
+  .sidebar--chat {
+    display: flex; } }
 
 .sidebar-links {
   font-size: 1.6rem;
@@ -872,6 +899,11 @@ e,'s are considered best option for media queries
   height: 100%;
   width: 100%;
   background-color: rgba(63, 63, 63, 0.336); }
+  @media (max-width: 37.5em) {
+    .sidebar-links {
+      margin-left: 2rem;
+      width: 8rem;
+      height: 20rem; } }
 
 .fa-fw {
   padding-right: 0.5rem; }

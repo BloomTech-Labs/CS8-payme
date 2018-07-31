@@ -26,10 +26,20 @@ class Invoices extends Component {
     listView: true,
     boxView: false,
     pdfToggle: false,
+    isDesktop: false,
   }
 
   componentDidMount() {
     this.props.getAllInvoices();
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth < 600 });
   }
 
   // React sortable elements
@@ -53,6 +63,7 @@ class Invoices extends Component {
   }
 
   render() {
+    const isDesktop = this.state.isDesktop;
     // Serach Invoices
     const { invoices } = this.props;
     let filteredInvoices = [];
@@ -63,7 +74,7 @@ class Invoices extends Component {
     }
     // Box view || list view ?
     let className = '';
-    if (this.state.boxView) {
+    if (this.state.boxView || isDesktop) {
       className = 'invoice-box';
     }
     const SortableList = SortableContainer(props => {
@@ -84,6 +95,7 @@ class Invoices extends Component {
                 boxView={this.state.boxView}
                 listView={this.state.listView}
                 history={this.props.history}
+                isDesktop={isDesktop}
               />
             );
           })}
@@ -120,7 +132,7 @@ class Invoices extends Component {
             </div>
           </div>
           <div className="invoice-success"><p>{this.props.message}</p></div>
-          {this.state.listView && invoices.length > 0 ? (
+          {!isDesktop && (this.state.listView && invoices.length > 0) ? (
             <div className="invoice-list">
               <div className="invoice-list-box">
                 <p>Inovice Number</p>

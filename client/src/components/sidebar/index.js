@@ -8,12 +8,28 @@ import Nico from './Nico.jpg';
 const styles = {
   marginLeft: '4px',
   marginBottom: '2px',
+  isDesktop: false,
 }
 
 class Sidebar extends Component {
   state= {
     sidebarToggled: true,
+    isDesktop: false,
   }
+
+  componentDidMount() {
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth > 600 });
+  }
+
   logoutUser = () => {
     this.props.logout(this.props.history);
   };
@@ -24,6 +40,8 @@ class Sidebar extends Component {
   }
 
   render() {
+    const isDesktop = this.state.isDesktop;
+
     return (
     <div>
       <div style={{display: 'flex'}}>
@@ -43,9 +61,9 @@ class Sidebar extends Component {
         </div>
       </div>
 
-        {this.props.sidebarToggled ? (
+        {this.props.sidebarToggled && isDesktop ? (
 
-        <div id="sidebar">
+        <div className="sidebar">
           <div className="sidebar--chat">
             <div className="sidebar--users">
               <p>Welcome</p>
@@ -68,7 +86,7 @@ class Sidebar extends Component {
           </div>
         </div>
          ) : 
-          <div className="sidebar--minimal">
+           <div className="sidebar--minimal">
             <div className="sidebar-min-links">
               <p><NavLink className="sidebar-min-icons" to='/invoices'><i style={styles} className="fas fa-envelope-open fa-fw" /></NavLink></p>
               <p><NavLink className="sidebar-min-icons" exact to='/reminders'><i style={styles} className="fas fa-bell fa-fw" /></NavLink></p>
@@ -80,7 +98,7 @@ class Sidebar extends Component {
               </p>
             </div>
           </div>
-        }
+        } 
     </div>
     );
   }
