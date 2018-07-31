@@ -13,6 +13,8 @@ import {
   resetCurrInv,
 } from '../../../actions/invoices';
 
+import { allReminders } from '../../../actions/smsReminders';
+
 //NOTE- Tried exporting these style to classes
 // but it wasn't functioning correctly. Look into-
 const styles = {
@@ -34,6 +36,7 @@ class Invoices extends Component {
 
   componentDidMount() {
     this.props.getAllInvoices();
+    this.props.allReminders();
   }
 
   // React sortable elements
@@ -69,6 +72,8 @@ class Invoices extends Component {
   render() {
     // Serach Invoices
     const { invoices } = this.props;
+    const { reminders } = this.props;
+    console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -97,6 +102,7 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
+                reminders={reminders}
               />
             );
           })}
@@ -186,6 +192,7 @@ const mapStateToProps = state => {
     invoices: state.invoice.invoices,
     message: state.invoice.success,
     admin: state.auth.admin,
+    reminders: state.reminder.reminders,
   };
 };
 
@@ -197,5 +204,6 @@ export default connect(
     handleInvoiceIdx,
     getInvoice,
     resetCurrInv,
+    allReminders,
   },
 )(Invoices);

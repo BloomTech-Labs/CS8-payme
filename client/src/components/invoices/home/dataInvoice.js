@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
 import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
+import { getReminder } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
@@ -52,11 +53,20 @@ const Datainvoice = SortableElement(props => {
             </span>
             {/* </Link> */}
           </div>
-          <p className="invoice-list-reminder">
-            Weekly
-            <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-            <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-          </p>
+          {/* reminders */}
+          <div>
+            {props.reminders.map((r, i) => {
+              return (
+                <div key={i}>
+                  <p className="invoice-list-reminder">
+                    {r.remind}
+                    <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
+                    <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+                  </p>
+                </div>
+              );
+            })}
+          </div>
           <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
         </div>
       )}
@@ -67,10 +77,11 @@ const Datainvoice = SortableElement(props => {
 const mapStateToProps = state => {
   return {
     success: state.invoice.success,
+    reminders: state.reminder.reminders,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { handleInvoiceIdx, getPdf },
+  { handleInvoiceIdx, getPdf, getReminder },
 )(Datainvoice);
