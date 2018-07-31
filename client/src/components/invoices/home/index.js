@@ -13,6 +13,8 @@ import {
   resetCurrInv,
 } from '../../../actions/invoices';
 
+import { allReminders } from '../../../actions/smsReminders';
+
 //NOTE- Tried exporting these style to classes
 // but it wasn't functioning correctly. Look into-
 const styles = {
@@ -34,6 +36,7 @@ class Invoices extends Component {
 
   componentDidMount() {
     this.props.getAllInvoices();
+    this.props.allReminders();
   }
 
   // React sortable elements
@@ -70,7 +73,7 @@ class Invoices extends Component {
     // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
-    console.log(this.props.reminders);
+    console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -201,5 +204,6 @@ export default connect(
     handleInvoiceIdx,
     getInvoice,
     resetCurrInv,
+    allReminders,
   },
 )(Invoices);
