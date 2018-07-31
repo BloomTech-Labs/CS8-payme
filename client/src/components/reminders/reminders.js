@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAllInvoices, getInvoice } from '../../actions/invoices';
 import Sidebar from '../sidebar';
 import Dropdown from './dropdown';
-import { addReminder } from '../../actions/smsReminders';
+import { addReminder, allReminders } from '../../actions/smsReminders';
 import RemindForm from './reminderForm';
 
 class Reminders extends Component {
@@ -16,9 +16,10 @@ class Reminders extends Component {
     },
   };
 
-  // componentDidMount() {
-  //   this.props.getAllInvoices();
-  // }
+  componentDidMount() {
+    this.props.getAllInvoices();
+    this.props.allReminders();
+  }
 
   handleInvoice(id, phone) {
     this.setState(state => ({
@@ -45,8 +46,8 @@ class Reminders extends Component {
     const { invoices } = this.props;
     const { reminder } = this.state;
     const { reminders } = this.props;
-    console.log(reminders);
-    console.log(reminder);
+    console.log(reminders.remind);
+    // console.log(reminder);
     return (
       <div className="reminder">
         <Sidebar />
@@ -79,5 +80,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAllInvoices, getInvoice, addReminder },
+  { getAllInvoices, getInvoice, addReminder, allReminders },
 )(Reminders);
