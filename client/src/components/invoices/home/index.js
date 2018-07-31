@@ -69,6 +69,8 @@ class Invoices extends Component {
   render() {
     // Serach Invoices
     const { invoices } = this.props;
+    const { reminders } = this.props;
+    console.log(this.props.reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -97,6 +99,7 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
+                reminders={reminders}
               />
             );
           })}
@@ -186,6 +189,7 @@ const mapStateToProps = state => {
     invoices: state.invoice.invoices,
     message: state.invoice.success,
     admin: state.auth.admin,
+    reminders: state.reminder.reminders,
   };
 };
 
