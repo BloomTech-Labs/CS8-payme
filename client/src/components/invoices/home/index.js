@@ -6,16 +6,13 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
 import {
-<<<<<<< HEAD
- getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice, resetCurrInv
- ,sortData, sortByClientName
-=======
   getAllInvoices,
   handleInvoiceIdx,
   onSortEnd,
   getInvoice,
   resetCurrInv,
->>>>>>> master
+  sortData,
+  sortByClientName,
 } from '../../../actions/invoices';
 
 //NOTE- Tried exporting these style to classes
@@ -35,12 +32,8 @@ class Invoices extends Component {
     listView: true,
     boxView: false,
     pdfToggle: false,
-<<<<<<< HEAD
     isDesktop: false,
   }
-=======
-  };
->>>>>>> master
 
   componentDidMount() {
     this.props.getAllInvoices();
