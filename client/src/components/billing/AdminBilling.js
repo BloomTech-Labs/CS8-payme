@@ -28,8 +28,8 @@ class AdminBilling extends Component {
 
     return (
       <div className="window">
-        <h1>Billing</h1>
-        <h3>Purchase invoice credits below.</h3>
+        <h1 className="billing-title">Billing</h1>
+        <h3 className="billing-purchase">Purchase invoice credits below.</h3>
         <form>
           <div className="radio">
             <label className="billing-label">

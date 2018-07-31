@@ -1,19 +1,38 @@
 .billing {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
+  // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   height: 105rem;
-  margin: 0 auto;
+  // margin: 0 auto;
   position: relative;
   display: flex;
   
+  &-title {
+    font-size: 6rem;
+  }
+
+  &-purchase {
+    font-size: 2rem;
+  }
+
   &-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    margin-top: 20rem;
+    // align-items: center;
     // background-color: blue;
     width: 100%;
   }
+}
+
+.payInvoice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  height: 50rem;
+  border: 0.3px solid rgb(153, 153, 153);
 }
 
 .checkout {

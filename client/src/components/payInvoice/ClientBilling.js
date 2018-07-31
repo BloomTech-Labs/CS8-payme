@@ -59,11 +59,18 @@ class ClientBilling extends Component {
       email = this.state.invoice.email.address;
     }
     return (
-      <div className="window" style={{ display: 'flex' }}>
+      <div className="window" style={{ display: 'flex', marginTop:'15rem' }}>
         <div
           className="payInvoice"
           style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}
         >
+         <h1 className="signin--box--title" style={{marginBottom:'5rem'}}>
+              payMe
+              <span className="signin--box--dot">
+              .
+              </span>
+              <br />
+            </h1>
           <h1>Invoice # {this.state.invoice.number}</h1>
           <h3>View PDF invoice link</h3>
           <StripeCheckout
