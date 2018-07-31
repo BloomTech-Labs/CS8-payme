@@ -8,7 +8,7 @@ import RemindForm from './reminderForm';
 
 class Reminders extends Component {
   state = {
-    reminderr: {
+    reminder: {
       id: null,
       option: '',
       message: '',
@@ -16,15 +16,15 @@ class Reminders extends Component {
     },
   };
 
-  componentDidMount() {
-    this.props.getAllInvoices();
-  }
+  // componentDidMount() {
+  //   this.props.getAllInvoices();
+  // }
 
   handleInvoice(id, phone) {
     this.setState(state => ({
       ...state,
-      reminderr: {
-        ...state.reminderr,
+      reminder: {
+        ...state.reminder,
         ...id,
         ...phone,
       },
@@ -34,8 +34,8 @@ class Reminders extends Component {
   handleChange(e) {
     this.setState(state => ({
       ...state,
-      reminderr: {
-        ...state.reminderr,
+      reminder: {
+        ...state.reminder,
         ...e,
       },
     }));
@@ -43,9 +43,10 @@ class Reminders extends Component {
 
   render() {
     const { invoices } = this.props;
-    const { reminderr } = this.state;
-    console.log(reminderr.id);
-    console.log(reminderr);
+    const { reminder } = this.state;
+    const { reminders } = this.props;
+    console.log(reminders);
+    console.log(reminder);
     return (
       <div className="reminder">
         <Sidebar />
@@ -55,10 +56,10 @@ class Reminders extends Component {
             <RemindForm
               handleMessage={e => this.handleChange({ message: e.target.value })}
               handleRadio={e => this.handleChange({ option: e.target.value })}
-              option={reminderr.option}
+              option={reminder.option}
               invoices={invoices}
               getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
-              formData={reminderr}
+              formData={reminder}
               history={this.props.history}
             />
           </div>

@@ -16,11 +16,11 @@ export function addReminder(content, history) {
         },
       })
       .then(res => {
-        console.log(res.data);
+        console.log(content);
         history.push('/invoices');
         dispatch({
           type: ADD_REMINDER,
-          payload: res.data,
+          payload: content,
         });
       })
       .catch(err => {
@@ -60,6 +60,7 @@ export function getReminder(id) {
         },
       })
       .then(res => {
+        console.log(res.data);
         dispatch({ type: ONE_REMINDER, payload: res.data });
       })
       .catch(err => {
