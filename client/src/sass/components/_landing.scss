@@ -65,7 +65,8 @@
       width: 200rem;// 1rem = 9px, 9/16 = 50%
     }
     @include respond(tab-port) {
-      min-height: 110rem;
+      min-width: 225rem;
+      min-height: 125rem;
 
     }
     @include respond(phone) { // width < 1200 ?

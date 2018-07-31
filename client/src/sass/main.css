@@ -69,7 +69,8 @@ e,'s are considered best option for media queries
         width: 200rem; } }
     @media (max-width: 56.25em) {
       .landing-image {
-        min-height: 110rem; } }
+        min-width: 225rem;
+        min-height: 125rem; } }
     @media (max-width: 37.5em) {
       .landing-image {
         max-width: none; } }
@@ -824,7 +825,7 @@ e,'s are considered best option for media queries
   .signup-headline2 {
     display: flex;
     text-align: center;
-    color: white;
+    color: #a08484;
     margin-top: 2rem;
     font-size: 2rem; }
 

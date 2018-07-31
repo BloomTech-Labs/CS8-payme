@@ -81,12 +81,7 @@
   }
 
   &--img {
-    // background-color: rgba(255, 255, 255, 0.226);
-    // max-Height: 100%;
     width: 100%;
-    // @include respond(phone)  {
-    //   max-Height: 0;
-    // }
   }
   &-headline {
     display: flex;
@@ -116,7 +111,7 @@
   &-headline2 {
     display: flex;
     text-align: center;
-    color: white;
+    color: rgb(160, 132, 132);
     margin-top: 2rem;
     font-size: 2rem;
   }
