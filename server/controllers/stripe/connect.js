@@ -12,22 +12,27 @@ const authorizeConnect = (req, res) => {
   req.userId = req.user._id;
   console.log(`userid/req state: ${req.state}`);
 
-  const { firstName, lastName } = req.user;
+  const { companyName, phone } = req.user;
+  const fullName = req.user.fullName.split(' ');
+
   const email = req.user.username || undefined;
+
   // const phone = req.user.phone.number || undefined;
 
   let parameters = {
     client_id: process.env.STRIPE_CLIENT_ID,
     state: req.state,
     scope: 'read_write',
+    redirect_uri: `${process.env.HOST}/stripe/token`,
     // user: req.userId,
     response_type: 'code',
   };
   parameters = Object.assign(parameters, {
-    'stripe_user[first_name]': firstName || undefined,
-    'stripe_user[last_name]': lastName || undefined,
+    'stripe_user[first_name]': fullName[0] || undefined,
+    'stripe_user[last_name]': fullName[fullName.length - 1] || undefined,
     'stripe_user[email]': email || undefined,
-    // 'stripe_user[phone]': phone || undefined,
+    'stripe_user[business_name]': companyName || undefined,
+    'stripe_user[phone]': phone || undefined,
   });
 
   res.redirect(

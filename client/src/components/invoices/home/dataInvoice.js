@@ -1,27 +1,32 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
 import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
-import Pdf from './pdf';
-
+// import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
   return (
     <React.Fragment>
       {props.boxView || props.isDesktop? (
         <div className="invoice-data">
-          <div className="invoice-data-flex" onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
+          <div
+            className="invoice-data-flex"
+            onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}
+          >
             <p className="invoice-data-id">#{props.invoiceID}</p>
-            <i className="far fa-edit"></i>
+            <i className="far fa-edit" />
           </div>
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
-          <p><span className="invoice-data-pdf" onClick={() => props.togglePdf()}> Invoice PDF<i className="fas fa-paperclip"></i></span></p>
-          {props.isPdfToggled ? (
-            props.history.push('/pdf')
-            ) : null}
-          <hr className="invoice-data-hr"/>
+          <p>
+            <span className="invoice-data-pdf" onClick={() => props.togglePdf()}>
+              {' '}
+              Invoice PDF<i className="fas fa-paperclip" />
+            </span>
+          </p>
+          {props.isPdfToggled ? props.history.push('/pdf') : null}
+          <hr className="invoice-data-hr" />
           <p>Weekly</p>
         </div>
 
@@ -70,4 +75,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx, getPdf })(Datainvoice);
+export default connect(
+  mapStateToProps,
+  { handleInvoiceIdx, getPdf },
+)(Datainvoice);

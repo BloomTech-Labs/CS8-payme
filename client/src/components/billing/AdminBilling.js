@@ -4,6 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { updateUser } from '../../actions/auth';
+import ConnectStripe from './ConnectStripe';
 
 class AdminBilling extends Component {
   state = {
@@ -24,9 +25,9 @@ class AdminBilling extends Component {
   };
 
   render() {
-    console.log(this.state.type);
-
-    return (
+    return this.props.admin.stripe && !this.props.admin.stripe.code ? (
+      <ConnectStripe />
+    ) : (
       <div className="window">
         <h1 className="billing-title">Billing</h1>
         <h3 className="billing-purchase">Purchase invoice credits below.</h3>
@@ -78,6 +79,12 @@ class AdminBilling extends Component {
     const { description } = this.state;
     const email = this.props.admin.username;
     const amount = this.state.type === 'sub' ? 2000 : 199 * this.state.quantity;
+
+    // if (new Date().getTime() - this.props.admin.subscription < 0) {
+    //   alert(
+    //     'Active subscription.  Invoice credits are not required, and can not be refunded if purchased.',
+    //   );
+    // }
 
     return (
       <StripeCheckout

@@ -125,5 +125,5 @@ Signup = connect(
 
 export default reduxForm({
   form: 'register', // Unique name for the form
-  fields: ['username', 'password', 'firstName', 'lastName', 'phone'],
+  fields: ['username', 'password', 'fullName', 'companyName', 'phone'],
 })(Signup);

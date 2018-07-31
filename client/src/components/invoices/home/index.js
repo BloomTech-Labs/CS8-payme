@@ -6,8 +6,16 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
 import {
+<<<<<<< HEAD
  getAllInvoices, handleInvoiceIdx, onSortEnd, getInvoice, resetCurrInv
  ,sortData, sortByClientName
+=======
+  getAllInvoices,
+  handleInvoiceIdx,
+  onSortEnd,
+  getInvoice,
+  resetCurrInv,
+>>>>>>> master
 } from '../../../actions/invoices';
 
 //NOTE- Tried exporting these style to classes
@@ -27,8 +35,12 @@ class Invoices extends Component {
     listView: true,
     boxView: false,
     pdfToggle: false,
+<<<<<<< HEAD
     isDesktop: false,
   }
+=======
+  };
+>>>>>>> master
 
   componentDidMount() {
     this.props.getAllInvoices();
@@ -55,11 +67,11 @@ class Invoices extends Component {
   };
 
   //views
-  listView =() => {
+  listView = () => {
     this.setState({ listView: true, boxView: false });
-  }
+  };
 
-  boxView =() => {
+  boxView = () => {
     this.setState({ listView: false, boxView: true });
   }
   // PDF
@@ -72,6 +84,16 @@ class Invoices extends Component {
     this.setState({ pdfToggle: false });
     this.props.resetCurrInv();
   }
+
+  addInvoiceCheck = () => {
+    const payment = new Date().getTime() - this.props.admin.subscription;
+    if (payment < 0 || this.props.admin.invoiceCredits > 0) {
+      this.props.history.push('/addinvoice');
+    } else {
+      alert('Please purchase a subscription or invoice credit.');
+      this.props.history.push('/billing');
+    }
+  };
 
   render() {
     const isDesktop = this.state.isDesktop;
@@ -127,7 +149,16 @@ class Invoices extends Component {
               onChange={this.updateSearch}
             />
             <hr className="navigation-line" />
-            <Link to="/addinvoice"><p className="invoice-new">Add Invoice<i className="fas fa-plus  fa-fw" /></p></Link>
+            <div onClick={this.addInvoiceCheck}>
+              <p className="invoice-new">
+                Add Invoice<i className="fas fa-plus  fa-fw" />
+              </p>
+            </div>
+            {/* <Link to="/addinvoice">
+              <p className="invoice-new">
+                Add Invoice<i className="fas fa-plus  fa-fw" />
+              </p>
+            </Link> */}
             <hr className="navigation-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div className="ui simple dropdown item own-class" style={styles}>
@@ -145,8 +176,12 @@ class Invoices extends Component {
                 View
                 <i className="fas fa-eye fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.listView}>List</div>
-                  <div className="item" onClick={this.boxView}>Box</div>
+                  <div className="item" onClick={this.listView}>
+                    List
+                  </div>
+                  <div className="item" onClick={this.boxView}>
+                    Box
+                  </div>
                 </div>
               </div>
             </div>
@@ -170,7 +205,7 @@ class Invoices extends Component {
                 <p>Reminder</p>
               </div>
             </div>
-          ) : null }
+          ) : null}
           {invoices.length > 0 ? (
             <SortableList
               pressDelay={150}
@@ -179,7 +214,12 @@ class Invoices extends Component {
               invoices={invoices}
               onSortEnd={this.onSortEnd}
             />
-          ) : <p className="invoice-letstart">Looks like you dont have any Invoices! Click <Link to='/addinvoice'>here</Link> to get started</p>}
+          ) : (
+            <p className="invoice-letstart">
+              Looks like you dont have any Invoices! Click <Link to="/addinvoice">here</Link> to get
+              started
+            </p>
+          )}
         </div>
       </div>
     );
@@ -190,10 +230,17 @@ const mapStateToProps = state => {
   return {
     invoices: state.invoice.invoices,
     message: state.invoice.success,
+    admin: state.auth.admin,
   };
 };
 
-export default connect(mapStateToProps, {
- onSortEnd, getAllInvoices, handleInvoiceIdx, getInvoice, resetCurrInv, sortData,
- sortByClientName
+export default 
+  connect(mapStateToProps, {
+    onSortEnd, 
+    getAllInvoices, 
+    handleInvoiceIdx, 
+    getInvoice, 
+    resetCurrInv, 
+    sortData,
+    sortByClientName
 })(Invoices);
