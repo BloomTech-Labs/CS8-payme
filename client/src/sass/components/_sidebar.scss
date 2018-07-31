@@ -89,9 +89,48 @@
 
 .sidebar-min-links {
   // width: 10rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  
+  & p {
+    // background-color:rgb(229, 153, 147);
+    // border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    vertical-align:middle;
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    font-size: 2rem;
+
+  }
+}
+
+.sidebar-min-icons {
+  color: white;
+  vertical-align:middle;
+
 }
 
 .sidebar--minimal {
-  width: 10rem;
-  background-color: blue;
+  margin-top: -5px;
+  margin-left: -2px;
+  width: 6rem;
+  height: 100%;
+  border: 0.3px solid rgb(192, 192, 192);
+
+  background: #252525;
 }
+
+// .fa-envelope-open {
+//   margin-left: 4px;
+//   margin-bottom: 2px;
+// }
+
+// .fa-bell {
+//   margin-left: 4px;
+//   margin-bottom: 2px;
+// }

@@ -876,9 +876,32 @@ e,'s are considered best option for media queries
 .fa-fw {
   padding-right: 0.5rem; }
 
+.sidebar-min-links {
+  margin-top: 2rem;
+  margin-left: 1rem; }
+  .sidebar-min-links p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    height: 4.5rem;
+    width: 4.5rem;
+    border-radius: 50%;
+    font-size: 2rem; }
+
+.sidebar-min-icons {
+  color: white;
+  vertical-align: middle; }
+
 .sidebar--minimal {
-  width: 10rem;
-  background-color: blue; }
+  margin-top: -5px;
+  margin-left: -2px;
+  width: 6rem;
+  height: 100%;
+  border: 0.3px solid silver;
+  background: #252525; }
 
 .reminder {
   background-color: #ffffff;
@@ -985,6 +1008,7 @@ a {
   text-decoration: none;
   color: #818181; }
   a:hover {
+    display: flex;
     color: #22CFB1; }
 
 ul {

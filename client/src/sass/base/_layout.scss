@@ -35,6 +35,7 @@ a {
   text-decoration: none;
   color: rgb(129, 129, 129);
   &:hover {
+    display: flex;
     color: $color-primary;
   }
 
