@@ -1,4 +1,6 @@
-import { ADD_REMINDER, ONE_REMINDER, ALL_REMINDERS } from '../actions/smsReminders.js';
+import {
+  ADD_REMINDER, ONE_REMINDER, DELETED_SMS, ALL_REMINDERS,
+} from '../actions/smsReminders.js';
 
 const initialState = {
   reminders: [],
