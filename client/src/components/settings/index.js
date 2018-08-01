@@ -66,6 +66,7 @@ class Settings extends Component {
               />
               <br />
               <Field
+                type="password"
                 name="currentPassword"
                 component='input'
                 className="settings_field"
@@ -74,6 +75,7 @@ class Settings extends Component {
               />
               <br />
               <Field
+                type="password"
                 name="password"
                 component='input'
                 className="settings_field"
@@ -81,6 +83,7 @@ class Settings extends Component {
                 required
               />
               <Field
+                type="password"
                 name="newPassword"
                 component='input'
                 className="settings_field"

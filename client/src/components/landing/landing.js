@@ -6,27 +6,31 @@ import { autoLogin } from '../../actions/auth';
 
 const styles = {
   backgroundImage: `url(${landPic})`,
+  backgroundSize: 'cover',
+  // backgroundPosition: 'center',
 };
 class Landing extends Component {
   componentDidMount() {
     const token = localStorage.getItem('id');
     if (token) {
       this.props.autoLogin(token, this.props.history);
-    } // this.props.history.push('/invoices');
+    }
   }
 
   render() {
     return (
       <div className="landing">
-        <p className="landing-title">payMe</p>
-        <h1 className="landing-slogan">Lorem Ipsum</h1>
-        <img src={landPic} style={styles} alt="SideLogo" className="landing-image" />
-        <Link to="/signin">
-          <button className="landing-signin">Sign In</button>
-        </Link>
-        <Link to="/signup">
-          <button className="landing-signup">Sign up</button>
-        </Link>
+        <div className="landing-container">
+          <img src={landPic} style={styles} alt="SideLogo" className="landing-image" />
+          <p className="landing-title">payMe<span style={{color: '#22CFB1'}}>.</span></p>
+          <h1 className="landing-slogan">Lorem Ipsum</h1>
+          <Link to="/signin">
+            <button className="landing-signin">Sign In</button>
+          </Link>
+          <Link to="/signup">
+            <button className="landing-signup">Sign up</button>
+          </Link>
+        </div>
       </div>
     );
   }

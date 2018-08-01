@@ -2,6 +2,7 @@ import {
   SUCCESS,
   ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
   CURRENT_INVOICE, ARRAY_MOVE, RESET_CURRINV,
+  TOGGLE_SIDEBAR, DATE_SORT, CLIENTNAME_SORT,
 } from '../actions/invoices';
 import { USER_INVOICES } from '../actions/auth';
 
@@ -15,6 +16,7 @@ import { USER_INVOICES } from '../actions/auth';
 
 const initialState = {
   invoices: [],
+  toggleSidebar: true,
 };
 
 export default function (state = initialState, action) {
@@ -33,6 +35,12 @@ export default function (state = initialState, action) {
       return { ...state, currentInvoice: action.payload };
     case RESET_CURRINV:
       return { ...state, currentInvoice: action.payload };
+    case DATE_SORT:
+      return { ...state, invoices: action.payload };
+    case CLIENTNAME_SORT:
+      return { ...state, invoices: action.payload };
+    case TOGGLE_SIDEBAR:
+      return { ...state, toggleSidebar: !state.toggleSidebar };
     case ARRAY_MOVE:
       return { ...state, invoices: action.payload };
     default:
