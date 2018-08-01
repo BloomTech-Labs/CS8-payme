@@ -9,7 +9,7 @@ import { getReminder, deleteSms } from '../../../actions/smsReminders';
 const Datainvoice = SortableElement(props => {
   return (
     <React.Fragment>
-      {props.boxView || props.isDesktop? (
+      {props.boxView || props.isDesktop ? (
         <div className="invoice-data">
           <div
             className="invoice-data-flex"
@@ -21,7 +21,10 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
           <p>
-            <span className="invoice-data-pdf" onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
+            <span
+              className="invoice-data-pdf"
+              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
+            >
               {' '}
               Invoice PDF<i className="fas fa-paperclip" />
             </span>
@@ -48,43 +51,32 @@ const Datainvoice = SortableElement(props => {
             {/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}
           </div>
         </div>
-
-      ) :
-      (
+      ) : (
         <div className="invoice-list">
-          <div className="invoice-list-box" >
-            <p className="invoice-list-id"
-              onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
+          <div className="invoice-list-box">
+            <p
+              className="invoice-list-id"
+              onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}
+            >
               #{props.invoiceID}
             </p>
           </div>
-          <div className="invoice-list-box" >
+          <div className="invoice-list-box">
             <p className="invoice-list-box_name">{props.clientName}</p>
           </div>
-          <div className="invoice-list-box" >
+          <div className="invoice-list-box">
             <p className="invoice-list-company">{props.company}</p>
           </div>
-          <div className="invoice-list-box" >
-            <span className="invoice-list-pdf"
-              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
+          <div className="invoice-list-box">
+            <span
+              className="invoice-list-pdf"
+              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
+            >
               Invoice PDF
-              <i className="fas fa-paperclip"></i>
+              <i className="fas fa-paperclip" />
             </span>
           </div>
-          <div className="invoice-list-box" >
-            <p className="invoice-list-reminder">Weekly
-            <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
-            <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
-            </p>
-          </div>
-          <div>
-            {props.isPdfToggled ? (
-              props.history.push('/pdf')
-            ) : null}
-          </div>
-          {/* reminders */}
-
-          <div>
+          <div className="invoice-list-box">
             {props.reminder.map((r, i) => {
               return (
                 <div key={i}>
@@ -100,8 +92,11 @@ const Datainvoice = SortableElement(props => {
                 </div>
               );
             })}
-            {/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}
           </div>
+          <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
+          {/* reminders */}
+
+          <div>{/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}</div>
 
           <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
         </div>

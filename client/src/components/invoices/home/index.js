@@ -35,21 +35,22 @@ class Invoices extends Component {
     boxView: false,
     pdfToggle: false,
     isDesktop: false,
-  }
+  };
 
   componentDidMount() {
     this.props.getAllInvoices();
     this.props.allReminders();
     this.updatePredicate();
-    window.addEventListener("resize", this.updatePredicate);
+    window.addEventListener('resize', this.updatePredicate);
   }
+
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
+    window.removeEventListener('resize', this.updatePredicate);
   }
 
   updatePredicate = () => {
     this.setState({ isDesktop: window.innerWidth < 600 });
-  }
+  };
 
   // React sortable elements
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -69,15 +70,15 @@ class Invoices extends Component {
 
   boxView = () => {
     this.setState({ listView: false, boxView: true });
-  }
+  };
+
   // PDF
   togglePDF = (id, show) => {
     console.log(show);
     if (show === 'showpdf') {
-      return this.props.getInvoice(id),
-      this.setState({ pdfToggle: true });
+      return this.props.getInvoice(id), this.setState({ pdfToggle: true });
     }
-  }
+  };
 
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
@@ -126,7 +127,6 @@ class Invoices extends Component {
                 listView={this.state.listView}
                 reminder={reminders}
                 isDesktop={isDesktop}
-
               />
             );
           })}
@@ -138,7 +138,8 @@ class Invoices extends Component {
         <Sidebar />
         <div className="invoice-main">
           <div className="invoice-navigation">
-            <input className="fas fa-search"
+            <input
+              className="fas fa-search"
               // className="invoice-search"
               type="text"
               placeholder="Search Invoices"
@@ -158,8 +159,12 @@ class Invoices extends Component {
                 Sort
                 <i className="fas fa-sort fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.props.sortData}>Total Amount</div>
-                  <div className="item" onClick={this.props.sortByClientName}>ClientName</div>
+                  <div className="item" onClick={this.props.sortData}>
+                    Total Amount
+                  </div>
+                  <div className="item" onClick={this.props.sortByClientName}>
+                    ClientName
+                  </div>
                 </div>
               </div>
             </div>
@@ -179,7 +184,9 @@ class Invoices extends Component {
               </div>
             </div>
           </div>
-          <div className="invoice-success"><p>{this.props.message}</p></div>
+          <div className="invoice-success">
+            <p>{this.props.message}</p>
+          </div>
           {!isDesktop && (this.state.listView && invoices.length > 0) ? (
             <div className="invoice-list">
               <div className="invoice-list-box">
@@ -228,14 +235,16 @@ const mapStateToProps = state => {
   };
 };
 
-export default 
-  connect(mapStateToProps, {
-    onSortEnd, 
-    getAllInvoices, 
-    handleInvoiceIdx, 
-    getInvoice, 
-    resetCurrInv, 
+export default connect(
+  mapStateToProps,
+  {
+    onSortEnd,
+    getAllInvoices,
+    handleInvoiceIdx,
+    getInvoice,
+    resetCurrInv,
     sortData,
     sortByClientName,
-    allReminders
-})(Invoices);
+    allReminders,
+  },
+)(Invoices);
