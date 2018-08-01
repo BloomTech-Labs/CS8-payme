@@ -102,6 +102,7 @@ class Invoices extends Component {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
+
     // Box view || list view ?
     let className = '';
     if (this.state.boxView || isDesktop) {
@@ -127,8 +128,8 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
+                reminder={reminders}
                 isDesktop={isDesktop}
-                reminders={reminders}
               />
             );
           })}

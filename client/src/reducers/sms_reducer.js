@@ -12,6 +12,8 @@ export default function (state = initialState, action) {
       return { ...state, reminders: action.payload };
     case ONE_REMINDER:
       return { ...state, reminder: action.payload };
+    case DELETED_SMS:
+      return { ...state, reminders: action.payload };
     default:
       return state;
   }

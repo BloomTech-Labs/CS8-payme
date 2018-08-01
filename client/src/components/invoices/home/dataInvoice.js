@@ -1,9 +1,9 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
 import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
-import { getReminder } from '../../../actions/smsReminders';
+import { getReminder, deleteSms } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
@@ -36,6 +36,25 @@ const Datainvoice = SortableElement(props => {
           {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
           <hr className="invoice-data-hr" />
           <p>Weekly</p>
+          <div>
+            {props.reminder.map((r, i) => {
+              return (
+                <div key={i}>
+                  {r.invoiceId === props.id ? (
+                    <div>
+                      <p className="invoice-list-reminder">{r.remind}</p>
+
+                      <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+                      <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
+                        <i className="fa fa-bell-slash" />
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+            {/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}
+          </div>
         </div>
       ) : (
         <div className="invoice-list">
@@ -78,16 +97,25 @@ const Datainvoice = SortableElement(props => {
             {props.reminders.map((r, i) => {
               return (
                 <div key={i}>
-                  <p className="invoice-list-reminder">
-                    {r.remind}
-                    <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-                    <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-                  </p>
+                  {r.invoiceId === props.id ? (
+                    <div>
+                      <p className="invoice-list-reminder">{r.remind}</p>
+                      <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+                      <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
+                        <i className="fa fa-bell-slash" />
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
               );
             })}
           </div>
           {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
+          {/* reminders */}
+
+          <div>{/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}</div>
+
+          <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
         </div>
       )}
     </React.Fragment>
@@ -103,5 +131,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { handleInvoiceIdx, getPdf, getReminder },
+  {
+    handleInvoiceIdx,
+    getPdf,
+    getReminder,
+    deleteSms,
+  },
 )(Datainvoice);
