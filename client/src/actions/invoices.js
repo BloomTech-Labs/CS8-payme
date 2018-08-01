@@ -13,8 +13,6 @@ export const CLIENTNAME_SORT = 'CLIENTNAME_SORT';
 export const DATE_SORT = 'DATE_SORT';
 
 
-
-
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
 
@@ -71,11 +69,11 @@ export function addInvoice(info, history) {
   };
 }
 
-export function updateInvoice(credentials, history) {
+export function updateInvoice(info, history) {
   return (dispatch, getState) => {
-    const data = { ...credentials, email: { address: credentials.email }, phone: { number: credentials.phone } };
     const { number } = getState().invoice.currentInvoice;
-    axios.put(`/api/updateinvoice/${number}`, data, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
+    console.log(info);
+    axios.put(`/api/updateinvoice/${number}`, info, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
         history.push('/invoices');
         dispatch({ type: SUCCESS, payload: 'Updated your invoice' });
@@ -141,7 +139,7 @@ export const sortData = () => {
   return (dispatch, getState) => {
     console.log('hey');
     const { invoices } = getState().invoice;
-    console.log(invoices)
+    console.log(invoices);
     if (invoices) {
       const date = invoices.sort((a, b) => a.totalAmount > b.totalAmount);
       dispatch({ type: 'DATE_SORT', payload: date });
@@ -155,7 +153,7 @@ export const sortByClientName = () => {
   return (dispatch, getState) => {
     console.log('hey');
     const { invoices } = getState().invoice;
-    console.log(invoices)
+    console.log(invoices);
     if (invoices) {
       const clientName = invoices.sort((a, b) => a.clientName > b.clientName);
       dispatch({ type: 'CLIENTNAME_SORT', payload: clientName });

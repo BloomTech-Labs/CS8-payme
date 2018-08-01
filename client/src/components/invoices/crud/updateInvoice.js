@@ -1,99 +1,104 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
 import { updateInvoice } from '../../../actions/invoices';
 
 
 class UpdateInvoice extends Component {
-  handleFormSubmit = (credentials) => {
-    const pdf = new FormData();
-    pdf.append('file', this.uploadInput.files[0]);
-    pdf.append('filename', 'this.fileName.value');
-
-    this.props.updateInvoice({ ...credentials, pdf }, this.props.history);
+  handleFormSubmit = event => {
+    event.preventDefault();
+    const info = new FormData(event.target);
+    info.append('filename', event.target.file.name);
+    this.props.updateInvoice(info, this.props.history);
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { invoice } = this.props;
+    const email = invoice.email ? invoice.email.address : '';
+    const phone = invoice.phone ? invoice.phone.number : '';
+    const url = `http://localhost:5000/api/getpdf/${invoice._id}`;
     return (
       <div className="invoice-update">
         <div className="invoice-update-form">
           <h1 className="invoice-update-title">Update Invoice</h1>
-          <form className="add-invoice" onSubmit={handleSubmit(this.handleFormSubmit)}>
+          <form className="add-invoice" onSubmit={this.handleFormSubmit}>
             <div className="invoice-update-flex">
               <p>Client Name</p>
-              <Field
+              <input
                 name="clientName"
-                component="input"
+                defaultValue={invoice.clientName}
                 className="invoice-update_field"
                 placeholder="Name"
               />
             </div>
             <div className="invoice-update-flex">
-            <p>Company Name</p>
-              <Field
+              <p>Company Name</p>
+              <input
                 name="companyName"
-                component="input"
+                defaultValue={invoice.companyName}
                 className="invoice-update_field"
                 placeholder="Company"
               />
             </div>
             <div className="invoice-update-flex">
-            <p>Email</p>
-              <Field
+              <p>Email</p>
+              <input
                 type="email"
                 name="email"
-                component="input"
+                defaultValue={email}
                 className="invoice-update_field"
                 placeholder="Email"
               />
             </div>
             <div className="invoice-update-flex">
-            <p>Phone Number</p>
-              <Field
+              <p>Phone Number</p>
+              <input
                 name="phone"
-                component="input"
+                defaultValue={phone}
                 className="invoice-update_field"
                 placeholder="Phone Number"
               />
             </div>
             <div className="invoice-update-flex">
               <p>Invoice Number</p>
-              <Field
+              <input
                 type="number"
                 name="number"
-                component="input"
+                defaultValue={invoice.number}
                 className="invoice-update_field"
                 placeholder="Invoice Number"
               />
             </div>
             <div className="invoice-update-flex">
               <p>Total Amount</p>
-              <Field
+              <input
                 type="number"
                 name="totalAmount"
-                component="input"
+                defaultValue={invoice.totalAmount}
                 className="invoice-update_field"
                 placeholder="Invoice Number"
               />
             </div>
             <div className="invoice-update-flex">
-              <p>PDF</p>
-              <input className="invoice-update_field--pdf"ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Desired name of file" />
-              <input
-                // component="input"
-                type="file"
-                accept="image/png, image/jpeg, application/pdf"
-                ref={(ref) => { this.uploadInput = ref; }}
+              <p>Current PDF</p>
+              {/* <button style={{ width: '10rem',}}
                 className="invoice-update_field--pdf_input"
-                placeholder="Upload PDF"
+              /> */}
+                <a className="invoice-update_field--pdf_input" href={url} target="_blank"> Current PDF</a>
+            </div>
+            <div className="invoice-update-flex">
+              <p>New PDF</p>
+              <input
+                type="file"
+                name="file"
+                accept="application/pdf"
+                className="invoice-update_field--pdf_input"
               />
             </div>
             <button
               className="invoice-update_submit"
               type="submit"
-              value="Submit"
+              defaultValue="Submit"
             >Update Invoice
             </button>
           </form>
@@ -105,10 +110,8 @@ class UpdateInvoice extends Component {
 
 const mapStateToProps = state => {
   return {
-    invoices: state.invoice.invoices,
-    message: state.invoice.success,
-    admin: state.auth.admin,
+    invoice: state.invoice.currentInvoice,
   };
 };
 
-export default withRouter(connect(mapStateToProps, { updateInvoice }) (UpdateInvoice));
+export default withRouter(connect(mapStateToProps, { updateInvoice })(UpdateInvoice));
