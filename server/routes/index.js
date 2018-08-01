@@ -51,7 +51,7 @@ module.exports = app => {
   app.delete('/api/deleteinvoice/:number', restricted, deleteInvoice);
   app.put('/api/updateinvoice/:invNumber', restricted, updateInvoice);
   app.get('/api/clientinvoice/:invoiceID', clientInvoice);
-  app.get('/api/getpdf/:id', getpdf);
+  app.get('/viewpdf/:id', getpdf);
   // EMAIL ROUTES
   app.post('/api/email', restricted, sendEmail);
   // SMS ROUTES

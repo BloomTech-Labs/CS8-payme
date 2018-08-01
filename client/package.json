@@ -5,6 +5,12 @@
   "proxy": {
     "/api": {
       "target": "http://localhost:5000"
+    },
+    "/viewpdf": {
+      "target": "http://localhost:5000"
+    },
+    "/stripe": {
+      "target": "http://localhost:5000"
     }
   },
   "dependencies": {
