@@ -54,19 +54,23 @@ const Datainvoice = SortableElement(props => {
             {/* </Link> */}
           </div>
           {/* reminders */}
+
           <div>
-            {props.reminders.map((r, i) => {
+            {props.reminder.map((r, i) => {
               return (
                 <div key={i}>
-                  <p className="invoice-list-reminder">
-                    {r.remind}
-                    <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-                    <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-                  </p>
+                  {r.invoiceId === props.id ? (
+                    <p className="invoice-list-reminder">
+                      {r.remind}
+                      <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
+                      <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+                    </p>
+                  ) : null}
                 </div>
               );
             })}
           </div>
+
           <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
         </div>
       )}

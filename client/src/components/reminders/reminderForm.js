@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
 import { addReminder } from '../../actions/smsReminders';
@@ -57,21 +58,23 @@ const ReminderForm = props => {
         options={props.invoices.map((invoice, i) => {
           return (
             <div key={i}>
-              <p onClick={() => props.getInvoice(invoice._id, invoice.phone.number)}>
+              <p onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)}>
                 {invoice.clientName}
               </p>
             </div>
           );
         })}
       />
-      <button
-        type="submit"
-        onClick={() => {
-          props.addReminder(props.formData, props.history);
-        }}
-      >
-        Submit
-      </button>
+      <Link to="invoices">
+        <button
+          type="submit"
+          onClick={() => {
+            props.addReminder(props.formData, props.history);
+          }}
+        >
+          Submit
+        </button>
+      </Link>
     </div>
   );
 };

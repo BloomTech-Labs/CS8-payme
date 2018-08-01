@@ -73,13 +73,14 @@ class Invoices extends Component {
     // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
-    console.log(reminders);
+
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
+
     // Box view || list view ?
     let className = '';
     if (this.state.boxView) {
@@ -102,7 +103,7 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
-                reminders={reminders}
+                reminder={reminders}
               />
             );
           })}
