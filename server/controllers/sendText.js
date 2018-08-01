@@ -11,21 +11,30 @@ const getTimeZones = function() {
 
 // POST: /api/sms create a reminder
 const createReminder = (req, res) => {
-  const { name, phoneNumber, message, remind } = req.body;
+  console.log(req.body);
+  const { option, id, rPhone, message } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
-    name: name,
-    phoneNumber: phoneNumber,
+    phoneNumber: rPhone,
     message: message,
-    remind: remind
+    remind: option,
   });
-  const { id } = req.params;
+  const { _id } = req.params;
   reminder.save().then(newreminder => {
-    Invoice.findByIdAndUpdate(id, { $addToSet: { reminders: newreminder._id } })
+    console.log(newreminder);
+    Invoice.findByIdAndUpdate(_id, {
+      $addToSet: { reminders: newreminder._id },
+    })
       .populate('reminders')
       .then(newinvoice => {
         res.send(newinvoice);
       });
+  });
+};
+
+const allReminders = (req, res) => {
+  Reminder.find().then(reminders => {
+    res.json(reminders);
   });
 };
 // GET: /api/sms/:id
@@ -49,7 +58,8 @@ const getReminder = (req, res) => {
 const deleteReminder = (req, res) => {
   const { id } = req.params;
 
-  Reminder.remove({ _id: id })
+  Reminder.findById({ _id: id })
+    .remove()
     .then(reminder => {
       res.json(reminder);
       // res.redirect('/');
@@ -61,7 +71,8 @@ const deleteReminder = (req, res) => {
 };
 
 module.exports = {
+  allReminders,
   getReminder,
   createReminder,
-  deleteReminder
+  deleteReminder,
 };

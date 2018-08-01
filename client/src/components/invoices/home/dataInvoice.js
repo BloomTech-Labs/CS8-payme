@@ -3,12 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { SortableElement } from 'react-sortable-hoc';
 import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
+import { getReminder } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
   return (
     <React.Fragment>
-      {props.boxView ? (
+      {props.boxView || props.isDesktop? (
         <div className="invoice-data">
           <div
             className="invoice-data-flex"
@@ -20,7 +21,7 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
           <p>
-            <span className="invoice-data-pdf" onClick={() => props.togglePdf()}>
+            <span className="invoice-data-pdf" onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
               {' '}
               Invoice PDF<i className="fas fa-paperclip" />
             </span>
@@ -29,34 +30,54 @@ const Datainvoice = SortableElement(props => {
           <hr className="invoice-data-hr" />
           <p>Weekly</p>
         </div>
-      ) : (
+
+      ) :
+      (
         <div className="invoice-list">
-          <p
-            className="invoice-list-id"
-            onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}
-          >
-            #{props.invoiceID}
-          </p>
-          <div className="invoice-list-box">
+          <div className="invoice-list-box" >
+            <p className="invoice-list-id"
+              onClick={() => props.handleInvoiceIdx(props.invoiceID, props.history)}>
+              #{props.invoiceID}
+            </p>
+          </div>
+          <div className="invoice-list-box" >
             <p className="invoice-list-box_name">{props.clientName}</p>
           </div>
-          <p className="invoice-list-company">{props.company}</p>
-          <div>
-            {/* <Link to="/pdf"> */}
-            <span
-              className="invoice-data-pdf"
-              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
-            >
-              Invoice PDF
-              <i className="fas fa-paperclip" />
-            </span>
-            {/* </Link> */}
+          <div className="invoice-list-box" >
+            <p className="invoice-list-company">{props.company}</p>
           </div>
-          <p className="invoice-list-reminder">
-            Weekly
-            <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-            <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-          </p>
+          <div className="invoice-list-box" >
+            <span className="invoice-list-pdf"
+              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
+              Invoice PDF
+              <i className="fas fa-paperclip"></i>
+            </span>
+          </div>
+          <div className="invoice-list-box" >
+            <p className="invoice-list-reminder">Weekly
+            <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
+            <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
+            </p>
+          </div>
+          <div>
+            {props.isPdfToggled ? (
+              props.history.push('/pdf')
+            ) : null}
+          </div>
+          {/* reminders */}
+          <div>
+            {props.reminders.map((r, i) => {
+              return (
+                <div key={i}>
+                  <p className="invoice-list-reminder">
+                    {r.remind}
+                    <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
+                    <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+                  </p>
+                </div>
+              );
+            })}
+          </div>
           <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
         </div>
       )}
@@ -67,10 +88,11 @@ const Datainvoice = SortableElement(props => {
 const mapStateToProps = state => {
   return {
     success: state.invoice.success,
+    reminders: state.reminder.reminders,
   };
 };
 
 export default connect(
   mapStateToProps,
-  { handleInvoiceIdx, getPdf },
+  { handleInvoiceIdx, getPdf, getReminder },
 )(Datainvoice);

@@ -11,7 +11,11 @@ import {
   onSortEnd,
   getInvoice,
   resetCurrInv,
+  sortData,
+  sortByClientName,
 } from '../../../actions/invoices';
+
+import { allReminders } from '../../../actions/smsReminders';
 
 //NOTE- Tried exporting these style to classes
 // but it wasn't functioning correctly. Look into-
@@ -30,10 +34,21 @@ class Invoices extends Component {
     listView: true,
     boxView: false,
     pdfToggle: false,
-  };
+    isDesktop: false,
+  }
 
   componentDidMount() {
     this.props.getAllInvoices();
+    this.props.allReminders();
+    this.updatePredicate();
+    window.addEventListener("resize", this.updatePredicate);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth < 600 });
   }
 
   // React sortable elements
@@ -54,7 +69,15 @@ class Invoices extends Component {
 
   boxView = () => {
     this.setState({ listView: false, boxView: true });
-  };
+  }
+  // PDF
+  togglePDF = (id, show) => {
+    console.log(show);
+    if (show === 'showpdf') {
+      return this.props.getInvoice(id),
+      this.setState({ pdfToggle: true });
+    }
+  }
 
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
@@ -67,8 +90,11 @@ class Invoices extends Component {
   };
 
   render() {
+    const { isDesktop } = this.state;
     // Serach Invoices
     const { invoices } = this.props;
+    const { reminders } = this.props;
+    console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -77,7 +103,7 @@ class Invoices extends Component {
     }
     // Box view || list view ?
     let className = '';
-    if (this.state.boxView) {
+    if (this.state.boxView || isDesktop) {
       className = 'invoice-box';
     }
     const SortableList = SortableContainer(props => {
@@ -97,6 +123,9 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
+                history={this.props.history}
+                isDesktop={isDesktop}
+                reminders={reminders}
               />
             );
           })}
@@ -108,7 +137,7 @@ class Invoices extends Component {
         <Sidebar />
         <div className="invoice-main">
           <div className="invoice-navigation">
-            <input
+            <input className="fas fa-search"
               // className="invoice-search"
               type="text"
               placeholder="Search Invoices"
@@ -122,15 +151,17 @@ class Invoices extends Component {
                 Add Invoice<i className="fas fa-plus  fa-fw" />
               </p>
             </div>
-            {/* <Link to="/addinvoice">
-              <p className="invoice-new">
-                Add Invoice<i className="fas fa-plus  fa-fw" />
-              </p>
-            </Link> */}
             <hr className="navigation-line" />
-            <p className="invoice-sort">
-              Sort<br /> Data<i className="fas fa-sort fa-fw" />
-            </p>
+            <div className="own-class ui compact menu" style={{ border: 'none' }}>
+              <div className="ui simple dropdown item own-class" style={styles}>
+                Sort
+                <i className="fas fa-sort fa-fw" />
+                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                  <div className="item" onClick={this.props.sortData}>Total Amount</div>
+                  <div className="item" onClick={this.props.sortByClientName}>ClientName</div>
+                </div>
+              </div>
+            </div>
             <hr className="navigation-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div className="ui simple dropdown item own-class" style={styles}>
@@ -147,18 +178,24 @@ class Invoices extends Component {
               </div>
             </div>
           </div>
-          <div className="invoice-success">
-            <p>{this.props.message}</p>
-          </div>
-          {this.state.listView && invoices.length > 0 ? (
-            <div className="invoice-list-headerdiv">
-              <ul className="invoice-list-headers">
-                <li>Inovice Number</li>
-                <li>Client Name</li>
-                <li>Company</li>
-                <li>PDF</li>
-                <li>Reminder</li>
-              </ul>
+          <div className="invoice-success"><p>{this.props.message}</p></div>
+          {!isDesktop && (this.state.listView && invoices.length > 0) ? (
+            <div className="invoice-list">
+              <div className="invoice-list-box">
+                <p>Inovice Number</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>ClientName</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>CompanyName</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>PDF</p>
+              </div>
+              <div className="invoice-list-box">
+                <p>Reminder</p>
+              </div>
             </div>
           ) : null}
           {invoices.length > 0 ? (
@@ -186,16 +223,18 @@ const mapStateToProps = state => {
     invoices: state.invoice.invoices,
     message: state.invoice.success,
     admin: state.auth.admin,
+    reminders: state.reminder.reminders,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    onSortEnd,
-    getAllInvoices,
-    handleInvoiceIdx,
-    getInvoice,
-    resetCurrInv,
-  },
-)(Invoices);
+export default 
+  connect(mapStateToProps, {
+    onSortEnd, 
+    getAllInvoices, 
+    handleInvoiceIdx, 
+    getInvoice, 
+    resetCurrInv, 
+    sortData,
+    sortByClientName,
+    allReminders
+})(Invoices);

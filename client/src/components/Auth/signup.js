@@ -3,7 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { register } from '../../actions/auth';
-// import logo from './google.png';
+import signup from './signup.jpg';
+
+import backgroundImage from './signup.jpg';
+
+const styles = {
+  backgroundImage: `url(${backgroundImage})`,
+  backgroundSize: 'cover',
+  width: '100%',
+};
 
 class Signup extends Component {
   handleFormSubmit = credentials => {
@@ -14,73 +22,92 @@ class Signup extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="signup">
-        <p className="signup-headline">
+      <div className="signup" style={styles}>
+        {/* <p className="signup-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
-        </p>
-        <div className="signup--container">
-          <h1 className="signin-notey">payME</h1>
-          <h1 className="signin--header">Sign Up With</h1>
-          <h3>{this.props.error}</h3>
-          <form className="signin--signin" onSubmit={handleSubmit(this.handleFormSubmit)}>
-            <Field
-              type="email"
-              name="username"
-              component="input"
-              className="signin--signin__username"
-              placeholder="E-Mail Address"
-            />
-            <br />
-            <Field
-              name="password"
-              component="input"
-              className="signin--signin__password"
-              placeholder="Password"
-            />
-            <br />
-            <Field
-              name="fullName"
-              component="input"
-              className="signin--signin__password"
-              placeholder="Full Name"
-            />
-            <br />
-            <Field
-              name="companyName"
-              component="input"
-              className="signin--signin__password"
-              placeholder="Company Name"
-            />
-            <br />
-            <Field
-              name="phone"
-              component="input"
-              type="number"
-              className="signin--signin__password"
-              placeholder="Phone Number"
-            />
-            <br />
-            <button className="signin--signin__button" action="submit">
-              Sign Up{' '}
-            </button>
-          </form>
-          {/* <p className="signin--orsign"> Or sign up with </p> */}
-          {/* <div className="signin--buttons">
-            <button className="signin--buttons__facebook">
-              <i className="fab fa-facebook-square" />facebook
-            </button>
-            <button className="signin--buttons__google">
-              <img
-                src={logo}
-                alt="google logo"
-                className="signin--buttons__google--logo"
-              />Google
-            </button>
-          </div> */}
-          <p className="signin--notmember">
-            {' '}
-            Already a member? <Link to="/signin"> Sign in </Link>
-          </p>
+        </p> */}
+        <div className="signup-foreground" >
+          <div className="signup-imgbox">
+            <p className="signup--img" />
+            <p className="signup-headline">
+              Sign Up<br /> <span className="signup-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris</span>
+            </p>
+            <p className="signin--form_notmember" style={{color: 'color: rgb(78, 65, 65)'}}>
+              Alread have an account ? <br/> <Link to="/signin"> <span className="signin-signup">Sign In</span> </Link>
+            </p>
+          </div>
+          <div className="signup--container">
+            <h1 className="signup--title">
+              payMe
+              <span className="signup--dot">
+              .
+              </span>
+              <br />
+            </h1>
+            {/* <h1 className="signup--header">Sign Up</h1> */}
+            <h3>{this.props.error}</h3>
+            <form className="signup--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
+              <Field
+                type="email"
+                name="username"
+                component="input"
+                className="signin--form_username"
+                placeholder="Username"
+              />
+              <br />
+              <Field
+                type="password"
+                name="password"
+                component="input"
+                className="signin--form_password"
+                placeholder="Password"
+              />
+              <br />
+              <Field
+                name="firstName"
+                component="input"
+                className="signin--form_password"
+                placeholder="firstName"
+              />
+              <br />
+              <Field
+                name="lastName"
+                component="input"
+                className="signin--form_password"
+                placeholder="lastName"
+              />
+              <br />
+              <Field
+                name="phone"
+                component="input"
+                type="number"
+                className="signin--form_password"
+                placeholder="phone"
+              />
+              <br />
+              <button className="signin--form_button" action="submit">
+                Sign Up{' '}
+              </button>
+            </form>
+            <p className="signin--orsign"> Or sign up with </p>
+            {/* <div className="signin--buttons">
+              <button className="signin--buttons__facebook">
+                <i className="fab fa-facebook-square" />facebook
+              </button>
+              <button className="signin--buttons__google">
+                <img
+                  src={logo}
+                  alt="google logo"
+                  className="signin--buttons__google--logo"
+                />Google
+              </button>
+            </div> */}
+            {/* <p className="signin--form_notmember">
+              {' '}
+              Already a member? <Link to="/signin"> Sign in </Link>
+            </p> */}
+          </div>
         </div>
       </div>
     );
