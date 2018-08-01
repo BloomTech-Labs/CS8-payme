@@ -49,7 +49,6 @@ class Reminders extends Component {
   render() {
     const { invoices } = this.props;
     const { reminder } = this.state;
-    const { reminders } = this.props;
     console.log(reminder);
     return (
       <div className="reminder">
