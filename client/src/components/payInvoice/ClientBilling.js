@@ -63,30 +63,47 @@ class ClientBilling extends Component {
       email = this.state.invoice.email.address;
     }
     return (
-      <div className="window" style={{ display: 'flex', marginTop:'15rem' }}>
+      <div className="window" style={{ display: 'flex', marginTop: '15rem' }}>
         <div
           className="payInvoice"
           style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}
         >
-         <h1 className="signin--box--title" style={{marginBottom:'5rem'}}>
-              payMe
-              <span className="signin--box--dot">
-              .
-              </span>
-              <br />
+          <h1 className="signin--box--title" style={{ marginBottom: '5rem' }}>
+            payMe
+            <span className="signin--box--dot">.</span>
+            <br />
+          </h1>
+          <div
+            style={{
+              border: '1px solid black',
+              textAlign: 'center',
+            }}
+          >
+            <h1 style={{ border: '1px solid black' }}>Invoice # {this.state.invoice.number}</h1>
+            <h1 style={{ border: '1px solid black' }}>
+              From: {this.state.invoice.companyName || this.state.invoice.fullName}
             </h1>
-          <h1>Invoice # {this.state.invoice.number}</h1>
-          <h3>View PDF invoice link</h3>
-          <StripeCheckout
-            name="Name"
-            email={email}
-            allowRememberMe={false}
-            description={description}
-            amount={totalAmount}
-            token={this.onToken(totalAmount, description)}
-            currency="USD"
-            stripeKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}
-          />
+            <h1 style={{ border: '1px solid black' }}>
+              Amount Due: {this.state.invoice.totalAmount}
+            </h1>
+          </div>
+          <div>
+            <a id="openPDF" href={`viewpdf/${this.state.invoice._id}`} target="_blank">
+              <button className="doc-content_button">Download</button>
+            </a>
+          </div>
+          <div>
+            <StripeCheckout
+              name="Name"
+              email={email}
+              allowRememberMe={false}
+              description={description}
+              amount={totalAmount}
+              token={this.onToken(totalAmount, description)}
+              currency="USD"
+              stripeKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}
+            />
+          </div>
         </div>
       </div>
     );

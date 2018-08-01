@@ -7,6 +7,7 @@ import { getReminder, deleteSms } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
+  // console.log(props);
   return (
     <React.Fragment>
       {props.boxView || props.isDesktop ? (
@@ -21,16 +22,20 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-name">{props.clientName}</p>
           <p className="invoice-data-company">{props.company}</p>
           <p>
-            <span
-              className="invoice-data-pdf"
-              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
-            >
-              {' '}
-              Invoice PDF<i className="fas fa-paperclip" />
-            </span>
+            {props.img.data ? (
+              <a className="invoice-data-pdf" href={`viewpdf/${props.id}`} target="_blank">
+                Invoice PDF<i className="fas fa-paperclip" />
+              </a>
+            ) : (
+              <span className="invoice-data-pdf" onClick={() => alert('No invoice loaded.')}>
+                {' '}
+                Invoice PDF<i className="fas fa-paperclip" />
+              </span>
+            )}
           </p>
-          {props.isPdfToggled ? props.history.push('/pdf') : null}
+          {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
           <hr className="invoice-data-hr" />
+          <p>Weekly</p>
           <div>
             {props.reminder.map((r, i) => {
               return (
@@ -68,16 +73,28 @@ const Datainvoice = SortableElement(props => {
             <p className="invoice-list-company">{props.company}</p>
           </div>
           <div className="invoice-list-box">
-            <span
-              className="invoice-list-pdf"
-              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
-            >
-              Invoice PDF
-              <i className="fas fa-paperclip" />
-            </span>
+            {props.img.data ? (
+              <a className="invoice-data-pdf" href={`viewpdf/${props.id}`} target="_blank">
+                Invoice PDF<i className="fas fa-paperclip" />
+              </a>
+            ) : (
+              <span className="invoice-data-pdf" onClick={() => alert('No invoice loaded.')}>
+                {' '}
+                Invoice PDF<i className="fas fa-paperclip" />
+              </span>
+            )}
           </div>
           <div className="invoice-list-box">
-            {props.reminder.map((r, i) => {
+            <p className="invoice-list-reminder">
+              Weekly
+              <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
+              <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+            </p>
+          </div>
+          {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
+          {/* reminders */}
+          <div>
+            {props.reminders.map((r, i) => {
               return (
                 <div key={i}>
                   {r.invoiceId === props.id ? (
@@ -93,7 +110,7 @@ const Datainvoice = SortableElement(props => {
               );
             })}
           </div>
-          <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
+          {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
           {/* reminders */}
 
           <div>{/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}</div>

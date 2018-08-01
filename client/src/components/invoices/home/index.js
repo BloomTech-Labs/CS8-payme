@@ -73,12 +73,12 @@ class Invoices extends Component {
   };
 
   // PDF
-  togglePDF = (id, show) => {
-    console.log(show);
-    if (show === 'showpdf') {
-      return this.props.getInvoice(id), this.setState({ pdfToggle: true });
-    }
-  };
+  // togglePDF = (id, show) => {
+  //   // console.log(show);
+  //   if (show === 'showpdf') {
+  //     return this.props.getInvoice(id), this.setState({ pdfToggle: true });
+  //   }
+  // };
 
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
@@ -95,7 +95,7 @@ class Invoices extends Component {
     // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
-
+    // console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -112,16 +112,19 @@ class Invoices extends Component {
       return (
         <div className={className}>
           {filteredInvoices.map((inv, index) => {
+            // console.log('inv');
+            // console.log(inv);
             return (
               <Invoice
                 key={inv._id}
                 id={inv._id}
+                img={inv.img}
                 index={index}
                 invoiceID={inv.number}
                 clientName={inv.clientName}
                 company={inv.companyName}
                 history={this.props.history}
-                isPdfToggled={this.state.pdfToggle}
+                // isPdfToggled={this.state.pdfToggle}
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
@@ -139,7 +142,7 @@ class Invoices extends Component {
         <div className="invoice-main">
           <div className="invoice-navigation">
             <input
-              className="fas fa-search"
+              // className="fas fa-search"
               // className="invoice-search"
               type="text"
               placeholder="Search Invoices"

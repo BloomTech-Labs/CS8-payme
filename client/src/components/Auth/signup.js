@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { register } from '../../actions/auth';
-import signup from './signup.jpg';
+// import signup from './signup.jpg';
 
 import backgroundImage from './signup.jpg';
 
@@ -26,23 +26,27 @@ class Signup extends Component {
         {/* <p className="signup-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p> */}
-        <div className="signup-foreground" >
+        <div className="signup-foreground">
           <div className="signup-imgbox">
             <p className="signup--img" />
             <p className="signup-headline">
-              Sign Up<br /> <span className="signup-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
-              ullamco laboris</span>
+              Sign Up<br />{' '}
+              <span className="signup-headline2">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              </span>
             </p>
-            <p className="signin--form_notmember" style={{color: 'color: rgb(78, 65, 65)'}}>
-              Alread have an account ? <br/> <Link to="/signin"> <span className="signin-signup">Sign In</span> </Link>
+            <p className="signin--form_notmember" style={{ color: 'color: rgb(78, 65, 65)' }}>
+              Alread have an account ? <br />{' '}
+              <Link to="/signin">
+                {' '}
+                <span className="signin-signup">Sign In</span>{' '}
+              </Link>
             </p>
           </div>
           <div className="signup--container">
             <h1 className="signup--title">
               payMe
-              <span className="signup--dot">
-              .
-              </span>
+              <span className="signup--dot">.</span>
               <br />
             </h1>
             {/* <h1 className="signup--header">Sign Up</h1> */}
