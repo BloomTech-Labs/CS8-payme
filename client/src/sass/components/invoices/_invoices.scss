@@ -5,9 +5,12 @@
   // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   // height: 105rem;
   overflow: hidden;
-  height: 105rem;
+  height: 120rem;
   margin: 0;
   position: relative;
+  // @include respond(phone)  {
+  //   height: 100%;
+  // }
 
   &-main {
     display: flex;
@@ -17,13 +20,10 @@
   &-navigation {
     display: flex;
     width: 100%;
-    // border-left: 0.3px solid rgb(193, 193, 193);
     justify-content: flex-start;
     align-items: center;
-    // border:  0.3px solid rgb(193, 193, 193);
     background-color: #2E2E2E;
     height: 6rem;
-    // width: 1oorem;
 
   }
 

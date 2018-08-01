@@ -103,23 +103,12 @@ class UpdateInvoice extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    invoices: state.invoice.invoices,
+    message: state.invoice.success,
+    admin: state.auth.admin,
+  };
+};
 
-// This retrieving existing data from Redux 
-let InitializeFromStateForm = reduxForm({
-  form: 'initializeFromState', // unique name for form
-  enableReinitialize : true
-})(UpdateInvoice);
-
-InitializeFromStateForm = connect(
-  state => ({
-    profile: state.profile,
-    initialValues: {
-      ...state.invoice.currentInvoice,
-      email: state.invoice.currentInvoice.email ? state.invoice.currentInvoice.email.address : '', // Had to add email and phone because they are nested objects
-      phone: state.invoice.currentInvoice.phone ? state.invoice.currentInvoice.phone.number : '',
-    }, // gathering our intial values and conencting it to comp
-  }),
-  { updateInvoice },
-)(InitializeFromStateForm);
-
-export default withRouter(InitializeFromStateForm);
+export default withRouter(connect(mapStateToProps, { updateInvoice }) (UpdateInvoice));
