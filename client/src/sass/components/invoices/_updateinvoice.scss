@@ -4,6 +4,9 @@
   // justify-content: center;
   // align-items: center;
   margin: 0 auto;
+  @include respond(phone)  {
+    margin-left: -15rem;
+  }
 
     &-form {
       display: flex;

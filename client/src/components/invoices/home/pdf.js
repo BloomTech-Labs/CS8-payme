@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Document, Page } from 'react-pdf';
-import { getInvoice } from '../../../actions/invoices';
+import { getInvoice, resetCurrInv  } from '../../../actions/invoices';
 
 class Pdf extends Component {
   state = {
@@ -12,6 +12,10 @@ class Pdf extends Component {
   onDocumentLoadSuccess = ({ numPages }) => {
     this.setState({ numPages });
  
+  }
+
+  componentWillUnmount() {
+    this.props.resetCurrInv();
   }
 
   render() {
@@ -76,5 +80,5 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { getInvoice })(Pdf);
+export default connect(mapStateToProps, { getInvoice, resetCurrInv })(Pdf);
 // <img className="doc-image"src={url} alt='img'/>

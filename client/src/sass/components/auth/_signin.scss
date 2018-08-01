@@ -1,49 +1,115 @@
-.sign-layout {
-  background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  // height: 150rem;
-  width: 120rem;
-  margin: 0 auto;
-  position: relative;
-}
-.signin {
-  // background-size: cover;
-  margin-right: 8rem;
 
-  border: 1px solid black;
+.signin {
+  // height: 10rem;
+  // margin: 0 auto;
   box-shadow: none;
-  width: 110rem;
-  height: 85rem;
+  width: 100%;
+  height: 110rem;
   display: flex;
-  justify-content: flex-end;
-  align-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  border: solid white;
-  background-color: #ffffff;
-  border: 1px solid white;
-  
-  &--image {
-    max-width: 150rem;
-    // max-height: 100%;
-    // clip: rect(0px,60px,500px,0px);
+  background-size: cover;
+
+  &-foreground {
+    display: flex;
+    width: 115rem;
+    height: 90rem;
+    color: white;
+    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
+    @include respond(tab-port) {
+      width: 90rem;
+    }
+    @include respond(phone)  {
+      width: 50rem;
+      box-shadow: none;
+    }
   }
+  &-imgbox {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 115rem;
+    height: 90rem;
+  }
+  
+  &--img {
+    max-Height: 100%;
+    width: 100%;
+    @include respond(phone)  {
+      max-Height: 0;
+    }
+  }
+  &-headline {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
+    width: 40rem;
+    margin: 10rem 10rem;
+    font-size: 5rem;
+    font-weight: 700;
+    color: white;
+    top: 15rem;
+    left: 0rem;
+    line-height: 50%;
+    @include respond(tab-port) {
+      width: 25rem;
+    }
+    @include respond(phone)  {
+      width: 0;
+      color: transparent;
+    }
+  }
+  
+  &-headline2 {
+    text-shadow: none;
+    display: flex;
+    text-align: center;
+    margin-top: 2rem;
+    color: #243030;
+    font-size: 2rem;
+  }
+
+  &-signup {
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14rem;
+    height: 4rem;
+
+    color: #243030;
+    background-color: rgb(255, 255, 255);
+    // border: 0.3px solid $color-secon;
+    border-radius: .5rem;
+
+  }
+
   &--box {
-    margin-right: 8rem;
     background-color: #ffffff;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 40rem;
-    height: 55rem;
-    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
+    width: 100%;
+    height: 100%;
     position: relative;
+    @include respond(tab-port) {
+      height: 90rem;
+      width: 125%;
+    }
+    @include respond(phone)  {
+      min-width: 100%;
+      height: 75rem;
+    }
 
     &--title {
       color: black;
       border-right:  0.3px solid rgba(255, 255, 255, 0.66);
-      font-size: 3rem;
+      font-size: 6rem;
       height: 6rem;
     }
     &--dot {
@@ -53,6 +119,7 @@
 
   }
   &--header {
+    color: black;
     margin-bottom: 2rem;
   }
 
@@ -93,95 +160,68 @@
       }
     }
   }
+}
 
   //////////////////////////////////////////////
   // SIGNIN FORM
   //////////////////////////////////////////////
 
-  &--orsign {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-
-  &--signin {
-    font-size: 1.2rem;
+.signin--form {
     cursor: pointer;
     &:hover {
       cursor: pointer;
     }
     // background-color: yellow;
-    &__username {
+    &_username {
       padding: .5rem;
-      height: 3.5rem;
-      width: 20rem;
+      height: 5rem;
+      width: 28rem;
       border-radius: .5rem;
       margin-bottom: .5rem;
       border: .1rem solid rgb(223, 223, 223)
     }
-    &__password {
+    &_password {
       padding: .5rem;
-      height: 3.5rem;
-      width: 20rem;
+      height: 5rem;
+      width: 28rem;
       border-radius: .5rem;
       margin-bottom: .5rem;
       border: .1rem solid rgb(223, 223, 223)
       
     }
-    &__button {
+    &_button {
       padding: .5rem;
-      height: 3rem;
+      height: 4.5rem;
       width: 100%;
       background-color: black;
       color: white;
-      font-size: 1rem;
       border-radius: .5rem;
       border: 0.5px black;
     }
-  }
-  &--notmember {
-    font-size: 1rem;
-    margin-top: 5rem;
-  }
+    &_options {
+      color: black;
+      margin-bottom: 2rem;
+    }
+    
+    &_notmember {
+      color:white;
+      font-size: 2rem;
+      margin: 10rem 10rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 40rem;
+      height: 10rem;
+      top: 35rem;
+      left: 0;
+      position: absolute;
+      color: black;
+      margin-top: 5rem;
+
+      @include respond(tab-port) {
+        width: 25rem;
+      }
+    }
 }
 
-
-.signup {
-  box-shadow: none;
-  height: 85rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  // border: 1px solid white;
-  background-size: cover;
-  position: relative;
-  &--container {
-    margin-right: 8rem;
-    background-color: #ffffff;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    width: 40rem;
-    height: 60rem;
-    box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
-    position: relative;
-
-  }
-
-  &-headline {
-    position: absolute;
-    font-size: 5rem;
-    font-weight: 700;
-    color: white;
-    top: 18rem;
-    left: 10rem;
-  }
-
-  &-headline2 {
-    font-weight: 400;
-    font-size: 3rem;
-    position: absolute;
-    top: 4.9rem;
-
-  }
-}
