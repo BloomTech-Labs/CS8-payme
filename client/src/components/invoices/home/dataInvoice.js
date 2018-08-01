@@ -23,7 +23,7 @@ const Datainvoice = SortableElement(props => {
           <p className="invoice-data-company">{props.company}</p>
           <p>
             {props.img.data ? (
-              <a id="openPDF" href={`viewpdf/${props.id}`} target="_blank">
+              <a className="invoice-data-pdf" href={`viewpdf/${props.id}`} target="_blank">
                 Invoice PDF<i className="fas fa-paperclip" />
               </a>
             ) : (
@@ -55,7 +55,7 @@ const Datainvoice = SortableElement(props => {
           </div>
           <div className="invoice-list-box">
             {props.img.data ? (
-              <a id="openPDF" href={`viewpdf/${props.id}`} target="_blank">
+              <a className="invoice-data-pdf" href={`viewpdf/${props.id}`} target="_blank">
                 Invoice PDF<i className="fas fa-paperclip" />
               </a>
             ) : (
