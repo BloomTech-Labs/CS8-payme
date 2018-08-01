@@ -7,7 +7,7 @@ import { getReminder } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
 const Datainvoice = SortableElement(props => {
-  console.log(props);
+  // console.log(props);
   return (
     <React.Fragment>
       {props.boxView || props.isDesktop ? (
@@ -33,7 +33,7 @@ const Datainvoice = SortableElement(props => {
               </span>
             )}
           </p>
-          {props.isPdfToggled ? props.history.push('/pdf') : null}
+          {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
           <hr className="invoice-data-hr" />
           <p>Weekly</p>
         </div>
@@ -72,7 +72,7 @@ const Datainvoice = SortableElement(props => {
               <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
             </p>
           </div>
-          <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
+          {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
           {/* reminders */}
           <div>
             {props.reminders.map((r, i) => {
@@ -87,7 +87,7 @@ const Datainvoice = SortableElement(props => {
               );
             })}
           </div>
-          <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
+          {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
         </div>
       )}
     </React.Fragment>

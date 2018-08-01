@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getAllInvoices, getInvoice } from '../../actions/invoices';
 import Sidebar from '../sidebar';
-import Dropdown from './dropdown';
+// import Dropdown from './dropdown';
 import { addReminder, allReminders } from '../../actions/smsReminders';
 import RemindForm from './reminderForm';
 
@@ -80,5 +80,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAllInvoices, getInvoice, addReminder, allReminders },
+  {
+    getAllInvoices, getInvoice, addReminder, allReminders,
+  },
 )(Reminders);
