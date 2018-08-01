@@ -8,6 +8,12 @@ export const INVOICE_IDX = 'INVOICE_IDX';
 export const CURRENT_INVOICE = 'CURRENT_INVOICE';
 export const ARRAY_MOVE = 'ARRAY_MOVE';
 export const RESET_CURRINV = 'RESET_CURRINV';
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export const CLIENTNAME_SORT = 'CLIENTNAME_SORT';
+export const DATE_SORT = 'DATE_SORT';
+
+
+
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
@@ -29,6 +35,12 @@ export function resetCurrInv() {
   return {
     type: RESET_CURRINV,
     payload: '',
+  };
+}
+
+export function toggleSidebar() {
+  return {
+    type: TOGGLE_SIDEBAR,
   };
 }
 
@@ -88,8 +100,10 @@ export function deleteInvoice(invoiceNumber, history) {
 
 export function getInvoice(id) {
   return dispatch => {
+    console.log(id);
     axios.get(`/api/invoices/${id}`, { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
       .then(res => {
+        console.log(res);
         dispatch({ type: 'CURRENT_INVOICE', payload: res.data });
       })
       .catch(err => {
@@ -122,6 +136,34 @@ export function handleInvoiceIdx(inputID, history) {
     });
   };
 }
+
+export const sortData = () => {
+  return (dispatch, getState) => {
+    console.log('hey');
+    const { invoices } = getState().invoice;
+    console.log(invoices)
+    if (invoices) {
+      const date = invoices.sort((a, b) => a.totalAmount > b.totalAmount);
+      dispatch({ type: 'DATE_SORT', payload: date });
+      console.log(date);
+    }
+    
+  };
+}
+
+export const sortByClientName = () => {
+  return (dispatch, getState) => {
+    console.log('hey');
+    const { invoices } = getState().invoice;
+    console.log(invoices)
+    if (invoices) {
+      const clientName = invoices.sort((a, b) => a.clientName > b.clientName);
+      dispatch({ type: 'CLIENTNAME_SORT', payload: clientName });
+    }
+    
+  };
+}
+
 
 export const onSortEnd = orderList => {
   return {
