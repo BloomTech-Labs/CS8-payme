@@ -65,16 +65,14 @@ const ReminderForm = props => {
           );
         })}
       />
-      <Link to="invoices">
-        <button
-          type="submit"
-          onClick={() => {
-            props.addReminder(props.formData, props.history);
-          }}
-        >
-          Submit
-        </button>
-      </Link>
+      <button
+        type="submit"
+        onClick={() => {
+          props.addReminder(props.formData, props.history);
+        }}
+      >
+        Submit
+      </button>
     </div>
   );
 };
