@@ -26,7 +26,7 @@ const getOneInvoice = (req, res) => {
 const clientInvoice = (req, res) => {
   const { invoiceID } = req.params;
   Invoice.findById(invoiceID)
-    .populate('admin', 'stripe -_id')
+    .populate('admin', 'stripe companyName fullName username -_id')
     .then(response => {
       if (!response) {
         return res.status(404).json({ message: 'Invoice not found.' });
@@ -42,13 +42,13 @@ const getpdf = (req, res) => {
   console.log(id);
   Invoice.findById(id)
     .select('img')
-    .then((doc) =>{
-    res.contentType(doc.img.contentType);
-    res.send(doc.img.data);
+    .then(doc => {
+      res.contentType(doc.img.contentType);
+      res.send(doc.img.data);
     })
-  .catch((err) => {
-    if (err) return (err);
-  })
+    .catch(err => {
+      if (err) return err;
+    });
 };
 
 module.exports = {
