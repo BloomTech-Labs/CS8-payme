@@ -7,14 +7,14 @@ const authToken = process.env.TWILIO_TOKEN;
 const twilioNumber = process.env.TWILIO_NUMBER;
 
 const ReminderSchema = new mongoose.Schema({
-  name: String,
+  invoiceId: String,
   phoneNumber: String,
   remind: String, // minute, daily, weekly, monthly
   message: String,
   time: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 ReminderSchema.statics.Minute = function() {
@@ -46,7 +46,7 @@ function sendNotifications(reminders) {
     const options = {
       to: `+1 ${reminder.phoneNumber}`,
       from: twilioNumber,
-      body: reminder.message
+      body: reminder.message,
     };
     // send message
     client.messages.create(options, function(err, response) {
