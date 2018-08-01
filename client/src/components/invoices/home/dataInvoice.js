@@ -35,7 +35,6 @@ const Datainvoice = SortableElement(props => {
           </p>
           {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
           <hr className="invoice-data-hr" />
-          <p>Weekly</p>
           <div>
             {props.reminder.map((r, i) => {
               return (
@@ -85,37 +84,28 @@ const Datainvoice = SortableElement(props => {
             )}
           </div>
           <div className="invoice-list-box">
-            <p className="invoice-list-reminder">
-              Weekly
-              <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-              <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-            </p>
-          </div>
-          {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
-          {/* reminders */}
-          <div>
-            {props.reminders.map((r, i) => {
-              return (
-                <div key={i}>
-                  {r.invoiceId === props.id ? (
-                    <div>
-                      <p className="invoice-list-reminder">{r.remind}</p>
-                      <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-                      <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
-                        <i className="fa fa-bell-slash" />
-                      </button>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
+            <div>
+              {props.reminders.map((r, i) => {
+                return (
+                  <div key={i}>
+                    {r.invoiceId === props.id ? (
+                      <div>
+                        <p className="invoice-list-reminder">{r.remind}</p>
+                        <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
+                        <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
+                          <i className="fa fa-bell-slash" />
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
           </div>
           {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
           {/* reminders */}
 
           <div>{/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}</div>
-
-          <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div>
         </div>
       )}
     </React.Fragment>
