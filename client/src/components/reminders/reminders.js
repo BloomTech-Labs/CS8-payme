@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Calendar from 'react-calendar';
 import { getAllInvoices, getInvoice } from '../../actions/invoices';
 import Sidebar from '../sidebar';
-import Dropdown from './dropdown';
+// import Dropdown from './dropdown';
 import { addReminder, allReminders } from '../../actions/smsReminders';
 import RemindForm from './reminderForm';
 
@@ -14,12 +15,15 @@ class Reminders extends Component {
       message: '',
       rPhone: '',
     },
+    date: new Date(),
   };
 
   componentDidMount() {
     this.props.getAllInvoices();
     this.props.allReminders();
   }
+
+  onChange = date => this.setState({ date });
 
   handleInvoice(id, phone) {
     this.setState(state => ({
@@ -45,12 +49,13 @@ class Reminders extends Component {
   render() {
     const { invoices } = this.props;
     const { reminder } = this.state;
-    const { reminders } = this.props;
-    console.log(reminders.remind);
-    // console.log(reminder);
+    console.log(reminder);
     return (
       <div className="reminder">
         <Sidebar />
+        <div>
+          <Calendar onChange={this.onChange} value={this.state.date} />
+        </div>
         <div className="reminder-container">
           <div className="reminder-drop" />
           <div>
@@ -80,5 +85,10 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAllInvoices, getInvoice, addReminder, allReminders },
+  {
+    getAllInvoices,
+    getInvoice,
+    addReminder,
+    allReminders,
+  },
 )(Reminders);

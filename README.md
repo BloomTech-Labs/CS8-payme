@@ -46,6 +46,7 @@
 - Clients can click on the link in the message and will be directed to a page where they can view the PDF invoice that the Admin has uploaded. Clients do not have to log in. If they have an issue with the amount or the content of the PDF, they can click the contact's name and send them an email directly. The client can also click the pay button to enter their credit card info and pay the invoice.
 
 - Invoices paid by the client are automatically deposited into the admin's stripe account. A 5% fee is taken from the total invoice amount to cover stripe credit card fees.
+<<<<<<< HEAD
 
 # **Deployed Site**
 
@@ -206,3 +207,5 @@ stripe: {
 * **authenticate** - Uses `bcrypt` to check the incoming password against the user's hashed password stored in the database. -->
 
 
+=======
+>>>>>>> master
