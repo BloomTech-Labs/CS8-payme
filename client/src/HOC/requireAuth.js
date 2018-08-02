@@ -27,7 +27,7 @@ export default ComposedComponent => {
       //     .catch(err => console.log(err));
       // }
       const token = localStorage.getItem('id');
-      console.log('token: ', token);
+      // console.log('token: ', token);
       if (token) {
         this.props.autoLogin(token, this.props.history);
       } else {
