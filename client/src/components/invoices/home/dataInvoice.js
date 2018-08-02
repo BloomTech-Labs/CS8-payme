@@ -75,7 +75,23 @@ const Datainvoice = SortableElement(props => {
           <div className="invoice-list-box">
             <p className="invoice-list-company">{props.company}</p>
           </div>
-          <div className="invoice-list-box">
+//           <div className="invoice-list-box">
+//             <span className="invoice-list-pdf"
+//               onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}> 
+//               Invoice PDF
+//               <i className="fas fa-paperclip"></i>
+//             </span>
+//           </div>
+//           <div className="invoice-list-box">
+//             <p className="invoice-list-reminder">Weekly
+//             <i className="far fa-envelope" style={{marginLeft: '0.5rem'}}></i>
+//             <i className="fas fa-mobile-alt"  style={{marginLeft: '0.5rem'}}></i>
+//             </p>
+//           </div>
+//           <div>
+//             {props.isPdfToggled ? (
+//               props.history.push('/pdf')
+//             ) : null}
             {props.img.data ? (
               <a className="invoice-data-pdf" href={`viewpdf/${props.id}`} target="_blank">
                 Invoice PDF<i className="fas fa-paperclip" />
@@ -93,7 +109,7 @@ const Datainvoice = SortableElement(props => {
                 return (
                   <div key={i}>
                     {r.invoiceId === props.id ? (
-                      <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
                         <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
                           {r.remind.toUpperCase()}
                         </p>

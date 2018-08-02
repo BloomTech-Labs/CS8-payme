@@ -30,7 +30,6 @@ class Signup extends Component {
           <div className="signup-imgbox">
             <p className="signup--img" />
             <p className="signup-headline">
-              Sign Up<br />{' '}
               <span className="signup-headline2">
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
               </span>

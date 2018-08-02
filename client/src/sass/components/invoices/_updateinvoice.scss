@@ -1,8 +1,5 @@
 .invoice-update{
   display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   margin: 0 auto;
   @include respond(phone)  {
     margin-left: -15rem;
@@ -13,8 +10,10 @@
       flex-direction: column;
       width: 50rem;
       height: 40rem;
-      // border: 0.5px solid rgb(220, 220, 220);
       margin: 5rem auto;
+      @include respond(phone)  {
+        width: 35rem;
+      }
     }
     &-title {
       margin: 0 auto;
@@ -28,10 +27,7 @@
         margin-top: 1rem;
         font-size: 1.5rem;
         width: 30rem;
-        // margin-right: 3rem;
-        // color:white;
       }
-      // align-content: center;
     }
 
     &_field {
@@ -43,6 +39,15 @@
         text-align: center;
         margin-top: 1rem;
       }
+
+      &--newpdf {
+        @include respond(phone)  {
+          margin-left: 11rem;
+          // width: 15rem;
+          border:none;
+        }
+      }
+
     }
 
     &_field--pdf {
@@ -50,6 +55,11 @@
       height: 4rem;
       border: none;
       border: 0.3px solid rgb(216, 216, 216);
+      &_input {
+        @include respond(phone)  {
+          margin-right: 10rem;
+        }
+      }
 
     }
     &_submit {
