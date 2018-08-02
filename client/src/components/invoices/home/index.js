@@ -140,6 +140,7 @@ class Invoices extends Component {
                 history={this.props.history}
                 isDesktop={isDesktop}
                 reminders={reminders}
+                url={`http://localhost:5000/api/getpdf/${inv._id}`}
               />
             );
           })}

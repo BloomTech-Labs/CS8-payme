@@ -1,12 +1,12 @@
 import React from 'react';
 
 const View = (props) => {
-  return ( 
+  return (
     <div className="view-invoice-box">
       <div className="view-invoice-details">
       <div className="view-invoice-details-flex">
-          <p>Invoice pdf(not working)</p>
-          <p>{props.invoice.pdf}</p>
+          <p>Invoice pdf</p>
+          <a href={props.url} target="_blank">Invoice pdf</a>
         </div>
         <div className="view-invoice-details-flex">
           <p>Invoice Number:</p>
