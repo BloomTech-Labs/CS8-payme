@@ -30,8 +30,8 @@ class Signup extends Component {
           <div className="signup-imgbox">
             <p className="signup--img" />
             <p className="signup-headline">
-              Sign Up<br /> <span className="signup-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
-              ullamco laboris</span>
+              {/* Sign Up<br /> <span className="signup-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris</span> */}
             </p>
             <p className="signin--form_notmember" style={{color: 'color: rgb(78, 65, 65)'}}>
               Alread have an account ? <br/> <Link to="/signin"> <span className="signin-signup">Sign In</span> </Link>

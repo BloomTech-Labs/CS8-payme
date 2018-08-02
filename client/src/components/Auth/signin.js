@@ -25,8 +25,8 @@ class Signin extends Component {
           <div className="signin-imgbox">
             <img className="signin--img" src={signin} alt="img" />
             <p className="signin-headline">
-              Sign in<br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
-              ullamco laboris</span>
+              {/* <br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
+              ullamco laboris</span> */}
             </p>
             <p className="signin--form_notmember">
               Not a member? <br/> <Link to="/signup"> <span className="signin-signup">Sign up</span> </Link>

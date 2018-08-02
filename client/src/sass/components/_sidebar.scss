@@ -1,7 +1,9 @@
 .slideout {
   padding-top: 1rem;
   background-color: $color-nav;
-
+  @include respond(tab-port) {
+    display: none;
+  }
   & span {
   display: block;
   width: 3rem;
@@ -17,6 +19,14 @@
     font-size: 3rem;
     height: 6rem;
     background-color: $color-nav;
+    @include respond(tab-port) {
+      width: 19rem;
+      padding-left: 5.5rem;
+    }
+    @include respond(smallphone)  {
+      padding-left: 1rem;
+      width: 13rem;
+    }
   }
   &--dot {
     color: $color-primary;
@@ -103,7 +113,6 @@
   height: 100%;
   width: 100%;
   background-color: rgba(63, 63, 63, 0.336);
-
   @include respond(phone)  {
     margin-left: 2rem;
     width: 8rem;
@@ -124,6 +133,15 @@
   // width: 10rem;
   margin-top: 2rem;
   margin-left: 1rem;
+  @include respond(smallphone)  {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    height: 4rem;
+    background-color:rgb(45, 45, 45);
+    width: 50rem;
+    position: fixed;
+  }
   
   & p {
     // background-color:rgb(229, 153, 147);
@@ -154,8 +172,11 @@
   width: 6rem;
   height: 100%;
   border: 0.3px solid rgb(192, 192, 192);
-
   background: #252525;
+  @include respond(smallphone)  {
+    background-color: rgba(192, 192, 192, 0);
+    border: 0;
+  }
 }
 
 // .fa-envelope-open {

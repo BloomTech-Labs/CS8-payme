@@ -36,18 +36,14 @@
         color:$color-primary;
       }
     }
-
-    // &-line {
-    //   height: 8rem;
-    //   background-color: blue;
-    //   // border: 5px solid rgba(0, 0, 0, 0.139);
-    // }
   }
   &-form {
     width: 35rem;
     height: 35rem;
-    // border: 0.5px solid rgb(220, 220, 220);
     margin: 15rem auto;
+    @include respond(phone)  {
+      margin-left: -11.5rem;
+    }
   }
 
   &_field {

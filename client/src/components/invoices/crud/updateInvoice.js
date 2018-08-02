@@ -81,9 +81,6 @@ class UpdateInvoice extends Component {
             </div>
             <div className="invoice-update-flex">
               <p>Current PDF</p>
-              {/* <button style={{ width: '10rem',}}
-                className="invoice-update_field--pdf_input"
-              /> */}
                 <a className="invoice-update_field--pdf_input" href={url} target="_blank"> Current PDF</a>
             </div>
             <div className="invoice-update-flex">
@@ -92,7 +89,7 @@ class UpdateInvoice extends Component {
                 type="file"
                 name="file"
                 accept="application/pdf"
-                className="invoice-update_field--pdf_input"
+                className="invoice-update_field--newpdf"
               />
             </div>
             <button

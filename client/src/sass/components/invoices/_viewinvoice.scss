@@ -77,8 +77,17 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+    @include respond(phone)  {
+      margin-left: -9rem;
+    }
   }
   &-editDelete {
     display: flex;
+  }
+}
+
+.fa-arrow-left {
+  @include respond(phone)  {
+    margin-left: -12rem;
   }
 }

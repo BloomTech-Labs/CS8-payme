@@ -10,8 +10,8 @@ export const ARRAY_MOVE = 'ARRAY_MOVE';
 export const RESET_CURRINV = 'RESET_CURRINV';
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const CLIENTNAME_SORT = 'CLIENTNAME_SORT';
-export const DATE_SORT = 'DATE_SORT';
-
+export const AMOUNT_SORT = 'AMOUNT_SORT';
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
@@ -32,6 +32,13 @@ export function authError(error) {
 export function resetCurrInv() {
   return {
     type: RESET_CURRINV,
+    payload: '',
+  };
+}
+
+export function clearMessage() {
+  return {
+    type: CLEAR_MESSAGE,
     payload: '',
   };
 }
@@ -135,32 +142,20 @@ export function handleInvoiceIdx(inputID, history) {
   };
 }
 
-export const sortData = () => {
-  return (dispatch, getState) => {
-    console.log('hey');
-    const { invoices } = getState().invoice;
-    console.log(invoices);
-    if (invoices) {
-      const date = invoices.sort((a, b) => a.totalAmount > b.totalAmount);
-      dispatch({ type: 'DATE_SORT', payload: date });
-      console.log(date);
-    }
-    
+export const sortByAmount = (invoices) => {
+  return (dispatch) => {
+    const date = invoices.sort((a, b) => a.totalAmount > b.totalAmount);
+    dispatch({ type: 'AMOUNT_SORT', payload: date });
+    console.log(date);
   };
-}
+};
 
-export const sortByClientName = () => {
-  return (dispatch, getState) => {
-    console.log('hey');
-    const { invoices } = getState().invoice;
-    console.log(invoices);
-    if (invoices) {
-      const clientName = invoices.sort((a, b) => a.clientName > b.clientName);
-      dispatch({ type: 'CLIENTNAME_SORT', payload: clientName });
-    }
-    
+export const sortByClientName = (invoices) => {
+  return (dispatch) => {
+    const clientName = invoices.sort((a, b) => a.clientName > b.clientName);
+    dispatch({ type: 'CLIENTNAME_SORT', payload: clientName });
   };
-}
+};
 
 
 export const onSortEnd = orderList => {

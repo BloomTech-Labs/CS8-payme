@@ -135,6 +135,9 @@ e,'s are considered best option for media queries
     width: 50rem;
     height: 40rem;
     margin: 5rem auto; }
+    @media (max-width: 37.5em) {
+      .invoice-update-form {
+        width: 35rem; } }
   .invoice-update-title {
     margin: 0 auto;
     font-size: 3rem;
@@ -153,11 +156,18 @@ e,'s are considered best option for media queries
     .invoice-update_field_input {
       text-align: center;
       margin-top: 1rem; }
+    @media (max-width: 37.5em) {
+      .invoice-update_field--newpdf {
+        margin-left: 11rem;
+        border: none; } }
   .invoice-update_field--pdf {
     margin-left: 15.5rem;
     height: 4rem;
     border: none;
     border: 0.3px solid #d8d8d8; }
+    @media (max-width: 37.5em) {
+      .invoice-update_field--pdf_input {
+        margin-right: 10rem; } }
   .invoice-update_submit {
     color: white;
     height: 4rem;
@@ -171,9 +181,15 @@ e,'s are considered best option for media queries
   margin-top: 5rem;
   display: flex;
   flex-flow: row wrap; }
+  @media (max-width: 56.25em) {
+    .invoice-box {
+      margin-left: 20rem; } }
   @media (max-width: 37.5em) {
     .invoice-box {
-      margin: 2rem 2rem 2rem -5rem; } }
+      margin: 2rem 2rem 2rem -4rem; } }
+  @media (max-width: 25.06em) {
+    .invoice-box {
+      margin: 5rem 0rem 0rem -6rem; } }
 
 .invoice-data {
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
@@ -187,6 +203,9 @@ e,'s are considered best option for media queries
     .invoice-data {
       margin: 2rem 2rem 2rem 0rem;
       width: 20rem; } }
+  @media (max-width: 25.06em) {
+    .invoice-data {
+      width: 30rem; } }
   .invoice-data-flex {
     display: flex;
     justify-content: space-between; }
@@ -223,7 +242,7 @@ e,'s are considered best option for media queries
   align-items: center; }
   @media (max-width: 75em) {
     .invoice-list {
-      width: 95rem; } }
+      width: 97rem; } }
   @media (max-width: 56.25em) {
     .invoice-list {
       margin-left: 0; } }
@@ -313,10 +332,12 @@ e,'s are considered best option for media queries
   cursor: pointer;
   font-family: 'Roboto', sans-serif; }
 
+.try {
+  display: none; }
+
 .invoice {
   display: flex;
   background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
   overflow: hidden;
   height: 120rem;
   margin: 0;
@@ -350,6 +371,9 @@ e,'s are considered best option for media queries
       .invoice-search_input {
         width: 15rem;
         margin-left: 2rem; } }
+    @media (max-width: 25.06em) {
+      .invoice-search_input {
+        display: none; } }
     .invoice-search_input:focus {
       width: 40%;
       -webkit-transition: width 0.4s ease-in-out;
@@ -358,6 +382,9 @@ e,'s are considered best option for media queries
         .invoice-search_input:focus {
           transition: none;
           width: 30rem; } }
+      @media (max-width: 25.06em) {
+        .invoice-search_input:focus {
+          width: 15rem; } }
   .invoice-sort {
     color: white;
     margin-top: 1rem;
@@ -507,8 +534,15 @@ e,'s are considered best option for media queries
     justify-content: center;
     align-items: center;
     margin: 0 auto; }
+    @media (max-width: 37.5em) {
+      .view-invoice-box {
+        margin-left: -9rem; } }
   .view-invoice-editDelete {
     display: flex; }
+
+@media (max-width: 37.5em) {
+  .fa-arrow-left {
+    margin-left: -12rem; } }
 
 .doc-preview {
   display: flex;
@@ -847,6 +881,9 @@ e,'s are considered best option for media queries
 .slideout {
   padding-top: 1rem;
   background-color: #2d2d2d; }
+  @media (max-width: 56.25em) {
+    .slideout {
+      display: none; } }
   .slideout span {
     display: block;
     width: 3rem;
@@ -860,6 +897,14 @@ e,'s are considered best option for media queries
     font-size: 3rem;
     height: 6rem;
     background-color: #2d2d2d; }
+    @media (max-width: 56.25em) {
+      .slideout--title {
+        width: 19rem;
+        padding-left: 5.5rem; } }
+    @media (max-width: 25.06em) {
+      .slideout--title {
+        padding-left: 1rem;
+        width: 13rem; } }
   .slideout--dot {
     color: #22CFB1;
     font-size: 6rem; }
@@ -915,6 +960,15 @@ e,'s are considered best option for media queries
 .sidebar-min-links {
   margin-top: 2rem;
   margin-left: 1rem; }
+  @media (max-width: 25.06em) {
+    .sidebar-min-links {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      height: 4rem;
+      background-color: #2d2d2d;
+      width: 50rem;
+      position: fixed; } }
   .sidebar-min-links p {
     display: flex;
     justify-content: center;
@@ -938,6 +992,10 @@ e,'s are considered best option for media queries
   height: 100%;
   border: 0.3px solid silver;
   background: #252525; }
+  @media (max-width: 25.06em) {
+    .sidebar--minimal {
+      background-color: rgba(192, 192, 192, 0);
+      border: 0; } }
 
 .reminder {
   background-color: #ffffff;
@@ -985,6 +1043,9 @@ e,'s are considered best option for media queries
     width: 35rem;
     height: 35rem;
     margin: 15rem auto; }
+    @media (max-width: 37.5em) {
+      .settings-form {
+        margin-left: -11.5rem; } }
   .settings_field {
     border: 0.3px solid #d8d8d8;
     height: 4rem;
