@@ -963,12 +963,12 @@ e,'s are considered best option for media queries
   @media (max-width: 25.06em) {
     .sidebar-min-links {
       display: flex;
+      position: absolute;
       justify-content: space-between;
       margin: 0;
       height: 4rem;
       background-color: #2d2d2d;
-      width: 50rem;
-      position: fixed; } }
+      width: 50rem; } }
   .sidebar-min-links p {
     display: flex;
     justify-content: center;

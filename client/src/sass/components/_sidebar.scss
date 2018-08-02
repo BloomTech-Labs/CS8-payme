@@ -135,12 +135,12 @@
   margin-left: 1rem;
   @include respond(smallphone)  {
     display: flex;
+    position: absolute;
     justify-content: space-between;
     margin: 0;
     height: 4rem;
     background-color:rgb(45, 45, 45);
     width: 50rem;
-    position: fixed;
   }
   
   & p {
