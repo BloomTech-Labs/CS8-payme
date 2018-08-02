@@ -70,7 +70,7 @@ class AdminBilling extends Component {
           </div>
         </form>
         {this.checkoutButton()}
-        <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a>
+        {/* <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a> */}
       </div>
     );
   }
@@ -88,6 +88,8 @@ class AdminBilling extends Component {
 
     return (
       <StripeCheckout
+        // style={{ background: 'yellow' }}
+        // textStyle={{ backgroundImage: 'none' }}
         name="payMe"
         email={email}
         allowRememberMe={false}

@@ -23,8 +23,6 @@ class ClientBilling extends Component {
   }
 
   onToken = (amount, description) => token => {
-    console.log(this.state.invoice);
-
     return axios
       .post('/api/payinvoice', {
         code: this.state.invoice.admin.stripe.code,
@@ -62,6 +60,10 @@ class ClientBilling extends Component {
     if (this.state.invoice && this.state.invoice.email) {
       email = this.state.invoice.email.address;
     }
+    const from = this.state.invoice.admin.companyName
+      ? this.state.invoice.admin.companyName
+      : this.state.invoice.admin.fullName;
+    console.log(this.state.invoice);
     return (
       <div className="window" style={{ display: 'flex', marginTop: '15rem' }}>
         <div
@@ -75,24 +77,27 @@ class ClientBilling extends Component {
           </h1>
           <div
             style={{
-              border: '1px solid black',
               textAlign: 'center',
+              margin: 10,
             }}
           >
-            <h1 style={{ border: '1px solid black' }}>Invoice # {this.state.invoice.number}</h1>
-            <h1 style={{ border: '1px solid black' }}>
-              From: {this.state.invoice.companyName || this.state.invoice.fullName}
+            <h1>Invoice # {this.state.invoice.number}</h1>
+            <h1>
+              Contact: <a href={`mailto:${this.state.invoice.admin.username}`}>{from}</a>
             </h1>
-            <h1 style={{ border: '1px solid black' }}>
-              Amount Due: {this.state.invoice.totalAmount}
-            </h1>
+
+            <h1>Amount Due: {this.state.invoice.totalAmount}</h1>
           </div>
-          <div>
-            <a id="openPDF" href={`viewpdf/${this.state.invoice._id}`} target="_blank">
-              <button className="doc-content_button">Download</button>
+          {/* <div>
+          </div> */}
+          <div style={{ margin: 10 }}>
+            <a id="openPDF" href={`../viewpdf/${this.state.invoice._id}`} target="_blank">
+              <button className="doc-content_button" style={{ marginRight: 0 }}>
+                View Invoice
+              </button>
             </a>
           </div>
-          <div>
+          <div style={{ margin: 10 }}>
             <StripeCheckout
               name="Name"
               email={email}

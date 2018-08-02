@@ -5,7 +5,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import App from './App';
 import rootReducer from './reducers';
-// import AdminBilling from './components/stripe/AdminBilling';
 
 require('./sass/main.css');
 
@@ -15,7 +14,6 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <AdminBilling /> */}
     <App />
   </Provider>,
   document.getElementById('root'),
