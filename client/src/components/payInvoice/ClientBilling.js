@@ -63,7 +63,16 @@ class ClientBilling extends Component {
     const from = this.state.invoice.admin.companyName
       ? this.state.invoice.admin.companyName
       : this.state.invoice.admin.fullName;
-    console.log(this.state.invoice);
+    // console.log(this.state.invoice);
+    const buttonStyle = {
+      color: 'white',
+      height: '4rem',
+      width: '100%',
+      border: 'none',
+      background: '#E86C62',
+      borderRadius: '.5rem',
+      backgroundImage: 'none',
+    };
     return (
       <div className="window" style={{ display: 'flex', marginTop: '15rem' }}>
         <div
@@ -92,13 +101,15 @@ class ClientBilling extends Component {
           </div> */}
           <div style={{ margin: 10 }}>
             <a id="openPDF" href={`../viewpdf/${this.state.invoice._id}`} target="_blank">
-              <button className="doc-content_button" style={{ marginRight: 0 }}>
+              <button className="add-invoice_submit" style={{ marginRight: 0 }}>
                 View Invoice
               </button>
             </a>
           </div>
           <div style={{ margin: 10 }}>
             <StripeCheckout
+              style={{ ...buttonStyle }}
+              textStyle={{ ...buttonStyle }}
               name="Name"
               email={email}
               allowRememberMe={false}
