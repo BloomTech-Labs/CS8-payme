@@ -73,3 +73,9 @@
     }
 
 }
+
+.fa-arrow-left.update {
+  @include respond(phone)  {
+    margin-top: 8rem;
+  }
+}

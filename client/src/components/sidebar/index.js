@@ -9,7 +9,7 @@ const styles = {
   marginLeft: '4px',
   marginBottom: '2px',
   isDesktop: false,
-}
+};
 
 class Sidebar extends Component {
   state= {
@@ -27,7 +27,7 @@ class Sidebar extends Component {
   }
 
   updatePredicate = () => {
-    this.setState({ isDesktop: window.innerWidth > 600 });
+    this.setState({ isDesktop: window.innerWidth > 900 });
   }
 
   logoutUser = () => {
@@ -44,7 +44,7 @@ class Sidebar extends Component {
 
     return (
     <div>
-      <div style={{display: 'flex'}}>
+      <div style={{ display: 'flex' }}>
         <div className="slideout" onClick={() => this.props.toggleSidebar()}> 
           <span></span>
           <span></span>
@@ -71,14 +71,13 @@ class Sidebar extends Component {
             <p>{this.props.admin.username}</p>
           </div>
           <div className="sidebar-links">
-            <p><NavLink to='/invoices'><i className="fas fa-envelope-open fa-fw" />Invoices</NavLink></p>
-            <p><NavLink exact to='/reminders'><i className="fas fa-bell fa-fw" />Reminders</NavLink></p>
-            <p><NavLink exact to="/settings"><i className="fas fa-cog fa-fw" />Settings</NavLink></p>
-            <p><NavLink exact to='/billing'><i className="far fa-credit-card fa-fw" />Billing</NavLink></p>
+            <p><NavLink className="sidbarNavlink"to='/invoices'><i className="fas fa-envelope-open fa-fw" />Invoices</NavLink></p>
+            <p><NavLink className="sidbarNavlink"exact to='/reminders'><i className="fas fa-bell fa-fw" />Reminders</NavLink></p>
+            <p><NavLink className="sidbarNavlink"exact to="/settings"><i className="fas fa-cog fa-fw" />Settings</NavLink></p>
+            <p><NavLink className="sidbarNavlink"exact to='/billing'><i className="far fa-credit-card fa-fw" />Billing</NavLink></p>
             <p
-              // style={{ cursor: 'pointer', color: 'rgb(129, 129, 129)' }}
               onClick={() => this.logoutUser()}
-            ><Link to=''><i className="fas fa-sign-out-alt fa-fw" />Sign Out</Link>
+            ><Link to=''className="sidbarNavlink"><i className="fas fa-sign-out-alt fa-fw" />Sign Out</Link>
             </p>
           </div>
         </div>

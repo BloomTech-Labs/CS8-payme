@@ -44,7 +44,7 @@ class ViewInvoice extends Component {
                 Invoice
             </p>
           </div>
-          <Link to="/invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
+          <Link to="/invoices"><p><i className="fas fa-arrow-left update fa-fw" /></p></Link>
           {invoice ? (
             <div>
               {!this.state.updateField ? (

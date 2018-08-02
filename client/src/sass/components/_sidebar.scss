@@ -57,6 +57,7 @@
   background-color: $color-sidebar;
   min-width: 19rem;
   width: 19rem;
+  // margin-top: -4rem;
   @include respond(phone)  {
     flex-direction: row;
     max-width: 5rem;
@@ -107,7 +108,7 @@
 
 .sidebar-links {
   font-size: 1.6rem;
-  margin-top: 5rem;
+  margin-top: 0.5rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   height: 100%;
@@ -160,6 +161,10 @@
   }
 }
 
+.sidbarNavlink {
+  color: rgb(199, 199, 199);
+  
+}
 .sidebar-min-icons {
   color: white;
   vertical-align:middle;

@@ -4,9 +4,11 @@
   display: flex;
   flex-flow: row wrap;
   @include respond(tab-port) {
-    margin-left: 20rem;
+    width: 85rem;
+    margin-left: -10rem;
   }
   @include respond(phone)  {
+    width: 50rem;
     margin: 2rem 2rem 2rem -4rem;
   }
   @include respond(smallphone)  {

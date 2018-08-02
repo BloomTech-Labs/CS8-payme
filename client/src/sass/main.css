@@ -176,6 +176,10 @@ e,'s are considered best option for media queries
     background-color: #E86C62;
     border-radius: .5rem; }
 
+@media (max-width: 37.5em) {
+  .fa-arrow-left.update {
+    margin-top: 8rem; } }
+
 .invoice-box {
   margin: 5rem 5rem 5rem 10rem;
   margin-top: 5rem;
@@ -183,9 +187,11 @@ e,'s are considered best option for media queries
   flex-flow: row wrap; }
   @media (max-width: 56.25em) {
     .invoice-box {
-      margin-left: 20rem; } }
+      width: 85rem;
+      margin-left: -10rem; } }
   @media (max-width: 37.5em) {
     .invoice-box {
+      width: 50rem;
       margin: 2rem 2rem 2rem -4rem; } }
   @media (max-width: 25.06em) {
     .invoice-box {
@@ -342,6 +348,9 @@ e,'s are considered best option for media queries
   height: 120rem;
   margin: 0;
   position: relative; }
+  @media (max-width: 25.06em) {
+    .invoice {
+      height: 100%; } }
   .invoice-main {
     display: flex;
     flex-direction: column;
@@ -429,6 +438,11 @@ e,'s are considered best option for media queries
     -webkit-animation-delay: 1s;
     /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards; }
+    @media (max-width: 37.5em) {
+      .invoice-success {
+        width: 15rem;
+        margin-top: 4rem;
+        margin-left: 2rem; } }
   .invoice-letstart {
     font-size: 1.5rem;
     margin: 0 auto; }
@@ -455,6 +469,9 @@ e,'s are considered best option for media queries
   border: 0.3px solid #d8d8d8;
   height: 4rem;
   width: 100%; }
+  @media (max-width: 37.5em) {
+    .add-invoice_field {
+      margin-left: -7rem; } }
 
 .add-invoice_submit {
   color: white;
@@ -463,6 +480,9 @@ e,'s are considered best option for media queries
   border: none;
   background-color: #E86C62;
   border-radius: .5rem; }
+  @media (max-width: 37.5em) {
+    .add-invoice_submit {
+      margin-left: -7rem; } }
 
 .navigation-line {
   margin: 0;
@@ -476,6 +496,10 @@ e,'s are considered best option for media queries
 .fa-trash {
   color: white;
   font-size: 5rem; }
+
+@media (max-width: 37.5em) {
+  .fa-arrow-left.add {
+    margin-top: 10rem; } }
 
 .compact {
   font-size: 3rem; }
@@ -942,7 +966,7 @@ e,'s are considered best option for media queries
 
 .sidebar-links {
   font-size: 1.6rem;
-  margin-top: 5rem;
+  margin-top: 0.5rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   height: 100%;
@@ -981,6 +1005,9 @@ e,'s are considered best option for media queries
     border-radius: 50%;
     font-size: 2rem; }
 
+.sidbarNavlink {
+  color: #c7c7c7; }
+
 .sidebar-min-icons {
   color: white;
   vertical-align: middle; }
@@ -1018,7 +1045,7 @@ e,'s are considered best option for media queries
   position: relative;
   display: flex; }
   .settings-container {
-    width: 100%; }
+    width: 140rem; }
   .settings-navigation {
     display: flex;
     justify-content: flex-start;
@@ -1045,7 +1072,7 @@ e,'s are considered best option for media queries
     margin: 15rem auto; }
     @media (max-width: 37.5em) {
       .settings-form {
-        margin-left: -11.5rem; } }
+        margin-left: 15rem 1rem; } }
   .settings_field {
     border: 0.3px solid #d8d8d8;
     height: 4rem;
@@ -1057,6 +1084,10 @@ e,'s are considered best option for media queries
     border: none;
     background-color: #E86C62;
     border-radius: .5rem; }
+
+.settings-form-container {
+  width: 110%;
+  margin-left: -10rem; }
 
 .billing {
   background-color: #ffffff;

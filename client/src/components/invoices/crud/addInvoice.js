@@ -19,7 +19,7 @@ class AddInvoice extends Component {
         <Sidebar />
         <Link to="invoices">
           <p>
-            <i className="fas fa-arrow-left fa-fw" />
+            <i className="fas fa-arrow-left add fa-fw" />
           </p>
         </Link>
         <div className="invoice-form">

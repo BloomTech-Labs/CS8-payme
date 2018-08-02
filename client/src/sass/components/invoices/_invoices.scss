@@ -9,6 +9,10 @@
   margin: 0;
   position: relative;
 
+  @include respond(smallphone) {
+    height: 100%;
+  }
+
   &-main {
     display: flex;
     flex-direction: column;
@@ -112,6 +116,11 @@
     justify-content: center;
     width: 100%;
     font-size: 1.7rem;
+    @include respond(phone)  {
+      width: 15rem;
+      margin-top: 4rem;
+      margin-left: 2rem;
+    }
 
     // height: 4rem;
 
@@ -150,11 +159,14 @@
 //////////////////////
 
 .add-invoice {
-
+  
   &_field {
     border: 0.3px solid rgb(216, 216, 216);
     height: 4rem;
     width: 100%;
+    @include respond(phone)  {
+      margin-left: -7rem;
+    }
   }
 
   &_submit {
@@ -164,7 +176,9 @@
     border: none;
     background-color: $color-secondary;
     border-radius: .5rem;
-
+    @include respond(phone)  {
+      margin-left: -7rem;
+    }
   }
 }
 
@@ -183,12 +197,12 @@
   font-size: 5rem;
 }
 
-// .fa-envelope {
-//   margin-left: 0.5rem;
-// }
+.fa-arrow-left.add{
+  @include respond(phone)  {
+    margin-top: 10rem;
+  }
+}
+
 .compact {
   font-size: 3rem;
-  // width: 10rem;
-  // color: pink;
-  // background-color:rgb(0, 0, 0);
 }
