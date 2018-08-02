@@ -36,14 +36,15 @@ class Invoices extends Component {
     boxView: false,
     pdfToggle: false,
     isDesktop: false,
-  }
+  };
 
   componentDidMount() {
     this.props.getAllInvoices();
     this.props.allReminders();
     this.updatePredicate();
-    window.addEventListener("resize", this.updatePredicate);
+    window.addEventListener('resize', this.updatePredicate);
   }
+
   componentWillUnmount() {
     window.removeEventListener("resize", this.updatePredicate);
     this.props.clearMessage();
@@ -71,15 +72,15 @@ class Invoices extends Component {
 
   boxView = () => {
     this.setState({ listView: false, boxView: true });
-  }
+  };
+
   // PDF
-  togglePDF = (id, show) => {
-    console.log(show);
-    if (show === 'showpdf') {
-      return this.props.getInvoice(id),
-      this.setState({ pdfToggle: true });
-    }
-  }
+  // togglePDF = (id, show) => {
+  //   // console.log(show);
+  //   if (show === 'showpdf') {
+  //     return this.props.getInvoice(id), this.setState({ pdfToggle: true });
+  //   }
+  // };
 
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
@@ -108,13 +109,14 @@ class Invoices extends Component {
     // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
-    console.log(reminders);
+    // console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
+
     // Box view || list view ?
     let className = '';
     if (this.state.boxView || isDesktop) {
@@ -124,20 +126,23 @@ class Invoices extends Component {
       return (
         <div className={className}>
           {filteredInvoices.map((inv, index) => {
+            // console.log('inv');
+            // console.log(inv);
             return (
               <Invoice
                 key={inv._id}
                 id={inv._id}
+                img={inv.img}
                 index={index}
                 invoiceID={inv.number}
                 clientName={inv.clientName}
                 company={inv.companyName}
                 history={this.props.history}
-                isPdfToggled={this.state.pdfToggle}
+                // isPdfToggled={this.state.pdfToggle}
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
-                history={this.props.history}
+                reminder={reminders}
                 isDesktop={isDesktop}
                 reminders={reminders}
                 url={`http://localhost:5000/api/getpdf/${inv._id}`}
@@ -192,7 +197,9 @@ class Invoices extends Component {
               </div>
             </div>
           </div>
-          <div className="invoice-success"><p>{this.props.message}</p></div>
+          <div className="invoice-success">
+            <p>{this.props.message}</p>
+          </div>
           {!isDesktop && (this.state.listView && invoices.length > 0) ? (
             <div className="invoice-list">
               <div className="invoice-list-box">

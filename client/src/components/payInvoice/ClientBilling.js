@@ -23,8 +23,6 @@ class ClientBilling extends Component {
   }
 
   onToken = (amount, description) => token => {
-    console.log(this.state.invoice);
-
     return axios
       .post('/api/payinvoice', {
         code: this.state.invoice.admin.stripe.code,
@@ -62,31 +60,66 @@ class ClientBilling extends Component {
     if (this.state.invoice && this.state.invoice.email) {
       email = this.state.invoice.email.address;
     }
+    const from = this.state.invoice.admin.companyName
+      ? this.state.invoice.admin.companyName
+      : this.state.invoice.admin.fullName;
+    // console.log(this.state.invoice);
+    const buttonStyle = {
+      color: 'white',
+      height: '4rem',
+      width: '100%',
+      border: 'none',
+      background: '#E86C62',
+      borderRadius: '.5rem',
+      backgroundImage: 'none',
+    };
     return (
-      <div className="window" style={{ display: 'flex', marginTop:'15rem' }}>
+      <div className="window" style={{ display: 'flex', marginTop: '15rem' }}>
         <div
           className="payInvoice"
           style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}
         >
-         <h1 className="signin--box--title" style={{marginBottom:'5rem'}}>
-              payMe
-              <span className="signin--box--dot">
-              .
-              </span>
-              <br />
+          <h1 className="signin--box--title" style={{ marginBottom: '5rem' }}>
+            payMe
+            <span className="signin--box--dot">.</span>
+            <br />
+          </h1>
+          <div
+            style={{
+              textAlign: 'center',
+              margin: 10,
+            }}
+          >
+            <h1>Invoice # {this.state.invoice.number}</h1>
+            <h1>
+              Contact: <a href={`mailto:${this.state.invoice.admin.username}`}>{from}</a>
             </h1>
-          <h1>Invoice # {this.state.invoice.number}</h1>
-          <h3>View PDF invoice link</h3>
-          <StripeCheckout
-            name="Name"
-            email={email}
-            allowRememberMe={false}
-            description={description}
-            amount={totalAmount}
-            token={this.onToken(totalAmount, description)}
-            currency="USD"
-            stripeKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}
-          />
+
+            <h1>Amount Due: {this.state.invoice.totalAmount}</h1>
+          </div>
+          {/* <div>
+          </div> */}
+          <div style={{ margin: 10 }}>
+            <a id="openPDF" href={`../viewpdf/${this.state.invoice._id}`} target="_blank">
+              <button className="add-invoice_submit" style={{ marginRight: 0 }}>
+                View Invoice
+              </button>
+            </a>
+          </div>
+          <div style={{ margin: 10 }}>
+            <StripeCheckout
+              style={{ ...buttonStyle }}
+              textStyle={{ ...buttonStyle }}
+              name="Name"
+              email={email}
+              allowRememberMe={false}
+              description={description}
+              amount={totalAmount}
+              token={this.onToken(totalAmount, description)}
+              currency="USD"
+              stripeKey={process.env.STRIPE_PK || 'pk_test_ILI7ZfrCQbKaNU5WAVRa6yg6'}
+            />
+          </div>
         </div>
       </div>
     );

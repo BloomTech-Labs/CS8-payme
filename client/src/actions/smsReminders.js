@@ -32,7 +32,7 @@ export function addReminder(content, history) {
       .then(res => {
         console.log(content);
         console.log(res.data.reminders);
-        history.push('/reminders');
+        history.push('/invoices');
         dispatch({
           type: ADD_REMINDER,
           payload: res.data.reminders,

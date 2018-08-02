@@ -51,7 +51,7 @@ class AdminBilling extends Component {
                 checked={this.state.type === 'credit'}
                 onChange={this.toggleRadioButton}
               />
-              1 invoice - $1.99
+              Per invoice - $1.99 each
             </label>
             <div
               className="quantity"
@@ -70,7 +70,7 @@ class AdminBilling extends Component {
           </div>
         </form>
         {this.checkoutButton()}
-        <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a>
+        {/* <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a> */}
       </div>
     );
   }
@@ -85,9 +85,28 @@ class AdminBilling extends Component {
     //     'Active subscription.  Invoice credits are not required, and can not be refunded if purchased.',
     //   );
     // }
+    const buttonStyle = {
+      color: 'white',
+      height: '4rem',
+      width: '100%',
+      border: 'none',
+      background: '#E86C62',
+      borderRadius: '.5rem',
+      backgroundImage: 'none',
+    };
+    const label = () => {
+      if (this.state.type === 'sub') {
+        return '30 days for $20';
+      }
+      const price = (amount / 100).toFixed(2).toString();
+      return `${this.state.quantity} credits -- $${price}`;
+    };
 
     return (
       <StripeCheckout
+        style={{ ...buttonStyle }}
+        textStyle={{ ...buttonStyle }}
+        label={label()}
         name="payMe"
         email={email}
         allowRememberMe={false}

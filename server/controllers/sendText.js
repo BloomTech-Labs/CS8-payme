@@ -15,6 +15,7 @@ const createReminder = (req, res) => {
   const { option, id, rPhone, message } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
+    invoiceId: id,
     phoneNumber: rPhone,
     message: message,
     remind: option,
