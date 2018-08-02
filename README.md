@@ -2,6 +2,23 @@
 
 payMe is an app that allows "Admins" to upload invoices, and set automatic email/sms messages to be sent to their "Client". The client can click the link in the email/sms and be directed to a page where they can easily and without barriers make the required payment to the admin.
 
+## TechStack
+
+- MongoDB
+- Express
+- React
+- Node.js
+- Redux
+- Mongoose
+- bcrypt
+- jwt
+- Twillio
+- Stripe
+- axios
+- react router
+- cron
+- nodemailer
+
 ## App Walkthrough
 
 - Create Admin account
