@@ -15,7 +15,6 @@ const ReminderSchema = new mongoose.Schema({
   isEmail: {
     type: Boolean,
     default: false,
-    required: false,
   },
   time: {
     type: Date,
@@ -75,7 +74,7 @@ ReminderSchema.statics.Monthly = function() {
     sendNotifications(emails);
   });
 };
-
+// **********Function sends SMS***************
 function sendNotifications(reminders) {
   const client = new Twilio(accountSid, authToken);
   reminders.forEach(function(reminder) {
@@ -115,5 +114,6 @@ function sendNotifications(reminders) {
   // }
 }
 
+function sendEmailer
 const Reminder = mongoose.model('Reminder', ReminderSchema);
 module.exports = Reminder;
