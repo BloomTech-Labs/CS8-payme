@@ -43,7 +43,6 @@
 }
 
 
-
 .sidebar {
   color:white;
   overflow: hidden;
@@ -109,11 +108,13 @@
 .sidebar-links {
   font-size: 1.6rem;
   margin-top: 0.5rem;
-  padding-top: 2rem;
   padding-bottom: 2rem;
   height: 100%;
   width: 100%;
-  background-color: rgba(63, 63, 63, 0.336);
+  
+  & p {
+    margin-top: 4rem;
+  }
   @include respond(phone)  {
     margin-left: 2rem;
     width: 8rem;

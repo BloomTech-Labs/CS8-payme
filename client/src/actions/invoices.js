@@ -12,6 +12,7 @@ export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const CLIENTNAME_SORT = 'CLIENTNAME_SORT';
 export const AMOUNT_SORT = 'AMOUNT_SORT';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
+export const CHANGE_THEME = 'CHANGE_THEME';
 
 const token =  localStorage.getItem('id');
 axios.defaults.headers.common['Authorization'] = `bearer ${token}`;
@@ -154,6 +155,13 @@ export const sortByClientName = (invoices) => {
   return (dispatch) => {
     const clientName = invoices.sort((a, b) => a.clientName > b.clientName);
     dispatch({ type: 'CLIENTNAME_SORT', payload: clientName });
+  };
+};
+
+export const changeTheme = () => {
+  return (dispatch) => {
+    const styles = 'white';
+    dispatch({ type: 'CHANGE_THEME', payload: styles });
   };
 };
 

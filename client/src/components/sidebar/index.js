@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
-import { toggleSidebar } from '../../actions/invoices';
+import { toggleSidebar, changeTheme } from '../../actions/invoices';
 import Nico from './Nico.jpg';
 
 const styles = {
   marginLeft: '4px',
   marginBottom: '2px',
   isDesktop: false,
+};
+
+const theme = {
+  background: 'white',
 };
 
 class Sidebar extends Component {
@@ -41,7 +45,13 @@ class Sidebar extends Component {
 
   render() {
     const isDesktop = this.state.isDesktop;
-
+    let theme;
+    console.log(this.props.theme);
+    if (this.props.theme) {
+      theme = {
+        background: this.props.theme,
+      };
+    }
     return (
     <div>
       <div style={{ display: 'flex' }}>
@@ -61,7 +71,7 @@ class Sidebar extends Component {
         </div>
       </div>
       {this.props.sidebarToggled && isDesktop ? (
-      <div className="sidebar">
+      <div className="sidebar" style={theme}>
         <div className="sidebar--chat">
           <div className="sidebar--users">
             <p>Welcome</p>
@@ -104,6 +114,8 @@ const mapStateToProps = state => {
   return {
     admin: state.auth.admin,
     sidebarToggled: state.invoice.toggleSidebar,
+    lightTheme: state.invoice.theme,
+    theme: state.invoice.theme,
   };
 };
 

@@ -3,7 +3,7 @@ import {
   ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
   CURRENT_INVOICE, ARRAY_MOVE, RESET_CURRINV,
   TOGGLE_SIDEBAR, AMOUNT_SORT, CLIENTNAME_SORT,
-  CLEAR_MESSAGE
+  CLEAR_MESSAGE, CHANGE_THEME,
 } from '../actions/invoices';
 import { USER_INVOICES } from '../actions/auth';
 
@@ -18,12 +18,15 @@ import { USER_INVOICES } from '../actions/auth';
 const initialState = {
   invoices: [],
   toggleSidebar: true,
+  theme: '#252525',
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case SUCCESS:
       return { ...state, success: action.payload };
+    case CHANGE_THEME:
+      return { ...state, theme: action.payload };
     case CLEAR_MESSAGE:
       return { ...state, success: action.payload };
     case USER_INVOICES:

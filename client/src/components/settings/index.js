@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Sidebar from '../sidebar/';
 import { changePassword } from '../../actions/auth';
+import { changeTheme } from '../../actions/invoices';
 
 
 const styles = {
@@ -13,6 +14,7 @@ const styles = {
   paddingBottom: '2rem',
   paddingTop: '1rem',
 };
+
 
 class Settings extends Component {
   state = {
@@ -28,6 +30,7 @@ class Settings extends Component {
 
   render() {
     const { handleSubmit } = this.props;
+    // const { theme } = this.props;
     return (
       <div className="settings">
         <Sidebar />
@@ -36,7 +39,10 @@ class Settings extends Component {
             <p className="settings-navigation_password">Change <br />Password <i className="fas fa-key" /></p>
             <p className="setting-line" />
             <div className="own-class ui compact menu" style={{ border: 'none' }}>
-              <div className="ui simple dropdown item own-class" style={styles}>
+              <div 
+                className="ui simple dropdown item own-class"
+                style={styles}
+                onClick={() => this.props.changeTheme()}>
                 Themes
                 <i className="fas fa-pencil-alt fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.3rem', fontSize: '1.3rem' }}>
@@ -105,10 +111,11 @@ class Settings extends Component {
 const mapStateToProps = state => {
   return {
     success: state.auth.success,
+    theme: state.invoice.theme,
   };
 };
 
-const Config = (connect(mapStateToProps, { changePassword })(Settings));
+const Config = (connect(mapStateToProps, { changePassword, changeTheme })(Settings));
 
 export default reduxForm({
   form: 'ChangeCredentials', // Unique name for the form

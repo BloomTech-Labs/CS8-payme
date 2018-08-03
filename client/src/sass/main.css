@@ -967,11 +967,11 @@ e,'s are considered best option for media queries
 .sidebar-links {
   font-size: 1.6rem;
   margin-top: 0.5rem;
-  padding-top: 2rem;
   padding-bottom: 2rem;
   height: 100%;
-  width: 100%;
-  background-color: rgba(63, 63, 63, 0.336); }
+  width: 100%; }
+  .sidebar-links p {
+    margin-top: 4rem; }
   @media (max-width: 37.5em) {
     .sidebar-links {
       margin-left: 2rem;
