@@ -10,9 +10,13 @@ const twilioNumber = process.env.TWILIO_NUMBER;
 
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
+  name: String,
   email: String,
   phoneNumber: String,
-  remind: String, // minute, daily, weekly, monthly
+  remind: {
+    type: String,
+    required: true,
+  }, // minute, daily, weekly, monthly
   message: String,
   isEmail: {
     type: Boolean,
