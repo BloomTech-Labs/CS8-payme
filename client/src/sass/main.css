@@ -1064,15 +1064,35 @@ e,'s are considered best option for media queries
   height: 105rem;
   position: relative;
   display: flex; }
+  .billing-container {
+    width: 100%; }
+  .billing-navigation {
+    display: flex;
+    justify-content: space-around;
+    border: 0.3px solid #d2d2d2;
+    height: 6rem; }
+    .billing-navigation_container {
+      text-align: center;
+      width: 25%;
+      margin: 0.5rem;
+      border: '1rem solid black'; }
+    .billing-navigation_data_title {
+      text-decoration: underline;
+      margin: auto; }
+    .billing-navigation_data {
+      margin: auto; }
+  .billing-window {
+    margin: 3rem; }
   .billing-title {
     font-size: 6rem; }
   .billing-purchase {
     font-size: 2rem; }
-  .billing-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20rem;
-    width: 100%; }
+  .billing-radio {
+    margin: 1rem 0; }
+    .billing-radio_select {
+      margin-right: 1rem; }
+  .billing-quantity_input {
+    width: 5rem; }
 
 .payInvoice {
   display: flex;
@@ -1082,6 +1102,10 @@ e,'s are considered best option for media queries
   width: 50rem;
   height: 50rem;
   border: 0.3px solid #999999; }
+
+.checkout_button {
+  max-width: 18rem;
+  min-width: 10rem; }
 
 .admin-title {
   font-size: 4rem; }
