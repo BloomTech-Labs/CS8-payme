@@ -881,9 +881,6 @@ e,'s are considered best option for media queries
 .slideout {
   padding-top: 1rem;
   background-color: #2d2d2d; }
-  @media (max-width: 56.25em) {
-    .slideout {
-      display: none; } }
   .slideout span {
     display: block;
     width: 3rem;
@@ -897,14 +894,14 @@ e,'s are considered best option for media queries
     font-size: 3rem;
     height: 6rem;
     background-color: #2d2d2d; }
-    @media (max-width: 56.25em) {
+    @media (max-width: 37.5em) {
       .slideout--title {
-        width: 19rem;
-        padding-left: 5.5rem; } }
+        display: none; } }
     @media (max-width: 25.06em) {
       .slideout--title {
         padding-left: 1rem;
-        width: 13rem; } }
+        width: 13rem;
+        display: none; } }
   .slideout--dot {
     color: #22CFB1;
     font-size: 6rem; }
@@ -1061,7 +1058,8 @@ e,'s are considered best option for media queries
 .billing {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  height: 105rem;
+  height: 100%;
+  margin: 0 auto;
   position: relative;
   display: flex; }
   .billing-container {
@@ -1095,6 +1093,15 @@ e,'s are considered best option for media queries
   .billing-quantity_input {
     width: 5rem; }
 
+.connect-stripe_button {
+  color: white;
+  height: 4rem;
+  width: 100%;
+  max-width: 18rem;
+  border: none;
+  background-color: #E86C62;
+  border-radius: 0.5rem; }
+
 .payInvoice {
   display: flex;
   flex-direction: column;
@@ -1112,11 +1119,9 @@ e,'s are considered best option for media queries
   font-size: 4rem; }
 
 body {
-  height: 100vh;
+  height: 100%;
   color: black;
-  margin: 0;
-  padding: 0;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif; }
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif; }
 
 html {
   height: 100vh;
@@ -1150,6 +1155,18 @@ button:focus {
 
 .active {
   color: #22CFB1; }
+
+#root {
+  height: 100vh;
+  width: 98vw;
+  max-width: 120rem;
+  margin: auto; }
+
+.window {
+  max-width: 120rem;
+  margin: auto;
+  display: flex;
+  min-height: 100%; }
 
 .loader {
   width: 250px;
