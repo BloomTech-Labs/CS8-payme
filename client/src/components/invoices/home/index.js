@@ -11,8 +11,9 @@ import {
   onSortEnd,
   getInvoice,
   resetCurrInv,
-  sortData,
+  sortByAmount,
   sortByClientName,
+  clearMessage,
 } from '../../../actions/invoices';
 
 import { allReminders } from '../../../actions/smsReminders';
@@ -45,12 +46,13 @@ class Invoices extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updatePredicate);
+    window.removeEventListener("resize", this.updatePredicate);
+    this.props.clearMessage();
   }
 
   updatePredicate = () => {
-    this.setState({ isDesktop: window.innerWidth < 600 });
-  };
+    this.setState({ isDesktop: window.innerWidth < 900 });
+  }
 
   // React sortable elements
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -90,8 +92,20 @@ class Invoices extends Component {
     }
   };
 
+  sortData = (ele) => {
+    const { invoices } = this.props;
+    if (ele === 'amount') {
+      this.props.sortByAmount(invoices);
+    }
+    if (ele === 'clientName') {
+      this.props.sortByClientName(invoices);
+    }
+    this.forceUpdate();
+  }
+
   render() {
     const { isDesktop } = this.state;
+    const display = isDesktop ? 'none' : 'inline';
     // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
@@ -130,6 +144,8 @@ class Invoices extends Component {
                 listView={this.state.listView}
                 reminder={reminders}
                 isDesktop={isDesktop}
+                reminders={reminders}
+                url={`http://localhost:5000/api/getpdf/${inv._id}`}
               />
             );
           })}
@@ -141,9 +157,7 @@ class Invoices extends Component {
         <Sidebar />
         <div className="invoice-main">
           <div className="invoice-navigation">
-            <input
-              // className="fas fa-search"
-              // className="invoice-search"
+            <input className="fas fa-search"
               type="text"
               placeholder="Search Invoices"
               className="invoice-search_input"
@@ -157,23 +171,19 @@ class Invoices extends Component {
               </p>
             </div>
             <hr className="navigation-line" />
-            <div className="own-class ui compact menu" style={{ border: 'none' }}>
-              <div className="ui simple dropdown item own-class" style={styles}>
+            <div className="ui compact menu" style={{ border: 'none' }}>
+              <div className="ui simple dropdown item" style={styles}>
                 Sort
                 <i className="fas fa-sort fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.props.sortData}>
-                    Total Amount
-                  </div>
-                  <div className="item" onClick={this.props.sortByClientName}>
-                    ClientName
-                  </div>
+                  <div className="item" onClick={() => this.sortData('amount')}>Total Amount</div>
+                  <div className="item" onClick={() => this.sortData('clientName')}>ClientName</div>
                 </div>
               </div>
             </div>
             <hr className="navigation-line" />
-            <div className="own-class ui compact menu" style={{ border: 'none' }}>
-              <div className="ui simple dropdown item own-class" style={styles}>
+            <div className="ui compact menu" style={{ border: 'none', display }}>
+              <div className=" try ui simple dropdown item" style={styles}>
                 View
                 <i className="fas fa-eye fa-fw" />
                 <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
@@ -238,16 +248,15 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {
-    onSortEnd,
-    getAllInvoices,
-    handleInvoiceIdx,
-    getInvoice,
-    resetCurrInv,
-    sortData,
-    sortByClientName,
-    allReminders,
-  },
-)(Invoices);
+export default
+connect(mapStateToProps, {
+  onSortEnd,
+  getAllInvoices,
+  handleInvoiceIdx,
+  getInvoice,
+  resetCurrInv,
+  sortByAmount,
+  sortByClientName,
+  allReminders,
+  clearMessage,
+})(Invoices);

@@ -1,11 +1,11 @@
+.try {
+  display: none;
+}
 .invoice {
   display: flex;
   background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  // height: 105rem;
   overflow: hidden;
-  height: 105rem;
+  height: 120rem;
   margin: 0;
   position: relative;
 
@@ -13,18 +13,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
   }
   &-navigation {
     display: flex;
     width: 100%;
-    // border-left: 0.3px solid rgb(193, 193, 193);
     justify-content: flex-start;
     align-items: center;
-    // border:  0.3px solid rgb(193, 193, 193);
     background-color: #2E2E2E;
     height: 6rem;
-    // width: 1oorem;
-
   }
 
   &-search {
@@ -46,6 +43,9 @@
         width: 15rem;
         margin-left: 2rem;
       }
+      @include respond(smallphone) {
+        display: none;
+      }
       &:focus {
         width: 40%;
         -webkit-transition: width 0.4s ease-in-out;
@@ -53,6 +53,9 @@
         @include respond(tab-port) {
           transition: none;
           width:30rem;
+        }
+        @include respond(smallphone) {
+          width: 15rem;
         }
       }
     }
@@ -91,12 +94,6 @@
     }
 
   }
-  // &-box {
-  //   display: flex;
-  //   flex-flow: row wrap;
-  //   margin: 5rem 5rem 5rem 10rem;
-  //   // flex-direction: column;
-  // }
 
   &-id {
     font-weight: 700;

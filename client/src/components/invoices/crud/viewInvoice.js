@@ -48,7 +48,7 @@ class ViewInvoice extends Component {
           {invoice ? (
             <div>
               {!this.state.updateField ? (
-                <ViewExport invoice={invoice} />
+                <ViewExport invoice={invoice} url={`http://localhost:5000/api/getpdf/${invoice._id}`}/>
               ) : <UpdateInvoice /> }
               {this.state.modalTrigger ? (
                 <div>

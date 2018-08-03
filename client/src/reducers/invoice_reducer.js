@@ -2,7 +2,8 @@ import {
   SUCCESS,
   ADD_INVOICE, ALL_INVOICE, INVOICE_IDX,
   CURRENT_INVOICE, ARRAY_MOVE, RESET_CURRINV,
-  TOGGLE_SIDEBAR, DATE_SORT, CLIENTNAME_SORT,
+  TOGGLE_SIDEBAR, AMOUNT_SORT, CLIENTNAME_SORT,
+  CLEAR_MESSAGE
 } from '../actions/invoices';
 import { USER_INVOICES } from '../actions/auth';
 
@@ -23,6 +24,8 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case SUCCESS:
       return { ...state, success: action.payload };
+    case CLEAR_MESSAGE:
+      return { ...state, success: action.payload };
     case USER_INVOICES:
       return { ...state, invoices: action.payload };
     case ADD_INVOICE:
@@ -35,7 +38,7 @@ export default function (state = initialState, action) {
       return { ...state, currentInvoice: action.payload };
     case RESET_CURRINV:
       return { ...state, currentInvoice: action.payload };
-    case DATE_SORT:
+    case AMOUNT_SORT:
       return { ...state, invoices: action.payload };
     case CLIENTNAME_SORT:
       return { ...state, invoices: action.payload };

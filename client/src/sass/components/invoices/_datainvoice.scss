@@ -1,31 +1,36 @@
 .invoice-box {
+  margin: 5rem 5rem 5rem 10rem;
   margin-top: 5rem;
   display: flex;
   flex-flow: row wrap;
-  margin: 5rem 5rem 5rem 10rem;
-  @include respond(phone)  {
-  margin: 2rem 2rem 2rem 0rem;
-    // width: 8rem;
-    // height: 20rem;
+  @include respond(tab-port) {
+    margin-left: 20rem;
   }
+  @include respond(phone)  {
+    margin: 2rem 2rem 2rem -4rem;
+  }
+  @include respond(smallphone)  {
+    margin: 5rem 0rem 0rem -6rem;
+  }
+
 }
 
 .invoice-data {
   font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   padding: 2rem 2rem;
-  // background-color: blue;
   margin-top: 2rem;
   margin-left: 2rem;  
   justify-content: center;
   width: 40rem;
-  // height: 100%;
-  border: 0.3px solid rgb(194, 194, 194);
-  // display: flex;
+  border: 0.3px solid rgb(194, 194, 194); 
   @include respond(phone)  {
     margin: 2rem 2rem 2rem 0rem;
       width: 20rem;
       // height: 20rem;
-    }
+  }
+  @include respond(smallphone)  {
+    width: 30rem;
+  }
 
   &-flex {
     display: flex;
@@ -80,16 +85,10 @@
   // justify-content: space-evenly;
   align-items: center;
   @include respond(tab-land) {
-    width: 95rem;
+    width: 97rem;
   }
   @include respond(tab-port) {
     margin-left: 0;    
-  }
-  @include respond(phone)  {
-    // width: 50rem;
-    margin-left: -14rem;
-    z-index: 0;    
-
   }
 
 
@@ -113,10 +112,6 @@
 
     }
   }
-
-  // &-company {
-  //   width: 15rem; 
-  // }
 
   &-hr {
     border: 0.3px solid rgb(194, 194, 194);

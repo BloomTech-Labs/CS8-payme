@@ -49,7 +49,7 @@ export default class ConnectStripe extends Component {
           style={{ display: this.state.terms ? null : 'none' }}
           href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}
         >
-          <button>Connect Stripe</button>
+          <button className="add-invoice_submit">Connect Stripe</button>
         </a>
       </div>
     );

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { reduxForm } from 'redux-form';
 
 import Sidebar from '../../sidebar';
 import { addInvoice } from '../../../actions/invoices';
@@ -15,7 +14,6 @@ class AddInvoice extends Component {
   };
 
   render() {
-    // const { handleSubmit } = this.props;
     return (
       <div className="invoice">
         <Sidebar />
@@ -60,11 +58,4 @@ class AddInvoice extends Component {
   }
 }
 
-AddInvoice = connect(
-  null,
-  { addInvoice },
-)(AddInvoice);
-
-export default reduxForm({
-  form: 'addInvoice', // Unique name for the form
-})(AddInvoice);
+export default connect(null, { addInvoice })(AddInvoice);
