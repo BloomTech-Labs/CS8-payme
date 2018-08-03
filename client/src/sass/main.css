@@ -1082,7 +1082,8 @@ e,'s are considered best option for media queries
     .billing-navigation_data {
       margin: auto; }
   .billing-window {
-    margin: 3rem; }
+    margin: 3rem;
+    max-width: 70rem; }
   .billing-title {
     font-size: 6rem; }
   .billing-purchase {

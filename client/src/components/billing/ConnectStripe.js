@@ -5,13 +5,7 @@ export default class ConnectStripe extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          margin: 20,
-          width: '100%',
-          height: '100%',
-        }}
-      >
+      <div className="billing-window">
         <h1 className="billing-title">Pricing:</h1>
         <h2 className="billing-purchase">$20 for a 30 day subscription.</h2>
 
