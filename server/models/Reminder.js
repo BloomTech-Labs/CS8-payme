@@ -8,33 +8,71 @@ const twilioNumber = process.env.TWILIO_NUMBER;
 
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
+  email: String,
   phoneNumber: String,
   remind: String, // minute, daily, weekly, monthly
   message: String,
+  isEmail: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
   time: {
     type: Date,
     default: Date.now,
   },
 });
+ReminderSchema.method.emailify = function() {
+  return this.isEmail === true;
+};
 
 ReminderSchema.statics.Minute = function() {
+  // this finds any reminder with remind set to every minute
   Reminder.find({ remind: 'minute' }).then(reminders => {
-    sendNotifications(reminders);
+    let emails = reminders.filter(reminder => {
+      return reminder.isEmail === true;
+    });
+    let sms = reminders.filter(reminder => {
+      return reminder.isEmail === false;
+    });
+    sendNotifications(sms);
+    sendNotifications(emails);
   });
 };
 ReminderSchema.statics.Daily = function() {
   Reminder.find({ remind: 'daily' }).then(reminders => {
-    sendNotifications(reminders);
+    let emails = reminders.filter(reminder => {
+      return reminder.isEmail === true;
+    });
+    let sms = reminders.filter(reminder => {
+      return reminder.isEmail === false;
+    });
+    sendNotifications(sms);
+    sendNotifications(emails);
   });
 };
 ReminderSchema.statics.Weekly = function() {
   Reminder.find({ remind: 'weekly' }).then(reminders => {
-    sendNotifications(reminders);
+    let emails = reminders.filter(reminder => {
+      return reminder.isEmail === true;
+    });
+    let sms = reminders.filter(reminder => {
+      return reminder.isEmail === false;
+    });
+    sendNotifications(sms);
+    sendNotifications(emails);
   });
 };
 ReminderSchema.statics.Monthly = function() {
   Reminder.find({ remind: 'monthly' }).then(reminders => {
-    sendNotifications(reminders);
+    let emails = reminders.filter(reminder => {
+      return reminder.isEmail === true;
+    });
+    let sms = reminders.filter(reminder => {
+      return reminder.isEmail === false;
+    });
+    sendNotifications(sms);
+    sendNotifications(emails);
   });
 };
 
