@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
 const Twilio = require('twilio');
+const nodemailer = require('nodemailer');
+const hbs = require('nodemailer-express-handlebars');
 
 const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_TOKEN;
@@ -35,7 +37,7 @@ ReminderSchema.statics.Minute = function() {
       return reminder.isEmail === false;
     });
     sendNotifications(sms);
-    sendNotifications(emails);
+    sendEmailer(emails);
   });
 };
 ReminderSchema.statics.Daily = function() {
@@ -47,7 +49,7 @@ ReminderSchema.statics.Daily = function() {
       return reminder.isEmail === false;
     });
     sendNotifications(sms);
-    sendNotifications(emails);
+    sendEmailer(emails);
   });
 };
 ReminderSchema.statics.Weekly = function() {
@@ -59,7 +61,7 @@ ReminderSchema.statics.Weekly = function() {
       return reminder.isEmail === false;
     });
     sendNotifications(sms);
-    sendNotifications(emails);
+    sendEmailer(emails);
   });
 };
 ReminderSchema.statics.Monthly = function() {
@@ -71,7 +73,7 @@ ReminderSchema.statics.Monthly = function() {
       return reminder.isEmail === false;
     });
     sendNotifications(sms);
-    sendNotifications(emails);
+    sendEmailer(emails);
   });
 };
 // **********Function sends SMS***************
@@ -114,6 +116,64 @@ function sendNotifications(reminders) {
   // }
 }
 
-function sendEmailer
+function sendEmailer(reminders) {
+  reminders.forEach(function(reminder) {
+    nodemailer.createTestAccount((err, account) => {
+      if (err) {
+        console.log(`${err} Failed at creating test account`);
+      }
+      // create reusable transporter object using the default SMTP transport
+      let transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+          user: 'nzopjkf67k7li4wv@ethereal.email',
+          pass: 'VFsAdsD4CRdU2NJ2wC',
+        },
+      });
+
+      transporter.use(
+        'compile',
+        hbs({
+          viewPath: './server/controllers/email',
+          extName: '.hbs',
+        })
+      );
+
+      if (reminder.email === undefined)
+        console.log({ error: 'No email found on Invoice.' });
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: '"GiveMeMyMoney" <Now@givememymoney.com>', // sender address
+        to: `${reminder.email}`, // list of receivers
+        subject: 'You Have An Outstanding Invoice', // Subject line
+        template: 'body',
+        context: {
+          // _______________________________placeholders
+          invoice: `${reminder.invoiceId}`,
+          name: `${reminder.clientName}`,
+          amount: `${reminder.totalAmount}`,
+          invoice: `${reminder.invoiceId}`,
+          company: `${reminder.phoneNumber}`,
+        }, // html body
+      };
+      console.log(`This email is: ${reminder.email}`);
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.log(` Error sending the Email ${err}`);
+        }
+        // res.send({
+        //   success: 'Email sent',
+        //   messageInfo: info,
+        //   messageURL: nodemailer.getTestMessageUrl(info),
+        // });
+        console.log('Message sent');
+        console.log(nodemailer.getTestMessageUrl(info));
+      });
+    });
+  });
+}
+
 const Reminder = mongoose.model('Reminder', ReminderSchema);
 module.exports = Reminder;
