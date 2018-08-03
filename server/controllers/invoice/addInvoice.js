@@ -14,7 +14,7 @@ const addInvoice = (req, res) => {
     contentType = req.files.file.mimetype;
   }
   let payment = new Date().getTime() - subscription;
-  if (payment < 0) {
+  if (payment < 0 || invoices.length === 0) {
     payment = 'sub';
   } else if (invoiceCredits > 0) {
     payment = 'credit';

@@ -24,12 +24,19 @@ export default class ConnectStripe extends Component {
           Don't need a subscription? Easily use our service on a per invoice basis. $1.99 per
           invoice will include unlimited reminders for 1 invoice.
         </p>
+        <h2 className="billing-purchase">Free Tier</h2>
+
+        <p className="billing-label" style={{ marginLeft: 15 }}>
+          By default, all accounts have 1 free invoice at a time.
+        </p>
         <br />
         <p className="billing-label">
-          Before buying credits, you must connect your payMe account with a stripe account. This
-          allows you clients to pay you directly. Once your client pays, 95% will be deposited into
-          your stripe account immediately. You can then transfer to a bank acocunt of your choice
-          from your stripe account. All invoices paid are subject to a 5% fee.
+          Before buying credits, or uploading any invoices, you must connect your{' '}
+          <span style={{ fontWeight: 900 }}>giveMeMyMoney.app </span>
+          account with a stripe account. This allows you clients to pay you directly. Once your
+          client pays, 95% will be deposited into your stripe account immediately. You can then
+          transfer to a bank acocunt of your choice from your stripe account. All invoices paid are
+          subject to a 5% fee.
         </p>
         <br />
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'baseling' }}>
@@ -40,8 +47,8 @@ export default class ConnectStripe extends Component {
             onChange={() => this.setState({ terms: !this.state.terms })}
           />
           <h4 style={{ marginTop: 0, marginLeft: 5, maxWidth: 250 }}>
-            By checking this box, you agree to payMe taking a 5% fee off all invoices paid.
-            ($1,000.00 invoice = $50.00 fee + $950.00 deposited into your stripe account.
+            By checking this box, you agree to giveMeMyMoney.app taking a 5% fee off all invoices
+            paid. ($1,000.00 invoice = $50.00 fee + $950.00 deposited into your stripe account.
           </h4>
         </div>
         <br />
