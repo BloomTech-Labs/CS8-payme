@@ -1,52 +1,53 @@
-.settings{
+.settings {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   height: 105rem;
   margin: 0 auto;
   position: relative;
   display: flex;
-  
+
   &-container {
     width: 100%;
   }
-  
+
   &-navigation {
     display: flex;
     justify-content: flex-start;
     border: 0.3px solid rgb(210, 210, 210);
     height: 6rem;
-  
+
     &_password {
       cursor: pointer;
       color: black;
-      padding: 1rem;
-      margin-left: 3rem;
+      // padding: 1rem;
+      // margin-left: 3rem;
       &:hover {
-        color:$color-primary;
+        color: $color-primary;
       }
-      
     }
     &_themes {
       cursor: pointer;
       color: black;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       padding: 1rem;
       text-align: center;
       &:hover {
-        color:$color-primary;
+        color: $color-primary;
       }
     }
   }
   &-form {
-    width: 35rem;
+    max-width: 35rem;
     height: 35rem;
-    margin: 15rem auto;
-    @include respond(phone)  {
-      margin-left: -11.5rem;
-    }
+    // margin: auto;
+    // @include respond(phone) {
+    //   margin-left: -11.5rem;
+    // }
   }
 
   &_field {
+    padding: 1rem;
+    margin-bottom: 1rem;
     border: 0.3px solid rgb(216, 216, 216);
     height: 4rem;
     width: 100%;
@@ -57,7 +58,6 @@
     width: 100%;
     border: none;
     background-color: $color-secondary;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
   }
 }
-
