@@ -5,13 +5,7 @@ export default class ConnectStripe extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          margin: 20,
-          width: '100%',
-          height: '100%',
-        }}
-      >
+      <div className="billing-window">
         <h1 className="billing-title">Pricing:</h1>
         <h2 className="billing-purchase">$20 for a 30 day subscription.</h2>
 
@@ -56,7 +50,7 @@ export default class ConnectStripe extends Component {
           style={{ display: this.state.terms ? null : 'none' }}
           href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}
         >
-          <button className="add-invoice_submit">Connect Stripe</button>
+          <button className="connect-stripe_button">Connect Stripe</button>
         </a>
       </div>
     );

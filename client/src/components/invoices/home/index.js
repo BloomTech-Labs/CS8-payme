@@ -121,10 +121,10 @@ class Invoices extends Component {
     }
 
     // Box view || list view ?
-    let className = '';
-    if (this.state.boxView || isDesktop) {
-      className = 'invoice-box';
-    }
+    const className = this.state.boxView || isDesktop ? 'invoice-box' : 'invoice-list_group';
+    // if (this.state.boxView || isDesktop) {
+    //   className = 'invoice-box';
+    // }
     const SortableList = SortableContainer(props => {
       return (
         <div className={className}>
@@ -156,50 +156,61 @@ class Invoices extends Component {
       );
     });
     return (
-      <div className="invoice">
+      <div className="window">
         <Sidebar />
-        <div className="invoice-main">
+        <div className="billing-container">
           <div className="invoice-navigation">
-            <input
-              // className="fas fa-search"
-              type="text"
-              placeholder="Search Invoices"
-              className="invoice-search_input"
-              value={this.state.search}
-              onChange={this.updateSearch}
-            />
-            <hr className="navigation-line" />
-            <div onClick={this.addInvoiceCheck}>
-              <p className="invoice-new">
-                Add Invoice<i className="fas fa-plus  fa-fw" />
-              </p>
+            <div className="invoice-search">
+              <input
+                // className="fas fa-search"
+                type="text"
+                placeholder="Search Invoices"
+                className="invoice-search_input"
+                value={this.state.search}
+                onChange={this.updateSearch}
+              />
             </div>
-            <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none' }}>
-              <div className="ui simple dropdown item" style={styles}>
-                Sort
-                <i className="fas fa-sort fa-fw" />
-                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={() => this.sortData('amount')}>
-                    Total Amount
-                  </div>
-                  <div className="item" onClick={() => this.sortData('clientName')}>
-                    ClientName
+            <div className="invoice-buttons">
+              <hr className="navigation-line" />
+              <div className="invoice-buttons_each" onClick={this.addInvoiceCheck}>
+                {/* <div onClick={this.addInvoiceCheck}> */}
+                <div className="invoice-new">
+                  Add <i className="fas fa-plus  fa-fw" style={{ marginLeft: 4 }} />
+                </div>
+                {/* </div> */}
+              </div>
+              <hr className="navigation-line" />
+              <div className="invoice-buttons_each">
+                <div className="invoice-new">
+                  <div className="ui simple dropdown item">
+                    Sort
+                    <i className="fas fa-sort fa-fw" style={{ marginLeft: 4 }} />
+                    <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                      <div className="item" onClick={() => this.sortData('amount')}>
+                        Total Amount
+                      </div>
+                      <div className="item" onClick={() => this.sortData('clientName')}>
+                        ClientName
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', display }}>
-              <div className=" try ui simple dropdown item" style={styles}>
-                View
-                <i className="fas fa-eye fa-fw" />
-                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.listView}>
-                    List
-                  </div>
-                  <div className="item" onClick={this.boxView}>
-                    Box
+
+              <hr className="navigation-line" />
+              <div className="invoice-buttons_each">
+                <div className="invoice-new">
+                  <div className=" try ui simple dropdown item">
+                    View
+                    <i className="fas fa-eye fa-fw" style={{ marginLeft: 4 }} />
+                    <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                      <div className="item" onClick={this.listView}>
+                        List
+                      </div>
+                      <div className="item" onClick={this.boxView}>
+                        Box
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
