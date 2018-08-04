@@ -68,17 +68,17 @@ class Signup extends Component {
               />
               <br />
               <Field
-                name="firstName"
+                name="fullName"
                 component="input"
                 className="signin--form_password"
-                placeholder="firstName"
+                placeholder="fullName"
               />
               <br />
               <Field
-                name="lastName"
+                name="companyName"
                 component="input"
                 className="signin--form_password"
-                placeholder="lastName"
+                placeholder="companyName"
               />
               <br />
               <Field
