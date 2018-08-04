@@ -17,7 +17,7 @@ class Billing extends Component {
 
   render() {
     return (
-      <div className="billing">
+      <div className="window">
         <Sidebar />
         <div className="billing-container">
           <div className="billing-navigation">

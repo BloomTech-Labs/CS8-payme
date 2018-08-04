@@ -1,9 +1,15 @@
 .slideout {
   padding-top: 1rem;
   background-color: $color-nav;
-  @include respond(tab-port) {
-    // display: none;
+  height: 54px;
+  width: 63px;
+  @include respond(smallphone) {
+    display: none;
   }
+  @include respond(phone) {
+    display: none;
+  }
+
   & span {
     display: block;
     width: 3rem;
@@ -19,10 +25,12 @@
     font-size: 3rem;
     height: 6rem;
     background-color: $color-nav;
-    @include respond(tab-port) {
-      // width: 19rem;
-      // padding-left: 5.5rem;
-    }
+
+    // @include respond(tab-port) {
+    //   width: 19rem;
+    //   padding-left: 5.5rem;
+    // }
+
     @include respond(phone) {
       display: none;
     }
@@ -31,11 +39,24 @@
       width: 13rem;
       display: none;
     }
+    @include respond(desktop) {
+    }
   }
   &--dot {
     color: $color-primary;
     font-size: 6rem;
   }
+}
+.logo {
+  display: none;
+  @media (min-width: 900px) {
+    display: flex;
+    width: 171px;
+    height: 54px;
+  }
+  // @media (min-width: 1200px) {
+  //   width: 190px;
+  // }
 }
 
 #sidebar.active {
@@ -54,7 +75,7 @@
   position: relative;
   text-align: center;
   height: 100%;
-  padding-bottom: 30rem;
+  // padding-bottom: 30rem;
   background-color: $color-sidebar;
   min-width: 19rem;
   width: 19rem;
@@ -65,6 +86,19 @@
   }
 }
 
+.sidebar--minimal {
+  // margin-top: -5px;
+  // margin-left: -2px;
+  overflow: hidden;
+  width: 6rem;
+  height: 100%;
+  // border: 0.3px solid rgb(192, 192, 192);
+  background: #252525;
+  // @include respond(smallphone) {
+  //   background-color: rgba(192, 192, 192, 0);
+  //   border: 0;
+  // }
+}
 .sidebar--users {
   display: none;
   @include respond(phone) {
@@ -128,7 +162,7 @@
 // Minimal
 //////////////////////////////
 .sidebar-min-links {
-  // width: 10rem;
+  width: 10rem;
   margin-top: 2rem;
   margin-left: 1rem;
   @include respond(smallphone) {
@@ -138,7 +172,7 @@
     margin: 0;
     height: 4rem;
     background-color: rgb(45, 45, 45);
-    width: 50rem;
+    width: 100vw;
   }
 
   & p {
@@ -160,19 +194,6 @@
 .sidebar-min-icons {
   color: white;
   vertical-align: middle;
-}
-
-.sidebar--minimal {
-  margin-top: -5px;
-  margin-left: -2px;
-  width: 6rem;
-  height: 100%;
-  border: 0.3px solid rgb(192, 192, 192);
-  background: #252525;
-  @include respond(smallphone) {
-    background-color: rgba(192, 192, 192, 0);
-    border: 0;
-  }
 }
 
 // .fa-envelope-open {

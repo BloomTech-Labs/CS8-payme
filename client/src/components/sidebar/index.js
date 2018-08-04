@@ -27,7 +27,7 @@ class Sidebar extends Component {
   }
 
   updatePredicate = () => {
-    this.setState({ isDesktop: window.innerWidth > 600 });
+    this.setState({ isDesktop: window.innerWidth > 900 });
   };
 
   logoutUser = () => {
@@ -44,11 +44,14 @@ class Sidebar extends Component {
 
     return (
       <div>
-        <div style={{ display: 'flex' }}>
-          <div className="slideout" onClick={() => this.props.toggleSidebar()}>
+        <div className="logo">
+          <div
+            className="slideout"
+            // onClick={() => this.props.toggleSidebar()}
+          >
+            {/* <span />
             <span />
-            <span />
-            <span />
+            <span /> */}
           </div>
           <div>
             <h1 className="slideout--title">

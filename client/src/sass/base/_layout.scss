@@ -1,5 +1,6 @@
 body {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 
   color: black;
   font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
@@ -53,14 +54,17 @@ button:focus {
 
 #root {
   height: 100vh;
-  width: 98vw;
-  max-width: 120rem;
-  margin: auto;
+  width: 100vw;
 }
 
 .window {
-  max-width: 120rem;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   min-height: 100%;
+
+  @include respond(smallphone) {
+    display: inline-block;
+    // flex-direction: column;
+  }
 }
