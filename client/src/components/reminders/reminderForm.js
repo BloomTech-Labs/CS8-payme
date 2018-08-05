@@ -7,8 +7,8 @@ import { addReminder } from '../../actions/smsReminders';
 
 const ReminderForm = props => {
   return (
-    <div>
-      <div>
+    <div className="reminder-form">
+      <div className="">
         <form>
           <div className="radio">
             <label>
@@ -58,7 +58,10 @@ const ReminderForm = props => {
         options={props.invoices.map((invoice, i) => {
           return (
             <div key={i}>
-              <p onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)}>
+              <p
+                onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)
+                }
+              >
                 {invoice.clientName}
               </p>
             </div>
