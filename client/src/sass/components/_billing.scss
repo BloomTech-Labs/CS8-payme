@@ -32,10 +32,21 @@
     }
 
     &_container {
+      justify-content: center;
+      align-items: center;
       text-align: center;
       width: 25%;
       margin: 0.5rem;
       border: '1rem solid black';
+
+      &_clickable {
+        height: 100%;
+        margin: auto;
+        cursor: pointer;
+        &:hover {
+          color: $color-primary;
+        }
+      }
     }
 
     &_data_title {
