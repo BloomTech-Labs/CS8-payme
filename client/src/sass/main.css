@@ -998,9 +998,8 @@ e,'s are considered best option for media queries
       border: 0; } }
 
 .reminder {
-  background-color: #ffffff;
+  background-color: #616161;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  height: 105rem;
   margin: 0 auto;
   position: relative;
   display: flex; }
