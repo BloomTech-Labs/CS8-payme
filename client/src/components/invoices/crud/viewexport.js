@@ -1,12 +1,16 @@
 import React from 'react';
 
-const View = (props) => {
+const View = props => {
   return (
-    <div className="view-invoice-box">
+    <div className="billing-window">
       <div className="view-invoice-details">
-      <div className="view-invoice-details-flex">
+        <div className="view-invoice-details-flex">
           <p>Invoice pdf</p>
-          <a href={props.url} target="_blank">Invoice pdf</a>
+          <p>
+            <a href={props.url} target="_blank">
+              Invoice pdf
+            </a>
+          </p>
         </div>
         <div className="view-invoice-details-flex">
           <p>Invoice Number:</p>
@@ -26,7 +30,7 @@ const View = (props) => {
         </div>
       </div>
     </div>
-   );
-}
- 
+  );
+};
+
 export default View;

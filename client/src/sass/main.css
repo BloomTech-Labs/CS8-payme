@@ -452,10 +452,10 @@ e,'s are considered best option for media queries
     opacity: 0; } }
 
 .fa-arrow-left {
-  margin-left: 2rem;
-  margin-top: 1rem;
   font-size: 3rem;
-  color: #22CFB1; }
+  color: #22CFB1;
+  margin: auto;
+  height: 100%; }
 
 .add-invoice_field {
   border: 0.3px solid #d8d8d8;
@@ -499,7 +499,7 @@ e,'s are considered best option for media queries
   .view-invoice-navigation {
     display: flex;
     justify-content: flex-start;
-    background-color: #2E2E2E;
+    background-color: #2e2e2e;
     height: 6rem; }
     .view-invoice-navigation_delete {
       cursor: pointer;
@@ -518,9 +518,8 @@ e,'s are considered best option for media queries
   .view-invoice-details {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    width: 30rem;
-    margin: 0 auto; }
+    min-width: 30rem;
+    max-width: 70%; }
     .view-invoice-details-total {
       font-size: 2rem;
       color: white;
@@ -545,10 +544,6 @@ e,'s are considered best option for media queries
         margin-left: -9rem; } }
   .view-invoice-editDelete {
     display: flex; }
-
-@media (max-width: 37.5em) {
-  .fa-arrow-left {
-    margin-left: -12rem; } }
 
 .doc-preview {
   display: flex;
@@ -1088,10 +1083,18 @@ e,'s are considered best option for media queries
       .billing-navigation {
         height: auto; } }
     .billing-navigation_container {
+      justify-content: center;
+      align-items: center;
       text-align: center;
       width: 25%;
       margin: 0.5rem;
       border: '1rem solid black'; }
+      .billing-navigation_container_clickable {
+        height: 100%;
+        margin: auto;
+        cursor: pointer; }
+        .billing-navigation_container_clickable:hover {
+          color: #22CFB1; }
     .billing-navigation_data_title {
       text-decoration: underline;
       margin: auto; }

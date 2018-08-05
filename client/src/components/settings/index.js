@@ -36,11 +36,13 @@ class Settings extends Component {
             style={{ justifyContent: 'flex-start', alignItems: 'center' }}
           >
             <div className="billing-navigation_container">
-              {/* <div className="invoice-buttons"> */}
-              <div className="settings-navigation_password">
-                <p>
-                  Change Password <i className="fas fa-key" />
-                </p>
+              <div className="billing-navigation_container_clickable">
+                {/* <div className="invoice-buttons"> */}
+                <div className="settings-navigation_password">
+                  <p>
+                    Change Password <i className="fas fa-key" />
+                  </p>
+                </div>
               </div>
               {/* <p className="setting-line" /> */}
               {/* <p className="settings-navigation_themes">

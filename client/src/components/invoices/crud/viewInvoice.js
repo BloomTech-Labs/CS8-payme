@@ -9,47 +9,71 @@ import UpdateInvoice from './updateInvoice';
 import ViewExport from './viewexport';
 
 class ViewInvoice extends Component {
-  state = { 
+  state = {
     modalTrigger: false,
     updateField: false,
-  }
+  };
 
   showUpdate = () => {
     this.setState({ updateField: !this.state.updateField });
-  }
+  };
+
   toggleModal = _ => {
     this.setState({ modalTrigger: !this.state.modalTrigger });
   };
 
   render() {
-
     const { invoice } = this.props;
     const params = this.props.match.params.id;
     if (!invoice) {
       this.props.getInvoice(params);
     }
     return (
-      <div className="view-invoice">
+      <div className="window">
         <Sidebar />
-        <div className="view-invoice-main">
-          <div className="view-invoice-navigation">
-            <p className="view-invoice-navigation_delete" onClick={() => this.toggleModal()}>Delete <i className="far fa-trash-alt fa-fw" /><br />Invoice</p>
+        <div className="billing-container">
+          <div className="billing-navigation" style={{ justifyContent: 'flex-start' }}>
+            <div className="billing-navigation_container">
+              <div
+                className="billing-navigation_container_clickable"
+                style={{ alignSelf: 'center' }}
+                onClick={() => this.props.history.push('/invoices')}
+              >
+                {/* <Link to="/invoices"> */}
+                <i className="fas fa-arrow-left fa-fw" />
+                {/* </Link> */}
+              </div>
+            </div>
+            <div className="billing-navigation_container">
+              <div
+                className="billing-navigation_container_clickable"
+                onClick={() => this.toggleModal()}
+              >
+                <p className="billing-navigation_data_title">Delete Invoice</p>
+                <i className="far fa-trash-alt fa-fw" />
+              </div>
+            </div>
             <hr className="navigation-line" />
-            <p className="view-invoice-navigation_update"
+            <div className="billing-navigation_container">
+              <div
+                className="billing-navigation_container_clickable"
                 onClick={() => this.showUpdate()}
               >
-                Update
+                <p className="billing-navigation_data_title">Update Invoice</p>
                 <i className="fas fa-pen-square fa-fw" />
-                <br />
-                Invoice
-            </p>
+              </div>
+            </div>
           </div>
-          <Link to="/invoices"><p><i className="fas fa-arrow-left fa-fw" /></p></Link>
           {invoice ? (
             <div>
               {!this.state.updateField ? (
-                <ViewExport invoice={invoice} url={`http://localhost:5000/api/getpdf/${invoice._id}`}/>
-              ) : <UpdateInvoice /> }
+                <ViewExport
+                  invoice={invoice}
+                  url={`http://localhost:5000/api/getpdf/${invoice._id}`}
+                />
+              ) : (
+                <UpdateInvoice />
+              )}
               {this.state.modalTrigger ? (
                 <div>
                   <DeleteInvoice
@@ -61,10 +85,12 @@ class ViewInvoice extends Component {
                 </div>
               ) : null}
             </div>
-          ) : <div className="loader">Loading..</div> }
+          ) : (
+            <div className="loader">Loading..</div>
+          )}
         </div>
       </div>
-     );
+    );
   }
 }
 
@@ -74,4 +100,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { handleInvoiceIdx, getInvoice, getAllInvoices })(ViewInvoice);
+export default connect(
+  mapStateToProps,
+  { handleInvoiceIdx, getInvoice, getAllInvoices },
+)(ViewInvoice);

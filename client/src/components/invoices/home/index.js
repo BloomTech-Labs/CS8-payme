@@ -216,42 +216,46 @@ class Invoices extends Component {
               </div>
             </div>
           </div>
-          <div className="invoice-success">
-            <p>{this.props.message}</p>
-          </div>
-          {!isDesktop && (this.state.listView && invoices.length > 0) ? (
-            <div className="invoice-list">
-              <div className="invoice-list-box">
-                <p>Inovice Number</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>ClientName</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>CompanyName</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>PDF</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Reminder</p>
-              </div>
+          <div className="billing-window" style={{ maxWidth: '100%', margin: '0' }}>
+            <div className="invoice-success">
+              <p>{this.props.message}</p>
             </div>
-          ) : null}
-          {invoices.length > 0 ? (
-            <SortableList
-              pressDelay={150}
-              lockToContainerEdges
-              axis="xy"
-              invoices={invoices}
-              onSortEnd={this.onSortEnd}
-            />
-          ) : (
-            <p className="invoice-letstart">
-              Looks like you dont have any Invoices! Click{' '}
-              <a onClick={() => this.addInvoiceCheck()}>here</a> to get started
-            </p>
-          )}
+            {!isDesktop && (this.state.listView && invoices.length > 0) ? (
+              <div className="invoice-list_group">
+                <div className="invoice-list">
+                  <div className="invoice-list-box">
+                    <p>Inovice Number</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>ClientName</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>CompanyName</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>PDF</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>Reminder</p>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+            {invoices.length > 0 ? (
+              <SortableList
+                pressDelay={150}
+                lockToContainerEdges
+                axis="xy"
+                invoices={invoices}
+                onSortEnd={this.onSortEnd}
+              />
+            ) : (
+              <p className="invoice-letstart">
+                Looks like you dont have any Invoices! Click{' '}
+                <a onClick={() => this.addInvoiceCheck()}>here</a> to get started
+              </p>
+            )}
+          </div>
         </div>
       </div>
     );
