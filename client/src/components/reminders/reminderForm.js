@@ -8,23 +8,24 @@ import { addReminder } from '../../actions/smsReminders';
 const ReminderForm = props => {
   return (
     <div className="reminderform">
-      <div>
+      <div className="reminderform-drop">
         <h1>Invoices:</h1>
         <Dropdown
           className="dropdown"
-          placeholder="Choose invoice by name: "
+          placeholder="Choose invoice by name"
           closeOnChange
           search
           selection
           options={props.invoices.map((invoice, i) => {
             return (
               <div className="dropdown-option" key={i}>
-                <div
+                <p
+                  className="dropdown-option-name"
                   onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)
                   }
                 >
                   {invoice.clientName}
-                </div>
+                </p>
               </div>
             );
           })}
