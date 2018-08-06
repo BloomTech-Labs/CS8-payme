@@ -1010,14 +1010,13 @@ e,'s are considered best option for media queries
     width: 60%;
     height: 68%;
     display: flex;
-    padding: 2rem;
+    padding: 2rem 2rem;
     justify-content: space-between;
     box-shadow: 0px 2px 5px #7c7c7c; }
   .reminder .calendar {
     display: flex;
-    margin: 1rem 2rem 0 3rem;
-    border: solid #22cfb1 1px;
-    border-radius: 5px;
+    width: 100%;
+    padding-bottom: 2rem;
     justify-content: center; }
 
 .settings {
@@ -1121,11 +1120,13 @@ e,'s are considered best option for media queries
   font-size: 4rem; }
 
 .reminderform {
+  height: 50%;
   width: 100%;
   display: flex;
-  width: 100%; }
+  width: 100%;
+  justify-content: space-around; }
   .reminderform-message {
-    margin: 5rem 2rem;
+    margin: 0 2rem;
     width: 25rem;
     justify-content: center; }
     .reminderform-message-input {
@@ -1136,16 +1137,15 @@ e,'s are considered best option for media queries
       border-radius: 5px;
       resize: none; }
 
-.dropdown {
-  height: 25%; }
-
 .reminder-dropdown {
   width: 22rem;
-  margin: 5rem 2rem;
+  margin: 1rem 2rem;
   align-items: flex-start; }
   .reminder-dropdown-option {
     margin-left: 1rem;
     cursor: pointer; }
+    .reminder-dropdown-option:hover {
+      background-color: #404040; }
     .reminder-dropdown-option:focus {
       background-color: black; }
 

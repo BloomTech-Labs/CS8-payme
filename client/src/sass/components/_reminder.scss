@@ -14,16 +14,15 @@
     width: 60%;
     height: 68%;
     display: flex;
-    padding: 2rem;
+    padding: 2rem 2rem;
     justify-content: space-between;
     box-shadow: 0px 2px 5px rgb(124, 124, 124);
   }
 
   .calendar {
     display: flex;
-    margin: 1rem 2rem 0 3rem;
-    border: solid #22cfb1 1px;
-    border-radius: 5px;
+    width: 100%;
+    padding-bottom: 2rem;
     justify-content: center;
   }
 }

@@ -1,13 +1,12 @@
 .reminderform {
   // background-color: $color-nav;
-  // height: 100%;
+  height: 50%;
   width: 100%;
   display: flex;
-  // flex-direction: column;
   width: 100%;
-
+  justify-content: space-around;
   &-message {
-    margin: 5rem 2rem;
+    margin: 0 2rem;
     width: 25rem;
     justify-content: center;
     &-input {
@@ -20,23 +19,17 @@
     }
   }
 }
-.dropdown {
-  height: 25%;
-}
+
 .reminder-dropdown {
-  // border: solid red;
-  // height: 50%;
-  // box-shadow: 0.5px 0.5px 0px 2px grey;
   width: 22rem;
-  margin: 5rem 2rem;
+  margin: 1rem 2rem;
   align-items: flex-start;
   &-option {
-    // background-color: blue;
     margin-left: 1rem;
     cursor: pointer;
-    // &:hover {
-    //   background-color: aquamarine;
-    // }
+    &:hover {
+      background-color: #404040;
+    }
     &:focus {
       background-color: black;
     }
