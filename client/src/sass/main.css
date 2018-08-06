@@ -998,16 +998,27 @@ e,'s are considered best option for media queries
       border: 0; } }
 
 .reminder {
-  background-color: #616161;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
+  height: 120rem;
   margin: 0 auto;
   position: relative;
   display: flex; }
-  .reminder-container {
-    width: 100%; }
-  .reminder-drop {
-    margin-left: 5rem;
-    margin-top: 10rem; }
+  .reminder-main {
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 8rem;
+    width: 60%;
+    height: 68%;
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    box-shadow: 0px 2px 5px #7c7c7c; }
+  .reminder .calendar {
+    display: flex;
+    margin: 1rem 2rem 0 3rem;
+    border: solid #22cfb1 1px;
+    border-radius: 5px;
+    justify-content: center; }
 
 .settings {
   background-color: #ffffff;
@@ -1108,6 +1119,48 @@ e,'s are considered best option for media queries
 
 .admin-title {
   font-size: 4rem; }
+
+.reminderform {
+  width: 100%;
+  display: flex;
+  width: 100%; }
+  .reminderform-message {
+    margin: 5rem 2rem;
+    width: 25rem;
+    justify-content: center; }
+    .reminderform-message-input {
+      padding: 3px 4px;
+      width: 100%;
+      height: 10rem;
+      border: solid grey 1.4px;
+      border-radius: 5px;
+      resize: none; }
+
+.dropdown {
+  height: 25%; }
+
+.reminder-dropdown {
+  width: 22rem;
+  margin: 5rem 2rem;
+  align-items: flex-start; }
+  .reminder-dropdown-option {
+    margin-left: 1rem;
+    cursor: pointer; }
+    .reminder-dropdown-option:focus {
+      background-color: black; }
+
+.addreminder {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  width: 100%; }
+  .addreminder-button {
+    width: 10rem;
+    padding: 1rem;
+    background-color: #E86C62;
+    border: solid grey 1px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #7c7c7c; }
 
 body {
   height: 100vh;
