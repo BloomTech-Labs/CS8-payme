@@ -13,7 +13,7 @@ const ReminderForm = props => {
         <Dropdown
           className="dropdown"
           placeholder="Choose invoice by name"
-          closeOnChange
+          // closeOnChange
           search
           selection
           options={props.invoices.map((invoice, i) => {
@@ -41,7 +41,7 @@ const ReminderForm = props => {
         />
         <div className="addreminder">
           <button
-            className="addreminder-button"
+            className="addreminder-button connect-stripe_button"
             type="submit"
             onClick={() => {
               props.addReminder(props.formData, props.history);
