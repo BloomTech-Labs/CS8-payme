@@ -1004,7 +1004,7 @@ e,'s are considered best option for media queries
   display: flex; }
 
 .reminder-nav {
-  height: 6%;
+  height: 6rem;
   width: 100%;
   padding-top: 1.2rem;
   border-bottom: 0.3px solid #d2d2d2; }
