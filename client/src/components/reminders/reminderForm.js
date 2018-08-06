@@ -9,15 +9,16 @@ const ReminderForm = props => {
   return (
     <div className="reminderform">
       <div>
+        <h1>Invoices:</h1>
         <Dropdown
-          className="reminder-dropdown"
+          className="dropdown"
           placeholder="Choose invoice by name: "
           closeOnChange
           search
           selection
           options={props.invoices.map((invoice, i) => {
             return (
-              <div className="reminder-dropdown-option" key={i}>
+              <div className="dropdown-option" key={i}>
                 <div
                   onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)
                   }

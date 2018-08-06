@@ -51,23 +51,27 @@ class Reminders extends Component {
     const { reminder } = this.state;
     console.log(reminder);
     return (
-      <div className="reminder">
+      <div className="reminder-page">
         <Sidebar />
-        <h1>Set a Reminder</h1>
-        <div className="reminder-main">
-          <div className="calendar">
-            <Calendar onChange={this.onChange} value={this.state.date} />
+        <div className="reminder">
+          <div className="reminder-nav">
+            <h1 className="reminder-nav-title">Set a Reminder</h1>
           </div>
+          <div className="reminder-main">
+            <div className="calendar">
+              <Calendar onChange={this.onChange} value={this.state.date} />
+            </div>
 
-          <RemindForm
-            handleMessage={e => this.handleChange({ message: e.target.value })}
-            handleRadio={e => this.handleChange({ option: e.target.value })}
-            option={reminder.option}
-            invoices={invoices}
-            getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
-            formData={reminder}
-            history={this.props.history}
-          />
+            <RemindForm
+              handleMessage={e => this.handleChange({ message: e.target.value })}
+              handleRadio={e => this.handleChange({ option: e.target.value })}
+              option={reminder.option}
+              invoices={invoices}
+              getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
+              formData={reminder}
+              history={this.props.history}
+            />
+          </div>
         </div>
       </div>
     );
