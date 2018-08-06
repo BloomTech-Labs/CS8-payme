@@ -13,24 +13,43 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-
   }
   &-navigation {
     display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    background-color: #2E2E2E;
+    background-color: #2e2e2e;
     height: 6rem;
   }
 
+  &-buttons {
+    display: flex;
+    height: 100%;
+    // flex-direction: row;
+    &_each {
+      align-items: flex-start;
+    }
+    @include respond(phone) {
+      width: 100%;
+      margin: auto;
+
+      justify-content: space-between;
+    }
+  }
+
   &-search {
+    width: 30%;
+    @include respond(phone) {
+      display: none;
+    }
+
     &_input {
-      margin-left: 10rem;
-      margin-right: 30rem;
+      margin-left: 10%;
+      margin-right: 10%;
       background-color: rgb(235, 235, 235);
       padding: 0.4rem;
-      width: 30%;
+      width: 80%;
       height: 4rem;
       border-radius: 1rem;
       border: $main-border;
@@ -47,12 +66,12 @@
         display: none;
       }
       &:focus {
-        width: 40%;
+        // width: 40%;
         -webkit-transition: width 0.4s ease-in-out;
         transition: width 0.4s ease-in-out;
         @include respond(tab-port) {
           transition: none;
-          width:30rem;
+          width: 30rem;
         }
         @include respond(smallphone) {
           width: 15rem;
@@ -62,37 +81,37 @@
   }
 
   &-sort {
-    color:white;
+    color: white;
     margin-top: 1rem;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex;
     &:hover {
-      color:$color-primary;
+      color: $color-primary;
     }
   }
 
   &-view {
-    color:white;
+    color: white;
     text-align: center;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex;
     &:hover {
-      color:$color-primary;
+      color: $color-primary;
     }
   }
   &-new {
+    height: 100%;
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
-    // justify-content: center;
-    width:  10rem;
+    justify-content: center;
+    width: 10rem;
     &:hover {
-      color:$color-primary;
+      color: $color-primary;
     }
-
   }
 
   &-id {
@@ -115,12 +134,12 @@
 
     // height: 4rem;
 
-    animation:invoice-success 3s 1;
-    -webkit-animation:invoice-success 3s 1;
+    animation: invoice-success 3s 1;
+    -webkit-animation: invoice-success 3s 1;
     animation-fill-mode: forwards;
 
-    animation-delay:2s;
-    -webkit-animation-delay:1s; /* Safari and Chrome */
+    animation-delay: 2s;
+    -webkit-animation-delay: 1s; /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
   }
 
@@ -129,28 +148,37 @@
     margin: 0 auto;
   }
 }
-@keyframes invoice-success{
-  from {opacity :1;}
-  to {opacity :0;}
+@keyframes invoice-success {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-@-webkit-keyframes invoice-success{
-  from {opacity :1;}
-  to {opacity :0;}
+@-webkit-keyframes invoice-success {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .fa-arrow-left {
-  margin-left: 2rem;
-  margin-top:1rem;
+  // margin-left: 2rem;
+  // margin-top: 1rem;
   font-size: 3rem;
   color: $color-primary;
+  margin: auto;
+  height: 100%;
 }
 //////////////////////
 // Add Invoice
 //////////////////////
 
 .add-invoice {
-
   &_field {
     border: 0.3px solid rgb(216, 216, 216);
     height: 4rem;
@@ -163,8 +191,7 @@
     width: 100%;
     border: none;
     background-color: $color-secondary;
-    border-radius: .5rem;
-
+    border-radius: 0.5rem;
   }
 }
 

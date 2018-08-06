@@ -2,9 +2,9 @@
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
-  height: 105rem;
-  // margin: 0 auto;
-  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  // position: relative;
   display: flex;
 
   &-container {
@@ -14,6 +14,10 @@
     // align-items: center;
     // background-color: blue;
     width: 100%;
+
+    @include respond(smallphone) {
+      margin-top: 36px;
+    }
   }
 
   &-navigation {
@@ -21,12 +25,28 @@
     justify-content: space-around;
     border: 0.3px solid rgb(210, 210, 210);
     height: 6rem;
+    min-height: 6rem;
+
+    @include respond(smallphone) {
+      height: auto;
+    }
 
     &_container {
+      justify-content: center;
+      align-items: center;
       text-align: center;
       width: 25%;
       margin: 0.5rem;
       border: '1rem solid black';
+
+      &_clickable {
+        height: 100%;
+        margin: auto;
+        cursor: pointer;
+        &:hover {
+          color: $color-primary;
+        }
+      }
     }
 
     &_data_title {
@@ -41,6 +61,7 @@
 
   &-window {
     margin: 3rem;
+    max-width: 70rem;
   }
 
   &-title {
@@ -63,6 +84,16 @@
   &-quantity_input {
     width: 5rem;
   }
+}
+
+.connect-stripe_button {
+  color: white;
+  height: 4rem;
+  width: 100%;
+  max-width: 18rem;
+  border: none;
+  background-color: $color-secondary;
+  border-radius: 0.5rem;
 }
 
 .payInvoice {

@@ -1,25 +1,25 @@
-
 body {
   height: 100vh;
+  width: 100vw;
+
   color: black;
-  margin: 0;
-  padding: 0;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   // font-family: 'Montserrat',sans-serif;
   // background-size: fill;
-
 }
 
 html {
   height: 100vh;
   box-sizing: border-box;
-  font-size: 62.5%; // 1rem = 10px, 10px/16px = 32.5%; 16px is browser default
-  
-  @include respond(tab-land) { // width < 1200 ?
+  font-size: 50%; // 1rem = 10px, 10px/16px = 32.5%; 16px is browser default
+
+  @include respond(tab-land) {
+    // width < 1200 ?
     font-size: 56.25%; // 1rem = 9px, 9/16 = 50%
   }
-  // the last media query is the on that applies 
-  @include respond(tab-port) { // width < 900 ?
+  // the last media query is the on that applies
+  @include respond(tab-port) {
+    // width < 900 ?
     font-size: 50%; // 1rem = 8px, 8/16 = 50%
   }
   @include respond(desktop) {
@@ -37,18 +37,35 @@ a {
   &:hover {
     color: $color-primary;
   }
-
 }
 
 ul {
-  list-style:none;
+  list-style: none;
 }
 
 button:focus {
   outline: 0;
-  border-radius:15px;
+  border-radius: 15px;
 }
 
 .active {
   color: $color-primary;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.window {
+  width: 100vw;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  min-height: 100%;
+
+  @include respond(smallphone) {
+    display: inline-block;
+    // flex-direction: column;
+  }
 }

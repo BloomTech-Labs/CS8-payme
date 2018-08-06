@@ -177,35 +177,27 @@ e,'s are considered best option for media queries
     border-radius: .5rem; }
 
 .invoice-box {
-  margin: 5rem 5rem 5rem 10rem;
+  width: 100%;
+  margin: auto;
   margin-top: 5rem;
-  display: flex;
+  display: inline-flex;
   flex-flow: row wrap; }
-  @media (max-width: 56.25em) {
-    .invoice-box {
-      margin-left: 20rem; } }
-  @media (max-width: 37.5em) {
-    .invoice-box {
-      margin: 2rem 2rem 2rem -4rem; } }
-  @media (max-width: 25.06em) {
-    .invoice-box {
-      margin: 5rem 0rem 0rem -6rem; } }
 
 .invoice-data {
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   padding: 2rem 2rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  margin: 2rem;
   justify-content: center;
-  width: 40rem;
+  width: 30rem;
   border: 0.3px solid #c2c2c2; }
   @media (max-width: 37.5em) {
     .invoice-data {
-      margin: 2rem 2rem 2rem 0rem;
-      width: 20rem; } }
-  @media (max-width: 25.06em) {
-    .invoice-data {
       width: 30rem; } }
+  @media (max-width: 32em) {
+    .invoice-data {
+      width: 100%;
+      max-width: 350px;
+      margin: 1rem auto; } }
   .invoice-data-flex {
     display: flex;
     justify-content: space-between; }
@@ -232,9 +224,7 @@ e,'s are considered best option for media queries
 
 .invoice-list {
   justify-content: center;
-  padding: 2rem 2rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  padding: 2rem 0rem;
   width: 100%;
   height: 4rem;
   border-bottom: 0.3px solid #c2c2c2;
@@ -349,42 +339,56 @@ e,'s are considered best option for media queries
   .invoice-navigation {
     display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    background-color: #2E2E2E;
+    background-color: #2e2e2e;
     height: 6rem; }
-  .invoice-search_input {
-    margin-left: 10rem;
-    margin-right: 30rem;
-    background-color: #ebebeb;
-    padding: 0.4rem;
-    width: 30%;
-    height: 4rem;
-    border-radius: 1rem;
-    border: 0.3px solid #c1c1c1; }
-    @media (max-width: 56.25em) {
-      .invoice-search_input {
-        width: 30rem;
-        margin-right: 5rem;
-        margin-left: 5rem; } }
+  .invoice-buttons {
+    display: flex;
+    height: 100%; }
+    .invoice-buttons_each {
+      align-items: flex-start; }
     @media (max-width: 37.5em) {
-      .invoice-search_input {
-        width: 15rem;
-        margin-left: 2rem; } }
-    @media (max-width: 25.06em) {
-      .invoice-search_input {
+      .invoice-buttons {
+        width: 100%;
+        margin: auto;
+        justify-content: space-between; } }
+  .invoice-search {
+    width: 30%; }
+    @media (max-width: 37.5em) {
+      .invoice-search {
         display: none; } }
-    .invoice-search_input:focus {
-      width: 40%;
-      -webkit-transition: width 0.4s ease-in-out;
-      transition: width 0.4s ease-in-out; }
+    .invoice-search_input {
+      margin-left: 10%;
+      margin-right: 10%;
+      background-color: #ebebeb;
+      padding: 0.4rem;
+      width: 80%;
+      height: 4rem;
+      border-radius: 1rem;
+      border: 0.3px solid #c1c1c1; }
       @media (max-width: 56.25em) {
-        .invoice-search_input:focus {
-          transition: none;
-          width: 30rem; } }
-      @media (max-width: 25.06em) {
-        .invoice-search_input:focus {
-          width: 15rem; } }
+        .invoice-search_input {
+          width: 30rem;
+          margin-right: 5rem;
+          margin-left: 5rem; } }
+      @media (max-width: 37.5em) {
+        .invoice-search_input {
+          width: 15rem;
+          margin-left: 2rem; } }
+      @media (max-width: 32em) {
+        .invoice-search_input {
+          display: none; } }
+      .invoice-search_input:focus {
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out; }
+        @media (max-width: 56.25em) {
+          .invoice-search_input:focus {
+            transition: none;
+            width: 30rem; } }
+        @media (max-width: 32em) {
+          .invoice-search_input:focus {
+            width: 15rem; } }
   .invoice-sort {
     color: white;
     margin-top: 1rem;
@@ -402,10 +406,12 @@ e,'s are considered best option for media queries
     .invoice-view:hover {
       color: #22CFB1; }
   .invoice-new {
+    height: 100%;
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
+    justify-content: center;
     width: 10rem; }
     .invoice-new:hover {
       color: #22CFB1; }
@@ -446,10 +452,10 @@ e,'s are considered best option for media queries
     opacity: 0; } }
 
 .fa-arrow-left {
-  margin-left: 2rem;
-  margin-top: 1rem;
   font-size: 3rem;
-  color: #22CFB1; }
+  color: #22CFB1;
+  margin: auto;
+  height: 100%; }
 
 .add-invoice_field {
   border: 0.3px solid #d8d8d8;
@@ -462,7 +468,7 @@ e,'s are considered best option for media queries
   width: 100%;
   border: none;
   background-color: #E86C62;
-  border-radius: .5rem; }
+  border-radius: 0.5rem; }
 
 .navigation-line {
   margin: 0;
@@ -493,7 +499,7 @@ e,'s are considered best option for media queries
   .view-invoice-navigation {
     display: flex;
     justify-content: flex-start;
-    background-color: #2E2E2E;
+    background-color: #2e2e2e;
     height: 6rem; }
     .view-invoice-navigation_delete {
       cursor: pointer;
@@ -512,9 +518,8 @@ e,'s are considered best option for media queries
   .view-invoice-details {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    width: 30rem;
-    margin: 0 auto; }
+    min-width: 30rem;
+    max-width: 70%; }
     .view-invoice-details-total {
       font-size: 2rem;
       color: white;
@@ -539,10 +544,6 @@ e,'s are considered best option for media queries
         margin-left: -9rem; } }
   .view-invoice-editDelete {
     display: flex; }
-
-@media (max-width: 37.5em) {
-  .fa-arrow-left {
-    margin-left: -12rem; } }
 
 .doc-preview {
   display: flex;
@@ -880,8 +881,13 @@ e,'s are considered best option for media queries
 
 .slideout {
   padding-top: 1rem;
-  background-color: #2d2d2d; }
-  @media (max-width: 56.25em) {
+  background-color: #2d2d2d;
+  height: 54px;
+  width: 63px; }
+  @media (max-width: 32em) {
+    .slideout {
+      display: none; } }
+  @media (max-width: 37.5em) {
     .slideout {
       display: none; } }
   .slideout span {
@@ -897,17 +903,25 @@ e,'s are considered best option for media queries
     font-size: 3rem;
     height: 6rem;
     background-color: #2d2d2d; }
-    @media (max-width: 56.25em) {
+    @media (max-width: 37.5em) {
       .slideout--title {
-        width: 19rem;
-        padding-left: 5.5rem; } }
-    @media (max-width: 25.06em) {
+        display: none; } }
+    @media (max-width: 32em) {
       .slideout--title {
         padding-left: 1rem;
-        width: 13rem; } }
+        width: 13rem;
+        display: none; } }
   .slideout--dot {
     color: #22CFB1;
     font-size: 6rem; }
+
+.logo {
+  display: none; }
+  @media (min-width: 900px) {
+    .logo {
+      display: flex;
+      width: 171px;
+      height: 54px; } }
 
 #sidebar.active {
   margin-left: -18rem; }
@@ -923,7 +937,6 @@ e,'s are considered best option for media queries
   position: relative;
   text-align: center;
   height: 100%;
-  padding-bottom: 30rem;
   background-color: #252525;
   min-width: 19rem;
   width: 19rem; }
@@ -932,6 +945,12 @@ e,'s are considered best option for media queries
       flex-direction: row;
       max-width: 5rem;
       height: 100%; } }
+
+.sidebar--minimal {
+  overflow: hidden;
+  width: 6rem;
+  height: 100%;
+  background: #252525; }
 
 .sidebar--users {
   display: none; }
@@ -958,9 +977,10 @@ e,'s are considered best option for media queries
   padding-right: 0.5rem; }
 
 .sidebar-min-links {
+  width: 10rem;
   margin-top: 2rem;
   margin-left: 1rem; }
-  @media (max-width: 25.06em) {
+  @media (max-width: 32em) {
     .sidebar-min-links {
       display: flex;
       position: absolute;
@@ -968,7 +988,7 @@ e,'s are considered best option for media queries
       margin: 0;
       height: 4rem;
       background-color: #2d2d2d;
-      width: 50rem; } }
+      width: 100vw; } }
   .sidebar-min-links p {
     display: flex;
     justify-content: center;
@@ -1050,27 +1070,23 @@ e,'s are considered best option for media queries
     height: 6rem; }
     .settings-navigation_password {
       cursor: pointer;
-      color: black;
-      padding: 1rem;
-      margin-left: 3rem; }
+      color: black; }
       .settings-navigation_password:hover {
         color: #22CFB1; }
     .settings-navigation_themes {
       cursor: pointer;
       color: black;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       padding: 1rem;
       text-align: center; }
       .settings-navigation_themes:hover {
         color: #22CFB1; }
   .settings-form {
-    width: 35rem;
-    height: 35rem;
-    margin: 15rem auto; }
-    @media (max-width: 37.5em) {
-      .settings-form {
-        margin-left: -11.5rem; } }
+    max-width: 35rem;
+    height: 35rem; }
   .settings_field {
+    padding: 1rem;
+    margin-bottom: 1rem;
     border: 0.3px solid #d8d8d8;
     height: 4rem;
     width: 100%; }
@@ -1080,33 +1096,49 @@ e,'s are considered best option for media queries
     width: 100%;
     border: none;
     background-color: #E86C62;
-    border-radius: .5rem; }
+    border-radius: 0.5rem; }
 
 .billing {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  height: 105rem;
-  position: relative;
+  height: 100%;
+  margin: 0 auto;
   display: flex; }
   .billing-container {
     width: 100%; }
+    @media (max-width: 32em) {
+      .billing-container {
+        margin-top: 36px; } }
   .billing-navigation {
     display: flex;
     justify-content: space-around;
     border: 0.3px solid #d2d2d2;
-    height: 6rem; }
+    height: 6rem;
+    min-height: 6rem; }
+    @media (max-width: 32em) {
+      .billing-navigation {
+        height: auto; } }
     .billing-navigation_container {
+      justify-content: center;
+      align-items: center;
       text-align: center;
       width: 25%;
       margin: 0.5rem;
       border: '1rem solid black'; }
+      .billing-navigation_container_clickable {
+        height: 100%;
+        margin: auto;
+        cursor: pointer; }
+        .billing-navigation_container_clickable:hover {
+          color: #22CFB1; }
     .billing-navigation_data_title {
       text-decoration: underline;
       margin: auto; }
     .billing-navigation_data {
       margin: auto; }
   .billing-window {
-    margin: 3rem; }
+    margin: 3rem;
+    max-width: 70rem; }
   .billing-title {
     font-size: 6rem; }
   .billing-purchase {
@@ -1117,6 +1149,15 @@ e,'s are considered best option for media queries
       margin-right: 1rem; }
   .billing-quantity_input {
     width: 5rem; }
+
+.connect-stripe_button {
+  color: white;
+  height: 4rem;
+  width: 100%;
+  max-width: 18rem;
+  border: none;
+  background-color: #E86C62;
+  border-radius: 0.5rem; }
 
 .payInvoice {
   display: flex;
@@ -1183,22 +1224,21 @@ e,'s are considered best option for media queries
 
 body {
   height: 100vh;
+  width: 100vw;
   color: black;
-  margin: 0;
-  padding: 0;
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif; }
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif; }
 
 html {
   height: 100vh;
   box-sizing: border-box;
-  font-size: 62.5%; }
+  font-size: 50%; }
   @media (max-width: 75em) {
     html {
       font-size: 56.25%; } }
   @media (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (min-width: 130em) {
+  @media (min-width: 120em) {
     html {
       font-size: 50%; } }
 
@@ -1220,6 +1260,20 @@ button:focus {
 
 .active {
   color: #22CFB1; }
+
+#root {
+  height: 100vh;
+  width: 100vw; }
+
+.window {
+  width: 100vw;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  min-height: 100%; }
+  @media (max-width: 32em) {
+    .window {
+      display: inline-block; } }
 
 .loader {
   width: 250px;
