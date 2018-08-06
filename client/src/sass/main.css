@@ -1005,18 +1005,6 @@ e,'s are considered best option for media queries
   color: white;
   vertical-align: middle; }
 
-.sidebar--minimal {
-  margin-top: -5px;
-  margin-left: -2px;
-  width: 6rem;
-  height: 100%;
-  border: 0.3px solid silver;
-  background: #252525; }
-  @media (max-width: 25.06em) {
-    .sidebar--minimal {
-      background-color: rgba(192, 192, 192, 0);
-      border: 0; } }
-
 .reminder-page {
   height: 120rem;
   margin: 0 auto;
@@ -1041,7 +1029,6 @@ e,'s are considered best option for media queries
   margin: 0 auto; }
   .reminder-main {
     border-radius: 5px;
-    margin: 8rem auto;
     width: 60%;
     height: 50%;
     display: flex;
