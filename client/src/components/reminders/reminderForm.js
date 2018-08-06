@@ -7,72 +7,50 @@ import { addReminder } from '../../actions/smsReminders';
 
 const ReminderForm = props => {
   return (
-    <div>
-      <div>
-        <form>
-          <div className="radio">
-            <label>
-              <input
-                type="radio"
-                value="daily"
-                checked={props.option === 'daily'}
-                onChange={props.handleRadio}
-              />
-              Daily
-            </label>
-          </div>
-          <div className="radio">
-            <label>
-              <input
-                type="radio"
-                value="weekly"
-                checked={props.option === 'weekly'}
-                onChange={props.handleRadio}
-              />
-              Weekly
-            </label>
-          </div>
-          <div className="radio">
-            <label>
-              <input
-                type="radio"
-                value="monthly"
-                checked={props.option === 'monthly'}
-                onChange={props.handleRadio}
-              />
-              Monthy
-            </label>
-          </div>
-          <div>
-            <label>
-              Custom message:
-              <input type="text" onChange={props.handleMessage} />
-            </label>
-          </div>
-        </form>
+    <div className="reminderform">
+      <div className="reminderform-drop">
+        <h1>Invoices:</h1>
+        <Dropdown
+          className="dropdown"
+          placeholder="Choose invoice by name"
+          closeOnChange
+          search
+          selection
+          options={props.invoices.map((invoice, i) => {
+            return (
+              <div className="dropdown-option" key={i}>
+                <p
+                  className="dropdown-option-name"
+                  onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)
+                  }
+                >
+                  {invoice.clientName}
+                </p>
+              </div>
+            );
+          })}
+        />
       </div>
-      <Dropdown
-        placeholder="Invoices"
-        search
-        selection
-        options={props.invoices.map((invoice, i) => {
-          return (
-            <div key={i}>
-              <p onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)}>
-                {invoice.clientName}
-              </p>
-            </div>
-          );
-        })}
-      />
-      <button
-        type="submit"
-        onClick={() => {
-          props.addReminder(props.formData, props.history);
-        }}
-      >
-        Submit
-      </button>
+
+      <div className="reminderform-message">
+        <h1>Custom message:</h1>
+        <textarea
+          type="body"
+          className="reminderform-message-input"
+          onChange={props.handleMessage}
+        />
+        <div className="addreminder">
+          <button
+            className="addreminder-button"
+            type="submit"
+            onClick={() => {
+              props.addReminder(props.formData, props.history);
+            }}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
@@ -81,3 +59,42 @@ export default connect(
   null,
   { addReminder },
 )(ReminderForm);
+
+// <div>
+//   <form className="reminderform-radio">
+//     <div>
+//       <label>
+//         <input
+//           type="radio"
+//           value="daily"
+//           checked={props.option === 'daily'}
+//           onChange={props.handleRadio}
+//         />
+//         Daily
+//             </label>
+//     </div>
+//     <div>
+//       <label>
+//         <input
+//           type="radio"
+//           value="weekly"
+//           checked={props.option === 'weekly'}
+//           onChange={props.handleRadio}
+//         />
+//         Weekly
+//             </label>
+//     </div>
+//     <div>
+//       <label>
+//         <input
+//           type="radio"
+//           value="monthly"
+//           checked={props.option === 'monthly'}
+//           onChange={props.handleRadio}
+//         />
+//         Monthy
+//             </label>
+//     </div>
+//   </form>
+
+// </div>
