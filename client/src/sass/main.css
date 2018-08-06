@@ -1028,18 +1028,66 @@ e,'s are considered best option for media queries
   width: 100%;
   margin: 0 auto; }
   .reminder-main {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
-    width: 60%;
-    height: 50%;
-    display: flex;
-    padding: 2rem 2rem;
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    display: flex; }
+    @media (max-width: 56.25em) {
+      .reminder-main {
+        flex-direction: column; } }
+  .reminder-form_container {
+    width: 100%; }
+
+.reminderform {
+  height: 80%;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between; }
+  @media (max-width: 56.25em) {
+    .reminderform {
+      padding-top: 15px; } }
+  .reminderform-drop {
+    width: 100%; }
+  .reminderform-message {
+    width: 100%; }
+    .reminderform-message-input {
+      margin: 1rem 0;
+      padding: 3px 4px;
+      width: 100%;
+      height: 8rem;
+      border: solid grey 1.4px;
+      border-radius: 5px;
+      resize: none; }
+
+.addreminder {
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+  .addreminder-button {
+    width: 10rem;
+    padding: 1rem;
+    background-color: #E86C62;
+    border: solid grey 1px;
+    border-radius: 5px;
     box-shadow: 0px 2px 5px #7c7c7c; }
 
 .calendar {
-  display: flex;
-  width: 100%;
-  padding-left: 5%;
-  height: 55%; }
+  margin: auto; }
+  .calendar-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    height: 55%; }
 
 .settings {
   background-color: #ffffff;
@@ -1125,7 +1173,11 @@ e,'s are considered best option for media queries
       margin: auto; }
   .billing-window {
     margin: 3rem;
-    max-width: 70rem; }
+    max-width: 70rem;
+    min-width: 300px; }
+    @media (max-width: 32em) {
+      .billing-window {
+        margin: auto; } }
   .billing-title {
     font-size: 6rem; }
   .billing-purchase {
@@ -1162,28 +1214,6 @@ e,'s are considered best option for media queries
 .admin-title {
   font-size: 4rem; }
 
-.reminderform {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  width: 80%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between; }
-  .reminderform-drop {
-    width: 80%; }
-  .reminderform-message {
-    margin-left: 1rem;
-    width: 80%; }
-    .reminderform-message-input {
-      margin: 1rem 0;
-      padding: 3px 4px;
-      width: 100%;
-      height: 8rem;
-      border: solid grey 1.4px;
-      border-radius: 5px;
-      resize: none; }
-
 .dropdown {
   width: 100%;
   margin: 1rem 0; }
@@ -1195,19 +1225,6 @@ e,'s are considered best option for media queries
       background-color: black; }
     .dropdown-option-name {
       margin-left: 1rem; }
-
-.addreminder {
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
-  width: 100%; }
-  .addreminder-button {
-    width: 10rem;
-    padding: 1rem;
-    background-color: #E86C62;
-    border: solid grey 1px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px #7c7c7c; }
 
 body {
   height: 100vh;

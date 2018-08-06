@@ -62,6 +62,10 @@
   &-window {
     margin: 3rem;
     max-width: 70rem;
+    min-width: 300px;
+    @include respond(smallphone) {
+      margin: auto;
+    }
   }
 
   &-title {
