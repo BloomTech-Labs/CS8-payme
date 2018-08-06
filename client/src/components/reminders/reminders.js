@@ -61,14 +61,15 @@ class Reminders extends Component {
           </div>
           <div className="billing-window">
             <div className="reminder-main">
-              <div className="calendar">
+              <div className="calendar-box">
                 <Calendar
+                  className="calendar"
                   style={styles.calendarStyles}
                   onChange={this.onChange}
                   value={this.state.date}
                 />
               </div>
-              <div className="reminder-form">
+              <div className="reminder-form_container">
                 <RemindForm
                   handleMessage={e => this.handleChange({ message: e.target.value })}
                   handleRadio={e => this.handleChange({ option: e.target.value })}

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { ToastContainer, ToastStore } from 'react-toasts';
 import { updateUser } from '../../actions/auth';
 import ConnectStripe from './ConnectStripe';
 
@@ -41,6 +42,7 @@ class AdminBilling extends Component {
       <ConnectStripe />
     ) : (
       <div className="billing-window">
+        <ToastContainer position={ToastContainer.POSITION.TOP_LEFT} store={ToastStore} />
         <h1 className="billing-title">Billing</h1>
         {/* <h3>Sub expires on : {this.getSub()}</h3>
         <h3>Avaliable credits : {this.props.admin.invoiceCredits}</h3>
@@ -152,12 +154,13 @@ class AdminBilling extends Component {
       amount,
     })
     .then(res => {
-      alert('Payment successful');
+      ToastStore.success('Payment APPROVED', 3000);
+      // alert('Payment Approved');
       this.props.updateUser(res.data.user);
       console.log(res);
     })
     .catch(data => {
-      alert('Payment declined');
+      ToastStore.error('Payment DECLINED');
       console.log(data);
     });
 }

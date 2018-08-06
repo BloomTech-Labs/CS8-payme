@@ -62,6 +62,10 @@
   &-window {
     margin: 3rem;
     max-width: 70rem;
+    min-width: 300px;
+    @include respond(smallphone) {
+      margin: auto;
+    }
   }
 
   &-title {
@@ -74,8 +78,8 @@
 
   &-radio {
     margin: 1rem 0;
-    &_label {
-    }
+    // &_label {
+    // }
 
     &_select {
       margin-right: 1rem;
@@ -108,8 +112,8 @@
 
 .checkout {
   // background-color: blue;
-  &_complete {
-  }
+  // &_complete {
+  // }
 
   &_button {
     max-width: 18rem;
