@@ -1031,7 +1031,8 @@ e,'s are considered best option for media queries
 .calendar {
   display: flex;
   width: 100%;
-  padding-left: 5%; }
+  padding-left: 5%;
+  height: 55%; }
 
 .settings {
   background-color: #ffffff;
