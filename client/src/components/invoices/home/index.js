@@ -224,16 +224,16 @@ class Invoices extends Component {
               <div className="invoice-list_group">
                 <div className="invoice-list">
                   <div className="invoice-list-box">
-                    <p>Inovice Number</p>
+                    <p>Invoice Number</p>
                   </div>
                   <div className="invoice-list-box">
-                    <p>ClientName</p>
+                    <p>Client Name</p>
                   </div>
                   <div className="invoice-list-box">
-                    <p>CompanyName</p>
+                    <p>Company Name</p>
                   </div>
                   <div className="invoice-list-box">
-                    <p>PDF</p>
+                    <p>Invoice</p>
                   </div>
                   <div className="invoice-list-box">
                     <p>Reminder</p>

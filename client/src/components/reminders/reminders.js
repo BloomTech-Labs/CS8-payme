@@ -51,29 +51,46 @@ class Reminders extends Component {
     const { reminder } = this.state;
     console.log(reminder);
     return (
-      <div className="reminder">
+      <div className="window">
         <Sidebar />
-        <div>
-          <Calendar onChange={this.onChange} value={this.state.date} />
-        </div>
-        <div className="reminder-container">
-          <div className="reminder-drop" />
-          <div>
-            <RemindForm
-              handleMessage={e => this.handleChange({ message: e.target.value })}
-              handleRadio={e => this.handleChange({ option: e.target.value })}
-              option={reminder.option}
-              invoices={invoices}
-              getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
-              formData={reminder}
-              history={this.props.history}
-            />
+        <div className="billing-container">
+          <div className="billing-navigation">
+            <div className="reminder-nav">
+              <h1 className="reminder-nav-title">Set a Reminder</h1>
+            </div>
+          </div>
+          <div className="billing-window">
+            <div className="reminder-main">
+              <div className="calendar">
+                <Calendar
+                  style={styles.calendarStyles}
+                  onChange={this.onChange}
+                  value={this.state.date}
+                />
+              </div>
+              <div className="reminder-form">
+                <RemindForm
+                  handleMessage={e => this.handleChange({ message: e.target.value })}
+                  handleRadio={e => this.handleChange({ option: e.target.value })}
+                  option={reminder.option}
+                  invoices={invoices}
+                  getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
+                  formData={reminder}
+                  history={this.props.history}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
   }
 }
+
+const styles = {
+  calendarStyles: {},
+};
+
 const mapStateToProps = state => {
   return {
     invoices: state.invoice.invoices,

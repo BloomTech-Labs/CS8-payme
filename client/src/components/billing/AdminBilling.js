@@ -108,6 +108,9 @@ class AdminBilling extends Component {
     //   );
     // }
     const buttonStyle = {
+      justifyContent: 'center',
+      display: 'flex',
+      alignItems: 'center',
       color: 'white',
       height: '4rem',
       width: '100%',

@@ -49,7 +49,7 @@ class Signup extends Component {
               <br />
             </h1>
             {/* <h1 className="signup--header">Sign Up</h1> */}
-            <h3>{this.props.error}</h3>
+            <h3 style={{ color: 'red' }}>{this.props.error}</h3>
             <form className="signup--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
               <Field
                 type="email"
