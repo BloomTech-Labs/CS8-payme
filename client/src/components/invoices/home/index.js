@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
+import {ToastContainer, ToastStore} from 'react-toasts'
 
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
@@ -84,14 +85,17 @@ class Invoices extends Component {
 
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
-    if (payment < 0 || this.props.admin.invoiceCredits > 0) {
+    if (!this.props.admin.stripe || !this.props.admin.stripe.code) {
+      ToastStore.warning(`Please connect your accout to \nstripe before adding an invoice`, 3000)
+      return setTimeout(() => this.props.history.push('/billing'), 3000)
+    } else if (payment < 0 || this.props.admin.invoiceCredits > 0) {
       this.props.history.push('/addinvoice');
     } else if (this.props.admin.invoices.length === 0) {
-      alert('Enjoy your free invoice experience');
-      this.props.history.push('/addinvoice');
+      ToastStore.success('Enjoy your free invoice experience!', 3000)
+      return setTimeout(() => this.props.history.push('/addinvoice'), 3000)
     } else {
-      alert('Please purchase a subscription or invoice credit.');
-      this.props.history.push('/billing');
+      ToastStore.warning(`Please purchase a subscription or invoice credit.`, 3000)
+      return setTimeout(() => this.props.history.push('billing'), 3000)
     }
   };
 
@@ -159,6 +163,7 @@ class Invoices extends Component {
       <div className="window">
         <Sidebar />
         <div className="billing-container">
+        <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore} />
           <div className="invoice-navigation">
             <div className="invoice-search">
               <input
