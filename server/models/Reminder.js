@@ -10,6 +10,7 @@ const twilioNumber = process.env.TWILIO_NUMBER;
 
 const emailusername = process.env.EMAIL_USERNAME;
 const emailpassword = process.env.EMAIL_PASSWORD;
+const host = process.env.HOST;
 
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
@@ -161,6 +162,7 @@ function sendEmailer(reminders) {
         template: 'body',
         context: {
           // _______________________________placeholders
+          URL: `${host}`,
           invoice: `${reminder.invoiceId}`,
           name: `${reminder.name}`,
           amount: `${reminder.amount}`,
