@@ -16,11 +16,14 @@ const ReminderSchema = new mongoose.Schema({
   name: String,
   email: String,
   phoneNumber: String,
+  message: String,
+  amount: {
+    type: Number,
+  },
   remind: {
     type: String,
     required: true,
   }, // minute, daily, weekly, monthly
-  message: String,
   isEmail: {
     type: Boolean,
     default: false,
@@ -132,9 +135,11 @@ function sendEmailer(reminders) {
       // create reusable transporter object using the default SMTP transport
       let transporter = nodemailer.createTransport({
         service: 'gmail.com',
+        port: 587,
+        secure: false,
         auth: {
-          user: 'givememymoneyapp@gmail.com',
-          pass: 'Letsgethired!',
+          user: emailusername,
+          pass: emailpassword,
         },
       });
 
@@ -157,10 +162,9 @@ function sendEmailer(reminders) {
         context: {
           // _______________________________placeholders
           invoice: `${reminder.invoiceId}`,
-          name: `${reminder.clientName}`,
-          amount: `${reminder.totalAmount}`,
-          invoice: `${reminder.invoiceId}`,
-          company: `${reminder.phoneNumber}`,
+          name: `${reminder.name}`,
+          amount: `${reminder.amount}`,
+          company: `${reminder.company}`,
         }, // html body
       };
       console.log(`This email is: ${reminder.email}`);
