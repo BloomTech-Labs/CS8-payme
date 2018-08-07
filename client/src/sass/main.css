@@ -193,7 +193,7 @@ e,'s are considered best option for media queries
     .invoice-box {
       width: 50rem;
       margin: 2rem 2rem 2rem -4rem; } }
-  @media (max-width: 25.06em) {
+  @media (max-width: 32em) {
     .invoice-box {
       margin: 5rem 0rem 0rem -6rem; } }
 
@@ -209,7 +209,7 @@ e,'s are considered best option for media queries
     .invoice-data {
       margin: 2rem 2rem 2rem 0rem;
       width: 20rem; } }
-  @media (max-width: 25.06em) {
+  @media (max-width: 32em) {
     .invoice-data {
       width: 30rem; } }
   .invoice-data-flex {
@@ -348,7 +348,7 @@ e,'s are considered best option for media queries
   height: 120rem;
   margin: 0;
   position: relative; }
-  @media (max-width: 25.06em) {
+  @media (max-width: 32em) {
     .invoice {
       height: 100%; } }
   .invoice-main {
@@ -370,7 +370,8 @@ e,'s are considered best option for media queries
     width: 30%;
     height: 4rem;
     border-radius: 1rem;
-    border: 0.3px solid #c1c1c1; }
+    border: 0.3px solid #c1c1c1;
+    z-index: 2; }
     @media (max-width: 56.25em) {
       .invoice-search_input {
         width: 30rem;
@@ -380,7 +381,7 @@ e,'s are considered best option for media queries
       .invoice-search_input {
         width: 15rem;
         margin-left: 2rem; } }
-    @media (max-width: 25.06em) {
+    @media (max-width: 32em) {
       .invoice-search_input {
         display: none; } }
     .invoice-search_input:focus {
@@ -391,7 +392,7 @@ e,'s are considered best option for media queries
         .invoice-search_input:focus {
           transition: none;
           width: 30rem; } }
-      @media (max-width: 25.06em) {
+      @media (max-width: 32em) {
         .invoice-search_input:focus {
           width: 15rem; } }
   .invoice-sort {
@@ -411,10 +412,12 @@ e,'s are considered best option for media queries
     .invoice-view:hover {
       color: #22CFB1; }
   .invoice-new {
+    height: 100%;
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
+    justify-content: center;
     width: 10rem; }
     .invoice-new:hover {
       color: #22CFB1; }
@@ -460,10 +463,10 @@ e,'s are considered best option for media queries
     opacity: 0; } }
 
 .fa-arrow-left {
-  margin-left: 2rem;
-  margin-top: 1rem;
   font-size: 3rem;
-  color: #22CFB1; }
+  color: #22CFB1;
+  margin: auto;
+  height: 100%; }
 
 .add-invoice_field {
   border: 0.3px solid #d8d8d8;
@@ -509,6 +512,7 @@ e,'s are considered best option for media queries
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   width: 100%;
+  background-color: blue;
   height: 105rem;
   margin: 0 auto;
   position: relative; }
@@ -536,8 +540,11 @@ e,'s are considered best option for media queries
   .view-invoice-details {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     width: 30rem;
+    background-color: red;
     margin: 0 auto; }
     .view-invoice-details-total {
       font-size: 2rem;
@@ -925,7 +932,7 @@ e,'s are considered best option for media queries
       .slideout--title {
         width: 19rem;
         padding-left: 5.5rem; } }
-    @media (max-width: 25.06em) {
+    @media (max-width: 32em) {
       .slideout--title {
         padding-left: 1rem;
         width: 13rem; } }
@@ -946,16 +953,11 @@ e,'s are considered best option for media queries
   flex-direction: column;
   position: relative;
   text-align: center;
-  height: 100%;
+  height: 110rem;
   padding-bottom: 30rem;
   background-color: #252525;
   min-width: 19rem;
   width: 19rem; }
-  @media (max-width: 37.5em) {
-    .sidebar {
-      flex-direction: row;
-      max-width: 5rem;
-      height: 100%; } }
 
 .sidebar--users {
   display: none; }
@@ -982,9 +984,10 @@ e,'s are considered best option for media queries
   padding-right: 0.5rem; }
 
 .sidebar-min-links {
+  height: 110rem;
   margin-top: 2rem;
   margin-left: 1rem; }
-  @media (max-width: 25.06em) {
+  @media (max-width: 32em) {
     .sidebar-min-links {
       display: flex;
       position: absolute;
@@ -1019,23 +1022,99 @@ e,'s are considered best option for media queries
   height: 100%;
   border: 0.3px solid silver;
   background: #252525; }
-  @media (max-width: 25.06em) {
+  @media (max-width: 32em) {
     .sidebar--minimal {
       background-color: rgba(192, 192, 192, 0);
       border: 0; } }
 
-.reminder {
-  background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  height: 105rem;
+.fa-envelope-open {
+  margin-left: 4px;
+  margin-bottom: 2px; }
+
+.fa-bell {
+  margin-left: 4px;
+  margin-bottom: 2px; }
+
+.reminder-page {
+  height: 120rem;
   margin: 0 auto;
   position: relative;
   display: flex; }
-  .reminder-container {
+
+.reminder-nav {
+  height: 6rem;
+  width: 100%;
+  padding-top: 1.2rem;
+  border-bottom: 0.3px solid #d2d2d2; }
+  .reminder-nav-title {
+    height: 4%;
+    font-size: 3rem;
+    margin: 2rem 1rem; }
+
+.reminder {
+  display: flex;
+  width: 100%; }
+  .reminder-main {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    display: flex; }
+    @media (max-width: 56.25em) {
+      .reminder-main {
+        flex-direction: column; } }
+  .reminder-form_container {
     width: 100%; }
-  .reminder-drop {
-    margin-left: 5rem;
-    margin-top: 10rem; }
+
+.reminderform {
+  height: 80%;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between; }
+  @media (max-width: 56.25em) {
+    .reminderform {
+      padding-top: 15px; } }
+  .reminderform-drop {
+    width: 100%; }
+  .reminderform-message {
+    width: 100%; }
+    .reminderform-message-input {
+      margin: 1rem 0;
+      padding: 3px 4px;
+      width: 100%;
+      height: 8rem;
+      border: solid grey 1.4px;
+      border-radius: 5px;
+      resize: none; }
+
+.addreminder {
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+  .addreminder-button {
+    width: 10rem;
+    padding: 1rem;
+    background-color: #E86C62;
+    border: solid grey 1px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #7c7c7c; }
+
+.calendar {
+  margin: auto; }
+  .calendar-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    height: 55%; }
 
 .settings {
   background-color: #ffffff;
@@ -1092,18 +1171,67 @@ e,'s are considered best option for media queries
 .billing {
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  height: 105rem;
-  position: relative;
+  height: 100%;
+  margin: 0 auto;
   display: flex; }
+  .billing-container {
+    width: 100%; }
+    @media (max-width: 32em) {
+      .billing-container {
+        margin-top: 36px; } }
+  .billing-navigation {
+    display: flex;
+    justify-content: space-around;
+    border: 0.3px solid #d2d2d2;
+    height: 6rem;
+    min-height: 6rem; }
+    @media (max-width: 32em) {
+      .billing-navigation {
+        height: auto; } }
+    .billing-navigation_container {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 25%;
+      margin: 0.5rem;
+      border: '1rem solid black'; }
+      .billing-navigation_container_clickable {
+        height: 100%;
+        margin: auto;
+        cursor: pointer; }
+        .billing-navigation_container_clickable:hover {
+          color: #22CFB1; }
+    .billing-navigation_data_title {
+      text-decoration: underline;
+      margin: auto; }
+    .billing-navigation_data {
+      margin: auto; }
+  .billing-window {
+    margin: 3rem;
+    max-width: 70rem;
+    min-width: 300px; }
+    @media (max-width: 32em) {
+      .billing-window {
+        margin: auto; } }
   .billing-title {
     font-size: 6rem; }
   .billing-purchase {
     font-size: 2rem; }
-  .billing-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20rem;
-    width: 100%; }
+  .billing-radio {
+    margin: 1rem 0; }
+    .billing-radio_select {
+      margin-right: 1rem; }
+  .billing-quantity_input {
+    width: 5rem; }
+
+.connect-stripe_button {
+  color: white;
+  height: 4rem;
+  width: 100%;
+  max-width: 18rem;
+  border: none;
+  background-color: #E86C62;
+  border-radius: 0.5rem; }
 
 .payInvoice {
   display: flex;
@@ -1114,8 +1242,24 @@ e,'s are considered best option for media queries
   height: 50rem;
   border: 0.3px solid #999999; }
 
+.checkout_button {
+  max-width: 18rem;
+  min-width: 10rem; }
+
 .admin-title {
   font-size: 4rem; }
+
+.dropdown {
+  width: 100%;
+  margin: 1rem 0; }
+  .dropdown-option {
+    cursor: pointer; }
+    .dropdown-option:hover {
+      background-color: #cfcfcf; }
+    .dropdown-option:focus {
+      background-color: black; }
+    .dropdown-option-name {
+      margin-left: 1rem; }
 
 body {
   height: 100vh;
@@ -1134,7 +1278,7 @@ html {
   @media (max-width: 56.25em) {
     html {
       font-size: 50%; } }
-  @media (min-width: 130em) {
+  @media (min-width: 120em) {
     html {
       font-size: 50%; } }
 

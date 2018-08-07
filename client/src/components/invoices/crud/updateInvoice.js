@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { updateInvoice } from '../../../actions/invoices';
 
-
 class UpdateInvoice extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
@@ -81,7 +80,10 @@ class UpdateInvoice extends Component {
             </div>
             <div className="invoice-update-flex">
               <p>Current PDF</p>
-                <a className="invoice-update_field--pdf_input" href={url} target="_blank"> Current PDF</a>
+              <a className="invoice-update_field--pdf_input" href={url} target="_blank">
+                {' '}
+                Current PDF
+              </a>
             </div>
             <div className="invoice-update-flex">
               <p>New PDF</p>
@@ -92,11 +94,8 @@ class UpdateInvoice extends Component {
                 className="invoice-update_field--newpdf"
               />
             </div>
-            <button
-              className="invoice-update_submit"
-              type="submit"
-              defaultValue="Submit"
-            >Update Invoice
+            <button className="invoice-update_submit" type="submit" defaultValue="Submit">
+              Update Invoice
             </button>
           </form>
         </div>
@@ -111,4 +110,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, { updateInvoice })(UpdateInvoice));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { updateInvoice },
+  )(UpdateInvoice),
+);

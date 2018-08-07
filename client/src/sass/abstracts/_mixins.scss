@@ -21,19 +21,19 @@ e,'s are considered best option for media queries
 */
 @mixin respond($breakpoint) {
   @if $breakpoint == smallphone {
-    @media (max-width: 25.06em) { @content}; // 1800px
+    @media (max-width: 32.0em) { @content}; // 1800px --> 320px
   }
   @if $breakpoint == phone {
-    @media (max-width: 37.5em) { @content}; // 600px
+    @media (max-width: 37.5em) { @content}; // 600px --> 375px
   }
   @if $breakpoint == tab-port {
-    @media (max-width: 56.25em) { @content}; // 900px
+    @media (max-width: 56.25em) { @content}; // 900px --> 562.5px
   }
   @if $breakpoint == tab-land {
-    @media (max-width: 75em) { @content}; // 1200px
+    @media (max-width: 75em) { @content}; // 1200px --> 750px
   }
   @if $breakpoint == desktop {
-    @media (min-width: 130em) { @content}; // 1800px
+    @media (min-width: 120em) { @content}; // 1800px --> 1200px
   }
   // @if $breakpoint == xl {
   //   @media (max-width: 130em) { @content}; // 1800px

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { ToastContainer, ToastStore } from 'react-toasts';
 import { updateUser } from '../../actions/auth';
 import ConnectStripe from './ConnectStripe';
 
@@ -24,17 +25,37 @@ class AdminBilling extends Component {
     this.setState({ quantity: ev.target.value });
   };
 
+  getSub() {
+    const subInMS = this.props.admin.subscription;
+
+    if (new Date().getTime() - subInMS > 0) {
+      return 'EXPIRED';
+    }
+
+    const date = new Date(subInMS).toDateString();
+    return date;
+  }
+
   render() {
+    console.log(this.getSub());
     return this.props.admin.stripe && !this.props.admin.stripe.code ? (
       <ConnectStripe />
     ) : (
-      <div className="window">
+      <div className="billing-window">
+        <ToastContainer position={ToastContainer.POSITION.TOP_LEFT} store={ToastStore} />
         <h1 className="billing-title">Billing</h1>
-        <h3 className="billing-purchase">Purchase invoice credits below.</h3>
+        {/* <h3>Sub expires on : {this.getSub()}</h3>
+        <h3>Avaliable credits : {this.props.admin.invoiceCredits}</h3>
+        <h3>
+          Free invoice avaliable :{' '}
+          {this.props.admin.invoices && this.props.admin.invoices.length === 0 ? 'Yes' : 'No'}
+        </h3> */}
+        <h3 className="billing-purchase">Select an option</h3>
         <form>
-          <div className="radio">
-            <label className="billing-label">
+          <div className="billing-radio">
+            <label className="billing-radio_label">
               <input
+                className="billing-radio_select"
                 type="radio"
                 value="sub"
                 checked={this.state.type === 'sub'}
@@ -43,9 +64,10 @@ class AdminBilling extends Component {
               30 Days unlimited invoices - $20.00
             </label>
           </div>
-          <div className="radio">
-            <label className="billing-label">
+          <div className="billing-radio">
+            <label className="billing-radio_label">
               <input
+                className="billing-radio_select"
                 type="radio"
                 value="credit"
                 checked={this.state.type === 'credit'}
@@ -54,13 +76,15 @@ class AdminBilling extends Component {
               Per invoice - $1.99 each
             </label>
             <div
-              className="quantity"
+              className="billing-radio"
               style={{ visibility: this.state.type === 'sub' ? 'hidden' : 'visible' }}
             >
               <label>Quantity: </label>
               <label className="billing-label">
                 <input
+                  className="billing-quantity_input"
                   type="number"
+                  min={1}
                   name="quantity"
                   value={this.state.quantity}
                   onChange={this.updateQuantity}
@@ -69,7 +93,7 @@ class AdminBilling extends Component {
             </div>
           </div>
         </form>
-        {this.checkoutButton()}
+        <div className="checkout_button">{this.checkoutButton()}</div>
         {/* <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a> */}
       </div>
     );
@@ -86,6 +110,9 @@ class AdminBilling extends Component {
     //   );
     // }
     const buttonStyle = {
+      justifyContent: 'center',
+      display: 'flex',
+      alignItems: 'center',
       color: 'white',
       height: '4rem',
       width: '100%',
@@ -127,12 +154,13 @@ class AdminBilling extends Component {
       amount,
     })
     .then(res => {
-      alert('Payment successful');
+      ToastStore.success('Payment APPROVED', 3000);
+      // alert('Payment Approved');
       this.props.updateUser(res.data.user);
       console.log(res);
     })
     .catch(data => {
-      alert('Payment declined');
+      ToastStore.error('Payment DECLINED');
       console.log(data);
     });
 }

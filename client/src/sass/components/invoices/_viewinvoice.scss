@@ -5,6 +5,7 @@
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   width: 100%;
+  background-color:blue;
   height: 105rem;
   margin: 0 auto;
   position: relative;
@@ -43,8 +44,11 @@
   &-details {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     width: 30rem;
+    background-color: red;
     // border: 0.5px solid rgb(218, 218, 218);
     margin: 0 auto;
     &-total {

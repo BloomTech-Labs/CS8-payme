@@ -1,3 +1,4 @@
+
 .try {
   display: none;
 }
@@ -28,6 +29,21 @@
     height: 6rem;
   }
 
+  // &-buttons {
+  //   display: flex;
+  //   height: 100%;
+  //   // flex-direction: row;
+  //   &_each {
+  //     align-items: flex-start;
+  //   }
+  //   @include respond(phone) {
+  //     width: 100%;
+  //     margin: auto;
+
+  //     justify-content: space-between;
+  //   }
+  // }
+
   &-search {
     &_input {
       margin-left: 10rem;
@@ -38,6 +54,7 @@
       height: 4rem;
       border-radius: 1rem;
       border: $main-border;
+      z-index: 2;
       @include respond(tab-port) {
         width: 30rem;
         margin-right: 5rem;
@@ -65,38 +82,39 @@
     }
   }
 
+
   &-sort {
-    color:white;
+    color: white;
     margin-top: 1rem;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex;
     &:hover {
-      color:$color-primary;
+      color: $color-primary;
     }
   }
 
   &-view {
-    color:white;
+    color: white;
     text-align: center;
     padding: 2rem 2rem;
     cursor: pointer;
     display: flex;
     &:hover {
-      color:$color-primary;
+      color: $color-primary;
     }
   }
   &-new {
+    height: 100%;
     color: white;
     display: flex;
     cursor: pointer;
     padding: 2rem 2rem;
-    // justify-content: center;
-    width:  10rem;
+    justify-content: center;
+    width: 10rem;
     &:hover {
-      color:$color-primary;
+      color: $color-primary;
     }
-
   }
 
   &-id {
@@ -124,12 +142,12 @@
 
     // height: 4rem;
 
-    animation:invoice-success 3s 1;
-    -webkit-animation:invoice-success 3s 1;
+    animation: invoice-success 3s 1;
+    -webkit-animation: invoice-success 3s 1;
     animation-fill-mode: forwards;
 
-    animation-delay:2s;
-    -webkit-animation-delay:1s; /* Safari and Chrome */
+    animation-delay: 2s;
+    -webkit-animation-delay: 1s; /* Safari and Chrome */
     -webkit-animation-fill-mode: forwards;
   }
 
@@ -138,21 +156,31 @@
     margin: 0 auto;
   }
 }
-@keyframes invoice-success{
-  from {opacity :1;}
-  to {opacity :0;}
+@keyframes invoice-success {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-@-webkit-keyframes invoice-success{
-  from {opacity :1;}
-  to {opacity :0;}
+@-webkit-keyframes invoice-success {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 .fa-arrow-left {
-  margin-left: 2rem;
-  margin-top:1rem;
+  // margin-left: 2rem;
+  // margin-top: 1rem;
   font-size: 3rem;
   color: $color-primary;
+  margin: auto;
+  height: 100%;
 }
 //////////////////////
 // Add Invoice

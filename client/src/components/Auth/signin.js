@@ -25,23 +25,25 @@ class Signin extends Component {
           <div className="signin-imgbox">
             <img className="signin--img" src={signin} alt="img" />
             <p className="signin-headline">
-              {/* <br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation 
+              {/* <br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation
               ullamco laboris</span> */}
             </p>
             <p className="signin--form_notmember">
-              Not a member? <br/> <Link to="/signup"> <span className="signin-signup">Sign up</span> </Link>
+              Not a member? <br />{' '}
+              <Link to="/signup">
+                {' '}
+                <span className="signin-signup">Sign up</span>{' '}
+              </Link>
             </p>
           </div>
           <div className="signin--box">
             <h1 className="signin--box--title">
               payMe
-              <span className="signin--box--dot">
-              .
-              </span>
+              <span className="signin--box--dot">.</span>
               <br />
             </h1>
             {/* <h1 className="signin--header">Sign In</h1> */}
-            <h3>{this.props.message}</h3>
+            <h3 style={{ color: 'red' }}>{this.props.message}</h3>
             <form className="signin--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
               <Field
                 name="username"

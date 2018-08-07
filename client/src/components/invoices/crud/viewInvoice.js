@@ -38,10 +38,10 @@ class ViewInvoice extends Component {
             <p className="view-invoice-navigation_update"
                 onClick={() => this.showUpdate()}
               >
-                Update
-                <i className="fas fa-pen-square fa-fw" />
-                <br />
-                Invoice
+              Update
+              <i className="fas fa-pen-square fa-fw" />
+              <br />
+              Invoice
             </p>
           </div>
           <Link to="/invoices"><p><i className="fas fa-arrow-left update fa-fw" /></p></Link>

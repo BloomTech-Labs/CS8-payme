@@ -25,8 +25,8 @@ const styles = {
   color: 'white',
   border: 'none',
   fontSize: '1.5rem',
-  paddingBottom: '2rem',
-  paddingTop: '1.5rem',
+  height: '6rem',
+  boxShadow: 'none',
 };
 
 class Invoices extends Component {
@@ -46,13 +46,13 @@ class Invoices extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
+    window.removeEventListener('resize', this.updatePredicate);
     this.props.clearMessage();
   }
 
   updatePredicate = () => {
     this.setState({ isDesktop: window.innerWidth < 900 });
-  }
+  };
 
   // React sortable elements
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -86,13 +86,16 @@ class Invoices extends Component {
     const payment = new Date().getTime() - this.props.admin.subscription;
     if (payment < 0 || this.props.admin.invoiceCredits > 0) {
       this.props.history.push('/addinvoice');
+    } else if (this.props.admin.invoices.length === 0) {
+      alert('Enjoy your free invoice experience');
+      this.props.history.push('/addinvoice');
     } else {
       alert('Please purchase a subscription or invoice credit.');
       this.props.history.push('/billing');
     }
   };
 
-  sortData = (ele) => {
+  sortData = ele => {
     const { invoices } = this.props;
     if (ele === 'amount') {
       this.props.sortByAmount(invoices);
@@ -101,15 +104,13 @@ class Invoices extends Component {
       this.props.sortByClientName(invoices);
     }
     this.forceUpdate();
-  }
+  };
 
   render() {
     const { isDesktop } = this.state;
     const display = isDesktop ? 'none' : 'inline';
-    // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
-    // console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -118,16 +119,14 @@ class Invoices extends Component {
     }
 
     // Box view || list view ?
-    let className = '';
-    if (this.state.boxView || isDesktop) {
-      className = 'invoice-box';
-    }
+    const className = this.state.boxView || isDesktop ? 'invoice-box' : 'invoice-list_group';
+    // if (this.state.boxView || isDesktop) {
+    //   className = 'invoice-box';
+    // }
     const SortableList = SortableContainer(props => {
       return (
         <div className={className}>
           {filteredInvoices.map((inv, index) => {
-            // console.log('inv');
-            // console.log(inv);
             return (
               <Invoice
                 key={inv._id}
@@ -156,7 +155,7 @@ class Invoices extends Component {
       <div className="invoice">
         <Sidebar />
         <div className="invoice-main">
-          <div className="invoice-navigation">
+        <div className="invoice-navigation">
             <input className="fas fa-search"
               type="text"
               placeholder="Search Invoices"
@@ -171,22 +170,22 @@ class Invoices extends Component {
               </p>
             </div>
             <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none' }}>
+            <div className="ui compact menu" style={{ border: 'none', boxShadow: 'none'}}>
               <div className="ui simple dropdown item" style={styles}>
                 Sort
                 <i className="fas fa-sort fa-fw" />
-                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                <div className="menu" style={{ fontSize: '1.3rem' }}>
                   <div className="item" onClick={() => this.sortData('amount')}>Total Amount</div>
                   <div className="item" onClick={() => this.sortData('clientName')}>ClientName</div>
                 </div>
               </div>
             </div>
             <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', display }}>
+            <div className="ui compact menu" style={{ border: 'none', display, boxShadow: 'none' }}>
               <div className=" try ui simple dropdown item" style={styles}>
                 View
                 <i className="fas fa-eye fa-fw" />
-                <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                <div className="menu" style={{ paddingTop: '0', fontSize: '1.3rem' }}>
                   <div className="item" onClick={this.listView}>
                     List
                   </div>
@@ -248,15 +247,17 @@ const mapStateToProps = state => {
   };
 };
 
-export default
-connect(mapStateToProps, {
-  onSortEnd,
-  getAllInvoices,
-  handleInvoiceIdx,
-  getInvoice,
-  resetCurrInv,
-  sortByAmount,
-  sortByClientName,
-  allReminders,
-  clearMessage,
-})(Invoices);
+export default connect(
+  mapStateToProps,
+  {
+    onSortEnd,
+    getAllInvoices,
+    handleInvoiceIdx,
+    getInvoice,
+    resetCurrInv,
+    sortByAmount,
+    sortByClientName,
+    allReminders,
+    clearMessage,
+  },
+)(Invoices);

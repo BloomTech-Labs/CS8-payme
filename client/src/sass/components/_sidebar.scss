@@ -51,17 +51,17 @@
   flex-direction: column;
   position: relative;
   text-align: center;
-  height: 100%;
+  height: 110rem;
   padding-bottom: 30rem;
   background-color: $color-sidebar;
   min-width: 19rem;
   width: 19rem;
   // margin-top: -4rem;
-  @include respond(phone)  {
-    flex-direction: row;
-    max-width: 5rem;
-    height: 100%;
-  }
+  // @include respond(phone)  {
+  //   flex-direction: row;
+  //   max-width: 5rem;
+  //   height: 100%;
+  // }
 }
 
 .sidebar--users {
@@ -133,6 +133,7 @@
 //////////////////////////////
 .sidebar-min-links {
   // width: 10rem;
+  height: 110rem;
   margin-top: 2rem;
   margin-left: 1rem;
   @include respond(smallphone)  {
@@ -185,12 +186,12 @@
   }
 }
 
-// .fa-envelope-open {
-//   margin-left: 4px;
-//   margin-bottom: 2px;
-// }
+.fa-envelope-open {
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
 
-// .fa-bell {
-//   margin-left: 4px;
-//   margin-bottom: 2px;
-// }
+.fa-bell {
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
