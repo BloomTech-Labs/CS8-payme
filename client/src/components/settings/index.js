@@ -38,7 +38,7 @@ class Settings extends Component {
           <div className="settings-navigation">
             <p className="settings-navigation_password">Change <br />Password <i className="fas fa-key" /></p>
             <p className="setting-line" />
-            <div className="own-class ui compact menu" style={{ border: 'none' }}>
+            {/* <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div 
                 className="ui simple dropdown item own-class"
                 style={styles}
@@ -50,7 +50,7 @@ class Settings extends Component {
                   <div className="item" onClick={this.boxView}>Light</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="settings-form-container"> 
             <div className="settings-form">
