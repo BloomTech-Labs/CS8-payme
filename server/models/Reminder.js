@@ -8,6 +8,9 @@ const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_TOKEN;
 const twilioNumber = process.env.TWILIO_NUMBER;
 
+const emailusername = process.env.EMAIL_USERNAME;
+const emailpassword = process.env.EMAIL_PASSWORD;
+
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
   name: String,
@@ -128,11 +131,10 @@ function sendEmailer(reminders) {
       }
       // create reusable transporter object using the default SMTP transport
       let transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
+        service: 'gmail.com',
         auth: {
-          user: 'nzopjkf67k7li4wv@ethereal.email',
-          pass: 'VFsAdsD4CRdU2NJ2wC',
+          user: 'givememymoneyapp@gmail.com',
+          pass: 'Letsgethired!',
         },
       });
 
@@ -148,7 +150,7 @@ function sendEmailer(reminders) {
         console.log({ error: 'No email found on Invoice.' });
       // setup email data with unicode symbols
       let mailOptions = {
-        from: '"GiveMeMyMoney" <Now@givememymoney.com>', // sender address
+        from: `${emailusername}`, // sender address
         to: `${reminder.email}`, // list of receivers
         subject: 'You Have An Outstanding Invoice', // Subject line
         template: 'body',
@@ -173,7 +175,7 @@ function sendEmailer(reminders) {
         //   messageURL: nodemailer.getTestMessageUrl(info),
         // });
         console.log('Message sent');
-        console.log(nodemailer.getTestMessageUrl(info));
+        // console.log(nodemailer.getTestMessageUrl(info));
       });
     });
   });
