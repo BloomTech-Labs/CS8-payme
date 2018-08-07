@@ -193,7 +193,7 @@ e,'s are considered best option for media queries
     .invoice-box {
       width: 50rem;
       margin: 2rem 2rem 2rem -4rem; } }
-  @media (max-width: 32em) {
+  @media (max-width: 25.06em) {
     .invoice-box {
       margin: 5rem 0rem 0rem -6rem; } }
 
@@ -209,7 +209,7 @@ e,'s are considered best option for media queries
     .invoice-data {
       margin: 2rem 2rem 2rem 0rem;
       width: 20rem; } }
-  @media (max-width: 32em) {
+  @media (max-width: 25.06em) {
     .invoice-data {
       width: 30rem; } }
   .invoice-data-flex {
@@ -348,7 +348,7 @@ e,'s are considered best option for media queries
   height: 120rem;
   margin: 0;
   position: relative; }
-  @media (max-width: 32em) {
+  @media (max-width: 25.06em) {
     .invoice {
       height: 100%; } }
   .invoice-main {
@@ -381,7 +381,7 @@ e,'s are considered best option for media queries
       .invoice-search_input {
         width: 15rem;
         margin-left: 2rem; } }
-    @media (max-width: 32em) {
+    @media (max-width: 25.06em) {
       .invoice-search_input {
         display: none; } }
     .invoice-search_input:focus {
@@ -392,7 +392,7 @@ e,'s are considered best option for media queries
         .invoice-search_input:focus {
           transition: none;
           width: 30rem; } }
-      @media (max-width: 32em) {
+      @media (max-width: 25.06em) {
         .invoice-search_input:focus {
           width: 15rem; } }
   .invoice-sort {
@@ -512,7 +512,6 @@ e,'s are considered best option for media queries
   background-color: #ffffff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   width: 100%;
-  background-color: blue;
   height: 105rem;
   margin: 0 auto;
   position: relative; }
@@ -541,10 +540,8 @@ e,'s are considered best option for media queries
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     margin: 0 auto;
     width: 30rem;
-    background-color: red;
     margin: 0 auto; }
     .view-invoice-details-total {
       font-size: 2rem;
@@ -932,7 +929,7 @@ e,'s are considered best option for media queries
       .slideout--title {
         width: 19rem;
         padding-left: 5.5rem; } }
-    @media (max-width: 32em) {
+    @media (max-width: 25.06em) {
       .slideout--title {
         padding-left: 1rem;
         width: 13rem; } }
@@ -987,7 +984,7 @@ e,'s are considered best option for media queries
   height: 110rem;
   margin-top: 2rem;
   margin-left: 1rem; }
-  @media (max-width: 32em) {
+  @media (max-width: 25.06em) {
     .sidebar-min-links {
       display: flex;
       position: absolute;
@@ -1022,7 +1019,7 @@ e,'s are considered best option for media queries
   height: 100%;
   border: 0.3px solid silver;
   background: #252525; }
-  @media (max-width: 32em) {
+  @media (max-width: 25.06em) {
     .sidebar--minimal {
       background-color: rgba(192, 192, 192, 0);
       border: 0; } }
@@ -1176,7 +1173,7 @@ e,'s are considered best option for media queries
   display: flex; }
   .billing-container {
     width: 100%; }
-    @media (max-width: 32em) {
+    @media (max-width: 25.06em) {
       .billing-container {
         margin-top: 36px; } }
   .billing-navigation {
@@ -1185,7 +1182,7 @@ e,'s are considered best option for media queries
     border: 0.3px solid #d2d2d2;
     height: 6rem;
     min-height: 6rem; }
-    @media (max-width: 32em) {
+    @media (max-width: 25.06em) {
       .billing-navigation {
         height: auto; } }
     .billing-navigation_container {
@@ -1210,7 +1207,7 @@ e,'s are considered best option for media queries
     margin: 3rem;
     max-width: 70rem;
     min-width: 300px; }
-    @media (max-width: 32em) {
+    @media (max-width: 25.06em) {
       .billing-window {
         margin: auto; } }
   .billing-title {
