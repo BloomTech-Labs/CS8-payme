@@ -8,16 +8,23 @@ const accountSid = process.env.TWILIO_SID;
 const authToken = process.env.TWILIO_TOKEN;
 const twilioNumber = process.env.TWILIO_NUMBER;
 
+const emailusername = process.env.EMAIL_USERNAME;
+const emailpassword = process.env.EMAIL_PASSWORD;
+const host = process.env.HOST;
+
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
   name: String,
   email: String,
   phoneNumber: String,
+  message: String,
+  amount: {
+    type: Number,
+  },
   remind: {
     type: String,
     required: true,
   }, // minute, daily, weekly, monthly
-  message: String,
   isEmail: {
     type: Boolean,
     default: false,
@@ -128,11 +135,12 @@ function sendEmailer(reminders) {
       }
       // create reusable transporter object using the default SMTP transport
       let transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
+        service: 'gmail.com',
         port: 587,
+        secure: false,
         auth: {
-          user: 'nzopjkf67k7li4wv@ethereal.email',
-          pass: 'VFsAdsD4CRdU2NJ2wC',
+          user: emailusername,
+          pass: emailpassword,
         },
       });
 
@@ -148,17 +156,17 @@ function sendEmailer(reminders) {
         console.log({ error: 'No email found on Invoice.' });
       // setup email data with unicode symbols
       let mailOptions = {
-        from: '"GiveMeMyMoney" <Now@givememymoney.com>', // sender address
+        from: `${emailusername}`, // sender address
         to: `${reminder.email}`, // list of receivers
         subject: 'You Have An Outstanding Invoice', // Subject line
         template: 'body',
         context: {
           // _______________________________placeholders
+          URL: `${host}`,
           invoice: `${reminder.invoiceId}`,
-          name: `${reminder.clientName}`,
-          amount: `${reminder.totalAmount}`,
-          invoice: `${reminder.invoiceId}`,
-          company: `${reminder.phoneNumber}`,
+          name: `${reminder.name}`,
+          amount: `${reminder.amount}`,
+          company: `${reminder.company}`,
         }, // html body
       };
       console.log(`This email is: ${reminder.email}`);
@@ -173,7 +181,7 @@ function sendEmailer(reminders) {
         //   messageURL: nodemailer.getTestMessageUrl(info),
         // });
         console.log('Message sent');
-        console.log(nodemailer.getTestMessageUrl(info));
+        // console.log(nodemailer.getTestMessageUrl(info));
       });
     });
   });
