@@ -47,7 +47,7 @@ const ReminderForm = props => {
             <input
               type="radio"
               value="false"
-              checked={props.isEmail === 'false'}
+              checked={props.isEmail === 'false' || props.isEmail === false}
               onChange={props.handleEmail}
             />
           </label>
