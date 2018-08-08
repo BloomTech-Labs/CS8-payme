@@ -73,16 +73,24 @@ const getReminder = (req, res) => {
 };
 // POST: /api/deletesms/:id
 const deleteReminder = (req, res) => {
-  const { id } = req.params;
-  const { _id } = req.user;
+  const { invoiceId, reminderId } = req.query;
+  // const { _id } = req.user;
+  console.log(req.query);
+  console.log(reminderId);
+  console.log(invoiceId);
 
-  Invoice.findByIdAndUpdate(_id, { $pull: { reminders: id } })
-    .then(() => {
-      Reminder.findById({ _id: id })
-        .remove()
-        .then(reminder => {
-          res.json(reminder);
-          console.log('deleted');
+  Invoice.findByIdAndUpdate(
+    invoiceId,
+    { $pull: { reminders: reminderId } },
+    { new: true }
+  )
+    .populate('reminders')
+    .then(invoice => {
+      console.log(invoice.reminders);
+      Reminder.findByIdAndRemove(reminderId)
+        .then(() => {
+          // console.log(invoice);
+          res.json(invoice.reminders);
         })
         .catch(err => {
           console.log(err);
@@ -93,6 +101,7 @@ const deleteReminder = (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+  // res.status(401).json({ message: 'testing' });
 };
 
 module.exports = {
