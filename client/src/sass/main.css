@@ -207,7 +207,6 @@ e,'s are considered best option for media queries
       margin: 5rem 0rem 0rem -6rem; } }
 
 .invoice-data {
-  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
   padding: 2rem 2rem;
   margin-top: 2rem;
   margin-left: 2rem;
@@ -249,15 +248,14 @@ e,'s are considered best option for media queries
   justify-content: center;
   padding: 2rem 2rem;
   margin-left: 3rem;
-  margin-right: 3rem;
-  width: 100%;
+  width: 95%;
   height: 4rem;
   border-bottom: 0.3px solid #c2c2c2;
   display: flex;
   align-items: center; }
   @media (max-width: 75em) {
     .invoice-list {
-      width: 97rem; } }
+      width: 85%; } }
   @media (max-width: 56.25em) {
     .invoice-list {
       margin-left: 0; } }
@@ -282,16 +280,6 @@ e,'s are considered best option for media queries
       color: #22CFB1; }
   .invoice-list-reminder {
     display: flex; }
-
-.invoice-list-headerdiv {
-  justify-content: center;
-  padding: 2rem 2rem;
-  margin-left: 2rem;
-  width: 100rem;
-  height: 4rem;
-  border: 0.3px solid #c2c2c2;
-  display: flex;
-  align-items: center; }
 
 .fa-edit {
   cursor: pointer;
@@ -365,6 +353,7 @@ e,'s are considered best option for media queries
     flex-direction: column;
     width: 100%; }
   .invoice-navigation {
+    margin-bottom: 2rem;
     display: flex;
     width: 100%;
     justify-content: flex-start;
