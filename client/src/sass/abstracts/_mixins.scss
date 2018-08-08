@@ -21,6 +21,9 @@ e,'s are considered best option for media queries
 */
 @mixin respond($breakpoint) {
   @if $breakpoint == smallphone {
+    @media (max-width: 25.06em) { @content}; // 401px --> 25.06
+  }
+  @if $breakpoint == other { 
     @media (max-width: 32.0em) { @content}; // 1800px --> 320px
   }
   @if $breakpoint == phone {

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import Sidebar from '../sidebar';
+import Sidebar from '../sidebar/';
 import { changePassword } from '../../actions/auth';
+import { changeTheme } from '../../actions/invoices';
+
 
 const styles = {
   borderBottom: 'none',
@@ -13,12 +15,13 @@ const styles = {
   paddingTop: '1rem',
 };
 
+
 class Settings extends Component {
   state = {
     error: '',
-  };
+  }
 
-  handleFormSubmit = ele => {
+  handleFormSubmit = (ele) => {
     if (ele.password !== ele.newPassword) {
       this.setState({ error: 'Passwords do not match' });
     }
@@ -27,56 +30,37 @@ class Settings extends Component {
 
   render() {
     const { handleSubmit } = this.props;
+    // const { theme } = this.props;
     return (
-      <div className="window">
+      <div className="settings">
         <Sidebar />
-        <div className="billing-container">
-          <div
-            className="billing-navigation"
-            style={{ justifyContent: 'flex-start', alignItems: 'center' }}
-          >
-            <div className="billing-navigation_container">
-              <div className="billing-navigation_container_clickable">
-                {/* <div className="invoice-buttons"> */}
-                <div className="settings-navigation_password">
-                  <p>
-                    Change Password <i className="fas fa-key" />
-                  </p>
+        <div className="settings-container">
+          <div className="settings-navigation">
+            <p className="settings-navigation_password">Change <br />Password <i className="fas fa-key" /></p>
+            <p className="setting-line" />
+            {/* <div className="own-class ui compact menu" style={{ border: 'none' }}>
+              <div 
+                className="ui simple dropdown item own-class"
+                style={styles}
+                onClick={() => this.props.changeTheme()}>
+                Themes
+                <i className="fas fa-pencil-alt fa-fw" />
+                <div className="menu" style={{ paddingTop: '0.3rem', fontSize: '1.3rem' }}>
+                  <div className="item" onClick={this.listView}>Dark</div>
+                  <div className="item" onClick={this.boxView}>Light</div>
                 </div>
               </div>
-              {/* <p className="setting-line" /> */}
-              {/* <p className="settings-navigation_themes">
-              Themes
-
-              <i className="fas fa-pencil-alt fa-fw" />
-              <br />
-            </p> */}
-              {/* <div className="own-class ui compact menu" style={{ border: 'none' }}>
-              <div className="ui simple dropdown item own-class" style={styles}>
-              Themes
-              <i className="fas fa-pencil-alt fa-fw" />
-              <div className="menu" style={{ paddingTop: '0.3rem', fontSize: '1.3rem' }}>
-              <div className="item" onClick={this.listView}>
-              Dark
-              </div>
-              <div className="item" onClick={this.boxView}>
-              Light
-              </div>
-              </div>
-              </div>
             </div> */}
-            </div>
-            {/* </div> */}
           </div>
-          <div className="billing-window">
+          <div className="settings-form-container"> 
             <div className="settings-form">
               <h1>Change Password</h1>
               <p>{this.state.error}</p>
-              <form className="add-invoice" onSubmit={handleSubmit(this.handleFormSubmit)}>
+              <form className="setting-password" onSubmit={handleSubmit(this.handleFormSubmit)}>
                 <Field
                   type="email"
                   name="email"
-                  component="input"
+                  component='input'
                   className="settings_field"
                   placeholder="Email"
                   required
@@ -85,7 +69,7 @@ class Settings extends Component {
                 <Field
                   type="password"
                   name="currentPassword"
-                  component="input"
+                  component='input'
                   className="settings_field"
                   placeholder="Password"
                   required
@@ -94,7 +78,7 @@ class Settings extends Component {
                 <Field
                   type="password"
                   name="password"
-                  component="input"
+                  component='input'
                   className="settings_field"
                   placeholder="New Password"
                   required
@@ -102,14 +86,17 @@ class Settings extends Component {
                 <Field
                   type="password"
                   name="newPassword"
-                  component="input"
+                  component='input'
                   className="settings_field"
                   placeholder="Confirm Password"
                   required
                 />
                 <br />
-                <button className="settings_submit" type="submit" value="Submit">
-                  Change Password
+                <button
+                  className="settings_submit"
+                  type="submit"
+                  value="Submit"
+                >Change Password
                 </button>
               </form>
               <h3>{this.props.success}</h3>
@@ -124,13 +111,11 @@ class Settings extends Component {
 const mapStateToProps = state => {
   return {
     success: state.auth.success,
+    theme: state.invoice.theme,
   };
 };
 
-const Config = connect(
-  mapStateToProps,
-  { changePassword },
-)(Settings);
+const Config = (connect(mapStateToProps, { changePassword, changeTheme })(Settings));
 
 export default reduxForm({
   form: 'ChangeCredentials', // Unique name for the form

@@ -16,12 +16,9 @@
   }
 }
 .reminder {
-  // background-color: #afafaf;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
   display: flex;
-  flex-direction: column;
   width: 100%;
-  margin: 0 auto;
+  // margin: 0 auto;
   &-main {
     // background-color: $color-nav;
     // border: solid #22cfb1 1px;
