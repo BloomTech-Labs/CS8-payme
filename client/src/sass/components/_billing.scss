@@ -4,6 +4,18 @@
   margin: 0 auto;
   display: flex;
 
+  &-announcement {
+    width: 75%;
+    margin-left: 10rem;
+    // background-color: blue;
+  }
+  &-window {
+    margin: 3rem;
+    @include respond(smallphone) {
+      margin: auto;
+    }
+  }
+
   &-container {
     width: 100%;
     @include respond(smallphone) {
@@ -14,53 +26,44 @@
   &-options {
     width: 105rem;
     display: flex;
-    justify-content: space-between;
+    margin-left: 18rem;
+    // justify-content: space-between;
     // background-color: blue;
   }
 
-  &-premium {
+  &-free {
     margin: 2rem;
     padding: 2rem;
-    width: 40rem;
+    width: 35rem;
     height: 40rem;
-    border: 1px solid black;
+    // border: 1px solid black;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
-    &_purchase {
-      // background-color: blue;
-      display: flex;
-      justify-content: center;
-    }
 
-    &_price {
-      margin-top: 8rem;
-      font-weight: 700;
-      font-size: 5rem;
-      // margin-left: 4rem;
+    &_package {
+      padding-top: 12rem;
+      font-size: 3rem;
       // background-color: blue;
       display: flex;
       justify-content: center;
-        & span {
-          font-size: 1rem;
-          margin-left: -10rem;
-          margin-top: 3rem;
-        }
     }
   }
 
   &-standard {
     margin: 2rem;
     padding: 2rem;
-    width: 40rem;
+    width: 35rem;
     height: 40rem;
-    border: 1px solid black;
+    // border-radius: 1rem;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
     background-color: rgb(45, 45, 45);
     color: white;
-    &_purchase {
+
+    &_package {
       // background-color: blue;
       display: flex;
       justify-content: center;
     }
+
     &_price {
       margin-top: 8rem;
       font-weight: 700;
@@ -75,19 +78,81 @@
           margin-top: 3rem;
         }
     }
+    &_label {
+      margin-top: -2.5rem;
+      
+    }
+    &_button {
+      background-color: white;
+      margin-left: 2.5rem;
+      border: none;
+      color: black;
+      height: 4rem;
+      width: 20rem;
+      // border-radius: 1rem;
+
+    }
   }
 
-  &-free {
+  &-premium {
     margin: 2rem;
     padding: 2rem;
-    width: 40rem;
+    width: 35rem;
     height: 40rem;
-    border: 1px solid black;
+    // border-radius: 1rem;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
-    &_purchase {
-      background-color: blue;
+    &_package {
+      // background-color: blue;
+      font-size: 2rem;
       display: flex;
       justify-content: center;
+    }
+
+    &_button {
+      height: 3rem;
+
+      width: 20rem;
+    }
+
+    &_price {
+      margin-top: 8rem;
+      font-weight: 700;
+      font-size: 5rem;
+      display: flex;
+      justify-content: center;
+        & span {
+          font-size: 1rem;
+          margin-left: -10rem;
+          margin-top: 3rem;
+        }
+    }
+
+    &_label {
+      margin-top: -2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    &_button {
+      margin-left: 3rem;
+      border: none;
+      color: white;
+      background-color: $color-secondary;
+      height: 4rem;
+      width: 20rem;
+      // border-radius: 1rem;
+    }
+  }
+
+  &-terms {
+    width: 70%;
+    display: flex;
+    margin-left: 20rem;
+    // background-color: blue;
+    
+    & h4 {
+      font-size: 1.3rem;
+      margin-left: 1rem;
+      margin-top: 0;
     }
   }
 
@@ -128,15 +193,6 @@
     }
 
     &_data {
-      margin: auto;
-    }
-  }
-
-  &-window {
-    margin: 3rem;
-    max-width: 70rem;
-    min-width: 300px;
-    @include respond(smallphone) {
       margin: auto;
     }
   }

@@ -1160,7 +1160,8 @@ e,'s are considered best option for media queries
       cursor: pointer;
       color: black;
       padding: 1rem;
-      margin-left: 3rem; }
+      margin-left: 3rem;
+      padding-top: 2rem; }
       .settings-navigation_password:hover {
         color: #22CFB1; }
     .settings-navigation_themes {
@@ -1200,6 +1201,14 @@ e,'s are considered best option for media queries
   height: 100%;
   margin: 0 auto;
   display: flex; }
+  .billing-announcement {
+    width: 75%;
+    margin-left: 10rem; }
+  .billing-window {
+    margin: 3rem; }
+    @media (max-width: 25.06em) {
+      .billing-window {
+        margin: auto; } }
   .billing-container {
     width: 100%; }
     @media (max-width: 25.06em) {
@@ -1208,37 +1217,27 @@ e,'s are considered best option for media queries
   .billing-options {
     width: 105rem;
     display: flex;
-    justify-content: space-between; }
-  .billing-premium {
+    margin-left: 18rem; }
+  .billing-free {
     margin: 2rem;
     padding: 2rem;
-    width: 40rem;
+    width: 35rem;
     height: 40rem;
-    border: 1px solid black;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276); }
-    .billing-premium_purchase {
+    .billing-free_package {
+      padding-top: 12rem;
+      font-size: 3rem;
       display: flex;
       justify-content: center; }
-    .billing-premium_price {
-      margin-top: 8rem;
-      font-weight: 700;
-      font-size: 5rem;
-      display: flex;
-      justify-content: center; }
-      .billing-premium_price span {
-        font-size: 1rem;
-        margin-left: -10rem;
-        margin-top: 3rem; }
   .billing-standard {
     margin: 2rem;
     padding: 2rem;
-    width: 40rem;
+    width: 35rem;
     height: 40rem;
-    border: 1px solid black;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
     background-color: #2d2d2d;
     color: white; }
-    .billing-standard_purchase {
+    .billing-standard_package {
       display: flex;
       justify-content: center; }
     .billing-standard_price {
@@ -1252,17 +1251,56 @@ e,'s are considered best option for media queries
         font-size: 1rem;
         margin-left: -10rem;
         margin-top: 3rem; }
-  .billing-free {
+    .billing-standard_label {
+      margin-top: -2.5rem; }
+    .billing-standard_button {
+      background-color: white;
+      margin-left: 2.5rem;
+      border: none;
+      color: black;
+      height: 4rem;
+      width: 20rem; }
+  .billing-premium {
     margin: 2rem;
     padding: 2rem;
-    width: 40rem;
+    width: 35rem;
     height: 40rem;
-    border: 1px solid black;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276); }
-    .billing-free_purchase {
-      background-color: blue;
+    .billing-premium_package {
+      font-size: 2rem;
       display: flex;
       justify-content: center; }
+    .billing-premium_button {
+      height: 3rem;
+      width: 20rem; }
+    .billing-premium_price {
+      margin-top: 8rem;
+      font-weight: 700;
+      font-size: 5rem;
+      display: flex;
+      justify-content: center; }
+      .billing-premium_price span {
+        font-size: 1rem;
+        margin-left: -10rem;
+        margin-top: 3rem; }
+    .billing-premium_label {
+      margin-top: -2.5rem;
+      margin-bottom: 3rem; }
+    .billing-premium_button {
+      margin-left: 3rem;
+      border: none;
+      color: white;
+      background-color: #E86C62;
+      height: 4rem;
+      width: 20rem; }
+  .billing-terms {
+    width: 70%;
+    display: flex;
+    margin-left: 20rem; }
+    .billing-terms h4 {
+      font-size: 1.3rem;
+      margin-left: 1rem;
+      margin-top: 0; }
   .billing-navigation {
     display: flex;
     justify-content: space-around;
@@ -1291,13 +1329,6 @@ e,'s are considered best option for media queries
       margin: auto; }
     .billing-navigation_data {
       margin: auto; }
-  .billing-window {
-    margin: 3rem;
-    max-width: 70rem;
-    min-width: 300px; }
-    @media (max-width: 25.06em) {
-      .billing-window {
-        margin: auto; } }
   .billing-title {
     font-size: 6rem; }
   .billing-radio {
