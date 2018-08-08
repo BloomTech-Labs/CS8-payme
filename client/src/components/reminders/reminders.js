@@ -45,7 +45,6 @@ class Reminders extends Component {
     }));
   }
 
-
   handleChange(e) {
     // console.log(e.isEmail);
     this.setState(state => ({
@@ -86,7 +85,10 @@ class Reminders extends Component {
                   handleEmail={e => this.handleChange({ isEmail: e.target.value })}
                   isEmail={reminder.isEmail}
                   invoices={invoices}
-                  getInvoice={(id, phone, name, amount, email) => this.handleInvoice({ id, rPhone: phone, name, amount, email })}
+                  getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
+                    id, rPhone: phone, name, amount, email,
+                  })
+                  }
                   formData={reminder}
                   history={this.props.history}
                   selected={this.state.selected}
