@@ -1093,10 +1093,26 @@ e,'s are considered best option for media queries
       .reminder-main {
         flex-direction: column; } }
   .reminder-form_container {
-    width: 100%; }
+    width: 100%;
+    height: 55rem; }
+  .reminder-radios_menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin: 10rem 0 0 0;
+    height: 100px; }
+  .reminder-radios {
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+    flex-direction: column; }
+  .reminder-select {
+    display: flex;
+    justify-content: space-between; }
 
 .reminderform {
-  height: 80%;
+  height: 100%;
   width: 100%;
   max-width: 350px;
   display: flex;
