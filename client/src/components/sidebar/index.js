@@ -60,14 +60,15 @@ class Sidebar extends Component {
           <span></span>
           <span></span>
         </div>
-        <div>
-        <h1 className="slideout--title">
-          payMe
-          <span className="slideout--dot">
-          .
-          </span>
-          <br />
-        </h1>
+        <div className="typed-logo">
+          <h1 className="slideout--title">
+            giveMe
+            <span className="slideout--dot">
+            .
+            </span>
+            <br />
+            <h1 className="slideout--slogan">myMoney</h1>
+          </h1>
         </div>
       </div>
       {this.props.sidebarToggled && isDesktop ? (

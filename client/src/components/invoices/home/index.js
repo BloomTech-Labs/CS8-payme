@@ -161,13 +161,18 @@ class Invoices extends Component {
         <div className="invoice-main">
         <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore} />
         <div className="invoice-navigation">
-            <input className="fas fa-search"
+          <div className="invoice-search">
+            <input
               type="text"
               placeholder="Search Invoices"
               className="invoice-search_input"
               value={this.state.search}
               onChange={this.updateSearch}
             />
+            <div className="invoice-search-icon">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
             <hr className="navigation-line" />
             <div onClick={this.addInvoiceCheck}>
               <p className="invoice-new">

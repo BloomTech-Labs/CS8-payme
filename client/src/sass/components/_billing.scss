@@ -1,31 +1,183 @@
 .billing {
   background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
-  // box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
   height: 100%;
   margin: 0 auto;
-  // position: relative;
   display: flex;
+  
+  &-window {
+    margin: 3rem;
+    @include respond(smallphone) {
+      margin: auto;
+    }
+  }
+  &-announcement {
+    width: 70%;
+    margin-left: 20rem;
+    // background-color: blue;
+  }
+
+  &-headline {
+    font-size: 4rem; 
+    font-weight: 700;
+  }
 
   &-container {
-    // display: flex;
-    // justify-content: center;
-    // margin-top: 20rem;
-    // align-items: center;
-    // background-color: blue;
     width: 100%;
-
     @include respond(smallphone) {
       margin-top: 36px;
+    }
+  }
+
+  &-options {
+    width: 105rem;
+    display: flex;
+    margin-left: 18rem;
+    // justify-content: space-between;
+    // background-color: blue;
+  }
+
+  &-free {
+    margin: 2rem;
+    padding: 2rem;
+    width: 35rem;
+    height: 40rem;
+    // border: 1px solid black;
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
+
+    &_package {
+      padding-top: 12rem;
+      font-size: 3rem;
+      // background-color: blue;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &-standard {
+    overflow: hidden;
+    margin: 2rem;
+    padding: 2rem;
+    width: 35rem;
+    height: 40rem;
+    position: relative;
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
+    background-color: rgb(45, 45, 45);
+    color: white;
+    // &:hover {
+    //   width: 40rem;
+    //   height: 45rem;
+    // }
+
+    &_package {
+      margin-top: -0.5rem;
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    &_price {
+      margin-top: 8rem;
+      font-weight: 700;
+      font-size: 5rem;
+      margin-right: 5rem;
+      // background-color: blue;
+      display: flex;
+      justify-content: center;
+        & span {
+          font-size: 1rem;
+          margin-left: -10rem;
+          margin-top: 3rem;
+        }
+    }
+    &_label {
+      margin-top: -4.5rem;
+      
+    }
+    &_button {
+      background-color: white;
+      margin-left: 2.5rem;
+      border: none;
+      color: black;
+      height: 4rem;
+      width: 20rem;
+      // border-radius: 1rem;
+
+    }
+  }
+
+  &-premium {
+    margin: 2rem;
+    padding: 2rem;
+    width: 35rem;
+    height: 40rem;
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
+    // -webkit-transition: height 0.5s; /* Safari */
+    // transition: height 0.5s;
+
+    // &:hover {
+    //   height: 43rem;
+    // }
+    &_package {
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    &_button {
+      height: 6rem;
+      width: 20rem;
+    }
+
+    &_price {
+      margin-top: 8rem;
+      font-weight: 700;
+      font-size: 5rem;
+      display: flex;
+      justify-content: center;
+        & span {
+          font-size: 1rem;
+          margin-left: -10rem;
+          margin-top: 3rem;
+        }
+    }
+
+    &_label {
+      margin-top: -4.5rem;
+      margin-bottom: 3rem;
+    }
+
+    &_button {
+      margin-left: 3rem;
+      border: none;
+      color: white;
+      background-color: #e43;
+      height: 4rem;
+      width: 20rem;
+      // border-radius: 1rem;
+    }
+  }
+
+  &-terms {
+    width: 70%;
+    display: flex;
+    margin-left: 20rem;
+    // background-color: blue;
+    
+    & h4 {
+      font-size: 1.3rem;
+      margin-left: 1rem;
+      margin-top: 0;
     }
   }
 
   &-navigation {
     display: flex;
     justify-content: space-around;
-    border: 0.3px solid rgb(210, 210, 210);
+    // border: 0.3px solid rgb(210, 210, 210);
     height: 6rem;
     min-height: 6rem;
+    background-color: rgb(60, 60, 60);
+    color: white;
 
     @include respond(smallphone) {
       height: auto;
@@ -59,22 +211,13 @@
     }
   }
 
-  &-window {
-    margin: 3rem;
-    max-width: 70rem;
-    min-width: 300px;
-    @include respond(smallphone) {
-      margin: auto;
-    }
-  }
-
   &-title {
     font-size: 6rem;
   }
 
-  &-purchase {
-    font-size: 2rem;
-  }
+  // &-purchase {
+  //   font-size: 2rem;
+  // }
 
   &-radio {
     margin: 1rem 0;
@@ -123,4 +266,25 @@
 
 .admin-title {
   font-size: 4rem;
+}
+
+.corner-ribbon{
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-left{
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
