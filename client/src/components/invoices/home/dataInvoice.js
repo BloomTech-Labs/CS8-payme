@@ -126,7 +126,8 @@ const Datainvoice = SortableElement(props => {
                         />
                         <button
                           type="submit"
-                          onClick={() => props.deleteSms(r._id, props.history)}
+                          onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })
+                            }
                         >
                           <i className="fa fa-bell-slash" />
                         </button>
