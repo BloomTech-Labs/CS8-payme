@@ -54,11 +54,11 @@ export function deleteSms(id, history) {
       })
       .then(res => {
         console.log(res);
-        history.push('/reminders');
         dispatch({
           type: DELETED_SMS,
           payload: 'Reminder deleted',
         });
+        // history.push('/invoices');
       })
       .catch(err => {
         console.log(err);

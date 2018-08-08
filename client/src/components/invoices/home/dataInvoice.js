@@ -36,26 +36,28 @@ const Datainvoice = SortableElement(props => {
         {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
         <hr className="invoice-data-hr" />
         <div>
-          {props.reminder.map((r, i) => {
-            return (
-              <div key={i}>
-                {r.invoiceId === props.id ? (
-                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                      {r.remind.toUpperCase()}
-                    </p>
-                    <i
-                      className="fas fa-mobile-alt"
-                      style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                    />
-                    <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
-                      <i className="fa fa-bell-slash" />
-                    </button>
-                  </div>
-                ) : null}
-              </div>
-            );
-          })}
+          {Array.isArray(props.reminders)
+            ? props.reminder.map((r, i) => {
+              return (
+                <div key={i}>
+                  {r.invoiceId === props.id ? (
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
+                        {r.remind.toUpperCase()}
+                      </p>
+                      <i
+                        className="fas fa-mobile-alt"
+                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                      />
+                      <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
+                        <i className="fa fa-bell-slash" />
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })
+            : null}
           {/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}
         </div>
       </div>
@@ -108,26 +110,32 @@ const Datainvoice = SortableElement(props => {
         </div>
         <div className="invoice-list-box">
           <div className="invoice-list-reminder">
-            {props.reminders.map((r, i) => {
-              return (
-                <div key={i}>
-                  {r.invoiceId === props.id ? (
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                        {r.remind.toUpperCase()}
-                      </p>
-                      <i
-                        className="fas fa-mobile-alt"
-                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                      />
-                      <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
-                        <i className="fa fa-bell-slash" />
-                      </button>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
+            {/* {console.log(props.reminders)} */}
+            {Array.isArray(props.reminders)
+              ? props.reminders.map((r, i) => {
+                return (
+                  <div key={i}>
+                    {r.invoiceId === props.id ? (
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
+                          {r.remind.toUpperCase()}
+                        </p>
+                        <i
+                          className="fas fa-mobile-alt"
+                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                        />
+                        <button
+                          type="submit"
+                          onClick={() => props.deleteSms(r._id, props.history)}
+                        >
+                          <i className="fa fa-bell-slash" />
+                        </button>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })
+              : null}
           </div>
         </div>
         {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
