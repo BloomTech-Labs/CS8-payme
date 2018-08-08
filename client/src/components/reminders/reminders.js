@@ -16,12 +16,15 @@ class Reminders extends Component {
       rPhone: '',
     },
     date: new Date(),
+    selected: false,
   };
 
   componentDidMount() {
     this.props.getAllInvoices();
     this.props.allReminders();
   }
+
+  onSelect = () => this.setState({ selected: !this.state.selected });
 
   onChange = date => this.setState({ date });
 
@@ -34,6 +37,7 @@ class Reminders extends Component {
         ...phone,
       },
     }));
+    // this.setState({ selected: !this.state.selected });
   }
 
   handleChange(e) {
@@ -78,6 +82,8 @@ class Reminders extends Component {
                   getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
                   formData={reminder}
                   history={this.props.history}
+                  selected={this.state.selected}
+                  onSelect={this.onSelect}
                 />
               </div>
             </div>

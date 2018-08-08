@@ -1253,11 +1253,11 @@ e,'s are considered best option for media queries
   .dropdown-option {
     cursor: pointer; }
     .dropdown-option:hover {
-      background-color: #cfcfcf; }
-    .dropdown-option:focus {
-      background-color: black; }
-    .dropdown-option-name {
-      margin-left: 1rem; }
+      color: #22cfb1; }
+  .dropdown-select:active, .dropdown-select:focus {
+    outline: none;
+    background-color: #cfcfcf;
+    outline: none; }
 
 body {
   height: 100vh;

@@ -20,9 +20,12 @@ const ReminderForm = props => {
             return (
               <div className="dropdown-option" key={i}>
                 <p
-                  className="dropdown-option-name"
-                  onClick={() => props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName)
-                  }
+                  tabIndex="0"
+                  className={props.selected ? 'dropdown-select' : null}
+                  onClick={() => {
+                    props.onSelect();
+                    props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName);
+                  }}
                 >
                   {invoice.clientName}
                 </p>
