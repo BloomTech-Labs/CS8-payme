@@ -20,19 +20,19 @@
   width: 100%;
   // margin: 0 auto;
   &-main {
-    // background-color: $color-nav;
-    // border: solid #22cfb1 1px;
+    background-color: $color-nav;
+    border: solid #22cfb1 1px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    // margin: 8rem auto;
+    margin: 8rem auto;
     width: 100%;
     min-width: 300px;
     height: 100%;
     display: flex;
-    // padding: 2rem 2rem;
-    // box-shadow: 0px 2px 5px rgb(124, 124, 124);
+    padding: 2rem 2rem;
+    box-shadow: 0px 2px 5px rgb(124, 124, 124);
     @include respond(tab-port) {
       flex-direction: column;
     }
