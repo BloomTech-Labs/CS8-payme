@@ -3,14 +3,15 @@
   margin: 1rem 0;
   &-option {
     cursor: pointer;
+
     &:hover {
-      background-color: #cfcfcf;
+      color: #22cfb1;
     }
-    &:focus {
-      background-color: black;
-    }
-    &-name {
-      margin-left: 1rem;
-    }
+  }
+  &-select:active,
+  &-select:focus {
+    outline: none;
+    background-color: #cfcfcf;
+    outline: none;
   }
 }

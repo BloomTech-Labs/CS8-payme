@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
-import {ToastContainer, ToastStore } from 'react-toasts';
+import {ToastContainer, ToastStore} from 'react-toasts'
 
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
