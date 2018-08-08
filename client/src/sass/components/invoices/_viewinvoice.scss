@@ -1,3 +1,4 @@
+
 .view-invoice {
   display: flex;
   background-color: #ffffff;
@@ -16,7 +17,7 @@
     display: flex;
     justify-content: flex-start;
     // align-items: center;
-    background-color: #2e2e2e;
+    background-color: #2E2E2E;
     height: 6rem;
 
     &_delete {
@@ -25,8 +26,9 @@
       padding: 1rem;
       margin-left: 3rem;
       &:hover {
-        color: $color-primary;
+        color:$color-primary;
       }
+      
     }
     &_update {
       cursor: pointer;
@@ -34,18 +36,18 @@
       padding: 1rem;
       text-align: center;
       &:hover {
-        color: $color-primary;
+        color:$color-primary;
       }
     }
   }
   &-details {
     display: flex;
     flex-direction: column;
-    // margin: 0 auto;
-    min-width: 30rem;
-    max-width: 70%;
-    // width: 30rem;
+    justify-content: center;
+    margin: 0 auto;
+    width: 30rem;
     // border: 0.5px solid rgb(218, 218, 218);
+    margin: 0 auto;
     &-total {
       font-size: 2rem;
       color: white;
@@ -65,7 +67,7 @@
       & p:nth-child(2) {
         // font-size: 1.5rem;
         margin-bottom: 1.5rem;
-        // margin-left:
+        // margin-left: 
       }
     }
   }
@@ -76,7 +78,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    @include respond(phone) {
+    @include respond(phone)  {
       margin-left: -9rem;
     }
   }
@@ -85,8 +87,8 @@
   }
 }
 
-// .fa-arrow-left {
-//   @include respond(phone)  {
-//     margin-left: -12rem;
-//   }
-// }
+.fa-arrow-left {
+  @include respond(phone)  {
+    margin-left: -12rem;
+  }
+}

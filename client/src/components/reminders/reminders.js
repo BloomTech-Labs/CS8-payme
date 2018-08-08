@@ -72,7 +72,7 @@ class Reminders extends Component {
     const { reminder } = this.state;
     console.log(reminder);
     return (
-      <div className="window">
+      <div className="reminder">
         <Sidebar />
         <div className="billing-container">
           <div className="billing-navigation">
