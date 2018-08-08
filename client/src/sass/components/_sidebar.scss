@@ -1,62 +1,38 @@
 .slideout {
   padding-top: 1rem;
   background-color: $color-nav;
-  height: 54px;
-  width: 63px;
-  @include respond(smallphone) {
+  @include respond(tab-port) {
     display: none;
   }
-  @include respond(phone) {
-    display: none;
-  }
-
   & span {
-    display: block;
-    width: 3rem;
-    height: 5px;
-    background-color: rgba(124, 124, 124, 0.336);
-    margin: 5px 2rem;
+  display: block;
+  width: 3rem;
+  height: 5px;
+  background-color: rgba(124, 124, 124, 0.336);
+  margin: 5px 2rem;
   }
 
   &--title {
     width: 12rem;
     color: rgb(255, 255, 255);
-    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
+    border-right:  0.3px solid rgba(255, 255, 255, 0.66);
     font-size: 3rem;
     height: 6rem;
     background-color: $color-nav;
-
-    // @include respond(tab-port) {
-    //   width: 19rem;
-    //   padding-left: 5.5rem;
-    // }
-
-    @include respond(phone) {
-      display: none;
+    @include respond(tab-port) {
+      width: 19rem;
+      padding-left: 5.5rem;
     }
-    @include respond(smallphone) {
+    @include respond(smallphone)  {
       padding-left: 1rem;
       width: 13rem;
-      display: none;
-    }
-    @include respond(desktop) {
     }
   }
   &--dot {
     color: $color-primary;
     font-size: 6rem;
   }
-}
-.logo {
-  display: none;
-  @media (min-width: 900px) {
-    display: flex;
-    width: 171px;
-    height: 54px;
-  }
-  // @media (min-width: 1200px) {
-  //   width: 190px;
-  // }
+
 }
 
 #sidebar.active {
@@ -66,49 +42,39 @@
   }
 }
 
+
 .sidebar {
-  color: white;
+  color:white;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
   position: relative;
   text-align: center;
-  height: 100%;
-  // padding-bottom: 30rem;
+  height: 110rem;
+  padding-bottom: 30rem;
   background-color: $color-sidebar;
   min-width: 19rem;
   width: 19rem;
-  @include respond(phone) {
-    flex-direction: row;
-    max-width: 5rem;
-    height: 100%;
-  }
-}
-
-.sidebar--minimal {
-  // margin-top: -5px;
-  // margin-left: -2px;
-  overflow: hidden;
-  width: 6rem;
-  height: 100%;
-  // border: 0.3px solid rgb(192, 192, 192);
-  background: #252525;
-  // @include respond(smallphone) {
-  //   background-color: rgba(192, 192, 192, 0);
-  //   border: 0;
+  // margin-top: -4rem;
+  // @include respond(phone)  {
+  //   flex-direction: row;
+  //   max-width: 5rem;
+  //   height: 100%;
   // }
 }
+
 .sidebar--users {
   display: none;
-  @include respond(phone) {
+  @include respond(phone)  {
   }
 }
 .sidebar--chat {
-  @include respond(phone) {
-    display: flex;
+  @include respond(phone)  {
+  display: flex;
   }
 }
+
 
 // .sidebar-profile {
 //   margin-top: 3rem;
@@ -141,16 +107,19 @@
 
 .sidebar-links {
   font-size: 1.6rem;
-  margin-top: 5rem;
-  padding-top: 2rem;
+  margin-top: 0.5rem;
   padding-bottom: 2rem;
   height: 100%;
   width: 100%;
-  background-color: rgba(63, 63, 63, 0.336);
-  @include respond(phone) {
+  
+  & p {
+    margin-top: 4rem;
+  }
+  @include respond(phone)  {
     margin-left: 2rem;
     width: 8rem;
     height: 20rem;
+
   }
 }
 
@@ -158,23 +127,25 @@
   padding-right: 0.5rem;
 }
 
+
 ///////////////////////////////
 // Minimal
 //////////////////////////////
 .sidebar-min-links {
-  width: 10rem;
+  // width: 10rem;
+  height: 110rem;
   margin-top: 2rem;
   margin-left: 1rem;
-  @include respond(smallphone) {
+  @include respond(smallphone)  {
     display: flex;
     position: absolute;
     justify-content: space-between;
     margin: 0;
     height: 4rem;
-    background-color: rgb(45, 45, 45);
-    width: 100vw;
+    background-color:rgb(45, 45, 45);
+    width: 50rem;
   }
-
+  
   & p {
     // background-color:rgb(229, 153, 147);
     // border-radius: 3rem;
@@ -183,25 +154,44 @@
     align-items: center;
     color: white;
     text-align: center;
-    vertical-align: middle;
+    vertical-align:middle;
     height: 4.5rem;
     width: 4.5rem;
     border-radius: 50%;
     font-size: 2rem;
+
   }
 }
 
+.sidbarNavlink {
+  color: rgb(199, 199, 199);
+  
+}
 .sidebar-min-icons {
   color: white;
-  vertical-align: middle;
+  vertical-align:middle;
+
 }
 
-// .fa-envelope-open {
-//   margin-left: 4px;
-//   margin-bottom: 2px;
-// }
+.sidebar--minimal {
+  margin-top: -5px;
+  margin-left: -2px;
+  width: 6rem;
+  height: 100%;
+  border: 0.3px solid rgb(192, 192, 192);
+  background: #252525;
+  @include respond(smallphone)  {
+    background-color: rgba(192, 192, 192, 0);
+    border: 0;
+  }
+}
 
-// .fa-bell {
-//   margin-left: 4px;
-//   margin-bottom: 2px;
-// }
+.fa-envelope-open {
+  margin-left: 4px;
+  margin-bottom: 2px;
+}
+
+.fa-bell {
+  margin-left: 4px;
+  margin-bottom: 2px;
+}

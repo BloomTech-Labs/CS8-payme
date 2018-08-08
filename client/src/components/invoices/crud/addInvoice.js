@@ -15,59 +15,47 @@ class AddInvoice extends Component {
 
   render() {
     return (
-      <div className="window">
+      <div className="invoice">
         <Sidebar />
-        <div className="billing-container">
-          <div
-            className="billing-navigation"
-            style={{ alignItems: 'center', justifyContent: 'flex-start' }}
-          >
-            <Link to="invoices">
-              <p>
-                <i className="fas fa-arrow-left" />
-              </p>
-            </Link>
-          </div>
-          <div className="billing-window">
-            <div className="settings-form">
-              <h1>Add Invoice</h1>
-              <form className="add-invoice" onSubmit={this.handleFormSubmit}>
-                <input name="clientName" className="settings_field" placeholder="Name" />
-                <br />
-                <input name="companyName" className="settings_field" placeholder="Company" />
-                <br />
-                <input name="email" className="settings_field" placeholder="Email" />
-                <br />
-                <input type="number" name="phone" className="settings_field" placeholder="Phone" />
-                <br />
-                <input
-                  type="number"
-                  name="number"
-                  className="settings_field"
-                  placeholder="Invoice Number"
-                />
-                <br />
-                <input
-                  type="number"
-                  name="totalAmount"
-                  className="settings_field"
-                  placeholder="Total Amount"
-                />
-                <br />
-                <input type="file" name="file" className="settings_field" />
-                <button className="add-invoice_submit" type="submit">
-                  Add Invoice
-                </button>
-              </form>
-            </div>
-          </div>
+        <Link to="invoices">
+          <p>
+            <i className="fas fa-arrow-left add fa-fw" />
+          </p>
+        </Link>
+        <div className="invoice-form">
+          <h1>Add Invoice</h1>
+          <form className="add-invoice" onSubmit={this.handleFormSubmit}>
+            <input name="clientName" className="add-invoice_field" placeholder="Name" />
+            <br />
+            <input name="companyName" className="add-invoice_field" placeholder="Company" />
+            <br />
+            <input name="email" className="add-invoice_field" placeholder="Email" />
+            <br />
+            <input type="number" name="phone" className="add-invoice_field" placeholder="Phone" />
+            <br />
+            <input
+              type="number"
+              name="number"
+              className="add-invoice_field"
+              placeholder="Invoice Number"
+            />
+            <br />
+            <input
+              type="number"
+              name="totalAmount"
+              className="add-invoice_field"
+              placeholder="Total Amount"
+            />
+            <br />
+            <input type="file" name="file" className="add-invoice_field" />
+            <button className="add-invoice_submit" type="submit">
+              Add Invoice
+            </button>
+          </form>
         </div>
       </div>
     );
   }
 }
 
-export default connect(
-  null,
-  { addInvoice },
-)(AddInvoice);
+export default connect(null, { addInvoice })(AddInvoice);

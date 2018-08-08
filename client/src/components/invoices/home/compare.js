@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
-import {ToastContainer, ToastStore} from 'react-toasts'
+import {ToastContainer, ToastStore} from 'react-toasts';
 
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
@@ -26,8 +26,8 @@ const styles = {
   color: 'white',
   border: 'none',
   fontSize: '1.5rem',
-  height: '6rem',
-  boxShadow: 'none',
+  paddingBottom: '2rem',
+  paddingTop: '1.5rem',
 };
 
 class Invoices extends Component {
@@ -113,8 +113,10 @@ class Invoices extends Component {
   render() {
     const { isDesktop } = this.state;
     const display = isDesktop ? 'none' : 'inline';
+    // Serach Invoices
     const { invoices } = this.props;
     const { reminders } = this.props;
+    // console.log(reminders);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -131,6 +133,8 @@ class Invoices extends Component {
       return (
         <div className={className}>
           {filteredInvoices.map((inv, index) => {
+            // console.log('inv');
+            // console.log(inv);
             return (
               <Invoice
                 key={inv._id}
@@ -156,87 +160,107 @@ class Invoices extends Component {
       );
     });
     return (
-      <div className="invoice">
+      <div className="window">
         <Sidebar />
-        <div className="invoice-main">
+        <div className="billing-container">
         <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore} />
-        <div className="invoice-navigation">
-            <input className="fas fa-search"
-              type="text"
-              placeholder="Search Invoices"
-              className="invoice-search_input"
-              value={this.state.search}
-              onChange={this.updateSearch}
-            />
-            <hr className="navigation-line" />
-            <div onClick={this.addInvoiceCheck}>
-              <p className="invoice-new">
-                Add Invoice<i className="fas fa-plus fa-fw" />
+          <div className="invoice-navigation">
+            <div className="invoice-search">
+              <input
+                // className="fas fa-search"
+                type="text"
+                placeholder="Search Invoices"
+                className="invoice-search_input"
+                value={this.state.search}
+                onChange={this.updateSearch}
+              />
+            </div>
+            <div className="invoice-buttons">
+              <hr className="navigation-line" />
+              <div className="invoice-buttons_each" onClick={this.addInvoiceCheck}>
+                {/* <div onClick={this.addInvoiceCheck}> */}
+                <div className="invoice-new">
+                  Add <i className="fas fa-plus  fa-fw" style={{ marginLeft: 4 }} />
+                </div>
+                {/* </div> */}
+              </div>
+              <hr className="navigation-line" />
+              <div className="invoice-buttons_each">
+                <div className="invoice-new">
+                  <div className="ui simple dropdown item">
+                    Sort
+                    <i className="fas fa-sort fa-fw" style={{ marginLeft: 4 }} />
+                    <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                      <div className="item" onClick={() => this.sortData('amount')}>
+                        Total Amount
+                      </div>
+                      <div className="item" onClick={() => this.sortData('clientName')}>
+                        ClientName
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr className="navigation-line" />
+              <div className="invoice-buttons_each">
+                <div className="invoice-new">
+                  <div className=" try ui simple dropdown item">
+                    View
+                    <i className="fas fa-eye fa-fw" style={{ marginLeft: 4 }} />
+                    <div className="menu" style={{ paddingTop: '0.9rem', fontSize: '1.3rem' }}>
+                      <div className="item" onClick={this.listView}>
+                        List
+                      </div>
+                      <div className="item" onClick={this.boxView}>
+                        Box
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="billing-window" style={{ maxWidth: '100%', margin: '0' }}>
+            <div className="invoice-success">
+              <p>{this.props.message}</p>
+            </div>
+            {!isDesktop && (this.state.listView && invoices.length > 0) ? (
+              <div className="invoice-list_group">
+                <div className="invoice-list">
+                  <div className="invoice-list-box">
+                    <p>Invoice Number</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>Client Name</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>Company Name</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>Invoice</p>
+                  </div>
+                  <div className="invoice-list-box">
+                    <p>Reminder</p>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+            {invoices.length > 0 ? (
+              <SortableList
+                pressDelay={150}
+                lockToContainerEdges
+                axis="xy"
+                invoices={invoices}
+                onSortEnd={this.onSortEnd}
+              />
+            ) : (
+              <p className="invoice-letstart">
+                Looks like you dont have any Invoices! Click{' '}
+                <a onClick={() => this.addInvoiceCheck()}>here</a> to get started
               </p>
-            </div>
-            <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', boxShadow: 'none'}}>
-              <div className="ui simple dropdown item" style={styles}>
-                Sort
-                <i className="fas fa-sort fa-fw" />
-                <div className="menu" style={{ fontSize: '1.3rem' }}>
-                  <div className="item" onClick={() => this.sortData('amount')}>Total Amount</div>
-                  <div className="item" onClick={() => this.sortData('clientName')}>ClientName</div>
-                </div>
-              </div>
-            </div>
-            <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', display, boxShadow: 'none' }}>
-              <div className=" try ui simple dropdown item" style={styles}>
-                View
-                <i className="fas fa-eye fa-fw" />
-                <div className="menu" style={{ paddingTop: '0', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.listView}>
-                    List
-                  </div>
-                  <div className="item" onClick={this.boxView}>
-                    Box
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
-          <div className="invoice-success">
-            <p>{this.props.message}</p>
-          </div>
-          {!isDesktop && (this.state.listView && invoices.length > 0) ? (
-            <div className="invoice-list">
-              <div className="invoice-list-box">
-                <p>Invoice Number</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Client Name</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Company Name</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>PDF</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Reminder</p>
-              </div>
-            </div>
-          ) : null}
-          {invoices.length > 0 ? (
-            <SortableList
-              pressDelay={150}
-              lockToContainerEdges
-              axis="xy"
-              invoices={invoices}
-              onSortEnd={this.onSortEnd}
-            />
-          ) : (
-            <p className="invoice-letstart">
-              Looks like you dont have any Invoices! Click{' '}
-              <a onClick={() => this.addInvoiceCheck()}>here</a> to get started
-            </p>
-          )}
         </div>
       </div>
     );

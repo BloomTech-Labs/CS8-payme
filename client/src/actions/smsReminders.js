@@ -44,21 +44,25 @@ export function addReminder(content, history) {
   };
 }
 
-export function deleteSms(id, history) {
+export function deleteSms({ invoiceId, reminderId }) {
   return dispatch => {
     axios
-      .delete(`/api/deletesms/${id}`, {
+      .delete('/api/deletesms', {
         headers: {
           Authorization: `bearer ${localStorage.getItem('id')}`,
+        },
+        params: {
+          invoiceId,
+          reminderId,
         },
       })
       .then(res => {
         console.log(res);
-        history.push('/reminders');
         dispatch({
           type: DELETED_SMS,
-          payload: 'Reminder deleted',
+          payload: res.data,
         });
+        // history.push('/invoices');
       })
       .catch(err => {
         console.log(err);

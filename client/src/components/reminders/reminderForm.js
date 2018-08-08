@@ -28,7 +28,13 @@ const ReminderForm = props => {
                   className={props.selected ? 'dropdown-select' : null}
                   onClick={() => {
                     props.onSelect();
-                    props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName);
+                    props.getInvoice(
+                      invoice._id,
+                      invoice.phone.number,
+                      invoice.clientName,
+                      invoice.totalAmount,
+                      invoice.email.address,
+                    );
                   }}
                 >
                   {invoice.clientName}
@@ -38,7 +44,30 @@ const ReminderForm = props => {
           })}
         />
       </div>
-
+      <div>
+        <div>
+          <label>
+            Sms
+            <input
+              type="radio"
+              value="false"
+              checked={props.isEmail === 'false'}
+              onChange={props.handleEmail}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Email
+            <input
+              type="radio"
+              value="true"
+              checked={props.isEmail === 'true'}
+              onChange={props.handleEmail}
+            />
+          </label>
+        </div>
+      </div>
       <div className="reminderform-message">
         <h1>Custom message:</h1>
         <textarea

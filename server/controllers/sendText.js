@@ -4,6 +4,7 @@ const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
 const Reminder = require('../models/Reminder');
 const Invoice = require('../models/invoices');
+const User = require('../models/users');
 
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
@@ -13,7 +14,7 @@ const getTimeZones = function() {
 const createReminder = (req, res) => {
   console.log(req.body);
   const {
-    option,
+    remind,
     id,
     rPhone,
     message,
@@ -26,14 +27,14 @@ const createReminder = (req, res) => {
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
     invoiceId: id,
-    name: name,
+    name,
     phoneNumber: rPhone,
-    email: email,
-    message: message,
-    remind: option,
-    isEmail: isEmail,
-    amount: amount,
-    company: company,
+    email,
+    message,
+    remind,
+    isEmail,
+    amount,
+    company,
   });
   const { _id } = req.params;
   reminder.save().then(newreminder => {
@@ -72,18 +73,35 @@ const getReminder = (req, res) => {
 };
 // POST: /api/deletesms/:id
 const deleteReminder = (req, res) => {
-  const { id } = req.params;
+  const { invoiceId, reminderId } = req.query;
+  // const { _id } = req.user;
+  console.log(req.query);
+  console.log(reminderId);
+  console.log(invoiceId);
 
-  Reminder.findById({ _id: id })
-    .remove()
-    .then(reminder => {
-      res.json(reminder);
-      // res.redirect('/');
-      console.log('deleted');
+  Invoice.findByIdAndUpdate(
+    invoiceId,
+    { $pull: { reminders: reminderId } },
+    { new: true }
+  )
+    .populate('reminders')
+    .then(invoice => {
+      console.log(invoice.reminders);
+      Reminder.findByIdAndRemove(reminderId)
+        .then(() => {
+          // console.log(invoice);
+          res.json(invoice.reminders);
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
     })
     .catch(err => {
+      console.log(err);
       res.status(500).json(err);
     });
+  // res.status(401).json({ message: 'testing' });
 };
 
 module.exports = {
