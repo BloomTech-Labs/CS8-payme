@@ -4,6 +4,7 @@ const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
 const Reminder = require('../models/Reminder');
 const Invoice = require('../models/invoices');
+const User = require('../models/users');
 
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
@@ -13,7 +14,7 @@ const getTimeZones = function() {
 const createReminder = (req, res) => {
   console.log(req.body);
   const {
-    option,
+    remind,
     id,
     rPhone,
     message,
@@ -26,14 +27,14 @@ const createReminder = (req, res) => {
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
     invoiceId: id,
-    name: name,
+    name,
     phoneNumber: rPhone,
-    email: email,
-    message: message,
-    remind: option,
-    isEmail: isEmail,
-    amount: amount,
-    company: company,
+    email,
+    message,
+    remind,
+    isEmail,
+    amount,
+    company,
   });
   const { _id } = req.params;
   reminder.save().then(newreminder => {
@@ -73,15 +74,23 @@ const getReminder = (req, res) => {
 // POST: /api/deletesms/:id
 const deleteReminder = (req, res) => {
   const { id } = req.params;
+  const { _id } = req.user;
 
-  Reminder.findById({ _id: id })
-    .remove()
-    .then(reminder => {
-      res.json(reminder);
-      // res.redirect('/');
-      console.log('deleted');
+  Invoice.findByIdAndUpdate(_id, { $pull: { reminders: id } })
+    .then(() => {
+      Reminder.findById({ _id: id })
+        .remove()
+        .then(reminder => {
+          res.json(reminder);
+          console.log('deleted');
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
     })
     .catch(err => {
+      console.log(err);
       res.status(500).json(err);
     });
 };
