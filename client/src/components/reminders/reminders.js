@@ -57,16 +57,6 @@ class Reminders extends Component {
     }));
   }
 
-  handleSms(e) {
-    this.setState(state => ({
-      ...state,
-      reminder: {
-        isEmail: !this.state.reminder.isEmail
-      },
-    }));
-  }
-
-
   render() {
     const { invoices } = this.props;
     const { reminder } = this.state;
@@ -94,7 +84,6 @@ class Reminders extends Component {
                 <RemindForm
                   handleMessage={e => this.handleChange({ message: e.target.value })}
                   handleEmail={e => this.handleChange({ isEmail: e.target.value })}
-                  // handleSms={this.handleSms}
                   isEmail={reminder.isEmail}
                   invoices={invoices}
                   getInvoice={(id, phone, name, amount, email) => this.handleInvoice({ id, rPhone: phone, name, amount, email })}
