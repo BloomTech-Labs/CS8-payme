@@ -50,9 +50,20 @@ const createReminder = (req, res) => {
 };
 
 const allReminders = (req, res) => {
-  Reminder.find().then(reminders => {
-    res.json(reminders);
-  });
+  const { id } = req.params;
+  Invoice.findById(id)
+    .then(invoice => {
+      Reminder.find({ invoiceId: invoice._id })
+        .then(reminders => {
+          res.send(reminders);
+        })
+        .catch(err => {
+          res.send(err);
+        });
+    })
+    .catch(err => {
+      res.send(err);
+    });
 };
 // GET: /api/sms/:id
 // if reminder was deleted, it will redirect back to create
