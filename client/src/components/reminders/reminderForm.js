@@ -64,6 +64,41 @@ const ReminderForm = props => {
           </label>
         </div>
       </div>
+      <div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="daily"
+              checked={props.remind === 'daily'}
+              onChange={props.handleRemind}
+            />
+            Daily
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="weekly"
+              checked={props.remind === 'weekly' || props.remind === ''}
+              onChange={props.handleRemind}
+            />
+            Weekly
+          </label>
+        </div>
+        <div>
+          <label>
+            <input
+              type="radio"
+              value="monthly"
+              checked={props.remind === 'monthly'}
+              onChange={props.handleRemind}
+            />
+            Monthy
+          </label>
+        </div>
+      </div>
       <div className="reminderform-message">
         <h1>Custom message:</h1>
         <textarea
@@ -71,6 +106,7 @@ const ReminderForm = props => {
           className="reminderform-message-input"
           onChange={props.handleMessage}
         />
+
         <div className="addreminder">
           <button
             className="addreminder-button connect-stripe_button"
@@ -91,42 +127,3 @@ export default connect(
   null,
   { addReminder },
 )(ReminderForm);
-
-// <div>
-//   <form className="reminderform-radio">
-//     <div>
-//       <label>
-//         <input
-//           type="radio"
-//           value="daily"
-//           checked={props.option === 'daily'}
-//           onChange={props.handleRadio}
-//         />
-//         Daily
-//             </label>
-//     </div>
-//     <div>
-//       <label>
-//         <input
-//           type="radio"
-//           value="weekly"
-//           checked={props.option === 'weekly'}
-//           onChange={props.handleRadio}
-//         />
-//         Weekly
-//             </label>
-//     </div>
-//     <div>
-//       <label>
-//         <input
-//           type="radio"
-//           value="monthly"
-//           checked={props.option === 'monthly'}
-//           onChange={props.handleRadio}
-//         />
-//         Monthy
-//             </label>
-//     </div>
-//   </form>
-
-// </div>

@@ -83,10 +83,16 @@ class Reminders extends Component {
                 <RemindForm
                   handleMessage={e => this.handleChange({ message: e.target.value })}
                   handleEmail={e => this.handleChange({ isEmail: e.target.value })}
+                  handleRemind={e => this.handleChange({ remind: e.target.value })}
+                  remind={reminder.remind}
                   isEmail={reminder.isEmail}
                   invoices={invoices}
                   getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
-                    id, rPhone: phone, name, amount, email,
+                    id,
+                    rPhone: phone,
+                    name,
+                    amount,
+                    email,
                   })
                   }
                   formData={reminder}
