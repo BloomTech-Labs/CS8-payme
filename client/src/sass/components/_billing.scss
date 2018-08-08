@@ -3,17 +3,22 @@
   height: 100%;
   margin: 0 auto;
   display: flex;
-
-  &-announcement {
-    width: 75%;
-    margin-left: 10rem;
-    // background-color: blue;
-  }
+  
   &-window {
     margin: 3rem;
     @include respond(smallphone) {
       margin: auto;
     }
+  }
+  &-announcement {
+    width: 70%;
+    margin-left: 20rem;
+    // background-color: blue;
+  }
+
+  &-headline {
+    font-size: 4rem; 
+    font-weight: 700;
   }
 
   &-container {
@@ -49,17 +54,23 @@
   }
 
   &-standard {
+    overflow: hidden;
     margin: 2rem;
     padding: 2rem;
     width: 35rem;
     height: 40rem;
-    // border-radius: 1rem;
+    position: relative;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
     background-color: rgb(45, 45, 45);
     color: white;
+    // &:hover {
+    //   width: 40rem;
+    //   height: 45rem;
+    // }
 
     &_package {
-      // background-color: blue;
+      margin-top: -0.5rem;
+      font-size: 2.5rem;
       display: flex;
       justify-content: center;
     }
@@ -79,7 +90,7 @@
         }
     }
     &_label {
-      margin-top: -2.5rem;
+      margin-top: -4.5rem;
       
     }
     &_button {
@@ -102,15 +113,13 @@
     // border-radius: 1rem;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
     &_package {
-      // background-color: blue;
-      font-size: 2rem;
+      font-size: 2.5rem;
       display: flex;
       justify-content: center;
     }
 
     &_button {
-      height: 3rem;
-
+      height: 6rem;
       width: 20rem;
     }
 
@@ -128,7 +137,7 @@
     }
 
     &_label {
-      margin-top: -2.5rem;
+      margin-top: -4.5rem;
       margin-bottom: 3rem;
     }
 
@@ -136,7 +145,7 @@
       margin-left: 3rem;
       border: none;
       color: white;
-      background-color: $color-secondary;
+      background-color: #e43;
       height: 4rem;
       width: 20rem;
       // border-radius: 1rem;
@@ -252,4 +261,25 @@
 
 .admin-title {
   font-size: 4rem;
+}
+
+.corner-ribbon{
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-left{
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }

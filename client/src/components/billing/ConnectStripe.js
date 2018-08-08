@@ -19,7 +19,7 @@ export default class ConnectStripe extends Component {
     let link = this.state.terms ? `/stripe/authorize?jwt=${localStorage.getItem('id')}` : null;
     return (
       <div className="billing-window">
-        <h1 className="billing-title">Payment Options</h1>
+        <p className="billing-headline">Payment Options</p>
         <p className="billing-announcement">
           Before buying credits, or uploading any invoices, you must connect your{' '}
           <span style={{ fontWeight: 900 }}>giveMeMyMoney.app </span>
@@ -36,6 +36,7 @@ export default class ConnectStripe extends Component {
             </p>
           </div>
           <div className="billing-standard">
+            <div className="corner-ribbon top-left sticky red shadow">Popular</div>
             <h2 className="billing-standard_package">Basic</h2>
             <p className="billing-standard_price">$1.99<br /> <span> per invoice</span></p>
             <p className="billing-standard_label">

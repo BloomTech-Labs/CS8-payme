@@ -1201,14 +1201,17 @@ e,'s are considered best option for media queries
   height: 100%;
   margin: 0 auto;
   display: flex; }
-  .billing-announcement {
-    width: 75%;
-    margin-left: 10rem; }
   .billing-window {
     margin: 3rem; }
     @media (max-width: 25.06em) {
       .billing-window {
         margin: auto; } }
+  .billing-announcement {
+    width: 70%;
+    margin-left: 20rem; }
+  .billing-headline {
+    font-size: 4rem;
+    font-weight: 700; }
   .billing-container {
     width: 100%; }
     @media (max-width: 25.06em) {
@@ -1230,14 +1233,18 @@ e,'s are considered best option for media queries
       display: flex;
       justify-content: center; }
   .billing-standard {
+    overflow: hidden;
     margin: 2rem;
     padding: 2rem;
     width: 35rem;
     height: 40rem;
+    position: relative;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
     background-color: #2d2d2d;
     color: white; }
     .billing-standard_package {
+      margin-top: -0.5rem;
+      font-size: 2.5rem;
       display: flex;
       justify-content: center; }
     .billing-standard_price {
@@ -1252,7 +1259,7 @@ e,'s are considered best option for media queries
         margin-left: -10rem;
         margin-top: 3rem; }
     .billing-standard_label {
-      margin-top: -2.5rem; }
+      margin-top: -4.5rem; }
     .billing-standard_button {
       background-color: white;
       margin-left: 2.5rem;
@@ -1267,11 +1274,11 @@ e,'s are considered best option for media queries
     height: 40rem;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276); }
     .billing-premium_package {
-      font-size: 2rem;
+      font-size: 2.5rem;
       display: flex;
       justify-content: center; }
     .billing-premium_button {
-      height: 3rem;
+      height: 6rem;
       width: 20rem; }
     .billing-premium_price {
       margin-top: 8rem;
@@ -1284,13 +1291,13 @@ e,'s are considered best option for media queries
         margin-left: -10rem;
         margin-top: 3rem; }
     .billing-premium_label {
-      margin-top: -2.5rem;
+      margin-top: -4.5rem;
       margin-bottom: 3rem; }
     .billing-premium_button {
       margin-left: 3rem;
       border: none;
       color: white;
-      background-color: #E86C62;
+      background-color: #e43;
       height: 4rem;
       width: 20rem; }
   .billing-terms {
@@ -1362,6 +1369,25 @@ e,'s are considered best option for media queries
 
 .admin-title {
   font-size: 4rem; }
+
+.corner-ribbon {
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg); }
+
+.corner-ribbon.top-left {
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg); }
 
 .dropdown {
   width: 100%;
