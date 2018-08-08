@@ -41,30 +41,28 @@ const ReminderForm = props => {
         />
       </div>
       <div>
-        <form>
-          <div>
-            <label>
-              Sms
-              <input
-                type="radio"
-                value="false"
-                checked={props.isEmail === 'false'}
-                onChange={props.handleEmail}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Email
-              <input
-                type="radio"
-                value="true"
-                checked={props.isEmail === 'true'}
-                onChange={props.handleEmail}
-              />
-            </label>
-          </div>
-        </form>
+        <div>
+          <label>
+            Sms
+            <input
+              type="radio"
+              value="false"
+              checked={props.isEmail === 'false'}
+              onChange={props.handleEmail}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Email
+            <input
+              type="radio"
+              value="true"
+              checked={props.isEmail === 'true'}
+              onChange={props.handleEmail}
+            />
+          </label>
+        </div>
       </div>
       <div className="reminderform-message">
         <h1>Custom message:</h1>
