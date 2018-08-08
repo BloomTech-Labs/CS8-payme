@@ -342,7 +342,6 @@ e,'s are considered best option for media queries
   display: flex;
   background-color: #ffffff;
   overflow: hidden;
-  height: 120rem;
   margin: 0;
   position: relative; }
   @media (max-width: 25.06em) {
@@ -1021,7 +1020,7 @@ e,'s are considered best option for media queries
       margin: 0;
       height: 4rem;
       background-color: #2d2d2d;
-      width: 50rem; } }
+      width: 101%; } }
   .sidebar-min-links p {
     display: flex;
     justify-content: center;
