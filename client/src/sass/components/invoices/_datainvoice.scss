@@ -3,9 +3,12 @@
   margin-top: 5rem;
   display: flex;
   flex-flow: row wrap;
+  @include respond(tab-land) {
+    margin-left: 15%;
+  }
   @include respond(tab-port) {
-    width: 85rem;
-    margin-left: -10rem;
+    // width: 85rem;
+    margin-left: 0%;
   }
   @include respond(phone)  {
     width: 50rem;
@@ -24,9 +27,15 @@
   justify-content: center;
   width: 40rem;
   border: 0.3px solid rgb(194, 194, 194); 
+  @include respond(tab-land) {
+    width: 40%;
+  }
+  @include respond(tab-port) {
+    width: 40%;
+  }
   @include respond(phone)  {
     margin: 2rem 2rem 2rem 0rem;
-    width: 20rem;
+    width: 40%;
      // height: 20rem;
   }
   @include respond(smallphone)  {
