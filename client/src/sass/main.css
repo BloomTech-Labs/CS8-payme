@@ -1081,14 +1081,19 @@ e,'s are considered best option for media queries
   display: flex;
   width: 100%; }
   .reminder-main {
+    background-color: #2d2d2d;
+    border: solid #22cfb1 1px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
+    margin: 8rem auto;
     width: 100%;
     min-width: 300px;
     height: 100%;
-    display: flex; }
+    display: flex;
+    padding: 2rem 2rem;
+    box-shadow: 0px 2px 5px #7c7c7c; }
     @media (max-width: 56.25em) {
       .reminder-main {
         flex-direction: column; } }

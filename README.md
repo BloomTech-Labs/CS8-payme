@@ -1,6 +1,6 @@
 <p align="center">
   <br><br>
-  <img src="https://i.imgur.com/lUDcswe.png">
+  <img src="https://i.imgur.com/Cluldsg.png">
 </p>
 
 
@@ -12,7 +12,7 @@
 
 # **Description**
 
-### payMe is a subscription based application that allows "Admins" to upload invoices, and set automatic email/sms messages to be sent to their "Client". The client can click the link in the email/sms and be directed to a page where they can easily and without barriers make the required payment to the admin.
+### Give Me My Money is a subscription based application that allows "Admins" to upload invoices, and set automatic email/sms messages to be sent to their "Client". The client can click the link in the email/sms and be directed to a page where they can easily and without barriers make the required payment to the admin.
 
 ## TechStack
 
@@ -50,7 +50,7 @@
 
 # **Deployed Site**
 
-### http://givememymoney.herokuapp.com
+### https://www.givememymoney.app/
 
 ## Backend Schemas
 
