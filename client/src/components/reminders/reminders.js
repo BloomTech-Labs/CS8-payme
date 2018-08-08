@@ -16,12 +16,15 @@ class Reminders extends Component {
       rPhone: '',
     },
     date: new Date(),
+    selected: false,
   };
 
   componentDidMount() {
     this.props.getAllInvoices();
     this.props.allReminders();
   }
+
+  onSelect = () => this.setState({ selected: !this.state.selected });
 
   onChange = date => this.setState({ date });
 
@@ -34,6 +37,7 @@ class Reminders extends Component {
         ...phone,
       },
     }));
+    // this.setState({ selected: !this.state.selected });
   }
 
   handleChange(e) {
@@ -51,7 +55,7 @@ class Reminders extends Component {
     const { reminder } = this.state;
     console.log(reminder);
     return (
-      <div className="window">
+      <div className="reminder">
         <Sidebar />
         <div className="billing-container">
           <div className="billing-navigation">
@@ -61,14 +65,15 @@ class Reminders extends Component {
           </div>
           <div className="billing-window">
             <div className="reminder-main">
-              <div className="calendar">
+              <div className="calendar-box">
                 <Calendar
+                  className="calendar"
                   style={styles.calendarStyles}
                   onChange={this.onChange}
                   value={this.state.date}
                 />
               </div>
-              <div className="reminder-form">
+              <div className="reminder-form_container">
                 <RemindForm
                   handleMessage={e => this.handleChange({ message: e.target.value })}
                   handleRadio={e => this.handleChange({ option: e.target.value })}
@@ -77,6 +82,8 @@ class Reminders extends Component {
                   getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
                   formData={reminder}
                   history={this.props.history}
+                  selected={this.state.selected}
+                  onSelect={this.onSelect}
                 />
               </div>
             </div>

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 // import ClientCheckout from './ClientCheckout';
+import { ToastContainer, ToastStore } from 'react-toasts';
 import NoInvoice from './noInvoice';
 import PaidInvoice from './paidInvoice';
 
@@ -34,12 +35,12 @@ class ClientBilling extends Component {
         invoiceId: this.state.invoice._id,
       })
       .then(res => {
-        alert('Payment successful');
+        ToastStore.success('Payment successful');
         this.setState({ invoice: res.data.invoice });
         console.log(res);
       })
       .catch(data => {
-        alert('Payment declined');
+        ToastStore.error('Payment declined');
         console.log(data);
       });
   };
@@ -75,6 +76,7 @@ class ClientBilling extends Component {
     };
     return (
       <div className="window" style={{ display: 'flex', marginTop: '15rem' }}>
+        <ToastContainer position={ToastContainer.POSITION.TOP_LEFT} store={ToastStore} />
         <div
           className="payInvoice"
           style={{ justifyContent: 'center', alignItems: 'center', margin: 'auto' }}

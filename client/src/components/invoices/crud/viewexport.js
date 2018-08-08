@@ -2,7 +2,7 @@ import React from 'react';
 
 const View = props => {
   return (
-    <div className="billing-window">
+    <div className="view-invoice-box">
       <div className="view-invoice-details">
         <div className="view-invoice-details-flex">
           <p>Invoice pdf</p>

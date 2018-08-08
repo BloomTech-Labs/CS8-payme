@@ -74,7 +74,11 @@ const addInvoice = (req, res) => {
         }
       });
     })
-    .catch(err => res.status(500).json(err));
+    .catch(err => {
+      console.log(err);
+      console.log(invoice);
+      res.status(500).json(err);
+    });
 };
 
 module.exports = { addInvoice };
