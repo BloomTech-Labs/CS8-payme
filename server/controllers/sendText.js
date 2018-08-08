@@ -49,10 +49,11 @@ const createReminder = (req, res) => {
   });
 };
 const allReminders = (req, res) => {
-  Reminder.find({ invoiceId }).then(reminders => {
+  Reminder.find({}).then(reminders => {
     res.json(reminders);
   });
 };
+
 const setofReminders = (req, res) => {
   const { id } = req.params;
   Invoice.findById(id)
