@@ -36,7 +36,7 @@ class Settings extends Component {
         <Sidebar />
         <div className="settings-container">
           <div className="settings-navigation">
-            <p className="settings-navigation_password">Change <br />Password <i className="fas fa-key" /></p>
+            <p className="settings-navigation_password">Change Password <i className="fas fa-key" /></p>
             <p className="setting-line" />
             {/* <div className="own-class ui compact menu" style={{ border: 'none' }}>
               <div 

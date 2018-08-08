@@ -21,6 +21,8 @@
       color: black;
       padding: 1rem;
       margin-left: 3rem;
+      padding-top: 2rem;
+      // background-color: blue;
       &:hover {
         color:$color-primary;
       }
@@ -51,12 +53,13 @@
 
   &_field {
     border: 0.3px solid rgb(216, 216, 216);
-    height: 4rem;
+    height: 4.4rem;
     width: 100%;
+    padding: 1rem;
   }
   &_submit {
     color: white;
-    height: 3rem;
+    height: 4rem;
     width: 100%;
     border: none;
     background-color: $color-secondary;
