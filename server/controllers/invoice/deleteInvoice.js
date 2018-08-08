@@ -1,24 +1,38 @@
 const User = require('../../models/users');
 const Invoice = require('../../models/invoices');
+const Reminders = require('../../models/Reminder');
 
 const deleteInvoice = (req, res) => {
   const { _id, invoices } = req.user;
   const { number } = req.params;
-  const newInvoices = invoices.filter(invoice => invoice.number != number);
+  const inv = invoices.filter(invoice => invoice.number === number)[0];
 
-  if (newInvoices.length === invoices.length) {
+  if (!inv) {
     return res.status(404).json({ message: 'Invoice not found.' });
+  }
+
+  const reminders = inv.reminders;
+
+  for (reminder of reminders) {
+    console.log(reminder);
+    removeReminder(reminder);
+  }
+
+  async function removeReminder(rem) {
+    return await Reminders.findByIdAndRemove(rem)
+      .then(() => console.log(`removed: ${rem}`))
+      .catch(err => console.log(`Failed: ${rem}`));
   }
 
   User.findOneAndUpdate(
     { _id },
-    { invoices: newInvoices },
+    { $pull: { invoices: inv._id } },
     { returnNewDocument: true }
   )
     .select('-password')
     .populate('invoices')
     .then(() => {
-      Invoice.findOneAndRemove({ number })
+      Invoice.findByIdAndRemove(inv._id)
         .then(() => {
           User.findById(_id)
             .select('-password')
