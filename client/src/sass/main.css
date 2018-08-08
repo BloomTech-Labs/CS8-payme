@@ -362,7 +362,7 @@ e,'s are considered best option for media queries
     height: 6rem; }
   .invoice-search {
     width: 30%;
-    margin-left: 10rem;
+    margin-left: 15rem;
     margin-right: 20rem;
     z-index: 1;
     position: relative; }
@@ -1197,7 +1197,6 @@ e,'s are considered best option for media queries
 
 .billing {
   background-color: #ffffff;
-  /* offset-x | offset-y | blur-radius | spread-radius | color */
   height: 100%;
   margin: 0 auto;
   display: flex; }
@@ -1206,12 +1205,71 @@ e,'s are considered best option for media queries
     @media (max-width: 25.06em) {
       .billing-container {
         margin-top: 36px; } }
+  .billing-options {
+    width: 105rem;
+    display: flex;
+    justify-content: space-between; }
+  .billing-premium {
+    margin: 2rem;
+    padding: 2rem;
+    width: 40rem;
+    height: 40rem;
+    border: 1px solid black;
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276); }
+    .billing-premium_purchase {
+      display: flex;
+      justify-content: center; }
+    .billing-premium_price {
+      margin-top: 8rem;
+      font-weight: 700;
+      font-size: 5rem;
+      display: flex;
+      justify-content: center; }
+      .billing-premium_price span {
+        font-size: 1rem;
+        margin-left: -10rem;
+        margin-top: 3rem; }
+  .billing-standard {
+    margin: 2rem;
+    padding: 2rem;
+    width: 40rem;
+    height: 40rem;
+    border: 1px solid black;
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276);
+    background-color: #2d2d2d;
+    color: white; }
+    .billing-standard_purchase {
+      display: flex;
+      justify-content: center; }
+    .billing-standard_price {
+      margin-top: 8rem;
+      font-weight: 700;
+      font-size: 5rem;
+      margin-right: 5rem;
+      display: flex;
+      justify-content: center; }
+      .billing-standard_price span {
+        font-size: 1rem;
+        margin-left: -10rem;
+        margin-top: 3rem; }
+  .billing-free {
+    margin: 2rem;
+    padding: 2rem;
+    width: 40rem;
+    height: 40rem;
+    border: 1px solid black;
+    box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.276); }
+    .billing-free_purchase {
+      background-color: blue;
+      display: flex;
+      justify-content: center; }
   .billing-navigation {
     display: flex;
     justify-content: space-around;
-    border: 0.3px solid #d2d2d2;
     height: 6rem;
-    min-height: 6rem; }
+    min-height: 6rem;
+    background-color: #3c3c3c;
+    color: white; }
     @media (max-width: 25.06em) {
       .billing-navigation {
         height: auto; } }
@@ -1242,8 +1300,6 @@ e,'s are considered best option for media queries
         margin: auto; } }
   .billing-title {
     font-size: 6rem; }
-  .billing-purchase {
-    font-size: 2rem; }
   .billing-radio {
     margin: 1rem 0; }
     .billing-radio_select {

@@ -6,23 +6,31 @@ export default class ConnectStripe extends Component {
   render() {
     return (
       <div className="billing-window">
-        <h1 className="billing-title">Pricing:</h1>
-        <h2 className="billing-purchase">$20 for a 30 day subscription.</h2>
-
-        <p className="billing-label" style={{ marginLeft: 15 }}>
-          This will allow an unlimited number of invoices and notifications to be set up until your
-          subscription expires.
-        </p>
-        <h2 className="billing-purchase">$1.99 per invoice</h2>
-        <p className="billing-label" style={{ marginLeft: 15 }}>
-          Don't need a subscription? Easily use our service on a per invoice basis. $1.99 per
-          invoice will include unlimited reminders for 1 invoice.
-        </p>
-        <h2 className="billing-purchase">Free Tier</h2>
-
-        <p className="billing-label" style={{ marginLeft: 15 }}>
-          By default, all accounts have 1 free invoice at a time.
-        </p>
+        <h1 className="billing-title">Payment Options</h1>
+        <div className="billing-options">
+          <div className="billing-free">
+            <h2 className="billing-free_purchase">Free</h2>
+            <p className="billing-label" style={{ marginLeft: 15 }}>
+              By default, all accounts have 1 free invoice at a time.
+            </p>
+          </div>
+          <div className="billing-standard">
+            <h2 className="billing-standard_purchase">Basic</h2>
+            <p className="billing-standard_price">$1.99<br /> <span> per invoice</span></p>
+            <p className="billing-label" style={{ marginLeft: 15 }}>
+              Don't need a subscription? Easily use our service on a per invoice basis. $1.99 per
+              invoice will include unlimited reminders for 1 invoice.
+            </p>
+          </div>
+          <div className="billing-premium">
+            <h2 className="billing-premium_purchase">Premium</h2>
+            <p className="billing-premium_price">$20 <br /> <span>for a 30 day subscription</span></p>
+            <p className="billing-label" style={{ marginLeft: 15 }}>
+              This will allow an unlimited number of invoices and notifications to be set up until your
+              subscription expires.
+            </p>
+          </div>
+        </div>
         <br />
         <p className="billing-label">
           Before buying credits, or uploading any invoices, you must connect your{' '}
