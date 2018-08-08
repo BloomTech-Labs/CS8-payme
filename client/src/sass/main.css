@@ -1151,11 +1151,12 @@ e,'s are considered best option for media queries
         margin-left: 15rem 1rem; } }
   .settings_field {
     border: 0.3px solid #d8d8d8;
-    height: 4rem;
-    width: 100%; }
+    height: 4.4rem;
+    width: 100%;
+    padding: 1rem; }
   .settings_submit {
     color: white;
-    height: 3rem;
+    height: 4rem;
     width: 100%;
     border: none;
     background-color: #E86C62;
