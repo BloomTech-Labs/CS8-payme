@@ -921,8 +921,11 @@ e,'s are considered best option for media queries
     color: #22CFB1;
     font-size: 6rem; }
 
+.typed-logo {
+  background-color: blue; }
+
 .slideout {
-  padding-top: 1rem;
+  padding-top: 1.6rem;
   background-color: #2d2d2d; }
   @media (max-width: 56.25em) {
     .slideout {
@@ -930,22 +933,33 @@ e,'s are considered best option for media queries
   .slideout span {
     display: block;
     width: 3rem;
-    height: 5px;
+    height: 4px;
     background-color: rgba(124, 124, 124, 0.336);
     margin: 5px 2rem; }
   .slideout--title {
     width: 12rem;
     color: white;
-    border-right: 0.3px solid rgba(255, 255, 255, 0.66);
     font-size: 3rem;
     height: 6rem;
     background-color: #2d2d2d; }
     @media (max-width: 56.25em) {
       .slideout--title {
         width: 19rem;
-        padding-left: 5.5rem; } }
+        padding-left: 2rem; } }
     @media (max-width: 25.06em) {
       .slideout--title {
+        padding-left: 1rem;
+        width: 13rem; } }
+  .slideout--slogan {
+    margin-top: -1rem;
+    margin-left: 4rem;
+    color: #E86C62;
+    font-size: 1.3rem; }
+    @media (max-width: 56.25em) {
+      .slideout--slogan {
+        padding-left: 2rem; } }
+    @media (max-width: 25.06em) {
+      .slideout--slogan {
         padding-left: 1rem;
         width: 13rem; } }
   .slideout--dot {
