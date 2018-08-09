@@ -91,9 +91,9 @@ const getReminder = (req, res) => {
 const deleteReminder = (req, res) => {
   const { invoiceId, reminderId } = req.query;
   // const { _id } = req.user;
-  console.log(req.query);
-  console.log(reminderId);
-  console.log(invoiceId);
+  // console.log(req.query);
+  // console.log(reminderId);
+  // console.log(invoiceId);
 
   Invoice.findByIdAndUpdate(
     invoiceId,
@@ -102,7 +102,7 @@ const deleteReminder = (req, res) => {
   )
     .populate('reminders')
     .then(invoice => {
-      console.log('invoice\n', invoice);
+      // console.log('invoice\n', invoice);
       Reminder.findByIdAndRemove(reminderId)
         .then(() => {
           // console.log(invoice);
