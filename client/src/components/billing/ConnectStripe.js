@@ -34,6 +34,7 @@ export default class ConnectStripe extends Component {
             <p className="billing-label">
               By default, all accounts have 1 free invoice at a time.
             </p>
+            <button style={{ marginTop: '8.5rem'}}className="billing-premium_button" onClick={() => this.checkTerms()}>Connect Stripe</button>
           </div>
           <div className="billing-standard">
             <div className="corner-ribbon top-left sticky red shadow">Popular</div>
