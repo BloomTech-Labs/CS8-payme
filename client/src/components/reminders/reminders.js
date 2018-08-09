@@ -11,7 +11,7 @@ class Reminders extends Component {
   state = {
     reminder: {
       id: null,
-      remind: '',
+      remind: 'weekly',
       message: '',
       rPhone: '',
       email: '',
