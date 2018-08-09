@@ -88,7 +88,8 @@ class Invoices extends Component {
     if (!this.props.admin.stripe || !this.props.admin.stripe.code) {
       ToastStore.warning('Please connect your accout to \nstripe before adding an invoice', 3000);
       return setTimeout(() => this.props.history.push('/billing'), 3000);
-    } if (payment < 0 || this.props.admin.invoiceCredits > 0) {
+    }
+    if (payment < 0 || this.props.admin.invoiceCredits > 0) {
       this.props.history.push('/addinvoice');
     } else if (this.props.admin.invoices.length === 0) {
       ToastStore.success('Enjoy your free invoice experience!', 3000);
@@ -131,6 +132,7 @@ class Invoices extends Component {
       return (
         <div className={className}>
           {filteredInvoices.map((inv, index) => {
+            // console.log(inv);
             return (
               <Invoice
                 key={inv._id}

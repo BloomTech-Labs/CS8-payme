@@ -102,7 +102,7 @@ const deleteReminder = (req, res) => {
   )
     .populate('reminders')
     .then(invoice => {
-      console.log(invoice.reminders);
+      console.log('invoice\n', invoice);
       Reminder.findByIdAndRemove(reminderId)
         .then(() => {
           // console.log(invoice);
