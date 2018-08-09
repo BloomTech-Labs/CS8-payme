@@ -419,7 +419,7 @@ e,'s are considered best option for media queries
     cursor: pointer;
     padding: 2rem 2rem;
     justify-content: center;
-    width: 10rem; }
+    width: 15rem; }
     .invoice-new:hover {
       color: #22CFB1; }
   .invoice-id {
@@ -515,7 +515,7 @@ e,'s are considered best option for media queries
   border: 0.5px solid rgba(255, 255, 255, 0.139); }
 
 .fa-sort {
-  margin-left: 1px;
+  margin-left: 1rem;
   font-size: 2rem; }
 
 .fa-trash {
@@ -525,6 +525,12 @@ e,'s are considered best option for media queries
 @media (max-width: 37.5em) {
   .fa-arrow-left.add {
     margin-top: 10rem; } }
+
+.fa-plus {
+  margin-left: 1rem; }
+
+.fa-eye {
+  margin-left: 1rem; }
 
 .compact {
   font-size: 3rem; }
