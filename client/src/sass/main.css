@@ -5,11 +5,11 @@
 [1200- 1800]- norma styles
 1800 +: Desktop
 */
-/* breakpoint arc choices 
+/* breakpoint arc choices
 - phone
 - tab-port
 - tab-land
-- desktop 
+- desktop
 We're using em's instead of rems because rem tends to fail in some browsers
 e,'s are considered best option for media queries 
 
