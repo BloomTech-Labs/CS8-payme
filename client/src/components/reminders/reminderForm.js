@@ -9,8 +9,11 @@ const ReminderForm = props => {
   return (
     <div className="reminderform">
       <div className="reminderform-drop">
-        <h1>Invoices:</h1>
-        <Dropdown
+        {props.dropdown ? 
+        <React.Fragment>
+          <p onClick={() => props.togCalendar('cal')}><i  style={{marginLeft: '40rem', cursor: 'pointer'}}className="fas fa-arrow-left fa-flip-horizontal fa-fw" /></p>
+          <h1>Select An Invoice</h1>
+          <Dropdown
           className="dropdown"
           placeholder="Choose invoice by name"
           // closeOnChange
@@ -30,6 +33,7 @@ const ReminderForm = props => {
                       invoice.clientName,
                       invoice.totalAmount,
                       invoice.email.address,
+                      invoice.clientName,
                     );
                   }}
                 >
@@ -39,64 +43,60 @@ const ReminderForm = props => {
             );
           })}
         />
+        </React.Fragment> 
+        : null }
       </div>
-      <div>
-        <div>
-          <label>
-            Sms
+      {props.cmessage ?
+      <React.Fragment> 
+        <div className="reminder-radios_menu">
+        <div className="reminder-radios">
+          <div className="reminder-select">
+            <label>Sms</label>
             <input
               type="radio"
               value="false"
               checked={props.isEmail === 'false' || props.isEmail === false}
               onChange={props.handleEmail}
             />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email
+          </div>
+          <div className="reminder-select">
+            <label>Email</label>
             <input
               type="radio"
               value="true"
               checked={props.isEmail === 'true'}
               onChange={props.handleEmail}
             />
-          </label>
+          </div>
         </div>
-      </div>
-      <div>
-        <div>
-          <label>
+        <div className="reminder-radios">
+          <div className="reminder-select">
+            <label>Daily</label>
             <input
               type="radio"
               value="daily"
               checked={props.remind === 'daily'}
               onChange={props.handleRemind}
             />
-            Daily
-          </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>Weekly</label>
             <input
               type="radio"
               value="weekly"
               checked={props.remind === 'weekly' || props.remind === ''}
               onChange={props.handleRemind}
             />
-            Weekly
-          </label>
-        </div>
-        <div>
-          <label>
+          </div>
+          <div>
+            <label>Monthy</label>
             <input
               type="radio"
               value="monthly"
               checked={props.remind === 'monthly'}
               onChange={props.handleRemind}
             />
-            Monthy
-          </label>
+          </div>
         </div>
       </div>
       <div className="reminderform-message">
@@ -119,6 +119,8 @@ const ReminderForm = props => {
           </button>
         </div>
       </div>
+    </React.Fragment>
+        : null }
     </div>
   );
 };

@@ -50,6 +50,10 @@ const User = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    recovery: {
+      code: String,
+      exp: Number,
+    },
     invoices: [{ type: ObjectId, ref: 'Invoice' }],
   },
   {
@@ -73,6 +77,5 @@ User.methods.checkPassword = function(pw, callBack) {
     return callBack(err);
   });
 };
-
 
 module.exports = mongoose.model('User', User);

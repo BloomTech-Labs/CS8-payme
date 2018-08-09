@@ -11,11 +11,16 @@ export default props => {
       }}
     >
       <div>
-        <h1 className="signin--box--title" style={{ marginBottom: '5rem' }}>
-          payMe
-          <span className="signin--box--dot">.</span>
-          <br />
-        </h1>
+          <div className="typed-logo" style={{ marginBottom: '4rem' }}>
+            <h1 className="signin--titles">
+              giveMe
+              <span className="slideout--dot">
+              .
+              </span>
+              <br />
+              <h1 className="signin--slogans">myMoney</h1>
+            </h1>
+          </div>
         <h1>Invoice {props.invoice.number} has already been paid.</h1>
         <br />
         <h1>If you believe this was an error,</h1>

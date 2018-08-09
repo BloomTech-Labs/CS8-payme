@@ -194,10 +194,12 @@ e,'s are considered best option for media queries
   margin-top: 5rem;
   display: flex;
   flex-flow: row wrap; }
+  @media (max-width: 75em) {
+    .invoice-box {
+      margin-left: 15%; } }
   @media (max-width: 56.25em) {
     .invoice-box {
-      width: 85rem;
-      margin-left: -10rem; } }
+      margin-left: 0%; } }
   @media (max-width: 37.5em) {
     .invoice-box {
       width: 50rem;
@@ -213,10 +215,16 @@ e,'s are considered best option for media queries
   justify-content: center;
   width: 40rem;
   border: 0.3px solid #c2c2c2; }
+  @media (max-width: 75em) {
+    .invoice-data {
+      width: 40%; } }
+  @media (max-width: 56.25em) {
+    .invoice-data {
+      width: 40%; } }
   @media (max-width: 37.5em) {
     .invoice-data {
       margin: 2rem 2rem 2rem 0rem;
-      width: 20rem; } }
+      width: 40%; } }
   @media (max-width: 25.06em) {
     .invoice-data {
       width: 30rem; } }
@@ -342,7 +350,6 @@ e,'s are considered best option for media queries
   display: flex;
   background-color: #ffffff;
   overflow: hidden;
-  height: 120rem;
   margin: 0;
   position: relative; }
   @media (max-width: 25.06em) {
@@ -412,7 +419,7 @@ e,'s are considered best option for media queries
     cursor: pointer;
     padding: 2rem 2rem;
     justify-content: center;
-    width: 10rem; }
+    width: 15rem; }
     .invoice-new:hover {
       color: #22CFB1; }
   .invoice-id {
@@ -508,7 +515,7 @@ e,'s are considered best option for media queries
   border: 0.5px solid rgba(255, 255, 255, 0.139); }
 
 .fa-sort {
-  margin-left: 1px;
+  margin-left: 1rem;
   font-size: 2rem; }
 
 .fa-trash {
@@ -518,6 +525,12 @@ e,'s are considered best option for media queries
 @media (max-width: 37.5em) {
   .fa-arrow-left.add {
     margin-top: 10rem; } }
+
+.fa-plus {
+  margin-left: 1rem; }
+
+.fa-eye {
+  margin-left: 1rem; }
 
 .compact {
   font-size: 3rem; }
@@ -718,11 +731,6 @@ e,'s are considered best option for media queries
       .signin--box {
         min-width: 100%;
         height: 75rem; } }
-    .signin--box--title {
-      color: black;
-      border-right: 0.3px solid rgba(255, 255, 255, 0.66);
-      font-size: 6rem;
-      height: 6rem; }
     .signin--box--dot {
       color: #22CFB1;
       font-size: 6rem; }
@@ -804,6 +812,32 @@ e,'s are considered best option for media queries
     @media (max-width: 56.25em) {
       .signin--form_notmember {
         width: 25rem; } }
+
+.signin--titles {
+  font-size: 5rem;
+  height: 6rem;
+  color: #2d2d2d; }
+  @media (max-width: 56.25em) {
+    .signin--titles {
+      width: 19rem;
+      padding-left: 2rem; } }
+  @media (max-width: 25.06em) {
+    .signin--titles {
+      padding-left: 1rem;
+      width: 13rem; } }
+
+.signin--slogans {
+  margin-top: -1rem;
+  margin-left: 8rem;
+  color: #E86C62;
+  font-size: 1.3rem; }
+  @media (max-width: 56.25em) {
+    .signin--slogans {
+      padding-left: 2rem; } }
+  @media (max-width: 25.06em) {
+    .signin--slogans {
+      padding-left: 1rem;
+      width: 13rem; } }
 
 .signup {
   box-shadow: none;
@@ -921,9 +955,6 @@ e,'s are considered best option for media queries
     color: #22CFB1;
     font-size: 6rem; }
 
-.typed-logo {
-  background-color: blue; }
-
 .slideout {
   padding-top: 1.6rem;
   background-color: #2d2d2d; }
@@ -938,6 +969,7 @@ e,'s are considered best option for media queries
     margin: 5px 2rem; }
   .slideout--title {
     width: 12rem;
+    background-color: black;
     color: white;
     font-size: 3rem;
     height: 6rem;
@@ -1021,7 +1053,7 @@ e,'s are considered best option for media queries
       margin: 0;
       height: 4rem;
       background-color: #2d2d2d;
-      width: 50rem; } }
+      width: 101%; } }
   .sidebar-min-links p {
     display: flex;
     justify-content: center;
@@ -1074,34 +1106,42 @@ e,'s are considered best option for media queries
   border-bottom: 0.3px solid #d2d2d2; }
   .reminder-nav-title {
     height: 4%;
-    font-size: 3rem;
+    font-size: 1.6rem;
     margin: 2rem 1rem; }
 
 .reminder {
   display: flex;
   width: 100%; }
-  .reminder-main {
-    background-color: #2d2d2d;
-    border: solid #22cfb1 1px;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin: 8rem auto;
-    width: 100%;
-    min-width: 300px;
-    height: 100%;
+  .reminder-navigation {
     display: flex;
-    padding: 2rem 2rem;
-    box-shadow: 0px 2px 5px #7c7c7c; }
-    @media (max-width: 56.25em) {
-      .reminder-main {
-        flex-direction: column; } }
-  .reminder-form_container {
+    height: 6rem;
+    min-height: 6rem;
+    background-color: #3c3c3c;
+    color: white; }
+    .reminder-navigation p {
+      margin-top: 1rem; }
+  .reminder-container {
     width: 100%; }
+  .reminder-form_container {
+    margin-top: 10rem;
+    width: 100%; }
+  .reminder-radios_menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin: -1rem 0 1rem 0;
+    height: 10rem; }
+  .reminder-radios {
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+    flex-direction: column; }
+  .reminder-select {
+    display: flex; }
 
 .reminderform {
-  height: 80%;
+  height: 100%;
   width: 100%;
   max-width: 350px;
   display: flex;
@@ -1135,17 +1175,31 @@ e,'s are considered best option for media queries
     padding: 1rem;
     background-color: #E86C62;
     border: solid grey 1px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px #7c7c7c; }
+    border-radius: 5px; }
 
-.calendar {
-  margin: auto; }
-  .calendar-box {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    min-width: 300px;
-    height: 55%; }
+.calendar_header {
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+  height: 7rem;
+  font-size: 2rem;
+  align-items: center;
+  text-align: center; }
+
+.reminder-calendar {
+  width: 90%;
+  height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.fa.arrow.left.remind {
+  font-size: 4rem; }
+
+.fa-arrow-left {
+  font-size: 3rem;
+  margin-bottom: 1.5rem; }
 
 .settings {
   background-color: #ffffff;

@@ -30,9 +30,9 @@ class Signup extends Component {
           <div className="signup-imgbox">
             <p className="signup--img" />
             <p className="signup-headline">
-              <span className="signup-headline2">
+              {/* <span className="signup-headline2">
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              </span>
+              </span> */}
             </p>
             <p className="signin--form_notmember" style={{ color: 'color: rgb(78, 65, 65)' }}>
               Alread have an account ? <br />{' '}
@@ -43,11 +43,16 @@ class Signup extends Component {
             </p>
           </div>
           <div className="signup--container">
-            <h1 className="signup--title">
-              payMe
-              <span className="signup--dot">.</span>
-              <br />
-            </h1>
+            <div className="typed-logo">
+              <h1 className="signin--titles">
+                giveMe
+                <span className="slideout--dot">
+                .
+                </span>
+                <br />
+                <h1 className="signin--slogans">myMoney</h1>
+              </h1>
+            </div>
             {/* <h1 className="signup--header">Sign Up</h1> */}
             <h3 style={{ color: 'red' }}>{this.props.error}</h3>
             <form className="signup--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
