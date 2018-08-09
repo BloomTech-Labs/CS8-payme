@@ -1108,8 +1108,7 @@ e,'s are considered best option for media queries
     height: 80%;
     flex-direction: column; }
   .reminder-select {
-    display: flex;
-    justify-content: space-between; }
+    display: flex; }
 
 .reminderform {
   height: 100%;
