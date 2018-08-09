@@ -46,7 +46,7 @@ class Sidebar extends Component {
   render() {
     const isDesktop = this.state.isDesktop;
     let theme;
-    console.log(this.props.theme);
+    // console.log(this.props.theme);
     if (this.props.theme) {
       theme = {
         background: this.props.theme,

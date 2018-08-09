@@ -43,26 +43,26 @@ const Datainvoice = SortableElement(props => {
               return (
                 <div key={i}>
                   {/* {r.invoiceId === props.id ? ( */}
-                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                        {r.remind.toUpperCase()}
-                      </p>
-                      {console.log(r)}
-                      {r.isEmail ? (
-                        <i
-                          className="fas fa-envelope-open fa-fw"
-                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                        />
-                      ) : (
-                        <i
-                          className="fas fa-mobile-alt"
-                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                        />
-                      )}
-                      <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
-                        <i className="fa fa-bell-slash" />
-                      </button>
-                    </div>
+                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
+                      {r.remind.toUpperCase()}
+                    </p>
+                    {/* {console.log(r)} */}
+                    {r.isEmail ? (
+                      <i
+                        className="fas fa-envelope-open fa-fw"
+                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                      />
+                    ) : (
+                      <i
+                        className="fas fa-mobile-alt"
+                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                      />
+                    )}
+                    <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
+                      <i className="fa fa-bell-slash" />
+                    </button>
+                  </div>
                   {/* ) : null} */}
                 </div>
               );
@@ -121,37 +121,37 @@ const Datainvoice = SortableElement(props => {
         </div>
         <div className="invoice-list-box">
           <div className="invoice-list-reminder">
-            {console.log(props.reminders)}
+            {/* {console.log(props.reminders)} */}
             {Array.isArray(props.reminders)
               ? props.reminders.map((r, i) => {
                 return (
                   <div key={i}>
                     {/* {console.log(r.invoiceId, props.id)} */}
                     {/* {r.invoiceId === props.id ? ( */}
-                      <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                          {r.remind.toUpperCase()}
-                        </p>
-                        {console.log(r)}
-                        {r.isEmail ? (
-                          <i
-                            className="fas fa-envelope-open fa-fw"
-                            style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                          />
-                        ) : (
-                          <i
-                            className="fas fa-mobile-alt"
-                            style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                          />
-                        )}
-                        <button
-                          type="submit"
-                          onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })
-                            }
-                        >
-                          <i className="fa fa-bell-slash" />
-                        </button>
-                      </div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
+                        {r.remind.toUpperCase()}
+                      </p>
+                      {/* {console.log(r)} */}
+                      {r.isEmail ? (
+                        <i
+                          className="fas fa-envelope-open fa-fw"
+                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                        />
+                      ) : (
+                        <i
+                          className="fas fa-mobile-alt"
+                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                        />
+                      )}
+                      <button
+                        type="submit"
+                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })
+                          }
+                      >
+                        <i className="fa fa-bell-slash" />
+                      </button>
+                    </div>
                     {/* ) : null} */}
                   </div>
                 );
