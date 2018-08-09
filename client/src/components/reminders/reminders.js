@@ -11,13 +11,14 @@ class Reminders extends Component {
   state = {
     reminder: {
       id: null,
-      remind: '',
+      remind: 'weekly',
       message: '',
       rPhone: '',
       email: '',
       name: '',
       amount: null,
       isEmail: false,
+      company: '',
     },
     date: new Date(),
     selected: false,
@@ -87,12 +88,13 @@ class Reminders extends Component {
                   remind={reminder.remind}
                   isEmail={reminder.isEmail}
                   invoices={invoices}
-                  getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
+                  getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
                     id,
                     rPhone: phone,
                     name,
                     amount,
                     email,
+                    company,
                   })
                   }
                   formData={reminder}
