@@ -9,8 +9,11 @@ const ReminderForm = props => {
   return (
     <div className="reminderform">
       <div className="reminderform-drop">
-        <h1>Invoices:</h1>
-        <Dropdown
+        {props.dropdown ? 
+        <React.Fragment>
+          <p onClick={() => props.togCalendar('cal')}><i  style={{marginLeft: '40rem', cursor: 'pointer'}}className="fas fa-arrow-left fa-flip-horizontal fa-fw" /></p>
+          <h1>Select An Invoice</h1>
+          <Dropdown
           className="dropdown"
           placeholder="Choose invoice by name"
           // closeOnChange
@@ -39,8 +42,12 @@ const ReminderForm = props => {
             );
           })}
         />
+        </React.Fragment> 
+        : null }
       </div>
-      <div className="reminder-radios_menu">
+      {props.cmessage ?
+      <React.Fragment> 
+        <div className="reminder-radios_menu">
         <div className="reminder-radios">
           <div className="reminder-select">
             <label>Sms</label>
@@ -111,6 +118,8 @@ const ReminderForm = props => {
           </button>
         </div>
       </div>
+    </React.Fragment>
+        : null }
     </div>
   );
 };

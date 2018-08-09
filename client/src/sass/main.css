@@ -1100,27 +1100,21 @@ e,'s are considered best option for media queries
   border-bottom: 0.3px solid #d2d2d2; }
   .reminder-nav-title {
     height: 4%;
-    font-size: 3rem;
+    font-size: 1.6rem;
     margin: 2rem 1rem; }
 
 .reminder {
   display: flex;
   width: 100%; }
-  .reminder-main {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin: 8rem auto;
-    width: 100%;
-    min-width: 300px;
-    height: 100%;
+  .reminder-navigation {
     display: flex;
-    padding: 2rem 2rem; }
-    @media (max-width: 56.25em) {
-      .reminder-main {
-        flex-direction: column; } }
-  .reminder-form_container {
+    height: 6rem;
+    min-height: 6rem;
+    background-color: #3c3c3c;
+    color: white; }
+    .reminder-navigation p {
+      margin-top: 1rem; }
+  .reminder-container {
     width: 100%; }
   .reminder-radios_menu {
     width: 100%;
@@ -1174,14 +1168,29 @@ e,'s are considered best option for media queries
     border: solid grey 1px;
     border-radius: 5px; }
 
-.calendar {
-  margin: auto; }
-  .calendar-box {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    min-width: 300px;
-    height: 55%; }
+.calendar_header {
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+  height: 7rem;
+  font-size: 2rem;
+  align-items: center;
+  text-align: center; }
+
+.reminder-calendar {
+  width: 90%;
+  height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.fa.arrow.left.remind {
+  font-size: 4rem; }
+
+.fa-arrow-left {
+  font-size: 4rem;
+  margin-bottom: 1.5rem; }
 
 .settings {
   background-color: #ffffff;
