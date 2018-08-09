@@ -24,7 +24,13 @@ const ReminderForm = props => {
                   className={props.selected ? 'dropdown-select' : null}
                   onClick={() => {
                     props.onSelect();
-                    props.getInvoice(invoice._id, invoice.phone.number, invoice.clientName);
+                    props.getInvoice(
+                      invoice._id,
+                      invoice.phone.number,
+                      invoice.clientName,
+                      invoice.totalAmount,
+                      invoice.email.address,
+                    );
                   }}
                 >
                   {invoice.clientName}
@@ -34,7 +40,57 @@ const ReminderForm = props => {
           })}
         />
       </div>
-
+      <div className="reminder-radios_menu">
+        <div className="reminder-radios">
+          <div className="reminder-select">
+            <label>Sms</label>
+            <input
+              type="radio"
+              value="false"
+              checked={props.isEmail === 'false' || props.isEmail === false}
+              onChange={props.handleEmail}
+            />
+          </div>
+          <div className="reminder-select">
+            <label>Email</label>
+            <input
+              type="radio"
+              value="true"
+              checked={props.isEmail === 'true'}
+              onChange={props.handleEmail}
+            />
+          </div>
+        </div>
+        <div className="reminder-radios">
+          <div className="reminder-select">
+            <label>Daily</label>
+            <input
+              type="radio"
+              value="daily"
+              checked={props.remind === 'daily'}
+              onChange={props.handleRemind}
+            />
+          </div>
+          <div>
+            <label>Weekly</label>
+            <input
+              type="radio"
+              value="weekly"
+              checked={props.remind === 'weekly' || props.remind === ''}
+              onChange={props.handleRemind}
+            />
+          </div>
+          <div>
+            <label>Monthy</label>
+            <input
+              type="radio"
+              value="monthly"
+              checked={props.remind === 'monthly'}
+              onChange={props.handleRemind}
+            />
+          </div>
+        </div>
+      </div>
       <div className="reminderform-message">
         <h1>Custom message:</h1>
         <textarea
@@ -42,6 +98,7 @@ const ReminderForm = props => {
           className="reminderform-message-input"
           onChange={props.handleMessage}
         />
+
         <div className="addreminder">
           <button
             className="addreminder-button connect-stripe_button"
@@ -62,42 +119,3 @@ export default connect(
   null,
   { addReminder },
 )(ReminderForm);
-
-// <div>
-//   <form className="reminderform-radio">
-//     <div>
-//       <label>
-//         <input
-//           type="radio"
-//           value="daily"
-//           checked={props.option === 'daily'}
-//           onChange={props.handleRadio}
-//         />
-//         Daily
-//             </label>
-//     </div>
-//     <div>
-//       <label>
-//         <input
-//           type="radio"
-//           value="weekly"
-//           checked={props.option === 'weekly'}
-//           onChange={props.handleRadio}
-//         />
-//         Weekly
-//             </label>
-//     </div>
-//     <div>
-//       <label>
-//         <input
-//           type="radio"
-//           value="monthly"
-//           checked={props.option === 'monthly'}
-//           onChange={props.handleRadio}
-//         />
-//         Monthy
-//             </label>
-//     </div>
-//   </form>
-
-// </div>

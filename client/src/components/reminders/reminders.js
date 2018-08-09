@@ -11,9 +11,13 @@ class Reminders extends Component {
   state = {
     reminder: {
       id: null,
-      option: '',
+      remind: '',
       message: '',
       rPhone: '',
+      email: '',
+      name: '',
+      amount: null,
+      isEmail: false,
     },
     date: new Date(),
     selected: false,
@@ -28,19 +32,21 @@ class Reminders extends Component {
 
   onChange = date => this.setState({ date });
 
-  handleInvoice(id, phone) {
+  handleInvoice(id, phone, name, amount) {
     this.setState(state => ({
       ...state,
       reminder: {
         ...state.reminder,
         ...id,
         ...phone,
+        ...name,
+        ...amount,
       },
     }));
-    // this.setState({ selected: !this.state.selected });
   }
 
   handleChange(e) {
+    // console.log(e.isEmail);
     this.setState(state => ({
       ...state,
       reminder: {
@@ -76,10 +82,19 @@ class Reminders extends Component {
               <div className="reminder-form_container">
                 <RemindForm
                   handleMessage={e => this.handleChange({ message: e.target.value })}
-                  handleRadio={e => this.handleChange({ option: e.target.value })}
-                  option={reminder.option}
+                  handleEmail={e => this.handleChange({ isEmail: e.target.value })}
+                  handleRemind={e => this.handleChange({ remind: e.target.value })}
+                  remind={reminder.remind}
+                  isEmail={reminder.isEmail}
                   invoices={invoices}
-                  getInvoice={(id, phone) => this.handleInvoice({ id, rPhone: phone })}
+                  getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
+                    id,
+                    rPhone: phone,
+                    name,
+                    amount,
+                    email,
+                  })
+                  }
                   formData={reminder}
                   history={this.props.history}
                   selected={this.state.selected}

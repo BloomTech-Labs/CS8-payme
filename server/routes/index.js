@@ -55,9 +55,9 @@ module.exports = app => {
   // EMAIL ROUTES
   app.post('/api/email', restricted, sendEmail);
   // SMS ROUTES
-  app.get('/api/sms/', restricted, allReminders);
+  app.get('/api/sms', restricted, allReminders);
   app.post('/api/sms/:_id', restricted, createReminder);
-  app.delete('/api/deletesms/:id', restricted, deleteReminder);
+  app.delete('/api/deletesms', restricted, deleteReminder);
   app.get('/api/getsms/:id', restricted, getReminder);
   // STRIPE ROUTES
   app.post('/api/charge', restricted, stripeCharge);
