@@ -15,6 +15,7 @@ const host = process.env.HOST;
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
   name: String,
+  company: String,
   email: String,
   phoneNumber: String,
   message: String,
