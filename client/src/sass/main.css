@@ -725,11 +725,6 @@ e,'s are considered best option for media queries
       .signin--box {
         min-width: 100%;
         height: 75rem; } }
-    .signin--box--title {
-      color: black;
-      border-right: 0.3px solid rgba(255, 255, 255, 0.66);
-      font-size: 6rem;
-      height: 6rem; }
     .signin--box--dot {
       color: #22CFB1;
       font-size: 6rem; }
@@ -811,6 +806,32 @@ e,'s are considered best option for media queries
     @media (max-width: 56.25em) {
       .signin--form_notmember {
         width: 25rem; } }
+
+.signin--titles {
+  font-size: 5rem;
+  height: 6rem;
+  color: #2d2d2d; }
+  @media (max-width: 56.25em) {
+    .signin--titles {
+      width: 19rem;
+      padding-left: 2rem; } }
+  @media (max-width: 25.06em) {
+    .signin--titles {
+      padding-left: 1rem;
+      width: 13rem; } }
+
+.signin--slogans {
+  margin-top: -1rem;
+  margin-left: 8rem;
+  color: #E86C62;
+  font-size: 1.3rem; }
+  @media (max-width: 56.25em) {
+    .signin--slogans {
+      padding-left: 2rem; } }
+  @media (max-width: 25.06em) {
+    .signin--slogans {
+      padding-left: 1rem;
+      width: 13rem; } }
 
 .signup {
   box-shadow: none;
@@ -928,9 +949,6 @@ e,'s are considered best option for media queries
     color: #22CFB1;
     font-size: 6rem; }
 
-.typed-logo {
-  background-color: blue; }
-
 .slideout {
   padding-top: 1.6rem;
   background-color: #2d2d2d; }
@@ -945,6 +963,7 @@ e,'s are considered best option for media queries
     margin: 5px 2rem; }
   .slideout--title {
     width: 12rem;
+    background-color: black;
     color: white;
     font-size: 3rem;
     height: 6rem;

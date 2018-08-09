@@ -37,11 +37,16 @@ class Signin extends Component {
             </p>
           </div>
           <div className="signin--box">
-            <h1 className="signin--box--title">
-              payMe
-              <span className="signin--box--dot">.</span>
+          <div className="typed-logo">
+            <h1 className="signin--titles">
+              giveMe
+              <span className="slideout--dot">
+              .
+              </span>
               <br />
+              <h1 className="signin--slogans">myMoney</h1>
             </h1>
+          </div>
             {/* <h1 className="signin--header">Sign In</h1> */}
             <h3 style={{ color: 'red' }}>{this.props.message}</h3>
             <form className="signin--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
