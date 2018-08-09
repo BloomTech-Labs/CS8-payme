@@ -50,6 +50,10 @@ const User = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    recovery: {
+      code: Number,
+      exp: Number,
+    },
     invoices: [{ type: ObjectId, ref: 'Invoice' }],
   },
   {
