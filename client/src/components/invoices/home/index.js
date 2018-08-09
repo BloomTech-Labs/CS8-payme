@@ -170,7 +170,7 @@ class Invoices extends Component {
               onChange={this.updateSearch}
             />
             <div className="invoice-search-icon">
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </div>
           </div>
             <hr className="navigation-line" />
