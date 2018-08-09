@@ -15,7 +15,7 @@ const createReminder = (req, res) => {
   console.log(req.body);
   const {
     remind,
-    id,
+    invoiceId,
     rPhone,
     message,
     isEmail,
@@ -26,7 +26,7 @@ const createReminder = (req, res) => {
   } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
-    invoiceId: id,
+    invoiceId,
     name,
     phoneNumber: rPhone,
     email,

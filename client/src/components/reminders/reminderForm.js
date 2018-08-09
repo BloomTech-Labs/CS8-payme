@@ -33,6 +33,7 @@ const ReminderForm = props => {
                       invoice.clientName,
                       invoice.totalAmount,
                       invoice.email.address,
+                      invoice.clientName,
                     );
                   }}
                 >
