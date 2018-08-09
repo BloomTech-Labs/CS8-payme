@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
-import {ToastContainer, ToastStore} from 'react-toasts'
+import { ToastContainer, ToastStore } from 'react-toasts';
 
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
@@ -86,16 +86,16 @@ class Invoices extends Component {
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
     if (!this.props.admin.stripe || !this.props.admin.stripe.code) {
-      ToastStore.warning(`Please connect your accout to \nstripe before adding an invoice`, 3000)
-      return setTimeout(() => this.props.history.push('/billing'), 3000)
-    } else if (payment < 0 || this.props.admin.invoiceCredits > 0) {
+      ToastStore.warning('Please connect your accout to \nstripe before adding an invoice', 3000);
+      return setTimeout(() => this.props.history.push('/billing'), 3000);
+    } if (payment < 0 || this.props.admin.invoiceCredits > 0) {
       this.props.history.push('/addinvoice');
     } else if (this.props.admin.invoices.length === 0) {
-      ToastStore.success('Enjoy your free invoice experience!', 3000)
-      return setTimeout(() => this.props.history.push('/addinvoice'), 3000)
+      ToastStore.success('Enjoy your free invoice experience!', 3000);
+      return setTimeout(() => this.props.history.push('/addinvoice'), 3000);
     } else {
-      ToastStore.warning(`Please purchase a subscription or invoice credit.`, 3000)
-      return setTimeout(() => this.props.history.push('billing'), 3000)
+      ToastStore.warning('Please purchase a subscription or invoice credit.', 3000);
+      return setTimeout(() => this.props.history.push('billing'), 3000);
     }
   };
 
@@ -159,34 +159,39 @@ class Invoices extends Component {
       <div className="invoice">
         <Sidebar />
         <div className="invoice-main">
-        <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore} />
-        <div className="invoice-navigation">
-          <div className="invoice-search">
-            <input
-              type="text"
-              placeholder="Search Invoices"
-              className="invoice-search_input"
-              value={this.state.search}
-              onChange={this.updateSearch}
-            />
-            <div className="invoice-search-icon">
-              <i className="fas fa-search"></i>
+          <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore} />
+          <div className="invoice-navigation">
+            <div className="invoice-search">
+              <input
+                type="text"
+                placeholder="Search Invoices"
+                className="invoice-search_input"
+                value={this.state.search}
+                onChange={this.updateSearch}
+              />
+              <div className="invoice-search-icon">
+                <i className="fas fa-search" />
+              </div>
             </div>
-          </div>
             <hr className="navigation-line" />
             <div onClick={this.addInvoiceCheck}>
               <p className="invoice-new">
-                Add Invoice<i className="fas fa-plus fa-fw" />
+                Add Invoice
+                <i className="fas fa-plus fa-fw" />
               </p>
             </div>
             <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', boxShadow: 'none'}}>
+            <div className="ui compact menu" style={{ border: 'none', boxShadow: 'none' }}>
               <div className="ui simple dropdown item" style={styles}>
                 Sort
                 <i className="fas fa-sort fa-fw" />
                 <div className="menu" style={{ fontSize: '1.3rem' }}>
-                  <div className="item" onClick={() => this.sortData('amount')}>Total Amount</div>
-                  <div className="item" onClick={() => this.sortData('clientName')}>ClientName</div>
+                  <div className="item" onClick={() => this.sortData('amount')}>
+                    Total Amount
+                  </div>
+                  <div className="item" onClick={() => this.sortData('clientName')}>
+                    ClientName
+                  </div>
                 </div>
               </div>
             </div>

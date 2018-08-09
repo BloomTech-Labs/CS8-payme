@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
-import { toggleSidebar, changeTheme } from '../../actions/invoices';
+import {
+  toggleSidebar,
+  // changeTheme,
+} from '../../actions/invoices';
 import Nico from './Nico.jpg';
 
 const styles = {
@@ -11,9 +14,9 @@ const styles = {
   isDesktop: false,
 };
 
-const theme = {
-  background: 'white',
-};
+// const theme = {
+//   background: 'white',
+// };
 
 class Sidebar extends Component {
   state = {
