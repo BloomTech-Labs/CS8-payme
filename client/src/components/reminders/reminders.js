@@ -82,27 +82,26 @@ class Reminders extends Component {
         <Sidebar />
         <div className="reminder-container">
           <div className="reminder-navigation">
-          {reminder.name ?
-            <p style={{marginRight: '5rem', marginLeft: '5rem'}}>CurrentInvoice:
-              <span style={{ color: '#22CFB1' }}>
-                {reminder.name}
-              </span>
-            </p>
-          : null }
-          {this.state.calendar || this.state.Custmessage ?
-          <div>
-            <p>
-              Date Selected:
-              <span style={{color: '#22CFB1'}}>
-                {this.state.date.toString().slice(0, 25)}
-              </span>
-            </p>
+            {reminder.name ? (
+              <p style={{marginRight: '5rem', marginLeft: '5rem'}}>CurrentInvoice:
+                <span style={{ color: '#22CFB1' }}>
+                  {reminder.name}
+                </span>
+              </p>
+            ) : null }
+            {this.state.calendar || this.state.Custmessage ? (
+              <div>
+                <p>
+                  Date Selected:
+                  <span style={{color: '#22CFB1'}}>
+                    {this.state.date.toString().slice(0, 25)}
+                  </span>
+                </p>
+              </div>
+            ): null }
           </div>
-          : null }
-          </div>
-          <div className="reminder-layout">
-            {/* <div className="reminder-main"> */}
-            {this.state.calendar ?
+          {/* <div className="reminder-layout"> */}
+            {this.state.calendar ? (
               <div className="reminder-calendar">
                 <div className="calendar_header">
                   <p> Select desired date</p>
@@ -115,34 +114,33 @@ class Reminders extends Component {
                   value={this.state.date}
                 />
               </div>
-            : null }
-              <div className="reminder-form_container">
-                <RemindForm
-                  handleMessage={e => this.handleChange({ message: e.target.value })}
-                  handleEmail={e => this.handleChange({ isEmail: e.target.value })}
-                  handleRemind={e => this.handleChange({ remind: e.target.value })}
-                  remind={reminder.remind}
-                  isEmail={reminder.isEmail}
-                  invoices={invoices}
-                  getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
-                    id,
-                    rPhone: phone,
-                    name,
-                    amount,
-                    email,
-                  })
-                  }
-                  formData={reminder}
-                  history={this.props.history}
-                  selected={this.state.selected}
-                  onSelect={this.onSelect}
-                  togCalendar={this.toggle}
-                  dropdown={this.state.dropdown}
-                  cmessage={this.state.Custmessage}
-                />
-              </div>
-            {/* </div> */}
-          </div>
+            ) : null }
+            <div className="reminder-form_container">
+              <RemindForm
+                handleMessage={e => this.handleChange({ message: e.target.value })}
+                handleEmail={e => this.handleChange({ isEmail: e.target.value })}
+                handleRemind={e => this.handleChange({ remind: e.target.value })}
+                remind={reminder.remind}
+                isEmail={reminder.isEmail}
+                invoices={invoices}
+                getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
+                  id,
+                  rPhone: phone,
+                  name,
+                  amount,
+                  email,
+                })
+                }
+                formData={reminder}
+                history={this.props.history}
+                selected={this.state.selected}
+                onSelect={this.onSelect}
+                togCalendar={this.toggle}
+                dropdown={this.state.dropdown}
+                cmessage={this.state.Custmessage}
+              />
+            </div>
+          {/* </div> */}
         </div>
       </div>
     );

@@ -1116,13 +1116,16 @@ e,'s are considered best option for media queries
       margin-top: 1rem; }
   .reminder-container {
     width: 100%; }
+  .reminder-form_container {
+    margin-top: 10rem;
+    width: 100%; }
   .reminder-radios_menu {
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
     margin: -1rem 0 1rem 0;
-    height: 100px; }
+    height: 10rem; }
   .reminder-radios {
     display: flex;
     justify-content: space-between;
@@ -1189,7 +1192,7 @@ e,'s are considered best option for media queries
   font-size: 4rem; }
 
 .fa-arrow-left {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem; }
 
 .settings {
