@@ -10,13 +10,18 @@
     }
 
     .background {
-      background: url("https://i.imgur.com/a4mPupi.jpg") no-repeat top;
+      display: flex;
+      background: url("emailg3m.jpg") no-repeat top;
       height: 100%;
+      flex-wrap: wrap;
     }
 
     .wrap {
       position: absolute;
       text-align: center;
+      background: wheat;
+      border-radius: 7%;
+      height: 40rem;
       width: 25%;
       top: 30%;
       right: 50%;
@@ -69,11 +74,9 @@
           <br> simply click below...</h3>
       </div>
       <div class="button">
-        <button id="feat">
-          <a href="{{URL}}/payinvoice/{{invoice}}">
-            <b>Pay Invoice</b>
-          </a>
-        </button>
+        <a href="{{URL}}/payinvoice/{{invoice}}">
+          <button id="feat"><b>Pay Invoice</b></button>
+        </a>
       </div>
     </div>
   </div>
