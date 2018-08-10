@@ -10,7 +10,7 @@ import RemindForm from './reminderForm';
 class Reminders extends Component {
   state = {
     reminder: {
-      id: null,
+      invoiceId: '',
       remind: 'weekly',
       message: '',
       rPhone: '',
@@ -126,12 +126,13 @@ class Reminders extends Component {
               remind={reminder.remind}
               isEmail={reminder.isEmail}
               invoices={invoices}
-              getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
-                id,
+              getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
+                invoiceId: id,
                 rPhone: phone,
                 name,
                 amount,
                 email,
+                company,
               })
               }
               formData={reminder}
