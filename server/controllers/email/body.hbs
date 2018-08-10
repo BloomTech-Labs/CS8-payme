@@ -10,20 +10,26 @@
     }
 
     .background {
-      background: url("https://i.imgur.com/a4mPupi.jpg") no-repeat top;
+      display: flex;
+      background: url("emailg3m.jpg") no-repeat top;
       height: 100%;
+      flex-wrap: wrap;
     }
 
     .wrap {
       position: absolute;
       text-align: center;
+      background: white;
+      border-radius: 30px;
+      height: 40rem;
       width: 25%;
-      top: 30%;
-      right: 50%;
+      min-width: 320px;
+      top: 20%;
+      left: 20%;
     }
 
     #feat {
-      background: #22CFB1;
+      background: #E86C62;
       font-size: x-large;
       width: 65%;
       padding: 4%;
@@ -31,7 +37,7 @@
     }
 
     #feat:hover {
-      background: #15959F;
+      background: #22CFB1;
     }
 
     #money {
@@ -41,6 +47,14 @@
     a {
       text-decoration: none;
       color: white;
+    }
+
+    b {
+      color: white;
+    }
+
+    h2 {
+      font-weight: 100;
     }
   </style>
 </head>
@@ -54,7 +68,7 @@
       </div>
       <br>
       <div class="message">
-        <h2>&nbsp;Our records are showing
+        <h2>Our records are showing
           <br> that you have an outstanding
           <br> invoice with {{company}}
           <br> in the amount of:</h2>
@@ -69,11 +83,11 @@
           <br> simply click below...</h3>
       </div>
       <div class="button">
-        <button id="feat">
-          <a href="{{URL}}/payinvoice/{{invoice}}">
+        <a href="{{URL}}/payinvoice/{{invoice}}">
+          <button id="feat">
             <b>Pay Invoice</b>
-          </a>
-        </button>
+          </button>
+        </a>
       </div>
     </div>
   </div>

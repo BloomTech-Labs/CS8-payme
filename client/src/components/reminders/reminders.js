@@ -10,7 +10,7 @@ import RemindForm from './reminderForm';
 class Reminders extends Component {
   state = {
     reminder: {
-      id: null,
+      invoiceId: '',
       remind: 'weekly',
       message: '',
       rPhone: '',
@@ -50,7 +50,6 @@ class Reminders extends Component {
   }
 
   handleChange(e) {
-    // console.log(e.isEmail);
     this.setState(state => ({
       ...state,
       reminder: {
@@ -100,7 +99,6 @@ class Reminders extends Component {
               </div>
             ) : null}
           </div>
-          {/* <div className="reminder-layout"> */}
           {this.state.calendar ? (
             <div className="reminder-calendar">
               <div className="calendar_header">
@@ -128,12 +126,13 @@ class Reminders extends Component {
               remind={reminder.remind}
               isEmail={reminder.isEmail}
               invoices={invoices}
-              getInvoice={(id, phone, name, amount, email) => this.handleInvoice({
-                id,
+              getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
+                invoiceId: id,
                 rPhone: phone,
                 name,
                 amount,
                 email,
+                company,
               })
               }
               formData={reminder}
@@ -145,7 +144,6 @@ class Reminders extends Component {
               cmessage={this.state.Custmessage}
             />
           </div>
-          {/* </div> */}
         </div>
       </div>
     );
