@@ -174,7 +174,7 @@
     display: flex;
     justify-content: space-around;
     // border: 0.3px solid rgb(210, 210, 210);
-    height: 6rem;
+
     min-height: 6rem;
     background-color: rgb(60, 60, 60);
     color: white;
@@ -184,11 +184,11 @@
     }
 
     &_container {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      display: flex;
+      // background-color: blue;
       width: 25%;
-      margin: 0.5rem;
+      // margin: 0.5rem;
+      margin-top: 1.5rem;
       border: '1rem solid black';
 
       &_clickable {
@@ -202,12 +202,13 @@
     }
 
     &_data_title {
-      text-decoration: underline;
-      margin: auto;
+      margin-top: 1rem;
+
+      // text-decoration: underline;
     }
 
     &_data {
-      margin: auto;
+      color: $color-primary;
     }
   }
 

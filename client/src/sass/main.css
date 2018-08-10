@@ -1370,7 +1370,6 @@ e,'s are considered best option for media queries
   .billing-navigation {
     display: flex;
     justify-content: space-around;
-    height: 6rem;
     min-height: 6rem;
     background-color: #3c3c3c;
     color: white; }
@@ -1378,11 +1377,9 @@ e,'s are considered best option for media queries
       .billing-navigation {
         height: auto; } }
     .billing-navigation_container {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      display: flex;
       width: 25%;
-      margin: 0.5rem;
+      margin-top: 1.5rem;
       border: '1rem solid black'; }
       .billing-navigation_container_clickable {
         height: 100%;
@@ -1391,10 +1388,9 @@ e,'s are considered best option for media queries
         .billing-navigation_container_clickable:hover {
           color: #22CFB1; }
     .billing-navigation_data_title {
-      text-decoration: underline;
-      margin: auto; }
+      margin-top: 1rem; }
     .billing-navigation_data {
-      margin: auto; }
+      color: #22CFB1; }
   .billing-title {
     font-size: 6rem; }
   .billing-radio {

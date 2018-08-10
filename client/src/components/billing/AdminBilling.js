@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import { Elements, StripeProvider } from 'react-stripe-elements';
 import StripeCheckout from 'react-stripe-checkout';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { ToastContainer, ToastStore } from 'react-toasts';
@@ -38,7 +39,7 @@ class AdminBilling extends Component {
 
   render() {
     console.log(this.getSub());
-    return this.props.admin.stripe && !this.props.admin.stripe.code ? (
+    return false ? (
       <ConnectStripe />
     ) : (
       <div className="billing-window">
@@ -91,9 +92,33 @@ class AdminBilling extends Component {
                 />
               </label>
             </div>
+            <div className="billing-options">
+          <div className="billing-standard">
+            <div className="corner-ribbon top-left sticky red shadow">Popular</div>
+            <h2 className="billing-standard_package">Basic</h2>
+            <p className="billing-standard_price">$1.99<br /> <span> per invoice</span></p>
+            <p className="billing-standard_label">
+              Don't need a subscription? Easily use our service on a per invoice basis. $1.99 per
+              invoice will include unlimited reminders for 1 invoice.
+            </p>
+              <div>{this.checkoutButton()}</div>
+          </div>
+          <div className="billing-premium">
+            <h2 className="billing-premium_package">Premium</h2>
+            <p className="billing-premium_price">$20 <br /> <span>for a 30 day subscription</span></p>
+            <p className="billing-premium_label" style={{ marginLeft: 15 }}>
+              This will allow an unlimited number of invoices and notifications to be set up until your
+              subscription expires.
+            </p>
+              <button className="billing-premium_button" onClick={() => this.checkTerms()}>Purchase</button>
+          </div>
+        </div>
+            <Link to="/invoices">Not now</Link>
           </div>
         </form>
-        <div className="checkout_button">{this.checkoutButton()}</div>
+        {/* <div className="checkout_button">{this.checkoutButton()}</div> */}
+        {/* <div className="checkout_button">{this.checkoutButton()}</div> */}
+        {/* <div className="checkout_button">{this.checkoutButton()}</div> */}
         {/* <a href={`/stripe/authorize?jwt=${localStorage.getItem('id')}`}>Connect to Stripe</a> */}
       </div>
     );
@@ -109,17 +134,31 @@ class AdminBilling extends Component {
     //     'Active subscription.  Invoice credits are not required, and can not be refunded if purchased.',
     //   );
     // }
-    const buttonStyle = {
-      justifyContent: 'center',
-      display: 'flex',
-      alignItems: 'center',
-      color: 'white',
-      height: '4rem',
-      width: '100%',
-      border: 'none',
-      background: '#E86C62',
-      borderRadius: '.5rem',
-      backgroundImage: 'none',
+    const styles = {
+      creditButton: {
+        fontFamily: 'Lato,"Helvetica Neue",Arial,Helvetica,sans-serif',
+        justifyContent: 'center',
+        display: 'flex',
+        alignItems: 'center',
+        background: 'white',
+        marginLeft: '2.5rem',
+        border: 'none',
+        color: 'black',
+        height: '4rem',
+        width: '20rem',
+      },
+      // subButton: {
+      //   justifyContent: 'center',
+      //   display: 'flex',
+      //   alignItems: 'center',
+      //   color: 'white',
+      //   height: '4rem',
+      //   width: '100%',
+      //   border: 'none',
+      //   background: '#E86C62',
+      //   borderRadius: '.5rem',
+      //   backgroundImage: 'none',
+      // },
     };
     const label = () => {
       if (this.state.type === 'sub') {
@@ -131,8 +170,8 @@ class AdminBilling extends Component {
 
     return (
       <StripeCheckout
-        style={{ ...buttonStyle }}
-        textStyle={{ ...buttonStyle }}
+        style={{ ...styles.creditButton }}
+        textStyle={{ ...styles.creditButton }}
         label={label()}
         name="payMe"
         email={email}

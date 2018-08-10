@@ -22,15 +22,15 @@ class Billing extends Component {
         <div className="billing-container">
           <div className="billing-navigation">
             <div className="billing-navigation_container">
-              <p className="billing-navigation_data_title">Sub Expiration</p>
-              <p className="billing-navigation_data">{this.getSub()}</p>
+              <p className="billing-navigation_data_title">Sub Expiration:</p>
+              <p className="billing-navigation_data"> {this.getSub()}</p>
             </div>
             <div className="billing-navigation_container">
-              <p className="billing-navigation_data_title">Invoice Credits</p>
-              <p className="billing-navigation_data">{this.props.admin.invoiceCredits}</p>
+              <p className="billing-navigation_data_title">Invoice Credits: </p>
+              <p className="billing-navigation_data"> {this.props.admin.invoiceCredits}</p>
             </div>
             <div className="billing-navigation_container">
-              <p className="billing-navigation_data_title">Free Invoice Avaliable</p>
+              <p className="billing-navigation_data_title">Free Invoice Avaliable:</p>
               <p className="billing-navigation_data">
                 {this.props.admin.invoices && this.props.admin.invoices.length === 0 ? 'Yes' : 'No'}
               </p>
