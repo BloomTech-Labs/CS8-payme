@@ -11,7 +11,7 @@ class Reminders extends Component {
   state = {
     reminder: {
       id: null,
-      remind: 'weekly',
+      remind: '',
       message: '',
       rPhone: '',
       email: '',
@@ -33,7 +33,7 @@ class Reminders extends Component {
 
   onChange = date => this.setState({ date });
 
-  handleInvoice(id, phone, name, amount) {
+  handleInvoice(id, phone, name, amount, remind) {
     this.setState(state => ({
       ...state,
       reminder: {
@@ -42,6 +42,7 @@ class Reminders extends Component {
         ...phone,
         ...name,
         ...amount,
+        ...remind,
       },
     }));
   }
@@ -84,17 +85,18 @@ class Reminders extends Component {
                 <RemindForm
                   handleMessage={e => this.handleChange({ message: e.target.value })}
                   handleEmail={e => this.handleChange({ isEmail: e.target.value })}
-                  handleRemind={e => this.handleChange({ remind: e.target.value })}
+                  // handleRemind={e => this.handleChange({ remind: e.target.value })}
                   remind={reminder.remind}
                   isEmail={reminder.isEmail}
                   invoices={invoices}
-                  getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
+                  getInvoice={(id, phone, name, amount, email, company, remind) => this.handleInvoice({
                     id,
                     rPhone: phone,
                     name,
                     amount,
                     email,
                     company,
+                    remind,
                   })
                   }
                   formData={reminder}

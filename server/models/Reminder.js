@@ -24,7 +24,6 @@ const ReminderSchema = new mongoose.Schema({
   },
   remind: {
     type: String,
-    default: 'weekly',
   }, // minute, daily, weekly, monthly
   isEmail: {
     type: Boolean,
