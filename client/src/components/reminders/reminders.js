@@ -11,7 +11,7 @@ class Reminders extends Component {
   state = {
     reminder: {
       id: null,
-      remind: '',
+      remind: 'weekly',
       message: '',
       rPhone: '',
       email: '',
@@ -36,7 +36,7 @@ class Reminders extends Component {
 
   onChange = date => this.setState({ date });
 
-  handleInvoice(id, phone, name, amount, remind) {
+  handleInvoice(id, phone, name, amount) {
     this.setState(state => ({
       ...state,
       reminder: {
@@ -45,13 +45,11 @@ class Reminders extends Component {
         ...phone,
         ...name,
         ...amount,
-        ...remind,
       },
     }));
   }
 
   handleChange(e) {
-    // console.log(e.isEmail);
     this.setState(state => ({
       ...state,
       reminder: {
@@ -91,7 +89,6 @@ class Reminders extends Component {
               </p>
             ) : null}
             {this.state.calendar || this.state.Custmessage ? (
-            <div>
               <div>
                 <p>
                   Date Selected:
@@ -100,33 +97,8 @@ class Reminders extends Component {
                   </span>
                 </p>
               </div>
-              <div className="reminder-form_container">
-                <RemindForm
-                  handleMessage={e => this.handleChange({ message: e.target.value })}
-                  handleEmail={e => this.handleChange({ isEmail: e.target.value })}
-                  // handleRemind={e => this.handleChange({ remind: e.target.value })}
-                  remind={reminder.remind}
-                  isEmail={reminder.isEmail}
-                  invoices={invoices}
-                  getInvoice={(id, phone, name, amount, email, company, remind) => this.handleInvoice({
-                    id,
-                    rPhone: phone,
-                    name,
-                    amount,
-                    email,
-                    company,
-                    remind,
-                  })
-                  }
-                  formData={reminder}
-                  history={this.props.history}
-                  selected={this.state.selected}
-                  onSelect={this.onSelect}
-                />
-              </div>
-            </div>  
             ) : null}
-          {/* <div className="reminder-layout"> */}
+          </div>
           {this.state.calendar ? (
             <div className="reminder-calendar">
               <div className="calendar_header">
@@ -171,7 +143,6 @@ class Reminders extends Component {
               cmessage={this.state.Custmessage}
             />
           </div>
-          {/* </div> */}
         </div>
       </div>
     );
