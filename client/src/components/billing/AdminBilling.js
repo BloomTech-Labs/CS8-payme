@@ -39,7 +39,7 @@ class AdminBilling extends Component {
 
   render() {
     console.log(this.getSub());
-    return false ? (
+    return this.props.admin.stripe && !this.props.admin.stripe.code ? (
       <ConnectStripe />
     ) : (
       <div className="billing-window">
