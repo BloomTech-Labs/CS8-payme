@@ -6,7 +6,6 @@
   display: flex;
   background-color: #ffffff;
   overflow: hidden;
-  height: 120rem;
   margin: 0;
   position: relative;
 
@@ -120,7 +119,7 @@
     cursor: pointer;
     padding: 2rem 2rem;
     justify-content: center;
-    width: 10rem;
+    width: 15rem;
     &:hover {
       color: $color-primary;
     }
@@ -253,7 +252,7 @@
   border: 0.5px solid rgba(255, 255, 255, 0.139);
 }
 .fa-sort {
-  margin-left: 1px;
+  margin-left: 1rem;
   font-size: 2rem;
 }
 
@@ -268,6 +267,13 @@
   }
 }
 
+.fa-plus {
+  margin-left: 1rem;
+}
+
+.fa-eye {
+  margin-left: 1rem;
+}
 .compact {
   font-size: 3rem;
 }

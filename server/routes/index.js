@@ -1,5 +1,6 @@
 const { register } = require('../controllers/user/registerUser');
 const { login, checkToken } = require('../controllers/user/loginUser');
+const { cellCode, checkCode } = require('../controllers/user/codeLogin');
 const { changePassword } = require('../controllers/user/changePassword');
 const { updateStripeInfo } = require('../controllers/user/updateUser');
 
@@ -30,13 +31,6 @@ const {
 const { stripeCharge } = require('../controllers/stripe/stripeCharge');
 const { payInvoice } = require('../controllers/stripe/payInvoice');
 
-function userRequired(req, res, next) {
-  // if (!req.isAuthenticated()) {
-  //   return res.redirect('/');
-  // }
-  next();
-}
-
 module.exports = app => {
   // USER ROUTES
   app.post('/api/register', register);
@@ -44,6 +38,9 @@ module.exports = app => {
   app.get('/api/login', restricted, checkToken);
   app.post('/api/changepassword', restricted, changePassword);
   // app.post('/api/usi', restricted, updateStripeInfo);
+  // Code Based Login
+  app.post('/api/cellcode', cellCode);
+  app.post('/api/checkcode', checkCode);
   // INVOICE ROUTES
   app.post('/api/addinvoice', restricted, addInvoice);
   app.get('/api/invoices', restricted, getAllInvoices);
