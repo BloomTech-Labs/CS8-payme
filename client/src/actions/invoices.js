@@ -65,10 +65,8 @@ export function getAllInvoices() {
 }
 
 export function addInvoice(info, history) {
-  console.log(info.get('totalAmount'));
   const totalAmount = info.get('totalAmount');
   info.set('totalAmount', Number(totalAmount).toFixed(2) * 100);
-  console.log(info.get('totalAmount'));
 
   return dispatch => {
     axios
@@ -77,7 +75,6 @@ export function addInvoice(info, history) {
       })
       .then(res => {
         history.push('/invoices');
-        console.log(res.data);
         dispatch({ type: SUCCESS, payload: 'Added a new invoice' });
       })
       .catch(err => dispatch(authError('Error adding an invoice', err)));
@@ -89,7 +86,6 @@ export function updateInvoice(info, history) {
   info.set('totalAmount', Number(totalAmount).toFixed(2) * 100);
   return (dispatch, getState) => {
     const { number } = getState().invoice.currentInvoice;
-    console.log(info);
     // info.totalAmount = Number(info.totalAmount).toFixed(2) * 100;
 
     axios
