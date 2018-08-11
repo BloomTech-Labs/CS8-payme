@@ -41,7 +41,7 @@ class AddInvoice extends Component {
             />
             <br />
             <input
-              type="number"
+              type="string"
               name="totalAmount"
               className="add-invoice_field"
               placeholder="Total Amount"
