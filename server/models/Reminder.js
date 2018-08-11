@@ -157,7 +157,7 @@ function sendEmailer(reminders) {
         console.log({ error: 'No email found on Invoice.' });
       // setup email data with unicode symbols
       let mailOptions = {
-        from: `${emailusername}`, // sender address
+        from: `"Give Me My Money"${emailusername}`, // sender address
         to: `${reminder.email}`, // list of receivers
         subject: 'You Have An Outstanding Invoice', // Subject line
         template: 'body',
