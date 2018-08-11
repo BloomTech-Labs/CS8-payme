@@ -34,6 +34,7 @@ const ReminderForm = props => {
                       invoice.totalAmount,
                       invoice.email.address,
                       invoice.clientName,
+                      invoice.remind,
                     );
                   }}
                 >
@@ -66,35 +67,6 @@ const ReminderForm = props => {
               value="true"
               checked={props.isEmail === 'true'}
               onChange={props.handleEmail}
-            />
-          </div>
-        </div>
-        <div className="reminder-radios">
-          <div className="reminder-select">
-            <label>Daily</label>
-            <input
-              type="radio"
-              value="daily"
-              checked={props.remind === 'daily'}
-              onChange={props.handleRemind}
-            />
-          </div>
-          <div>
-            <label>Weekly</label>
-            <input
-              type="radio"
-              value="weekly"
-              checked={props.remind === 'weekly' || props.remind === ''}
-              onChange={props.handleRemind}
-            />
-          </div>
-          <div>
-            <label>Monthy</label>
-            <input
-              type="radio"
-              value="monthly"
-              checked={props.remind === 'monthly'}
-              onChange={props.handleRemind}
             />
           </div>
         </div>

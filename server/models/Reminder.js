@@ -96,9 +96,15 @@ function sendNotifications(reminders) {
     console.log('inside sender', reminder);
     let body;
     if (reminder.message) {
-      body = reminder.message;
+      body = `${reminder.message} Link to pay: ${host}/payinvoice/${
+        reminder.invoiceId
+      }`;
     } else {
-      body = `This is a reminder to pay up. You can pay at: `;
+      body = `${
+        reminder.company
+      } is asking for a payment. You can pay at: ${host}/payinvoice/${
+        reminder.invoiceId
+      }`;
     }
     const options = {
       to: `+1 ${reminder.phoneNumber}`,

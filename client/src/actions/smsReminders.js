@@ -24,7 +24,7 @@ export function allReminders() {
 export function addReminder(content, history) {
   return dispatch => {
     axios
-      .post(`/api/sms/${content.id}`, content, {
+      .post(`/api/sms/${content.invoiceId}`, content, {
         headers: {
           Authorization: `bearer ${localStorage.getItem('id')}`,
         },

@@ -3,13 +3,6 @@
 <img src="./giveMe(4).png "/>
 </p>
 
-
-
-
-
-
-
-
 # **Description**
 
 ### Give Me My Money is a subscription based application that allows "Admins" to upload invoices, and set automatic email/sms messages to be sent to their "Client". The client can click the link in the email/sms and be directed to a page where they can easily and without barriers make the required payment to the admin.
@@ -46,7 +39,6 @@
 - Clients can click on the link in the message and will be directed to a page where they can view the PDF invoice that the Admin has uploaded. Clients do not have to log in. If they have an issue with the amount or the content of the PDF, they can click the contact's name and send them an email directly. The client can also click the pay button to enter their credit card info and pay the invoice.
 
 - Invoices paid by the client are automatically deposited into the admin's stripe account. A 5% fee is taken from the total invoice amount to cover stripe credit card fees.
-<<<<<<< HEAD
 
 # **Deployed Site**
 
@@ -102,55 +94,56 @@ stripe: {
   {
     timestamps: true,
   }
-  ```
+```
 
-  ### Invoice Schema
+### Invoice Schema
 
-  ```
-  clientName: {
-      type: String,
-      required: true,
-    },
-    companyName: {
-      type: String,
-      required: true,
-    },
-    isPaid: {
-      type: Boolean,
-      default: false,
-    },
-    number: {
-      type: String,
-      required: true,
-    },
-    img: { data: Buffer, contentType: String },
-    totalAmount: {
-      type: Number,
-      required: true,
-    },
-    phone: {
-      number: Number,
-      frequency: {
-        type: String,
-        default: 'weekly',
-      },
-    },
-    email: {
-      address: Email,
-      frequency: {
-        type: String,
-        default: 'weekly',
-      },
-    },
-    admin: {
-      type: ObjectId,
-      ref: 'User',
-      required: true,
-    },
-    reminders: [{ type: ObjectId, ref: 'Reminder' }],
+```
+clientName: {
+    type: String,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-  ```
+  companyName: {
+    type: String,
+    required: true,
+  },
+  isPaid: {
+    type: Boolean,
+    default: false,
+  },
+  number: {
+    type: String,
+    required: true,
+  },
+  img: { data: Buffer, contentType: String },
+  totalAmount: {
+    type: Number,
+    required: true,
+  },
+  phone: {
+    number: Number,
+    frequency: {
+      type: String,
+      default: 'weekly',
+    },
+  },
+  email: {
+    address: Email,
+    frequency: {
+      type: String,
+      default: 'weekly',
+    },
+  },
+  admin: {
+    type: ObjectId,
+    ref: 'User',
+    required: true,
+  },
+  reminders: [{ type: ObjectId, ref: 'Reminder' }],
+},
+{
+  timestamps: true,
+}
+```
+
 ## [Endpoints](/server/README.md)

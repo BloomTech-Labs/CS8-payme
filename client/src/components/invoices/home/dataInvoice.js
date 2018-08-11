@@ -59,7 +59,10 @@ const Datainvoice = SortableElement(props => {
                         style={{ marginRight: '1rem', marginLeft: '1rem' }}
                       />
                     )}
-                    <button type="submit" onClick={() => props.deleteSms(r._id, props.history)}>
+                    <button
+                      type="submit"
+                      onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })}
+                    >
                       <i className="fa fa-bell-slash" />
                     </button>
                   </div>
@@ -146,7 +149,7 @@ const Datainvoice = SortableElement(props => {
                       )}
                       <button
                         type="submit"
-                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })
+                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })
                           }
                       >
                         <i className="fa fa-bell-slash" />
