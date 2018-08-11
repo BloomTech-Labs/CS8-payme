@@ -26,7 +26,9 @@ const View = props => {
         </div>
         <div className="view-invoice-details-flex">
           <p>Total Amount: $</p>
-          <p className="view-invoice-details-total">{props.invoice.totalAmount}</p>
+          <p className="view-invoice-details-total">
+            {(props.invoice.totalAmount / 100).toFixed(2)}
+          </p>
         </div>
       </div>
     </div>
