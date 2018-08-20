@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Field, reduxForm } from 'redux-form';
 import { login } from '../../actions/auth';
 
 import signin from './signin.jpg';
@@ -12,13 +11,19 @@ const styles = {
   // backgroundSize: 'cover',
 };
 
-class Signin extends Component {
-  handleFormSubmit = ele => {
-    this.props.login(ele, this.props.history);
+class codeVerification extends Component {
+  state = {
+    username: this.props.username || '',
+    code: '',
+  };
+
+  handleFormChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+    console.log(this.state);
   };
 
   render() {
-    const { handleSubmit } = this.props;
     return (
       <div className="signin" style={styles}>
         <div className="signin-foreground">
@@ -47,52 +52,32 @@ class Signin extends Component {
             </div>
             {/* <h1 className="signin--header">Sign In</h1> */}
             <h3 style={{ color: 'red' }}>{this.props.message}</h3>
-            <form className="signin--form" onSubmit={handleSubmit(this.handleFormSubmit)}>
-              <Field
+            <form className="signin--form">
+              <input
+                value={this.state.username}
                 name="username"
-                component="input"
                 className="signin--form_username"
                 placeholder="Username"
+                onChange={this.handleFormChange}
                 required
               />
               <br />
-              <Field
-                type="password"
-                name="password"
-                component="input"
+              <input
+                value={this.state.code}
+                type="text"
+                name="code"
+                maxLength={6}
+                minLength={6}
                 className="signin--form_password"
-                placeholder="Password"
+                placeholder="Verification Code"
+                onChange={this.handleFormChange}
                 required
               />
               <br />
-              <button className="signin--form_button" action="submit" value="Sign In">
+              <button className="signin--form_button" onClick={this.submitCode} value="Sign In">
                 Sign In
               </button>
             </form>
-            <div className="alternate-login">
-              <div className="alternate-login">
-                <p className="alternate-login_text">
-                  Sign in via text:
-                  <span onClick={this.sendCode}>
-                    {'\t'}
-                    Text Code
-                  </span>
-                </p>
-              </div>
-              {/* <div className="alternate-login">
-                <p className="alternate-login_text">
-                  Sign in via E-Mail: <span onClick={this.sendCode}>E-Mail Code</span>
-                </p>
-              </div> */}
-              <div className="alternate-login">
-                <p className="alternate-login_text">
-                  Already have a code?
-                  <Link to="/billing">
-                    <span>Enter Code</span>
-                  </Link>
-                </p>
-              </div>
-            </div>
             {/* <p className="signin--form_options"> Or sign In with </p> */}
             {/* <div className="signin--buttons">
               <button className="signin--buttons__facebook">
@@ -121,11 +106,11 @@ const mapStateToProps = state => {
   };
 };
 
-Signin = connect(
+export default connect(
   mapStateToProps,
   { login },
-)(Signin);
+)(codeVerification);
 
-export default reduxForm({
-  form: 'logIn', // Unique name for the form
-})(Signin);
+// export default reduxForm({
+//   form: 'logIn', // Unique name for the form
+// })(Signin);
