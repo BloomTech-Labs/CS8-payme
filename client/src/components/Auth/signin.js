@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
-import { login } from '../../actions/auth';
+import { login, sendCellCode, authError } from '../../actions/auth';
 
 import signin from './signin.jpg';
 import backgroundImage from './signin.jpg';
@@ -15,6 +15,10 @@ const styles = {
 class Signin extends Component {
   handleFormSubmit = ele => {
     this.props.login(ele, this.props.history);
+  };
+
+  sendCode = () => {
+    console.log(this.props.history);
   };
 
   render() {
@@ -69,11 +73,20 @@ class Signin extends Component {
                 Sign In
               </button>
             </form>
-            <div className="alternate-login">
+            <div className="alternate-login" onClick={() => this.props.authError()}>
               <div className="alternate-login">
                 <p className="alternate-login_text">
                   Sign in via text:
-                  <span onClick={this.sendCode}>
+                  <span
+                    onClick={() => {
+                      this.props.authError();
+                      const username = document.getElementsByClassName('signin--form_username')[0]
+                        .value;
+
+                      // console.log(username);
+                      this.props.sendCellCode(username, this.props.history);
+                    }}
+                  >
                     {'\t'}
                     Text Code
                   </span>
@@ -87,7 +100,7 @@ class Signin extends Component {
               <div className="alternate-login">
                 <p className="alternate-login_text">
                   Already have a code?
-                  <Link to="/billing">
+                  <Link to="/signin/entercode">
                     <span>Enter Code</span>
                   </Link>
                 </p>
@@ -123,7 +136,7 @@ const mapStateToProps = state => {
 
 Signin = connect(
   mapStateToProps,
-  { login },
+  { login, sendCellCode, authError },
 )(Signin);
 
 export default reduxForm({

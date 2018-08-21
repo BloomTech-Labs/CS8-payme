@@ -66,10 +66,14 @@ async function checkCode(req, res) {
       .json({ message: 'No recovery code found.  Please request a new code.' });
 
   await User.findByIdAndUpdate(user._id, { recovery: null }, { new: true })
-    .then(x => console.log(x.recovery))
+    .then(x => x)
     .catch(e => e);
 
-  if (user.recovery.code === code) {
+  if (user.recovery.exp - new Date().getTime() < 0) {
+    res
+      .status(401)
+      .json({ message: 'Code expired.  Please request a new code.' });
+  } else if (user.recovery.code === code) {
     const tknUser = {
       _id: user._id,
       username: user.username,
@@ -78,8 +82,8 @@ async function checkCode(req, res) {
     User.findById(user._id)
       .select('-password -img')
       .populate('invoices')
-      .then(user => {
-        res.json({ token, user });
+      .then(usr => {
+        res.json({ token, user: usr });
       });
   } else {
     res.status(401).json({

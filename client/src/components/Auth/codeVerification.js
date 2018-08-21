@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { login } from '../../actions/auth';
+import { login, codeLogin } from '../../actions/auth';
 
 import signin from './signin.jpg';
 import backgroundImage from './signin.jpg';
@@ -13,7 +13,7 @@ const styles = {
 
 class codeVerification extends Component {
   state = {
-    username: this.props.username || '',
+    username: this.props.history.location.state ? this.props.history.location.state.username : '',
     code: '',
   };
 
@@ -74,10 +74,24 @@ class codeVerification extends Component {
                 required
               />
               <br />
-              <button className="signin--form_button" onClick={this.submitCode} value="Sign In">
+              <button
+                className="signin--form_button"
+                onClick={e => {
+                  e.preventDefault();
+                  this.props.codeLogin(this.state, this.props.history);
+                }}
+                value="Sign In"
+              >
                 Sign In
               </button>
             </form>
+            <div className="alternate-login">
+              <p className="alternate-login_text">
+                <Link to="/signin">
+                  <span>Signin with password</span>
+                </Link>
+              </p>
+            </div>
             {/* <p className="signin--form_options"> Or sign In with </p> */}
             {/* <div className="signin--buttons">
               <button className="signin--buttons__facebook">
@@ -108,7 +122,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { login },
+  { login, codeLogin },
 )(codeVerification);
 
 // export default reduxForm({
