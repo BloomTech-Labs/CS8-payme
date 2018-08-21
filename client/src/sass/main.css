@@ -1238,7 +1238,7 @@ e,'s are considered best option for media queries
     .settings-navigation_themes {
       cursor: pointer;
       color: black;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       padding: 1rem;
       text-align: center; }
       .settings-navigation_themes:hover {
@@ -1254,14 +1254,15 @@ e,'s are considered best option for media queries
     border: 0.3px solid #d8d8d8;
     height: 4.4rem;
     width: 100%;
-    padding: 1rem; }
+    padding: 1rem;
+    margin-bottom: 1rem; }
   .settings_submit {
     color: white;
     height: 4rem;
     width: 100%;
     border: none;
     background-color: #E86C62;
-    border-radius: .5rem; }
+    border-radius: 0.5rem; }
 
 .settings-form-container {
   width: 110%;

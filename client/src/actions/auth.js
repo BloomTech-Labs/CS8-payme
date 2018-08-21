@@ -154,6 +154,10 @@ export function changePassword(newPassword, history) {
       .then(res => {
         dispatch({ type: 'AUTH_SUCCESS', payload: 'Successfully changed your password' });
         // history.push('/invoices');
+        setTimeout(() => {
+          dispatch({ type: 'AUTH_SUCCESS', payload: '' });
+          history.push('invoices');
+        }, 2000);
       })
       .catch(error => {
         if (error) console.log('error: ', error.response);
