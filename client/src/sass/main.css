@@ -669,11 +669,11 @@ e,'s are considered best option for media queries
     width: 115rem;
     height: 90rem; }
   .signin--img {
-    max-Height: 100%;
+    max-height: 100%;
     width: 100%; }
     @media (max-width: 37.5em) {
       .signin--img {
-        max-Height: 0; } }
+        max-height: 0; } }
   .signin-headline {
     display: flex;
     flex-direction: column;
@@ -713,7 +713,7 @@ e,'s are considered best option for media queries
     height: 4rem;
     color: #243030;
     background-color: white;
-    border-radius: .5rem; }
+    border-radius: 0.5rem; }
   .signin--box {
     background-color: #ffffff;
     display: flex;
@@ -749,47 +749,47 @@ e,'s are considered best option for media queries
       height: 3.5rem;
       width: 9rem;
       margin-right: 1.5rem;
-      border-radius: .5rem; }
+      border-radius: 0.5rem; }
     .signin--buttons__google {
       font-size: 1.2rem;
       color: #8b8b8b;
       height: 3.8rem;
       width: 10rem;
       margin-right: 1.5rem;
-      border-radius: .5rem;
+      border-radius: 0.5rem;
       border: 0.7px solid rgba(105, 105, 105, 0.384);
       padding: 1rem; }
       .signin--buttons__google--logo {
         padding: none;
         height: 1.3rem;
         align-self: auto;
-        margin-right: .5rem; }
+        margin-right: 0.5rem; }
 
 .signin--form {
   cursor: pointer; }
   .signin--form:hover {
     cursor: pointer; }
   .signin--form_username {
-    padding: .5rem;
+    padding: 0.5rem;
     height: 5rem;
     width: 28rem;
-    border-radius: .5rem;
-    margin-bottom: .5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
     border: 0.1rem solid #dfdfdf; }
   .signin--form_password {
-    padding: .5rem;
+    padding: 0.5rem;
     height: 5rem;
     width: 28rem;
-    border-radius: .5rem;
-    margin-bottom: .5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
     border: 0.1rem solid #dfdfdf; }
   .signin--form_button {
-    padding: .5rem;
+    padding: 0.5rem;
     height: 4.5rem;
     width: 100%;
     background-color: black;
     color: white;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     border: 0.5px black; }
   .signin--form_options {
     color: black;
@@ -838,6 +838,18 @@ e,'s are considered best option for media queries
     .signin--slogans {
       padding-left: 1rem;
       width: 13rem; } }
+
+.alternate-login {
+  margin: 1rem 0 0 0; }
+  .alternate-login_text {
+    display: flex;
+    justify-content: space-between;
+    color: black; }
+    .alternate-login_text span {
+      color: #22CFB1;
+      text-decoration: underline;
+      margin-left: 1rem;
+      cursor: pointer; }
 
 .signup {
   box-shadow: none;
@@ -1226,7 +1238,7 @@ e,'s are considered best option for media queries
     .settings-navigation_themes {
       cursor: pointer;
       color: black;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       padding: 1rem;
       text-align: center; }
       .settings-navigation_themes:hover {
@@ -1242,14 +1254,15 @@ e,'s are considered best option for media queries
     border: 0.3px solid #d8d8d8;
     height: 4.4rem;
     width: 100%;
-    padding: 1rem; }
+    padding: 1rem;
+    margin-bottom: 1rem; }
   .settings_submit {
     color: white;
     height: 4rem;
     width: 100%;
     border: none;
     background-color: #E86C62;
-    border-radius: .5rem; }
+    border-radius: 0.5rem; }
 
 .settings-form-container {
   width: 110%;

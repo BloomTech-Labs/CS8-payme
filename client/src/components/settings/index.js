@@ -22,8 +22,9 @@ class Settings extends Component {
   handleFormSubmit = ele => {
     if (ele.password !== ele.newPassword) {
       this.setState({ error: 'Passwords do not match' });
+    } else {
+      this.props.changePassword(ele, this.props.history);
     }
-    this.props.changePassword(ele, this.props.history);
   };
 
   render() {
@@ -57,7 +58,7 @@ class Settings extends Component {
               <h1>Change Password</h1>
               <p>{this.state.error}</p>
               <form className="setting-password" onSubmit={handleSubmit(this.handleFormSubmit)}>
-                <Field
+                {/* <Field
                   type="email"
                   name="email"
                   component="input"
@@ -65,8 +66,8 @@ class Settings extends Component {
                   placeholder="Email"
                   required
                 />
-                <br />
-                <Field
+                <br /> */}
+                {/* <Field
                   type="password"
                   name="currentPassword"
                   component="input"
@@ -74,7 +75,7 @@ class Settings extends Component {
                   placeholder="Password"
                   required
                 />
-                <br />
+                <br /> */}
                 <Field
                   type="password"
                   name="password"
