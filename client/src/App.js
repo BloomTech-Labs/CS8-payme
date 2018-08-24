@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Import authentication related pages
 import Landing from './components/landing/landing';
 import Signin from './components/Auth/signin';
+import EnterCode from './components/Auth/codeVerification';
 import Signup from './components/Auth/signup';
 import Settings from './components/settings';
 import NotFound from './components/Auth/notFound.js';
@@ -26,7 +27,8 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/signin" component={Signin} />
+        <Route exact path="/signin" component={Signin} />
+        <Route exact path="/signin/entercode" component={EnterCode} />
         <Route path="/signup" component={Signup} />
         <Route path="/reminders" component={RequireAuth(Reminders)} />
         <Route path="/settings" component={RequireAuth(Settings)} />

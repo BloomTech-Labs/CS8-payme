@@ -71,9 +71,9 @@ class UpdateInvoice extends Component {
             <div className="invoice-update-flex">
               <p>Total Amount</p>
               <input
-                type="number"
+                type="string"
                 name="totalAmount"
-                defaultValue={invoice.totalAmount}
+                defaultValue={(invoice.totalAmount / 100).toFixed(2)}
                 className="invoice-update_field"
                 placeholder="Invoice Number"
               />

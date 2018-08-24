@@ -84,11 +84,9 @@ class ClientBilling extends Component {
           <div className="typed-logo" style={{ marginBottom: '4rem' }}>
             <h1 className="signin--titles">
               giveMe
-              <span className="slideout--dot">
-              .
-              </span>
+              <span className="slideout--dot">.</span>
               <br />
-              <h1 className="signin--slogans">myMoney</h1>
+              <p className="signin--slogans">myMoney</p>
             </h1>
           </div>
           <div
@@ -102,7 +100,7 @@ class ClientBilling extends Component {
               Contact: <a href={`mailto:${this.state.invoice.admin.username}`}>{from}</a>
             </h1>
 
-            <h1>Amount Due: {this.state.invoice.totalAmount}</h1>
+            <h1>Amount Due: {(this.state.invoice.totalAmount / 100).toFixed(2)}</h1>
           </div>
           {/* <div>
           </div> */}

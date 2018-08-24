@@ -20,6 +20,10 @@ export function authError(error) {
       payload: error,
     };
   }
+  return {
+    type: AUTHENTICATION_ERROR,
+    payload: '',
+  };
 }
 
 export function login(credentials, history) {
@@ -31,7 +35,7 @@ export function login(credentials, history) {
       .then(res => {
         localStorage.setItem('id', res.data.token);
         axios.defaults.headers.common.Authorization = `bearer ${res.data.token}`;
-        console.log(res.data.user);
+        // console.log(res.data.user);
         dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
         dispatch({ type: 'USER', payload: res.data.user });
         history.push('/invoices');
@@ -41,6 +45,47 @@ export function login(credentials, history) {
         if (err.response) {
           dispatch(authError('Username/Password invalid.'));
         }
+      });
+  };
+}
+
+export function sendCellCode(username, history) {
+  return async dispatch => {
+    dispatch(authError());
+    let message = '';
+
+    await axios
+      .post('/api/cellcode', { username })
+      .then(response => (message = response.data.message))
+      .catch(err => (message = err.response.data.message));
+    if (message === 'User does not exist') {
+      dispatch(authError(message));
+    } else {
+      history.push('/signin/entercode', { username });
+    }
+  };
+}
+
+export function codeLogin(credentials, history) {
+  return dispatch => {
+    axios
+      .post('/api/checkcode', credentials)
+      .then(res => {
+        localStorage.setItem('id', res.data.token);
+        axios.defaults.headers.common.Authorization = `bearer ${res.data.token}`;
+        // console.log(res.data.user);
+        dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
+        dispatch({ type: 'USER', payload: res.data.user });
+        history.push('/invoices');
+      })
+      .catch(err => {
+        // if (err) console.log('error: ', err);
+        dispatch(authError(err.response.data.message));
+        // console.log(err);
+        setTimeout(() => {
+          dispatch(authError());
+          history.push('/signin');
+        }, 2000);
       });
   };
 }
@@ -109,6 +154,10 @@ export function changePassword(newPassword, history) {
       .then(res => {
         dispatch({ type: 'AUTH_SUCCESS', payload: 'Successfully changed your password' });
         // history.push('/invoices');
+        setTimeout(() => {
+          dispatch({ type: 'AUTH_SUCCESS', payload: '' });
+          history.push('invoices');
+        }, 2000);
       })
       .catch(error => {
         if (error) console.log('error: ', error.response);

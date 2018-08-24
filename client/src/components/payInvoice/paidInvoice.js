@@ -11,16 +11,14 @@ export default props => {
       }}
     >
       <div>
-          <div className="typed-logo" style={{ marginBottom: '4rem' }}>
-            <h1 className="signin--titles">
-              giveMe
-              <span className="slideout--dot">
-              .
-              </span>
-              <br />
-              <h1 className="signin--slogans">myMoney</h1>
-            </h1>
-          </div>
+        <div className="typed-logo" style={{ marginBottom: '4rem' }}>
+          <h1 className="signin--titles">
+            giveMe
+            <span className="slideout--dot">.</span>
+            <br />
+            <p className="signin--slogans">myMoney</p>
+          </h1>
+        </div>
         <h1>Invoice {props.invoice.number} has already been paid.</h1>
         <br />
         <h1>If you believe this was an error,</h1>
