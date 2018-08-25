@@ -26,14 +26,14 @@ class Signup extends Component {
         {/* <p className="signup-headline">
           Lorem ipsum <br /> <span className="signup-headline2">dolor sit amet</span>
         </p> */}
-        <div className="signup-foreground">
-          <div className="signup-imgbox">
-            <p className="signup--img" />
-            <p className="signup-headline">
-              {/* <span className="signup-headline2">
+        <div className="signin-foreground">
+          <div className="signin-imgbox">
+            {/* <p className="signup--img" /> */}
+            {/* <p className="signup-headline">
+              <span className="signup-headline2">
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              </span> */}
-            </p>
+              </span>
+            </p> */}
             <p className="signin--form_notmember" style={{ color: 'color: rgb(78, 65, 65)' }}>
               Alread have an account ? <br />{' '}
               <Link to="/signin">
@@ -42,13 +42,11 @@ class Signup extends Component {
               </Link>
             </p>
           </div>
-          <div className="signup--container">
+          <div className="signin--box">
             <div className="typed-logo">
               <h1 className="signin--titles">
                 giveMe
-                <span className="slideout--dot">
-                .
-                </span>
+                <span className="slideout--dot">.</span>
                 <br />
                 <h1 className="signin--slogans">myMoney</h1>
               </h1>
