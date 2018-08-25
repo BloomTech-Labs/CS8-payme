@@ -20,69 +20,42 @@ e,'s are considered best option for media queries
 .landing {
   background-color: #fff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  margin: 0 auto;
-  height: 110rem; }
+  margin: 0 auto; }
   .landing-container {
-    position: relative; }
+    background-image: url("./coins.jpg");
+    height: 100vh;
+    display: flex; }
   .landing-logo {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
-    margin-left: 30rem;
+    margin: 100px auto auto auto;
     max-width: 100rem;
+    width: 100vw;
     text-align: center;
     color: white;
-    position: absolute;
-    top: 19rem;
-    left: 10rem; }
+    display: flex;
+    flex-direction: column; }
+    .landing-logo_pic {
+      max-width: 500px;
+      width: 100%;
+      margin: auto; }
+  .landing-buttons {
+    position: relative;
+    bottom: 100px; }
   .landing-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     font-size: 15rem;
-    margin-left: 30rem;
+    margin-bottom: 0;
     text-align: center;
-    color: white;
-    position: absolute;
-    top: 19rem;
-    left: 10rem; }
-    @media (max-width: 75em) {
-      .landing-title {
-        left: -5rem; } }
-    @media (max-width: 56.25em) {
-      .landing-title {
-        left: -5rem; } }
-    @media (max-width: 37.5em) {
-      .landing-title {
-        left: -15rem; } }
+    color: white; }
   .landing-slogan {
-    margin-left: 30rem;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     color: #E86C62;
-    font-size: 3.5rem;
-    position: absolute;
-    top: 34rem;
-    left: 33rem; }
-    @media (max-width: 75em) {
-      .landing-slogan {
-        left: 18rem; } }
-    @media (max-width: 56.25em) {
-      .landing-slogan {
-        left: 15rem; } }
-    @media (max-width: 37.5em) {
-      .landing-slogan {
-        left: 7rem; } }
+    font-size: 3.5rem; }
   .landing-image {
     margin: 0 auto;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
     width: 200rem;
     min-height: 110rem; }
-    @media (max-width: 75em) {
-      .landing-image {
-        width: 200rem; } }
-    @media (max-width: 56.25em) {
-      .landing-image {
-        min-width: 225rem;
-        min-height: 125rem; } }
-    @media (max-width: 37.5em) {
-      .landing-image {
-        max-width: none; } }
   .landing-signin {
     border: 1px solid #22CFB1;
     font-size: 1.2rem;
@@ -90,22 +63,9 @@ e,'s are considered best option for media queries
     color: #fff;
     height: 5rem;
     width: 15rem;
-    border-radius: .5rem;
-    position: absolute;
-    top: 68rem;
-    left: 75rem;
+    border-radius: 0.5rem;
     font-size: 1.3rem;
     background-color: rgba(0, 0, 0, 0.753); }
-    @media (max-width: 75em) {
-      .landing-signin {
-        left: 65rem; } }
-    @media (max-width: 56.25em) {
-      .landing-signin {
-        left: 50rem; } }
-    @media (max-width: 37.5em) {
-      .landing-signin {
-        left: 20rem;
-        top: 50rem; } }
 
 .landing-signup {
   border: none;
@@ -114,23 +74,11 @@ e,'s are considered best option for media queries
   color: #fff;
   height: 5rem;
   width: 15rem;
-  border-radius: .5rem;
-  position: absolute;
-  top: 68rem;
-  left: 95rem;
+  border-radius: 0.5rem;
+  margin-left: 10px;
   font-size: 1.3rem;
   color: black;
   background-color: #fff; }
-  @media (max-width: 75em) {
-    .landing-signup {
-      left: 85rem; } }
-  @media (max-width: 56.25em) {
-    .landing-signup {
-      left: 70rem; } }
-  @media (max-width: 37.5em) {
-    .landing-signup {
-      left: 40rem;
-      top: 50rem; } }
 
 .invoice-update {
   display: flex;
