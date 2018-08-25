@@ -592,30 +592,27 @@ e,'s are considered best option for media queries
 .signin {
   box-shadow: none;
   width: 100%;
-  height: 110rem;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover; }
   .signin-foreground {
     display: flex;
-    width: 115rem;
-    height: 90rem;
+    width: 85%;
+    height: 70rem;
     color: white;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294); }
-    @media (max-width: 56.25em) {
-      .signin-foreground {
-        width: 90rem; } }
     @media (max-width: 37.5em) {
       .signin-foreground {
-        width: 50rem;
         box-shadow: none; } }
   .signin-imgbox {
     display: flex;
     justify-content: center;
-    position: relative;
-    width: 115rem;
-    height: 90rem; }
+    width: 50%; }
+    @media (max-width: 37.5em) {
+      .signin-imgbox {
+        display: none; } }
   .signin--img {
     max-height: 100%;
     width: 100%; }
@@ -668,17 +665,12 @@ e,'s are considered best option for media queries
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 50%;
     height: 100%;
     position: relative; }
-    @media (max-width: 56.25em) {
-      .signin--box {
-        height: 90rem;
-        width: 125%; } }
     @media (max-width: 37.5em) {
       .signin--box {
-        min-width: 100%;
-        height: 75rem; } }
+        min-width: 100%; } }
     .signin--box--dot {
       color: #22CFB1;
       font-size: 6rem; }
@@ -743,20 +735,18 @@ e,'s are considered best option for media queries
     color: black;
     margin-bottom: 2rem; }
   .signin--form_notmember {
+    justify-self: center;
+    align-self: center;
     color: white;
     font-size: 2rem;
-    margin: 10rem 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40rem;
     height: 10rem;
-    top: 35rem;
-    left: 0;
     position: absolute;
-    color: black;
-    margin-top: 5rem; }
+    color: black; }
     @media (max-width: 56.25em) {
       .signin--form_notmember {
         width: 25rem; } }
