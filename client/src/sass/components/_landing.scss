@@ -3,82 +3,107 @@
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   // justify-content: center;
   margin: 0 auto;
-  height: 110rem;
-  
+  // height: 110rem;
+  // width: 100%;
+
+  // &-container {
+  //   position: relative;
+  // }
+
   &-container {
-    position: relative;
+    background-image: url('./coins.jpg');
+    height: 100vh;
+    display: flex;
   }
 
   &-logo {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
-    margin-left: 30rem;
+    // margin-left: 30rem;
+    margin: 100px auto auto auto;
     max-width: 100rem;
+    width: 100vw;
     text-align: center;
     color: white;
-    position: absolute;
-    top: 19rem;
-    left: 10rem;
+    display: flex;
+    flex-direction: column;
+
+    &_pic {
+      max-width: 500px;
+      width: 100%;
+      margin: auto;
+    }
+
+    // position: absolute;
+    // top: 19rem;
+    // left: 10rem;
+  }
+  &-buttons {
+    position: relative;
+    bottom: 100px;
   }
 
   &-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     font-size: 15rem;
-    margin-left: 30rem;
+    margin-bottom: 0;
+    // margin-left: 30rem;
     text-align: center;
     color: white;
-    position: absolute;
-    top: 19rem;
-    left: 10rem;
-    @include respond(tab-land) { // width < 1200 ?
-      left: -5rem;// 1rem = 9px, 9/16 = 50%
-    }
-    @include respond(tab-port) {
-      left: -5rem;
-    }
-    @include respond(phone)  {
-      left: -15rem;
-      // background-color: blue;
-    }
+    // position: absolute;
+    // top: 19rem;
+    // left: 10rem;
+    // @include respond(tab-land) {
+    //   // width < 1200 ?
+    //   left: -5rem; // 1rem = 9px, 9/16 = 50%
+    // }
+    // @include respond(tab-port) {
+    //   left: -5rem;
+    // }
+    // @include respond(phone) {
+    //   left: -15rem;
+    //   // background-color: blue;
+    // }
   }
 
   &-slogan {
-    margin-left: 30rem;
+    // margin-left: 30rem;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     color: $color-secondary;
     font-size: 3.5rem;
-    position: absolute;
-    top: 34rem;
-    left: 33rem;
-    @include respond(tab-land) { // width < 1200 ?
-      left: 18rem;// 1rem = 9px, 9/16 = 50%
-    }
-    @include respond(tab-port) {
-      left: 15rem;
-    }
-    @include respond(phone) {
-      left: 7rem;
-    }
+    // position: absolute;
+    // top: 34rem;
+    // left: 33rem;
+    // @include respond(tab-land) {
+    //   // width < 1200 ?
+    //   left: 18rem; // 1rem = 9px, 9/16 = 50%
+    // }
+    // @include respond(tab-port) {
+    //   left: 15rem;
+    // }
+    // @include respond(phone) {
+    //   left: 7rem;
+    // }
   }
 
   &-image {
     margin: 0 auto;
-    
+
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
     width: 200rem;
     min-height: 110rem;
-    @include respond(tab-land) { // width < 1200 ?
-      width: 200rem;// 1rem = 9px, 9/16 = 50%
-    }
-    @include respond(tab-port) {
-      min-width: 225rem;
-      min-height: 125rem;
-
-    }
-    @include respond(phone) { // width < 1200 ?
-      max-width: none;
-      // max-height: 120rem;
-    }
-
+    // @include respond(tab-land) {
+    //   // width < 1200 ?
+    //   width: 200rem; // 1rem = 9px, 9/16 = 50%
+    // }
+    // @include respond(tab-port) {
+    //   min-width: 225rem;
+    //   min-height: 125rem;
+    // }
+    // @include respond(phone) {
+    //   // width < 1200 ?
+    //   max-width: none;
+    //   // max-height: 120rem;
+    // }
   }
 
   &-signin {
@@ -88,26 +113,26 @@
     color: $color-white;
     height: 5rem;
     width: 15rem;
-    border-radius: .5rem;
-    position: absolute;
-    top: 68rem;
-    left: 75rem;
+    border-radius: 0.5rem;
+    // position: absolute;
+    // top: 68rem;
+    // left: 75rem;
     font-size: 1.3rem;
     background-color: rgba(0, 0, 0, 0.753);
 
-    @include respond(tab-land) { // width < 1200 ?
-      // top: 32rem;
-      left: 65rem;// 1rem = 9px, 9/16 = 50%
-    }
-    @include respond(tab-port) {
-
-      left: 50rem;
-    }
-    @include respond(phone) { // width < 1200 ?
-      left: 20rem;
-      top: 50rem;
-    }
-
+    // @include respond(tab-land) {
+    //   // width < 1200 ?
+    //   // top: 32rem;
+    //   left: 65rem; // 1rem = 9px, 9/16 = 50%
+    // }
+    // @include respond(tab-port) {
+    //   left: 50rem;
+    // }
+    // @include respond(phone) {
+    //   // width < 1200 ?
+    //   left: 20rem;
+    //   top: 50rem;
+    // }
   }
 }
 
@@ -119,28 +144,27 @@
   color: $color-white;
   height: 5rem;
   width: 15rem;
-  border-radius: .5rem;
-  position: absolute;
-  top: 68rem;
-  left: 95rem;
+  border-radius: 0.5rem;
+  // position: absolute;
+  // top: 68rem;
+  // left: 95rem;
+  margin-left: 10px;
   font-size: 1.3rem;
   color: rgb(0, 0, 0);
   background-color: $color-white;
 
-  @include respond(tab-land) { // width < 1200 ?
-    // top: 32rem;
-    left: 85rem;// 1rem = 9px, 9/16 = 50%
-  }
-  @include respond(tab-port) {
+  // @include respond(tab-land) {
+  //   // width < 1200 ?
+  //   // top: 32rem;
+  //   left: 85rem; // 1rem = 9px, 9/16 = 50%
+  // }
+  // @include respond(tab-port) {
+  //   left: 70rem;
+  // }
 
-    left: 70rem;
-  }
-
-  @include respond(phone) { // width < 1200 ?
-    left: 40rem;
-    top: 50rem;
-  }
+  // @include respond(phone) {
+  //   // width < 1200 ?
+  //   left: 40rem;
+  //   top: 50rem;
+  // }
 }
-
-
-

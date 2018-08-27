@@ -3,7 +3,7 @@
   // margin: 0 auto;
   box-shadow: none;
   width: 100%;
-  height: 110rem;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,24 +11,27 @@
 
   &-foreground {
     display: flex;
-    width: 115rem;
-    height: 90rem;
+    width: 85%;
+    height: 70rem;
     color: white;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294);
     @include respond(tab-port) {
-      width: 90rem;
+      // width: 90rem;
     }
     @include respond(phone) {
-      width: 50rem;
+      // width: 50rem;
       box-shadow: none;
     }
   }
   &-imgbox {
     display: flex;
     justify-content: center;
-    position: relative;
-    width: 115rem;
-    height: 90rem;
+    // position: relative;
+    width: 50%;
+    // height: 90rem;
+    @include respond(phone) {
+      display: none;
+    }
   }
 
   &--img {
@@ -92,16 +95,16 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 50%;
     height: 100%;
     position: relative;
     @include respond(tab-port) {
-      height: 90rem;
-      width: 125%;
+      // height: 90rem;
+      // width: 50%;
     }
     @include respond(phone) {
       min-width: 100%;
-      height: 75rem;
+      // height: 75rem;
     }
 
     &--dot {
@@ -194,20 +197,22 @@
   }
 
   &_notmember {
+    justify-self: center;
+    align-self: center;
     color: white;
     font-size: 2rem;
-    margin: 10rem 10rem;
+    // margin: 10rem 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40rem;
     height: 10rem;
-    top: 35rem;
-    left: 0;
+    // top: 35rem;
+    // left: 0;
     position: absolute;
     color: black;
-    margin-top: 5rem;
+    // margin-top: 5rem;
 
     @include respond(tab-port) {
       width: 25rem;
