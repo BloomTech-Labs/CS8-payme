@@ -20,69 +20,42 @@ e,'s are considered best option for media queries
 .landing {
   background-color: #fff;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
-  margin: 0 auto;
-  height: 110rem; }
+  margin: 0 auto; }
   .landing-container {
-    position: relative; }
+    background-image: url("./coins.jpg");
+    height: 100vh;
+    display: flex; }
   .landing-logo {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
-    margin-left: 30rem;
+    margin: 100px auto auto auto;
     max-width: 100rem;
+    width: 100vw;
     text-align: center;
     color: white;
-    position: absolute;
-    top: 19rem;
-    left: 10rem; }
+    display: flex;
+    flex-direction: column; }
+    .landing-logo_pic {
+      max-width: 500px;
+      width: 100%;
+      margin: auto; }
+  .landing-buttons {
+    position: relative;
+    bottom: 100px; }
   .landing-title {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     font-size: 15rem;
-    margin-left: 30rem;
+    margin-bottom: 0;
     text-align: center;
-    color: white;
-    position: absolute;
-    top: 19rem;
-    left: 10rem; }
-    @media (max-width: 75em) {
-      .landing-title {
-        left: -5rem; } }
-    @media (max-width: 56.25em) {
-      .landing-title {
-        left: -5rem; } }
-    @media (max-width: 37.5em) {
-      .landing-title {
-        left: -15rem; } }
+    color: white; }
   .landing-slogan {
-    margin-left: 30rem;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.365);
     color: #E86C62;
-    font-size: 3.5rem;
-    position: absolute;
-    top: 34rem;
-    left: 33rem; }
-    @media (max-width: 75em) {
-      .landing-slogan {
-        left: 18rem; } }
-    @media (max-width: 56.25em) {
-      .landing-slogan {
-        left: 15rem; } }
-    @media (max-width: 37.5em) {
-      .landing-slogan {
-        left: 7rem; } }
+    font-size: 3.5rem; }
   .landing-image {
     margin: 0 auto;
     box-shadow: 0px 7px 10px 0px rgba(0, 0, 0, 0.459);
     width: 200rem;
     min-height: 110rem; }
-    @media (max-width: 75em) {
-      .landing-image {
-        width: 200rem; } }
-    @media (max-width: 56.25em) {
-      .landing-image {
-        min-width: 225rem;
-        min-height: 125rem; } }
-    @media (max-width: 37.5em) {
-      .landing-image {
-        max-width: none; } }
   .landing-signin {
     border: 1px solid #22CFB1;
     font-size: 1.2rem;
@@ -90,22 +63,9 @@ e,'s are considered best option for media queries
     color: #fff;
     height: 5rem;
     width: 15rem;
-    border-radius: .5rem;
-    position: absolute;
-    top: 68rem;
-    left: 75rem;
+    border-radius: 0.5rem;
     font-size: 1.3rem;
     background-color: rgba(0, 0, 0, 0.753); }
-    @media (max-width: 75em) {
-      .landing-signin {
-        left: 65rem; } }
-    @media (max-width: 56.25em) {
-      .landing-signin {
-        left: 50rem; } }
-    @media (max-width: 37.5em) {
-      .landing-signin {
-        left: 20rem;
-        top: 50rem; } }
 
 .landing-signup {
   border: none;
@@ -114,23 +74,11 @@ e,'s are considered best option for media queries
   color: #fff;
   height: 5rem;
   width: 15rem;
-  border-radius: .5rem;
-  position: absolute;
-  top: 68rem;
-  left: 95rem;
+  border-radius: 0.5rem;
+  margin-left: 10px;
   font-size: 1.3rem;
   color: black;
   background-color: #fff; }
-  @media (max-width: 75em) {
-    .landing-signup {
-      left: 85rem; } }
-  @media (max-width: 56.25em) {
-    .landing-signup {
-      left: 70rem; } }
-  @media (max-width: 37.5em) {
-    .landing-signup {
-      left: 40rem;
-      top: 50rem; } }
 
 .invoice-update {
   display: flex;
@@ -644,36 +592,33 @@ e,'s are considered best option for media queries
 .signin {
   box-shadow: none;
   width: 100%;
-  height: 110rem;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover; }
   .signin-foreground {
     display: flex;
-    width: 115rem;
-    height: 90rem;
+    width: 85%;
+    height: 70rem;
     color: white;
     box-shadow: 5px 10px 15px 0px rgba(0, 0, 0, 0.294); }
-    @media (max-width: 56.25em) {
-      .signin-foreground {
-        width: 90rem; } }
     @media (max-width: 37.5em) {
       .signin-foreground {
-        width: 50rem;
         box-shadow: none; } }
   .signin-imgbox {
     display: flex;
     justify-content: center;
-    position: relative;
-    width: 115rem;
-    height: 90rem; }
+    width: 50%; }
+    @media (max-width: 37.5em) {
+      .signin-imgbox {
+        display: none; } }
   .signin--img {
-    max-Height: 100%;
+    max-height: 100%;
     width: 100%; }
     @media (max-width: 37.5em) {
       .signin--img {
-        max-Height: 0; } }
+        max-height: 0; } }
   .signin-headline {
     display: flex;
     flex-direction: column;
@@ -713,24 +658,19 @@ e,'s are considered best option for media queries
     height: 4rem;
     color: #243030;
     background-color: white;
-    border-radius: .5rem; }
+    border-radius: 0.5rem; }
   .signin--box {
     background-color: #ffffff;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 50%;
     height: 100%;
     position: relative; }
-    @media (max-width: 56.25em) {
-      .signin--box {
-        height: 90rem;
-        width: 125%; } }
     @media (max-width: 37.5em) {
       .signin--box {
-        min-width: 100%;
-        height: 75rem; } }
+        min-width: 100%; } }
     .signin--box--dot {
       color: #22CFB1;
       font-size: 6rem; }
@@ -749,66 +689,64 @@ e,'s are considered best option for media queries
       height: 3.5rem;
       width: 9rem;
       margin-right: 1.5rem;
-      border-radius: .5rem; }
+      border-radius: 0.5rem; }
     .signin--buttons__google {
       font-size: 1.2rem;
       color: #8b8b8b;
       height: 3.8rem;
       width: 10rem;
       margin-right: 1.5rem;
-      border-radius: .5rem;
+      border-radius: 0.5rem;
       border: 0.7px solid rgba(105, 105, 105, 0.384);
       padding: 1rem; }
       .signin--buttons__google--logo {
         padding: none;
         height: 1.3rem;
         align-self: auto;
-        margin-right: .5rem; }
+        margin-right: 0.5rem; }
 
 .signin--form {
   cursor: pointer; }
   .signin--form:hover {
     cursor: pointer; }
   .signin--form_username {
-    padding: .5rem;
+    padding: 0.5rem;
     height: 5rem;
     width: 28rem;
-    border-radius: .5rem;
-    margin-bottom: .5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
     border: 0.1rem solid #dfdfdf; }
   .signin--form_password {
-    padding: .5rem;
+    padding: 0.5rem;
     height: 5rem;
     width: 28rem;
-    border-radius: .5rem;
-    margin-bottom: .5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
     border: 0.1rem solid #dfdfdf; }
   .signin--form_button {
-    padding: .5rem;
+    padding: 0.5rem;
     height: 4.5rem;
     width: 100%;
     background-color: black;
     color: white;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     border: 0.5px black; }
   .signin--form_options {
     color: black;
     margin-bottom: 2rem; }
   .signin--form_notmember {
+    justify-self: center;
+    align-self: center;
     color: white;
     font-size: 2rem;
-    margin: 10rem 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40rem;
     height: 10rem;
-    top: 35rem;
-    left: 0;
     position: absolute;
-    color: black;
-    margin-top: 5rem; }
+    color: black; }
     @media (max-width: 56.25em) {
       .signin--form_notmember {
         width: 25rem; } }
@@ -838,6 +776,18 @@ e,'s are considered best option for media queries
     .signin--slogans {
       padding-left: 1rem;
       width: 13rem; } }
+
+.alternate-login {
+  margin: 1rem 0 0 0; }
+  .alternate-login_text {
+    display: flex;
+    justify-content: space-between;
+    color: black; }
+    .alternate-login_text span {
+      color: #22CFB1;
+      text-decoration: underline;
+      margin-left: 1rem;
+      cursor: pointer; }
 
 .signup {
   box-shadow: none;
@@ -1226,7 +1176,7 @@ e,'s are considered best option for media queries
     .settings-navigation_themes {
       cursor: pointer;
       color: black;
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       padding: 1rem;
       text-align: center; }
       .settings-navigation_themes:hover {
@@ -1242,14 +1192,15 @@ e,'s are considered best option for media queries
     border: 0.3px solid #d8d8d8;
     height: 4.4rem;
     width: 100%;
-    padding: 1rem; }
+    padding: 1rem;
+    margin-bottom: 1rem; }
   .settings_submit {
     color: white;
     height: 4rem;
     width: 100%;
     border: none;
     background-color: #E86C62;
-    border-radius: .5rem; }
+    border-radius: 0.5rem; }
 
 .settings-form-container {
   width: 110%;

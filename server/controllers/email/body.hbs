@@ -2,37 +2,51 @@
 <html>
 
 <head>
-  <title>payMe. | Invoice</title>
+  <title>giveMeMyMoney | Invoice</title>
   <style>
     html,
     body {
-      height: 1000px;
+      height: 3000rem;
     }
 
     .background {
       display: flex;
-      background: url("emailg3m.jpg") no-repeat top;
-      height: 100%;
+      background: url("https://i.imgur.com/faXA2Mj.jpg") no-repeat top;
+      height: 60rem;
       flex-wrap: wrap;
     }
 
     .wrap {
-      position: absolute;
       text-align: center;
       background: white;
+      color: black;
       border-radius: 30px;
       height: 40rem;
       width: 25%;
       min-width: 320px;
-      top: 20%;
-      left: 20%;
+      margin-left: 25%;
+      margin-top: 20%;
+      padding-left: 2%;
+      padding-right: 2%;
+      top: 50%;
+      left: 60%;
     }
+    @media only screen and (max-width: 25rem) {
+    .wrap {
+        margin-left: 0;
+        margin-top: 65%;
+    }
+    .greet {
+      margin-top: 5%;
+    }
+}
 
     #feat {
       background: #E86C62;
       font-size: x-large;
       width: 65%;
       padding: 4%;
+      color: white;
       border-radius: 10px;
     }
 
@@ -50,7 +64,7 @@
     }
 
     b {
-      color: white;
+      color:rgb(184, 66, 72);
     }
 
     h2 {
@@ -70,7 +84,7 @@
       <div class="message">
         <h2>Our records are showing
           <br> that you have an outstanding
-          <br> invoice with {{company}}
+          <br> invoice with <b>{{company}}</b>
           <br> in the amount of:</h2>
       </div>
       <br>
@@ -85,7 +99,7 @@
       <div class="button">
         <a href="{{URL}}/payinvoice/{{invoice}}">
           <button id="feat">
-            <b>Pay Invoice</b>
+            Pay Invoice
           </button>
         </a>
       </div>
