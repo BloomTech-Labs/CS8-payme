@@ -58,14 +58,13 @@ const Datainvoice = SortableElement(props => {
                           style={{ marginRight: '1rem', marginLeft: '1rem' }}
                         />
                       )}
-                      <button
-                        type="submit"
-                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })}
+                      <span
+                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id }, props.history)}
                       >
                         <i className="fa fa-bell-slash" />
-                      </button>
+                      </span>
                     </div>
-                   ) : null}
+                  ) : null}
                 </div>
               );
             })
@@ -145,13 +144,12 @@ const Datainvoice = SortableElement(props => {
                             style={{ marginRight: '1rem', marginLeft: '1rem' }}
                           />
                         )}
-                        <button
-                          type="submit"
+                        <span
                           onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })
                             }
                         >
                           <i className="fa fa-bell-slash" />
-                        </button>
+                        </span>
                       </div>
                     ) : null }
                   </div>
