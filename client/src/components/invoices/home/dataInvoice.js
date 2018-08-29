@@ -59,7 +59,7 @@ const Datainvoice = SortableElement(props => {
                         />
                       )}
                       <span
-                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id }, props.history)}
+                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })}
                       >
                         <i className="fa fa-bell-slash" />
                       </span>
