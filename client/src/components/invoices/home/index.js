@@ -116,6 +116,8 @@ class Invoices extends Component {
     const display = isDesktop ? 'none' : 'inline';
     const { invoices } = this.props;
     const { reminders } = this.props;
+    // console.log(reminders);
+    // console.log(invoices);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -149,7 +151,7 @@ class Invoices extends Component {
                 listView={this.state.listView}
                 reminder={reminders}
                 isDesktop={isDesktop}
-                reminders={reminders}
+                // reminders={this.props.allReminders(inv._id)}
                 url={`http://localhost:5000/api/getpdf/${inv._id}`}
               />
             );

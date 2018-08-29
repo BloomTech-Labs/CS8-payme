@@ -43,8 +43,8 @@ const createReminder = (req, res) => {
       $addToSet: { reminders: newreminder._id },
     })
       .populate('reminders')
-      .then(newinvoice => {
-        res.send(newinvoice);
+      .then(inv => {
+        res.json(inv.reminders);
       });
   });
 };
@@ -55,12 +55,14 @@ const allReminders = (req, res) => {
 };
 
 const setofReminders = (req, res) => {
-  const { id } = req.params;
-  Invoice.findById(id)
+  const { _id } = req.params;
+  Invoice.findById(_id)
     .then(invoice => {
+      // console.log(invoice);
       Reminder.find({ invoiceId: invoice._id })
         .then(reminders => {
-          res.send(reminders);
+          // console.log(reminders);
+          res.json(reminders);
         })
         .catch(err => {
           res.send(err);
@@ -121,6 +123,7 @@ const deleteReminder = (req, res) => {
 };
 
 module.exports = {
+  setofReminders,
   allReminders,
   getReminder,
   createReminder,

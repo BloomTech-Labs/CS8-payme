@@ -9,7 +9,6 @@ import { getReminder, deleteSms } from '../../../actions/smsReminders';
 const Datainvoice = SortableElement(props => {
   // console.log(props);
   return (
-    // <React.Fragment>
     props.boxView || props.isDesktop ? (
       <div className="invoice-data">
         <div
@@ -38,40 +37,39 @@ const Datainvoice = SortableElement(props => {
         {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
         <hr className="invoice-data-hr" />
         <div>
-          {Array.isArray(props.reminders)
-            ? props.reminder.map((r, i) => {
+          {Array.isArray(props.reminders) ? 
+            props.reminder.map((r, i) => {
               return (
                 <div key={i}>
-                  {/* {r.invoiceId === props.id ? ( */}
-                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                      {r.remind.toUpperCase()}
-                    </p>
-                    {/* {console.log(r)} */}
-                    {r.isEmail ? (
-                      <i
-                        className="fas fa-envelope-open fa-fw"
-                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                      />
-                    ) : (
-                      <i
-                        className="fas fa-mobile-alt"
-                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                      />
-                    )}
-                    <button
-                      type="submit"
-                      onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })}
-                    >
-                      <i className="fa fa-bell-slash" />
-                    </button>
-                  </div>
-                  {/* ) : null} */}
+                  {r.invoiceId === props.id ? (
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
+                        {r.remind.toUpperCase()}
+                      </p>
+                      {/* {console.log(r)} */}
+                      {r.isEmail ? (
+                        <i
+                          className="fas fa-envelope-open fa-fw"
+                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                        />
+                      ) : (
+                        <i
+                          className="fas fa-mobile-alt"
+                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                        />
+                      )}
+                      <span
+                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id }, props.history)}
+                      >
+                        <i className="fa fa-bell-slash" />
+                      </span>
+                    </div>
+                  ) : null}
                 </div>
               );
             })
             : null}
-          {/* <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />; */}
+
         </div>
       </div>
     ) : (
@@ -129,46 +127,41 @@ const Datainvoice = SortableElement(props => {
               ? props.reminders.map((r, i) => {
                 return (
                   <div key={i}>
-                    {/* {console.log(r.invoiceId, props.id)} */}
-                    {/* {r.invoiceId === props.id ? ( */}
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                        {r.remind.toUpperCase()}
-                      </p>
-                      {/* {console.log(r)} */}
-                      {r.isEmail ? (
-                        <i
-                          className="fas fa-envelope-open fa-fw"
-                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                        />
-                      ) : (
-                        <i
-                          className="fas fa-mobile-alt"
-                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                        />
-                      )}
-                      <button
-                        type="submit"
-                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })
-                          }
-                      >
-                        <i className="fa fa-bell-slash" />
-                      </button>
-                    </div>
-                    {/* ) : null} */}
+                    
+                    {r.invoiceId === props.id ? (
+                      <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
+                          {r.remind.toUpperCase()}
+                        </p>
+                        {r.isEmail ? (
+                          <i
+                            className="fas fa-envelope-open fa-fw"
+                            style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                          />
+                        ) : (
+                          <i
+                            className="fas fa-mobile-alt"
+                            style={{ marginRight: '1rem', marginLeft: '1rem' }}
+                          />
+                        )}
+                        <span
+                          onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })
+                            }
+                        >
+                          <i className="fa fa-bell-slash" />
+                        </span>
+                      </div>
+                    ) : null }
                   </div>
                 );
               })
               : null}
           </div>
         </div>
-        {/* <div>{props.isPdfToggled ? props.history.push('/pdf') : null}</div> */}
-        {/* reminders */}
 
-        {/* <div><i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />;</div> */}
       </div>
     )
-    // </React.Fragment>
+
   );
 });
 
