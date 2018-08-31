@@ -25,7 +25,7 @@ const createReminder = (req, res) => {
     name,
     amount,
     company,
-    time,
+    date,
   } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
@@ -38,7 +38,7 @@ const createReminder = (req, res) => {
     isEmail,
     amount,
     company,
-    time,
+    time: date,
   });
   const { _id } = req.params;
   reminder.save().then(newreminder => {
@@ -49,7 +49,11 @@ const createReminder = (req, res) => {
       .populate('reminders')
       .then(inv => {
         res.json(newreminder);
-        if (newreminder.isEmail === false) scheduler.scheduleSMS(newreminder);
+        if (newreminder.isEmail === false) {
+          scheduler.scheduleSMS(newreminder);
+          console.log(newreminder.remind);
+        }
+
         // if (newreminder.isEmail === true) schecduler.scheduleEmail(newreminder);
       })
       .catch(err => {
