@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar';
+import DateTimePicker from 'react-datetime-picker';
+import InputMoment from 'input-moment';
+import moment from 'moment';
 import { getAllInvoices, getInvoice } from '../../actions/invoices';
 import Sidebar from '../sidebar';
 // import Dropdown from './dropdown';
@@ -19,11 +22,11 @@ class Reminders extends Component {
       amount: null,
       isEmail: false,
       company: '',
+      date: new Date(),
     },
     dropdown: true,
     Custmessage: false,
     calendar: false,
-    date: new Date(),
     selected: false,
   };
 
@@ -34,7 +37,15 @@ class Reminders extends Component {
 
   onSelect = () => this.setState({ selected: !this.state.selected });
 
-  onChange = date => this.setState({ date });
+  onChange(date) {
+    this.setState(state => ({
+      ...state,
+      reminder: {
+        ...state.reminder,
+        ...date,
+      },
+    }));
+  }
 
   handleInvoice(id, phone, name, amount) {
     this.setState(state => ({
@@ -74,8 +85,8 @@ class Reminders extends Component {
     const { invoices } = this.props;
     const { reminder } = this.state;
     // const { invoice } = this.props;
-    console.log(reminder.name);
-    console.log(this.state.date.toString());
+    // console.log(reminder.name);
+    console.log(reminder.date);
     console.log(reminder);
     return (
       <div className="reminder">
@@ -92,9 +103,7 @@ class Reminders extends Component {
               <div>
                 <p>
                   Date Selected:
-                  <span style={{ color: '#22CFB1' }}>
-                    {this.state.date.toString().slice(0, 25)}
-                  </span>
+                  <span style={{ color: '#22CFB1' }}>{reminder.date.toString().slice(0, 25)}</span>
                 </p>
               </div>
             ) : null}
@@ -110,12 +119,13 @@ class Reminders extends Component {
                   />
                 </p>
               </div>
-              <Calendar
+              {/* <Calendar
                 className="calendar"
                 style={styles.calendarStyles}
                 onChange={this.onChange}
                 value={this.state.date}
-              />
+              /> */}
+              <DateTimePicker onChange={date => this.onChange({ date })} value={reminder.date} />
             </div>
           ) : null}
           <div className="reminder-form_container">
