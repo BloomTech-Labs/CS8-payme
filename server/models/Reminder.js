@@ -12,6 +12,9 @@ const emailusername = process.env.EMAIL_USERNAME;
 const emailpassword = process.env.EMAIL_PASSWORD;
 const host = process.env.HOST;
 
+const Agenda = require('agenda');
+const agenda = new Agenda();
+
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
   name: String,
@@ -35,104 +38,53 @@ const ReminderSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-ReminderSchema.method.emailify = function() {
-  return this.isEmail === true;
-};
 
-ReminderSchema.statics.Minute = function() {
-  // this finds any reminder with remind set to every minute
-  Reminder.find({ remind: 'minute' }).then(reminders => {
-    let emails = reminders.filter(reminder => {
-      return reminder.isEmail === true;
-    });
-    let sms = reminders.filter(reminder => {
-      return reminder.isEmail === false;
-    });
-    sendNotifications(sms);
-    sendEmailer(emails);
-  });
-};
-ReminderSchema.statics.Daily = function() {
-  Reminder.find({ remind: 'daily' }).then(reminders => {
-    let emails = reminders.filter(reminder => {
-      return reminder.isEmail === true;
-    });
-    let sms = reminders.filter(reminder => {
-      return reminder.isEmail === false;
-    });
-    sendNotifications(sms);
-    sendEmailer(emails);
-  });
-};
-ReminderSchema.statics.Weekly = function() {
-  Reminder.find({ remind: 'weekly' }).then(reminders => {
-    let emails = reminders.filter(reminder => {
-      return reminder.isEmail === true;
-    });
-    let sms = reminders.filter(reminder => {
-      return reminder.isEmail === false;
-    });
-    sendNotifications(sms);
-    sendEmailer(emails);
-  });
-};
-ReminderSchema.statics.Monthly = function() {
-  Reminder.find({ remind: 'monthly' }).then(reminders => {
-    let emails = reminders.filter(reminder => {
-      return reminder.isEmail === true;
-    });
-    let sms = reminders.filter(reminder => {
-      return reminder.isEmail === false;
-    });
-    sendNotifications(sms);
-    sendEmailer(emails);
-  });
-};
 // **********Function sends SMS***************
-function sendNotifications(reminders) {
-  const client = new Twilio(accountSid, authToken);
-  reminders.forEach(function(reminder) {
-    // options for according to each client
-    console.log('inside sender', reminder);
-    let body;
-    if (reminder.message) {
-      body = `${reminder.message} Link to pay: ${host}/payinvoice/${
-        reminder.invoiceId
-      }`;
-    } else {
-      body = `${
-        reminder.company
-      } is asking for a payment. You can pay at: ${host}/payinvoice/${
-        reminder.invoiceId
-      }`;
-    }
-    const options = {
-      to: `+1 ${reminder.phoneNumber}`,
-      from: twilioNumber,
-      body,
-    };
-    // send message
-    client.messages.create(options, function(err, response) {
-      if (err) {
-        // just log for now
-        console.log(err);
-      } else {
-        let masked = reminder.phoneNumber.substr(
-          0,
-          reminder.phoneNumber.length - 5
-        );
-        masked += '*****';
-        // log who it was sent to with asterisk
-        console.log(`Message sent to ${masked}`);
-      }
-    });
-  });
-  // Don't wait on success/failure, just indicate all messages have been
-  // queued for delivery
-  // if (callback) {
-  //   callback.call();
-  // }
-}
+// function sendNotifications(reminders) {
+//   const client = new Twilio(accountSid, authToken);
+//   reminders.forEach(function(reminder) {
+//     // options for according to each client
+//     console.log('inside sender', reminder);
+//     let body;
+//     if (reminder.message) {
+//       body = `${reminder.message} Link to pay: ${host}/payinvoice/${
+//         reminder.invoiceId
+//       }`;
+//     } else {
+//       body = `${
+//         reminder.company
+//       } is asking for a payment. You can pay at: ${host}/payinvoice/${
+//         reminder.invoiceId
+//       }`;
+//     }
+//     const options = {
+//       to: `+1${reminder.phoneNumber}`,
+//       from: twilioNumber,
+//       body,
+//     };
+//     // send message
+//     client.messages.create(options, function(err, response) {
+//       if (err) {
+//         // just log for now
+//         console.log(err);
+//       }
+//       if (response) {
+//         let masked = reminder.phoneNumber.substr(
+//           0,
+//           reminder.phoneNumber.length - 5
+//         );
+//         masked += '*****';
+//         // log who it was sent to with asterisk
+//         console.log(`Message sent to ${masked}`);
+//       }
+//     });
+//   });
+// }
+// Don't wait on success/failure, just indicate all messages have been
+// queued for delivery
+// if (callback) {
+//   callback.call();
+// }
 
 function sendEmailer(reminders) {
   reminders.forEach(function(reminder) {

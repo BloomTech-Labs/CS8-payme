@@ -39,7 +39,7 @@ app.use(cors());
 app.use(fileUpload());
 
 // Unncomment to have scheduler run continuously
-scheduler.start();
+// scheduler.scheduleSMS();
 
 // Routes
 routes(app);

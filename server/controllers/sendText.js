@@ -6,6 +6,8 @@ const Reminder = require('../models/Reminder');
 const Invoice = require('../models/invoices');
 const User = require('../models/users');
 
+const scheduler = require('../scheduler');
+
 const getTimeZones = function() {
   return momentTimeZone.tz.names();
 };
@@ -23,6 +25,7 @@ const createReminder = (req, res) => {
     name,
     amount,
     company,
+    time,
   } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
   const reminder = new Reminder({
@@ -35,6 +38,7 @@ const createReminder = (req, res) => {
     isEmail,
     amount,
     company,
+    time,
   });
   const { _id } = req.params;
   reminder.save().then(newreminder => {
@@ -44,7 +48,12 @@ const createReminder = (req, res) => {
     })
       .populate('reminders')
       .then(inv => {
-        res.json(inv.reminders);
+        res.json(newreminder);
+        if (newreminder.isEmail === false) scheduler.scheduleSMS(newreminder);
+        // if (newreminder.isEmail === true) schecduler.scheduleEmail(newreminder);
+      })
+      .catch(err => {
+        console.log(err);
       });
   });
 };
@@ -55,22 +64,32 @@ const allReminders = (req, res) => {
 };
 
 const setofReminders = (req, res) => {
-  const { _id } = req.params;
-  Invoice.findById(_id)
-    .then(invoice => {
-      // console.log(invoice);
-      Reminder.find({ invoiceId: invoice._id })
-        .then(reminders => {
-          // console.log(reminders);
-          res.json(reminders);
-        })
-        .catch(err => {
-          res.send(err);
-        });
-    })
-    .catch(err => {
-      res.send(err);
-    });
+  // const { _id } = req.params;
+  // Invoice.findById(_id)
+  //   .then(invoice => {
+  //     // console.log(invoice);
+  //     Reminder.find({ invoiceId: invoice._id })
+  //       .then(reminders => {
+  //         // console.log(reminders);
+  //         res.json(reminders);
+  //       })
+  //       .catch(err => {
+  //         res.send(err);
+  //       });
+  //   })
+  //   .catch(err => {
+  //     res.send(err);
+  //   });
+  const { invoices } = req.user;
+  invoices.map(rem => {
+    res.send(rem.reminders);
+  });
+  // invoices
+  //   .find({})
+  //   .populate('reminders')
+  //   .then(list => {
+  //     res.json(list);
+  //   });
 };
 // GET: /api/sms/:id
 // if reminder was deleted, it will redirect back to create
