@@ -10,7 +10,7 @@ const send = {
     const client = new Twilio(accountSid, authToken);
     // reminders.forEach(function(reminder) {
     // options for according to each client
-    console.log('inside sender', reminder);
+    console.log('inside sender', reminder.message);
     let body = `PAy me`;
     if (reminder.message) {
       body = `${reminder.message} Link to pay: ${host}/payinvoice/${
