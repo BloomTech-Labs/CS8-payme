@@ -8,11 +8,6 @@ const User = require('../models/users');
 
 const scheduler = require('../scheduler');
 
-const getTimeZones = function() {
-  return momentTimeZone.tz.names();
-};
-
-// POST: /api/sms create a reminder
 const createReminder = (req, res) => {
   console.log(req.body);
   const {
@@ -27,7 +22,7 @@ const createReminder = (req, res) => {
     remind,
     date,
   } = req.body;
-  // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
+
   const reminder = new Reminder({
     invoiceId,
     name,
@@ -40,7 +35,9 @@ const createReminder = (req, res) => {
     remind,
     days: date,
   });
+
   const { _id } = req.params;
+
   reminder.save().then(newreminder => {
     console.log(newreminder);
     Invoice.findByIdAndUpdate(_id, {
@@ -49,11 +46,8 @@ const createReminder = (req, res) => {
       .populate('reminders')
       .then(inv => {
         res.json(newreminder);
-        if (newreminder.isEmail === false) {
-          scheduler.scheduleSMS(newreminder);
-        }
 
-        // if (newreminder.isEmail === true) schecduler.scheduleEmail(newreminder);
+        scheduler.scheduleSEND(newreminder); // schedule reminder
       })
       .catch(err => {
         console.log(err);
@@ -94,8 +88,7 @@ const setofReminders = (req, res) => {
   //     res.json(list);
   //   });
 };
-// GET: /api/sms/:id
-// if reminder was deleted, it will redirect back to create
+
 const getReminder = (req, res) => {
   const { id } = req.params;
   Reminder.findOne({ _id: id })
@@ -111,7 +104,7 @@ const getReminder = (req, res) => {
       // console.log(err);
     });
 };
-// POST: /api/deletesms/:id
+
 const deleteReminder = (req, res) => {
   const { invoiceId, reminderId } = req.query;
   // const { _id } = req.user;
