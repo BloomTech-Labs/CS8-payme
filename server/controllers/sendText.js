@@ -144,10 +144,24 @@ const deleteReminder = (req, res) => {
   // res.status(401).json({ message: 'testing' });
 };
 
+const cancelSchedule = (req, res) => {
+  const { id } = req.params;
+
+  Reminder.findById(id)
+    .then(reminder => {
+      res.send(reminder);
+      scheduler.cancelSEND(reminder._id);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+};
+
 module.exports = {
   setofReminders,
   allReminders,
   getReminder,
   createReminder,
   deleteReminder,
+  cancelSchedule,
 };

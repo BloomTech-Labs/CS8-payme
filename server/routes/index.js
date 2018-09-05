@@ -18,9 +18,11 @@ const { restricted, authenticate } = require('../config/auth');
 
 const {
   allReminders,
+  setofReminders,
   createReminder,
   getReminder,
   deleteReminder,
+  cancelSchedule,
 } = require('../controllers/sendText');
 
 const {
@@ -52,10 +54,13 @@ module.exports = app => {
   // EMAIL ROUTES
   app.post('/api/email', restricted, sendEmail);
   // SMS ROUTES
+  app.get('/api/getsms', restricted, setofReminders);
   app.get('/api/sms', restricted, allReminders);
   app.post('/api/sms/:_id', restricted, createReminder);
   app.delete('/api/deletesms', restricted, deleteReminder);
   app.get('/api/getsms/:id', restricted, getReminder);
+
+  app.put('/api/cancelreminder/:id', restricted, cancelSchedule);
   // STRIPE ROUTES
   app.post('/api/charge', restricted, stripeCharge);
   app.post('/api/payinvoice', payInvoice);

@@ -1,7 +1,3 @@
-const CronJob = require('cron').CronJob;
-const notify = require('./notificationWorker.js');
-const moment = require('moment');
-const Reminder = require('./models/Reminder.js');
 const schedule = require('node-schedule');
 const sender = require('./sender');
 
@@ -11,43 +7,63 @@ const scheduler = function() {
       /**********************************
         Break down date object 
       */
-      let initialSend = new Date(reminder.days);
-      let startNumb = initialSend.getDay(); // 0-6 starts at sunday
-      let startDate = initialSend.getDate(); // 1-31
-      let startHour = initialSend.getHours();
-      let startMinute = initialSend.getMinutes();
-      let startMonth = initialSend.getMonth();
+      const initialSend = new Date(reminder.days);
+      const startNumb = initialSend.getDay(); // 0-6 starts at sunday
+      const startDate = initialSend.getDate(); // 1-31
+      const startHour = initialSend.getHours();
+      const startMinute = initialSend.getMinutes();
+      const startMonth = initialSend.getMonth();
+      const remId = reminder._id.toString();
+      /*********************************/
 
       /***********************************
-       * Sends reminder daily
+       * CUSTOM scheduler
+       */
+      if (reminder.remind === 'custom') {
+        // let rule = new schedule.RecurrenceRule();
+        let job = schedule.scheduleJob(remId, initialSend, function() {
+          sender.sendSMS(reminder);
+        });
+        job.reminderId = reminder._id;
+      }
+      /*******************************/
+
+      /***********************************
+       * Sends reminder DAILY
        */
       if (reminder.remind === 'daily') {
-        // send on day and time selected and will send sun - sat
+        // send on day and time selected. Will send sun - sat
         let rule = new schedule.RecurrenceRule();
         rule.dayOfWeek = [startNumb, new schedule.Range(0, 6)];
         rule.hour = startHour;
         rule.minute = startMinute;
 
-        let dailyJob = schedule.scheduleJob(rule, function() {
-          console.log('sent at ' + moment().format());
+        let job = schedule.scheduleJob(remId, rule, function() {
           sender.sendSMS(reminder);
         });
+        job.reminderId = reminder._id;
       }
+      /**********************************/
+
       /***********************************
-       * Sends reminder weekly
+       * Sends reminder WEEKLY
        */
       if (reminder.remind === 'weekly') {
         // Sends 11:30am every week on selected day
-        let weeklyJob = schedule.scheduleJob(
+        let job = schedule.scheduleJob(
+          remId,
           { hour: 11, minute: 30, dayOfWeek: startNumb },
           function() {
             sender.sendSMS(reminder);
           }
         );
         // let rule = new schedule.RecurrenceRule();
+        job.reminderId = reminder._id;
       }
+      /**********************************/
+
       /***********************************
-       * Send reminder monthly
+       * Send reminder MONTHLY
        */
       if (reminder.remind === 'monthly') {
         let rule = new schedule.RecurrenceRule();
@@ -55,16 +71,23 @@ const scheduler = function() {
         rule.hour = startHour;
         rule.minute = startMinute;
 
-        let monthlyJob = schedule.scheduleJob(rule, function() {
+        let job = schedule.scheduleJob(remId, rule, function() {
           sender.sendSMS(reminder);
         });
+        job.reminderId = reminder._id;
       }
+      /**********************************/
     },
 
-    cancelSMS: function(reminderid) {
-      let finishedJobs = schedule.s;
-      job.cancel();
+    /**************************************
+     * Call to cancel job by reminder Id
+     */
+    cancelSEND: function(reminderId) {
+      let remId = reminderId.toString();
+      let schJob = schedule.scheduledJobs[remId];
+      schJob.cancel();
     },
+    /**********************************/
   };
 };
 module.exports = scheduler();
