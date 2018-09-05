@@ -3,7 +3,7 @@ const sender = require('./sender');
 
 const scheduler = function() {
   return {
-    scheduleSMS: function(reminder) {
+    scheduleSEND: function(reminder) {
       /**********************************
         Break down date object 
       */
@@ -13,8 +13,9 @@ const scheduler = function() {
       const startHour = initialSend.getHours();
       const startMinute = initialSend.getMinutes();
       const startMonth = initialSend.getMonth();
-      const remId = reminder._id.toString();
       /*********************************/
+
+      const remId = reminder._id.toString();
 
       /***********************************
        * CUSTOM scheduler
@@ -22,7 +23,9 @@ const scheduler = function() {
       if (reminder.remind === 'custom') {
         // let rule = new schedule.RecurrenceRule();
         let job = schedule.scheduleJob(remId, initialSend, function() {
-          sender.sendSMS(reminder);
+          reminder.isEmail === true
+            ? sender.sendEmail(reminder)
+            : sender.sendSMS(reminder);
         });
         job.reminderId = reminder._id;
       }
@@ -39,7 +42,9 @@ const scheduler = function() {
         rule.minute = startMinute;
 
         let job = schedule.scheduleJob(remId, rule, function() {
-          sender.sendSMS(reminder);
+          reminder.isEmail === true
+            ? sender.sendEmail(reminder)
+            : sender.sendSMS(reminder);
         });
         job.reminderId = reminder._id;
       }
@@ -54,7 +59,9 @@ const scheduler = function() {
           remId,
           { hour: 11, minute: 30, dayOfWeek: startNumb },
           function() {
-            sender.sendSMS(reminder);
+            reminder.isEmail === true
+              ? sender.sendEmail(reminder)
+              : sender.sendSMS(reminder);
           }
         );
         // let rule = new schedule.RecurrenceRule();
@@ -72,7 +79,9 @@ const scheduler = function() {
         rule.minute = startMinute;
 
         let job = schedule.scheduleJob(remId, rule, function() {
-          sender.sendSMS(reminder);
+          reminder.isEmail === true
+            ? sender.sendEmail(reminder)
+            : sender.sendSMS(reminder);
         });
         job.reminderId = reminder._id;
       }
