@@ -16,7 +16,6 @@ const getTimeZones = function() {
 const createReminder = (req, res) => {
   console.log(req.body);
   const {
-    remind,
     invoiceId,
     rPhone,
     message,
@@ -25,6 +24,7 @@ const createReminder = (req, res) => {
     name,
     amount,
     company,
+    remind,
     date,
   } = req.body;
   // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
@@ -34,11 +34,11 @@ const createReminder = (req, res) => {
     phoneNumber: rPhone,
     email,
     message,
-    remind,
     isEmail,
     amount,
     company,
-    time: date,
+    remind,
+    days: date,
   });
   const { _id } = req.params;
   reminder.save().then(newreminder => {
@@ -51,7 +51,6 @@ const createReminder = (req, res) => {
         res.json(newreminder);
         if (newreminder.isEmail === false) {
           scheduler.scheduleSMS(newreminder);
-          console.log(newreminder.remind);
         }
 
         // if (newreminder.isEmail === true) schecduler.scheduleEmail(newreminder);

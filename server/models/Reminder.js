@@ -25,66 +25,19 @@ const ReminderSchema = new mongoose.Schema({
   amount: {
     type: Number,
   },
-  remind: {
-    type: String,
-    default: 'weekly',
-  }, // minute, daily, weekly, monthly
   isEmail: {
     type: Boolean,
     default: false,
   },
-  time: {
+  remind: {
+    type: String,
+    default: 'weekly',
+  }, // minute, daily, weekly, monthly
+  days: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
 });
-
-// **********Function sends SMS***************
-// function sendNotifications(reminders) {
-//   const client = new Twilio(accountSid, authToken);
-//   reminders.forEach(function(reminder) {
-//     // options for according to each client
-//     console.log('inside sender', reminder);
-//     let body;
-//     if (reminder.message) {
-//       body = `${reminder.message} Link to pay: ${host}/payinvoice/${
-//         reminder.invoiceId
-//       }`;
-//     } else {
-//       body = `${
-//         reminder.company
-//       } is asking for a payment. You can pay at: ${host}/payinvoice/${
-//         reminder.invoiceId
-//       }`;
-//     }
-//     const options = {
-//       to: `+1${reminder.phoneNumber}`,
-//       from: twilioNumber,
-//       body,
-//     };
-//     // send message
-//     client.messages.create(options, function(err, response) {
-//       if (err) {
-//         // just log for now
-//         console.log(err);
-//       }
-//       if (response) {
-//         let masked = reminder.phoneNumber.substr(
-//           0,
-//           reminder.phoneNumber.length - 5
-//         );
-//         masked += '*****';
-//         // log who it was sent to with asterisk
-//         console.log(`Message sent to ${masked}`);
-//       }
-//     });
-//   });
-// }
-// Don't wait on success/failure, just indicate all messages have been
-// queued for delivery
-// if (callback) {
-//   callback.call();
-// }
 
 function sendEmailer(reminders) {
   reminders.forEach(function(reminder) {
