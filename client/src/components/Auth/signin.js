@@ -28,17 +28,17 @@ class Signin extends Component {
         <div className="signin-foreground">
           <div className="signin-imgbox">
             <img className="signin--img" src={signin} alt="img" />
-            <p className="signin-headline">
-              {/* <br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris</span> */}
-            </p>
-            <p className="signin--form_notmember">
+            {/* <p className="signin-headline">
+              <br /> <span className="signin-headline2">Ut enim ad minim veniam, quis nostrud exercitation
+              ullamco laboris</span>
+            </p> */}
+            <div className="signin--form_notmember">
               Not a member? <br />{' '}
               <Link to="/signup">
                 {' '}
                 <span className="signin-signup">Sign up</span>{' '}
               </Link>
-            </p>
+            </div>
           </div>
           <div className="signin--box">
             <div className="typed-logo">
