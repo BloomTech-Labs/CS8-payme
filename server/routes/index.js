@@ -13,7 +13,7 @@ const {
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
-const { sendEmail } = require('../controllers/sendEmail');
+
 const { restricted, authenticate } = require('../config/auth');
 
 const {
@@ -23,7 +23,7 @@ const {
   getReminder,
   deleteReminder,
   cancelSchedule,
-} = require('../controllers/sendText');
+} = require('../controllers/reminder/reminders');
 
 const {
   authorizeConnect,
@@ -51,9 +51,8 @@ module.exports = app => {
   app.put('/api/updateinvoice/:invNumber', restricted, updateInvoice);
   app.get('/api/clientinvoice/:invoiceID', clientInvoice);
   app.get('/viewpdf/:id', getpdf);
-  // EMAIL ROUTES
-  app.post('/api/email', restricted, sendEmail);
-  // SMS ROUTES
+
+  // REMINDER ROUTES
   app.get('/api/getsms', restricted, setofReminders);
   app.get('/api/sms', restricted, allReminders);
   app.post('/api/sms/:_id', restricted, createReminder);

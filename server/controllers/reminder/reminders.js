@@ -2,11 +2,11 @@ require('dotenv').load();
 
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
-const Reminder = require('../models/Reminder');
-const Invoice = require('../models/invoices');
-const User = require('../models/users');
+const Reminder = require('../../models/Reminder');
+const Invoice = require('../../models/invoices');
+const User = require('../../models/users');
 
-const scheduler = require('../scheduler');
+const scheduler = require('../../workers/scheduler');
 
 const createReminder = (req, res) => {
   console.log(req.body);
