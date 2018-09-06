@@ -4,22 +4,41 @@ const scheduler = require('../scheduler');
 
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
+
   name: String,
+
   company: String,
-  email: String,
-  phoneNumber: String,
-  message: String,
+
+  email: {
+    type: String,
+    required: true,
+  },
+
+  phoneNumber: {
+    type: String,
+    required: true,
+  },
+
+  message: {
+    type: String,
+    maxlength: 40,
+  },
+
   amount: {
     type: Number,
   },
+
   isEmail: {
     type: Boolean,
     default: false,
+    required: true,
   },
+
   remind: {
     type: String,
-    default: 'weekly',
-  }, // minute, daily, weekly, monthly
+    required: true,
+  }, // custom, daily, weekly, monthly
+
   days: {
     type: Date,
     default: Date.now(),
