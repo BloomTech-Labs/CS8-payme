@@ -1,10 +1,14 @@
 const Reminder = require('./models/Reminder.js');
 
-// let n = reminder.frequency;
-// let dayRange = [];
-// while (n != 0) {
-//   startDate += 1;
-//   n--;
-//   dayRange.push(startDate);
-// }
-// return dayRange;
+const queryWorker = function() {
+  return {
+    run: function() {
+      Reminder.query();
+      // console.log('query works');
+    },
+  };
+};
+
+module.exports = {
+  queryWorker: queryWorker(),
+};

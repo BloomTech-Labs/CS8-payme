@@ -23,11 +23,11 @@ const scheduler = function() {
       if (reminder.remind === 'custom') {
         // let rule = new schedule.RecurrenceRule();
         let job = schedule.scheduleJob(remId, initialSend, function() {
+          console.log('schdler' + reminder);
           reminder.isEmail === true
             ? sender.sendEmail(reminder)
             : sender.sendSMS(reminder);
         });
-        job.reminderId = reminder._id;
       }
       /*******************************/
 
@@ -46,7 +46,6 @@ const scheduler = function() {
             ? sender.sendEmail(reminder)
             : sender.sendSMS(reminder);
         });
-        job.reminderId = reminder._id;
       }
       /**********************************/
 
@@ -64,8 +63,6 @@ const scheduler = function() {
               : sender.sendSMS(reminder);
           }
         );
-        // let rule = new schedule.RecurrenceRule();
-        job.reminderId = reminder._id;
       }
       /**********************************/
 
@@ -83,7 +80,6 @@ const scheduler = function() {
             ? sender.sendEmail(reminder)
             : sender.sendSMS(reminder);
         });
-        job.reminderId = reminder._id;
       }
       /**********************************/
     },
@@ -99,4 +95,5 @@ const scheduler = function() {
     /**********************************/
   };
 };
+
 module.exports = scheduler();

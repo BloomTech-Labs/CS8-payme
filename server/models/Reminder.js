@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const scheduler = require('../scheduler');
+
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
   name: String,
@@ -23,6 +25,20 @@ const ReminderSchema = new mongoose.Schema({
     default: Date.now(),
   },
 });
+
+/*************************************
+ * Finds all reminders that need sending if
+ * server restarts and schedules them again.
+ */
+ReminderSchema.statics.query = function() {
+  Reminder.find({}).then(reminders => {
+    reminders.forEach(function(reminder) {
+      // console.log('sched for ' + reminder.name);
+      scheduler.scheduleSEND(reminder);
+    });
+  });
+};
+/**************************************/
 
 const Reminder = mongoose.model('Reminder', ReminderSchema);
 module.exports = Reminder;
