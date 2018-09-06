@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const scheduler = require('../workers/scheduler');
+const scheduler = require('../scheduling/scheduler');
 
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,

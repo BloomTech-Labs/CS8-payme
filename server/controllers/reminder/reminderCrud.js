@@ -6,7 +6,7 @@ const Reminder = require('../../models/Reminder');
 const Invoice = require('../../models/invoices');
 const User = require('../../models/users');
 
-const scheduler = require('../../workers/scheduler');
+const scheduler = require('../../scheduling/scheduler');
 
 const createReminder = (req, res) => {
   console.log(req.body);

@@ -23,7 +23,7 @@ const {
   getReminder,
   deleteReminder,
   cancelSchedule,
-} = require('../controllers/reminder/reminders');
+} = require('../controllers/reminder/reminderCrud');
 
 const {
   authorizeConnect,

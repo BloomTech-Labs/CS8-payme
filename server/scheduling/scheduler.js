@@ -1,5 +1,5 @@
 const schedule = require('node-schedule');
-const sender = require('./sendReminders');
+const sender = require('./reminderSenders');
 
 const scheduler = function() {
   return {
