@@ -56,7 +56,7 @@ const scheduler = function() {
         // Sends 11:30am every week on selected day
         let job = schedule.scheduleJob(
           remId,
-          { hour: 11, minute: 30, dayOfWeek: startNumb },
+          { hour: startHour, minute: startMinute, dayOfWeek: startNumb },
           function() {
             reminder.isEmail === true
               ? sender.sendEmail(reminder)
