@@ -6,6 +6,15 @@ import Sidebar from '../../sidebar';
 import { addInvoice } from '../../../actions/invoices';
 
 class AddInvoice extends Component {
+  // state = {
+  //   remind: '',
+  // };
+
+  // handleRemind = e => {
+  //   this.setState({ remind: e.target.value });
+
+  // };
+
   handleFormSubmit = event => {
     event.preventDefault();
     const info = new FormData(event.target);
@@ -14,6 +23,7 @@ class AddInvoice extends Component {
   };
 
   render() {
+    // console.log(this.state.remind);
     return (
       <div className="invoice">
         <Sidebar />
@@ -47,6 +57,39 @@ class AddInvoice extends Component {
               placeholder="Total Amount"
             />
             <br />
+            <div className="reminder-radios">
+              <div className="reminder-select">
+                <label>Daily</label>
+                <input
+                  name="remind"
+                  type="radio"
+                  value="daily"
+                  // checked={this.state.remind === 'daily'}
+                  onChange={this.handleRemind}
+                />
+              </div>
+              <div>
+                <label>Weekly</label>
+                <input
+                  name="remind"
+                  type="radio"
+                  value="weekly"
+                  // checked={this.state.remind === 'weekly'}
+                  onChange={this.handleRemind}
+                />
+              </div>
+              <div>
+                <label>Monthy</label>
+                <input
+                  name="remind"
+                  type="radio"
+                  value="monthly"
+                  // checked={this.state.remind === 'monthly'}
+                  onChange={this.handleRemind}
+                />
+              </div>
+            </div>
+
             <input type="file" name="file" className="add-invoice_field" />
             <button className="add-invoice_submit" type="submit">
               Add Invoice
@@ -58,4 +101,7 @@ class AddInvoice extends Component {
   }
 }
 
-export default connect(null, { addInvoice })(AddInvoice);
+export default connect(
+  null,
+  { addInvoice },
+)(AddInvoice);

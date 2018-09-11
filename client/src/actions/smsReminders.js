@@ -11,7 +11,9 @@ axios.defaults.headers.common.Authorization = `bearer ${token}`;
 export function allReminders() {
   return dispatch => {
     axios
-      .get('/api/sms', { headers: { Authorization: `bearer ${localStorage.getItem('id')}` } })
+      .get('/api/sms', {
+        headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
+      })
       .then(res => {
         dispatch({ type: ALL_REMINDERS, payload: res.data });
       })
@@ -31,11 +33,11 @@ export function addReminder(content, history) {
       })
       .then(res => {
         console.log(content);
-        console.log(res.data.reminders);
+        console.log(res);
         history.push('/invoices');
         dispatch({
           type: ADD_REMINDER,
-          payload: res.data.reminders,
+          payload: res.data,
         });
       })
       .catch(err => {

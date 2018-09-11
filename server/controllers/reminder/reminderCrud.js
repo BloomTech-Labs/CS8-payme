@@ -2,19 +2,15 @@ require('dotenv').load();
 
 const moment = require('moment');
 const momentTimeZone = require('moment-timezone');
-const Reminder = require('../models/Reminder');
-const Invoice = require('../models/invoices');
-const User = require('../models/users');
+const Reminder = require('../../models/Reminder');
+const Invoice = require('../../models/invoices');
+const User = require('../../models/users');
 
-const getTimeZones = function() {
-  return momentTimeZone.tz.names();
-};
+const scheduler = require('../../scheduling/scheduler');
 
-// POST: /api/sms create a reminder
 const createReminder = (req, res) => {
   console.log(req.body);
   const {
-    remind,
     invoiceId,
     rPhone,
     message,
@@ -23,28 +19,38 @@ const createReminder = (req, res) => {
     name,
     amount,
     company,
+    remind,
+    date,
   } = req.body;
-  // const remind = moment(req.body.remind, 'MM-DD-YYYY hh:mm-400');
+
   const reminder = new Reminder({
     invoiceId,
     name,
     phoneNumber: rPhone,
     email,
     message,
-    remind,
     isEmail,
     amount,
     company,
+    remind,
+    days: date,
   });
+
   const { _id } = req.params;
+
   reminder.save().then(newreminder => {
     console.log(newreminder);
     Invoice.findByIdAndUpdate(_id, {
       $addToSet: { reminders: newreminder._id },
     })
       .populate('reminders')
-      .then(newinvoice => {
-        res.send(newinvoice);
+      .then(inv => {
+        res.json(newreminder);
+
+        scheduler.scheduleSEND(newreminder); // schedule reminder
+      })
+      .catch(err => {
+        console.log(err);
       });
   });
 };
@@ -55,23 +61,34 @@ const allReminders = (req, res) => {
 };
 
 const setofReminders = (req, res) => {
-  const { id } = req.params;
-  Invoice.findById(id)
-    .then(invoice => {
-      Reminder.find({ invoiceId: invoice._id })
-        .then(reminders => {
-          res.send(reminders);
-        })
-        .catch(err => {
-          res.send(err);
-        });
-    })
-    .catch(err => {
-      res.send(err);
-    });
+  // const { _id } = req.params;
+  // Invoice.findById(_id)
+  //   .then(invoice => {
+  //     // console.log(invoice);
+  //     Reminder.find({ invoiceId: invoice._id })
+  //       .then(reminders => {
+  //         // console.log(reminders);
+  //         res.json(reminders);
+  //       })
+  //       .catch(err => {
+  //         res.send(err);
+  //       });
+  //   })
+  //   .catch(err => {
+  //     res.send(err);
+  //   });
+  const { invoices } = req.user;
+  invoices.map(rem => {
+    res.send(rem.reminders);
+  });
+  // invoices
+  //   .find({})
+  //   .populate('reminders')
+  //   .then(list => {
+  //     res.json(list);
+  //   });
 };
-// GET: /api/sms/:id
-// if reminder was deleted, it will redirect back to create
+
 const getReminder = (req, res) => {
   const { id } = req.params;
   Reminder.findOne({ _id: id })
@@ -87,7 +104,7 @@ const getReminder = (req, res) => {
       // console.log(err);
     });
 };
-// POST: /api/deletesms/:id
+
 const deleteReminder = (req, res) => {
   const { invoiceId, reminderId } = req.query;
   // const { _id } = req.user;
@@ -120,9 +137,24 @@ const deleteReminder = (req, res) => {
   // res.status(401).json({ message: 'testing' });
 };
 
+const cancelSchedule = (req, res) => {
+  const { id } = req.params;
+
+  Reminder.findById(id)
+    .then(reminder => {
+      res.send(reminder);
+      scheduler.cancelSEND(reminder._id);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+};
+
 module.exports = {
+  setofReminders,
   allReminders,
   getReminder,
   createReminder,
   deleteReminder,
+  cancelSchedule,
 };

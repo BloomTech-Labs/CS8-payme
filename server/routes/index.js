@@ -13,15 +13,17 @@ const {
 } = require('../controllers/invoice/getInvoice');
 const { deleteInvoice } = require('../controllers/invoice/deleteInvoice');
 const { updateInvoice } = require('../controllers/invoice/updateInvoice');
-const { sendEmail } = require('../controllers/sendEmail');
+
 const { restricted, authenticate } = require('../config/auth');
 
 const {
   allReminders,
+  setofReminders,
   createReminder,
   getReminder,
   deleteReminder,
-} = require('../controllers/sendText');
+  cancelSchedule,
+} = require('../controllers/reminder/reminderCrud');
 
 const {
   authorizeConnect,
@@ -49,13 +51,15 @@ module.exports = app => {
   app.put('/api/updateinvoice/:invNumber', restricted, updateInvoice);
   app.get('/api/clientinvoice/:invoiceID', clientInvoice);
   app.get('/viewpdf/:id', getpdf);
-  // EMAIL ROUTES
-  app.post('/api/email', restricted, sendEmail);
-  // SMS ROUTES
+
+  // REMINDER ROUTES
+  app.get('/api/getsms', restricted, setofReminders);
   app.get('/api/sms', restricted, allReminders);
   app.post('/api/sms/:_id', restricted, createReminder);
   app.delete('/api/deletesms', restricted, deleteReminder);
   app.get('/api/getsms/:id', restricted, getReminder);
+
+  app.put('/api/cancelreminder/:id', restricted, cancelSchedule);
   // STRIPE ROUTES
   app.post('/api/charge', restricted, stripeCharge);
   app.post('/api/payinvoice', payInvoice);
