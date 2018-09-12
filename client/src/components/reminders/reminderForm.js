@@ -29,7 +29,7 @@ const ReminderForm = props => {
                   <div className="dropdown-option" key={i}>
                     <p
                       tabIndex="0"
-                      className={props.selected ? 'dropdown-select' : null}
+                      className={props.selected ? 'dropdown-select' : 'dropdown-not'}
                       onClick={() => {
                         props.onSelect();
                         props.getInvoice(
@@ -43,7 +43,8 @@ const ReminderForm = props => {
                         );
                       }}
                     >
-                      {invoice.clientName}
+                      {invoice.clientName} -
+                      <span style={{ margin: '1rem 0 0 0' }}> #{invoice.number}</span>
                     </p>
                   </div>
                 );

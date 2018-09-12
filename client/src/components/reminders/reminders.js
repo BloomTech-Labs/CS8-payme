@@ -47,6 +47,27 @@ class Reminders extends Component {
     }));
   }
 
+  toggle = msg => {
+    console.log('hey');
+    if (msg === 'cal') {
+      this.setState({ dropdown: false, Custmessage: false, calendar: true });
+    }
+    // this.setState({ calendar: true });
+    if (msg === 'sms') {
+      this.setState({ Custmessage: true, calendar: false });
+    }
+  };
+
+  handleChange(e) {
+    this.setState(state => ({
+      ...state,
+      reminder: {
+        ...state.reminder,
+        ...e,
+      },
+    }));
+  }
+
   handleInvoice(id, phone, name, amount) {
     this.setState(state => ({
       ...state,
@@ -59,27 +80,6 @@ class Reminders extends Component {
       },
     }));
   }
-
-  handleChange(e) {
-    this.setState(state => ({
-      ...state,
-      reminder: {
-        ...state.reminder,
-        ...e,
-      },
-    }));
-  }
-
-  toggle = msg => {
-    console.log('hey');
-    if (msg === 'cal') {
-      this.setState({ dropdown: false, Custmessage: false, calendar: true });
-    }
-    // this.setState({ calendar: true });
-    if (msg === 'sms') {
-      this.setState({ Custmessage: true, calendar: false });
-    }
-  };
 
   render() {
     const { invoices } = this.props;
