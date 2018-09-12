@@ -5,7 +5,11 @@
 /coverage
 
 # production
+/build
+/client/build
 
+# yarn.lock file -- heroku only allows a yarn.lock OR package-lock
+yarn.lock
 
 # misc
 .DS_Store
