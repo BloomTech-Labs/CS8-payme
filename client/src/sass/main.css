@@ -1415,6 +1415,11 @@ e,'s are considered best option for media queries
   .dropdown-not {
     outline: none; }
 
+.home {
+  width: 100%;
+  display: flex;
+  flex-flow: column; }
+
 body {
   height: 100vh;
   color: black;
