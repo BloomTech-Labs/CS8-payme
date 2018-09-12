@@ -11,12 +11,12 @@ const ReminderForm = props => {
       <div className="reminderform-drop">
         {props.dropdown ? (
           <React.Fragment>
-            <p onClick={() => props.togCalendar('cal')}>
+            {/* <p onClick={() => props.togCalendar('cal')}>
               <i
                 style={{ marginLeft: '40rem', cursor: 'pointer' }}
                 className="fas fa-arrow-left fa-flip-horizontal fa-fw"
               />
-            </p>
+            </p> */}
             <h1>Select An Invoice</h1>
             <Dropdown
               className="dropdown"
@@ -53,52 +53,52 @@ const ReminderForm = props => {
           </React.Fragment>
         ) : null}
       </div>
-      {props.cmessage ? (
-        <React.Fragment>
-          <div className="reminder-radios_menu">
-            <div className="reminder-radios">
-              <div className="reminder-select">
-                <label>Sms</label>
-                <input
-                  type="radio"
-                  value="false"
-                  checked={props.isEmail === 'false' || props.isEmail === false}
-                  onChange={props.handleEmail}
-                />
-              </div>
-              <div className="reminder-select">
-                <label>Email</label>
-                <input
-                  type="radio"
-                  value="true"
-                  checked={props.isEmail === 'true'}
-                  onChange={props.handleEmail}
-                />
-              </div>
+      {/* {props.cmessage ? ( */}
+      <React.Fragment>
+        <div className="reminder-radios_menu">
+          <div className="reminder-radios">
+            <div className="reminder-select">
+              <label>Sms</label>
+              <input
+                type="radio"
+                value="false"
+                checked={props.isEmail === 'false' || props.isEmail === false}
+                onChange={props.handleEmail}
+              />
+            </div>
+            <div className="reminder-select">
+              <label>Email</label>
+              <input
+                type="radio"
+                value="true"
+                checked={props.isEmail === 'true'}
+                onChange={props.handleEmail}
+              />
             </div>
           </div>
-          <div className="reminderform-message">
-            <h1>Custom message:</h1>
-            <textarea
-              type="body"
-              className="reminderform-message-input"
-              onChange={props.handleMessage}
-            />
+        </div>
+        <div className="reminderform-message">
+          <h1>Custom message:</h1>
+          <textarea
+            type="body"
+            className="reminderform-message-input"
+            onChange={props.handleMessage}
+          />
 
-            <div className="addreminder">
-              <button
-                className="addreminder-button connect-stripe_button"
-                type="submit"
-                onClick={() => {
-                  props.addReminder(props.formData, props.history);
-                }}
-              >
-                Submit
-              </button>
-            </div>
+          <div className="addreminder">
+            <button
+              className="addreminder-button connect-stripe_button"
+              type="submit"
+              onClick={() => {
+                props.addReminder(props.formData, props.history);
+              }}
+            >
+              Submit
+            </button>
           </div>
-        </React.Fragment>
-      ) : null}
+        </div>
+      </React.Fragment>
+      {/* ) : null} */}
     </div>
   );
 };

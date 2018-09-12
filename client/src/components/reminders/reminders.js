@@ -108,26 +108,21 @@ class Reminders extends Component {
               </div>
             ) : null}
           </div>
-          {this.state.calendar ? (
-            <div className="reminder-calendar">
-              <div className="calendar_header">
-                <p> Select desired date</p>
-                <p onClick={() => this.toggle('sms')}>
-                  <i
-                    style={{ cursor: 'pointer' }}
-                    className="fas fa-arrow-left remind fa-flip-horizontal"
-                  />
-                </p>
-              </div>
-              {/* <Calendar
-                className="calendar"
-                style={styles.calendarStyles}
-                onChange={this.onChange}
-                value={this.state.date}
-              /> */}
-              <DateTimePicker onChange={date => this.onChange({ date })} value={reminder.date} />
+          {/* {this.state.calendar ? ( */}
+          <div className="reminder-calendar">
+            <div className="calendar_header">
+              <p> Select desired date</p>
+              <p onClick={() => this.toggle('sms')}>
+                <i
+                  style={{ cursor: 'pointer' }}
+                  className="fas fa-arrow-left remind fa-flip-horizontal"
+                />
+              </p>
             </div>
-          ) : null}
+
+            <DateTimePicker onChange={date => this.onChange({ date })} value={reminder.date} />
+          </div>
+          {/* ) : null} */}
           <div className="reminder-form_container">
             <RemindForm
               handleMessage={e => this.handleChange({ message: e.target.value })}
