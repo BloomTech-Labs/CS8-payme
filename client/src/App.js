@@ -11,6 +11,7 @@ import NotFound from './components/Auth/notFound.js';
 
 // Import dashboard pages
 import Reminders from './components/reminders/reminders';
+import RemindersHome from './components/reminders/index';
 import Invoices from './components/invoices/home';
 import PDF from './components/invoices/home/pdf';
 import Billing from './components/billing';
@@ -30,7 +31,8 @@ const App = () => {
         <Route exact path="/signin" component={Signin} />
         <Route exact path="/signin/entercode" component={EnterCode} />
         <Route path="/signup" component={Signup} />
-        <Route path="/reminders" component={RequireAuth(Reminders)} />
+        <Route path="/createreminders" component={RequireAuth(Reminders)} />
+        <Route path="/reminders" component={RequireAuth(RemindersHome)} />
         <Route path="/settings" component={RequireAuth(Settings)} />
         <Route path="/billing" component={RequireAuth(Billing)} />
         <Route path="/invoices" component={RequireAuth(Invoices)} />
