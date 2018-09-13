@@ -39,7 +39,7 @@ const Datainvoice = SortableElement(props => {
       <hr className="invoice-data-hr" />
       <span>
         {props.reminder.map((rem, i) => {
-          return <Reicons index={i} invReminders={rem} invId={props.id} />;
+          return <Reicons index={i} key={rem._id} invReminders={rem} invId={props.id} />;
         })}
       </span>
     </div>
@@ -77,7 +77,7 @@ const Datainvoice = SortableElement(props => {
       </div>
       <div className="invoice-list-box">
         {props.reminder.map((rem, i) => {
-          return <Reicons index={i} invReminders={rem} invId={props.id} />;
+          return <Reicons index={i} key={rem._id} invReminders={rem} invId={props.id} />;
         })}
       </div>
     </div>
