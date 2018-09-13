@@ -62,7 +62,11 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
   // console.log(load, 'load');
   User.findById(load.sub)
     .select('-password')
-    .populate('invoices')
+    .populate({
+      path: 'invoices',
+      model: 'Invoice',
+      populate: { path: 'reminders', model: 'Reminder' },
+    })
     .then(user => {
       // console.log(load.exp - new Date().getTime());
       // console.log(user);
