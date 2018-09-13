@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
 export const USER_INVOICES = 'USER_INVOICES';
+export const INVOICE_REMINDERS = 'INVOICE_REMINDERS';
 export const USER = 'USER';
 export const DE_AUTH = 'DE_AUTH';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
@@ -35,7 +36,11 @@ export function login(credentials, history) {
       .then(res => {
         localStorage.setItem('id', res.data.token);
         axios.defaults.headers.common.Authorization = `bearer ${res.data.token}`;
-        // console.log(res.data.user);
+        const reminders = res.data.user.invoices.map(inv => {
+          return inv.reminders;
+        });
+        dispatch({ type: 'INVOICE_REMINDERS', payload: reminders });
+        // console.log('login', reminders);
         dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
         dispatch({ type: 'USER', payload: res.data.user });
         history.push('/invoices');
@@ -74,6 +79,10 @@ export function codeLogin(credentials, history) {
         localStorage.setItem('id', res.data.token);
         axios.defaults.headers.common.Authorization = `bearer ${res.data.token}`;
         // console.log(res.data.user);
+        const reminders = res.data.user.invoices.map(inv => {
+          return inv.reminders;
+        });
+        dispatch({ type: 'INVOICE_REMINDERS', payload: reminders });
         dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
         dispatch({ type: 'USER', payload: res.data.user });
         history.push('/invoices');
@@ -96,6 +105,10 @@ export function autoLogin(token, history) {
       .get('/api/login', { headers: { Authorization: `bearer ${token}` } })
       .then(res => {
         localStorage.setItem('id', res.data.token);
+        const reminders = res.data.user.invoices.map(inv => {
+          return inv.reminders;
+        });
+        dispatch({ type: 'INVOICE_REMINDERS', payload: reminders });
         dispatch({ type: 'USER_INVOICES', payload: res.data.user.invoices });
         dispatch({ type: 'USER', payload: res.data.user });
         // console.log(history.location.pathname);
