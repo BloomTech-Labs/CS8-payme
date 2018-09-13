@@ -8,7 +8,7 @@ import { getAllInvoices, getInvoice } from '../../actions/invoices';
 import Sidebar from '../sidebar';
 // import Dropdown from './dropdown';
 import { addReminder, allReminders } from '../../actions/smsReminders';
-import RemindForm from './reminderForm';
+import RemindForm from './functional/reminderForm';
 
 class Reminders extends Component {
   state = {

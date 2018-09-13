@@ -6,7 +6,7 @@ import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
 import { getReminder, deleteSms } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
-import Reicons from '../../reminders/dataReminder';
+import Reicons from './dataReminder';
 
 const Datainvoice = SortableElement(props => {
   // console.log(props);
