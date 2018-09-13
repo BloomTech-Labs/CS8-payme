@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { deleteSms } from '../../actions/smsReminders';
 
 const Reicons = props => {
-  console.log(props);
+  // console.log(props);
   return (
     <div>
       <span>

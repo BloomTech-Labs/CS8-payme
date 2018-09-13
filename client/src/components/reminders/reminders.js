@@ -32,7 +32,7 @@ class Reminders extends Component {
 
   componentDidMount() {
     this.props.getAllInvoices();
-    this.props.allReminders();
+    // this.props.allReminders();
   }
 
   onSelect = () => this.setState({ selected: !this.state.selected });
@@ -82,10 +82,10 @@ class Reminders extends Component {
   }
 
   render() {
-    const { invoices } = this.props;
+    const { invoices, reminders } = this.props;
     const { reminder } = this.state;
     // const { invoice } = this.props;
-    // console.log(reminder.name);
+    console.log(reminders);
     console.log(reminder.date);
     console.log(reminder);
     return (

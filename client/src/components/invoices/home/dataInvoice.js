@@ -38,8 +38,8 @@ const Datainvoice = SortableElement(props => {
       {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
       <hr className="invoice-data-hr" />
       <span>
-        {props.reminder.map(rem => {
-          return <Reicons invReminders={rem} invId={props.id} />;
+        {props.reminder.map((rem, i) => {
+          return <Reicons index={i} invReminders={rem} invId={props.id} />;
         })}
       </span>
     </div>
@@ -76,8 +76,8 @@ const Datainvoice = SortableElement(props => {
         )}
       </div>
       <div className="invoice-list-box">
-        {props.reminder.map(rem => {
-          return <Reicons invReminders={rem} invId={props.id} />;
+        {props.reminder.map((rem, i) => {
+          return <Reicons index={i} invReminders={rem} invId={props.id} />;
         })}
       </div>
     </div>
