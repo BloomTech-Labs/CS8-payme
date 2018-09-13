@@ -4,21 +4,27 @@ import { connect } from 'react-redux';
 // import landPic from './coins.jpg';
 import logo from './giveMe.png';
 import { autoLogin } from '../../actions/auth';
+import Auth from '../Auth/Auth';
 // import givme from './giveMe.png';
 
 // const styles = {
 // backgroundImage: `url(${landPic})`,
 // backgroundSize: 'cover',
 // };
+const auth = new Auth();
+
 class Landing extends Component {
   componentDidMount() {
-    const token = localStorage.getItem('id');
-    if (token) {
-      this.props.autoLogin(token, this.props.history);
-    }
+    // const auth = new Auth();
+    // const token = localStorage.getItem('id');
+    // if (token) {
+    //   this.props.autoLogin(token, this.props.history);
+    // }
+    auth.handleAuthentication();
   }
 
   render() {
+    // const auth = new Auth();
     return (
       <div className="landing">
         <div className="landing-container">
@@ -38,6 +44,8 @@ class Landing extends Component {
               <Link to="/signup">
                 <button className="landing-signup">Sign up</button>
               </Link>
+
+              <button onClick={() => auth.login()}>Auth0</button>
             </div>
           </div>
         </div>
