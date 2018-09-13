@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { deleteSms } from '../../actions/smsReminders';
+import { deleteSms } from '../../../actions/smsReminders';
 
 const Reicons = props => {
   // console.log(props);
@@ -17,18 +17,15 @@ const Reicons = props => {
         ) : (
           <i className="fas fa-mobile-alt" style={{ marginRight: '1rem', marginLeft: '1rem' }} />
         )}
-        <span
+        {/* <span
           onClick={() => props.deleteSms({ reminderId: props.invReminders._id, invoiceId: props.invId })
           }
         >
           <i className="fa fa-bell-slash" />
-        </span>
+        </span> */}
       </span>
     </div>
   );
 };
 
-export default connect(
-  null,
-  { deleteSms },
-)(Reicons);
+export default Reicons;
