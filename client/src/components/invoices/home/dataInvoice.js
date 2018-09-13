@@ -6,6 +6,8 @@ import { handleInvoiceIdx, getPdf } from '../../../actions/invoices';
 import { getReminder, deleteSms } from '../../../actions/smsReminders';
 // import Pdf from './pdf';
 
+import Reicons from '../../reminders/dataReminder';
+
 const Datainvoice = SortableElement(props => {
   // console.log(props);
   return props.boxView || props.isDesktop ? (
@@ -36,38 +38,9 @@ const Datainvoice = SortableElement(props => {
       {/* {props.isPdfToggled ? props.history.push('/pdf') : null} */}
       <hr className="invoice-data-hr" />
       <span>
-        {Array.isArray(props.reminders)
-          ? props.reminder.map((r, i) => {
-            return (
-              <div key={i}>
-                {r.invoiceId === props.id ? (
-                  <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                      {r.remind.toUpperCase()}
-                    </p>
-                    {/* {console.log(r)} */}
-                    {r.isEmail ? (
-                      <i
-                        className="fas fa-envelope-open fa-fw"
-                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                      />
-                    ) : (
-                      <i
-                        className="fas fa-mobile-alt"
-                        style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                      />
-                    )}
-                    <span
-                      onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })}
-                    >
-                      <i className="fa fa-bell-slash" />
-                    </span>
-                  </div>
-                ) : null}
-              </div>
-            );
-          })
-          : null}
+        {props.reminder.map(rem => {
+          return <Reicons invReminders={rem} invId={props.id} />;
+        })}
       </span>
     </div>
   ) : (
@@ -86,22 +59,6 @@ const Datainvoice = SortableElement(props => {
       <div className="invoice-list-box">
         <p className="invoice-list-company">{props.company}</p>
       </div>
-      {/* <div className="invoice-list-box">
-            <span
-              className="invoice-list-pdf"
-              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
-            >
-              Invoice PDF
-              <i className="fas fa-paperclip" />
-            </span>
-          </div>
-          <div className="invoice-list-box">
-            <p className="invoice-list-reminder">
-              Weekly
-              <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-              <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-            </p>
-          </div> */}
       <div className="invoice-list-box">
         {props.isPdfToggled ? props.history.push('/pdf') : null}
         {props.img.data ? (
@@ -119,41 +76,9 @@ const Datainvoice = SortableElement(props => {
         )}
       </div>
       <div className="invoice-list-box">
-        <div className="invoice-list-reminder">
-          {/* {console.log(props.reminders)} */}
-          {Array.isArray(props.reminders)
-            ? props.reminders.map((r, i) => {
-              return (
-                <div key={i}>
-                  {r.invoiceId === props.id ? (
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                      <p className="invoice-list-reminder" style={{ margin: 'auto' }}>
-                        {r.remind.toUpperCase()}
-                      </p>
-                      {r.isEmail ? (
-                        <i
-                          className="fas fa-envelope-open fa-fw"
-                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                        />
-                      ) : (
-                        <i
-                          className="fas fa-mobile-alt"
-                          style={{ marginRight: '1rem', marginLeft: '1rem' }}
-                        />
-                      )}
-                      <span
-                        onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: props.id })
-                          }
-                      >
-                        <i className="fa fa-bell-slash" />
-                      </span>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })
-            : null}
-        </div>
+        {props.reminder.map(rem => {
+          return <Reicons invReminders={rem} invId={props.id} />;
+        })}
       </div>
     </div>
   );

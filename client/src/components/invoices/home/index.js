@@ -41,7 +41,6 @@ class Invoices extends Component {
 
   componentDidMount() {
     this.props.getAllInvoices();
-    this.props.allReminders();
     this.updatePredicate();
     window.addEventListener('resize', this.updatePredicate);
   }
@@ -114,8 +113,8 @@ class Invoices extends Component {
   render() {
     const { isDesktop } = this.state;
     const display = isDesktop ? 'none' : 'inline';
-    const { invoices } = this.props;
-    const { reminders } = this.props;
+    const { invoices, reminders } = this.props;
+
     // console.log(reminders);
     // console.log(invoices);
     let filteredInvoices = [];
@@ -134,7 +133,7 @@ class Invoices extends Component {
       return (
         <div className={className}>
           {filteredInvoices.map((inv, index) => {
-            // console.log(inv);
+            // console.log(inv.reminders);
             return (
               <Invoice
                 key={inv._id}
@@ -149,9 +148,8 @@ class Invoices extends Component {
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
-                reminder={reminders}
                 isDesktop={isDesktop}
-                // reminders={this.props.allReminders(inv._id)}
+                reminder={inv.reminders}
                 url={`http://localhost:5000/api/getpdf/${inv._id}`}
               />
             );
