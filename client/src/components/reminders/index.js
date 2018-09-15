@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 import SideNav from '../sidebar';
 import Reminders from './data/remindersArray';
 
+import { allReminders } from '../../actions/smsReminders';
+
 class RemindersHome extends Component {
-  componentDidMount() {}
+  componentDidMount = () => {
+    this.props.allReminders();
+  };
 
   render() {
-    const { invoices, reminders } = this.props;
-    // console.log(invoices);
-    // console.log(reminders);
+    const { invoices, reminders, areminders } = this.props;
+    console.log(areminders);
+    // console.log(this.state.list);
     return (
       <div className="reminder">
         <SideNav />
@@ -23,9 +27,10 @@ class RemindersHome extends Component {
             </Link>
           </div>
           <div>
-            {invoices.map((inv, i) => {
-              return <Reminders key={i} reminders={inv.reminders} />;
-            })}
+            {/* {invoices.map((inv, i) => {
+              return
+            })} */}
+            {areminders ? <Reminders reminders={areminders} /> : <div>Reminding reminders...</div>}
           </div>
         </div>
       </div>
@@ -39,7 +44,11 @@ const mapStateToProps = state => {
     invoice: state.invoice.currentInvoice,
     message: state.invoice.success,
     reminders: state.reminder.reminders,
+    areminders: state.reminder.areminders,
   };
 };
 
-export default connect(mapStateToProps)(RemindersHome);
+export default connect(
+  mapStateToProps,
+  { allReminders },
+)(RemindersHome);
