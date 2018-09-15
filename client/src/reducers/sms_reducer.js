@@ -11,11 +11,11 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case ALL_REMINDERS:
-      return { ...state, reminders: action.payload };
+      return { ...state, areminders: action.payload };
     case INVOICE_REMINDERS:
       return { ...state, reminders: action.payload };
     case ADD_REMINDER:
-      return { ...state, new: action.payload };
+      return { ...state, areminders: action.payload };
     case ONE_REMINDER:
       return { ...state, reminder: action.payload };
     case DELETED_SMS:
