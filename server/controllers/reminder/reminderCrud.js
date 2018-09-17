@@ -9,7 +9,8 @@ const User = require('../../models/users');
 const scheduler = require('../../scheduling/scheduler');
 
 const createReminder = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
+
   const {
     invoiceId,
     rPhone,
@@ -36,11 +37,12 @@ const createReminder = (req, res) => {
     days: date,
   });
 
-  const { _id } = req.params;
+  const { id } = req.params;
 
   reminder.save().then(newreminder => {
     console.log(newreminder);
-    Invoice.findByIdAndUpdate(_id, {
+
+    Invoice.findByIdAndUpdate(id, {
       $addToSet: { reminders: newreminder._id },
     })
       .populate('reminders')
@@ -54,11 +56,7 @@ const createReminder = (req, res) => {
       });
   });
 };
-const allReminders = (req, res) => {
-  Reminder.find({}).then(reminders => {
-    res.json(reminders);
-  });
-};
+const allReminders = (req, res) => {};
 
 const setofReminders = (req, res) => {
   // const { _id } = req.params;

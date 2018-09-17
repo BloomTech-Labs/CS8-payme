@@ -55,7 +55,7 @@ module.exports = app => {
   // REMINDER ROUTES
   app.get('/api/getsms', restricted, setofReminders);
   app.get('/api/sms', restricted, allReminders);
-  app.post('/api/sms/:_id', restricted, createReminder);
+  app.post('/api/sms/:id', restricted, createReminder);
   app.delete('/api/deletesms', restricted, deleteReminder);
   app.get('/api/getsms/:id', restricted, getReminder);
 
