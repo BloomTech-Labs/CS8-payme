@@ -43,7 +43,7 @@ const createReminder = (req, res) => {
   reminder
     .save()
     .then(newreminder => {
-      console.log(_id);
+      // console.log(_id);
       User.findByIdAndUpdate(_id, { $addToSet: { reminders: newreminder._id } })
         .populate('reminders')
         .then(user => {
@@ -78,10 +78,8 @@ const getReminder = (req, res) => {
   const { id } = req.params;
   Reminder.findOne({ _id: id })
     .then(reminder => {
-      // if (reminder) {
       res.json(reminder);
-      // }
-      // res.redirect('/api/sms');
+
       console.log('this was deleted');
     })
     .catch(err => {
@@ -91,23 +89,32 @@ const getReminder = (req, res) => {
 
 const deleteReminder = (req, res) => {
   const { invoiceId, reminderId } = req.query;
-  // const { _id } = req.user;
+  const { _id } = req.user;
   // console.log(req.query);
   // console.log(reminderId);
   // console.log(invoiceId);
-
-  Invoice.findByIdAndUpdate(
-    invoiceId,
-    { $pull: { reminders: reminderId } },
-    { new: true }
-  )
+  User.findByIdAndUpdate(_id, {
+    $pull: { reminders: reminderId },
+  })
     .populate('reminders')
-    .then(invoice => {
-      // console.log('invoice\n', invoice);
-      Reminder.findByIdAndRemove(reminderId)
-        .then(() => {
-          // console.log(invoice);
-          res.json(invoice.reminders);
+    .then(user => {
+      Invoice.findByIdAndUpdate(
+        invoiceId,
+        { $pull: { reminders: reminderId } },
+        { new: true }
+      )
+        .populate('reminders')
+        .then(invoice => {
+          // console.log('invoice\n', invoice);
+          Reminder.findByIdAndRemove(reminderId)
+            .then(() => {
+              // console.log(invoice);
+              res.status(200).json(user.reminders);
+            })
+            .catch(err => {
+              console.log(err);
+              res.status(500).json(err);
+            });
         })
         .catch(err => {
           console.log(err);
@@ -115,8 +122,7 @@ const deleteReminder = (req, res) => {
         });
     })
     .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+      res.json(err);
     });
   // res.status(401).json({ message: 'testing' });
 };
