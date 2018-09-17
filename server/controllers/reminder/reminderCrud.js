@@ -74,35 +74,6 @@ const allReminders = (req, res) => {
   res.json(reminders);
 };
 
-const setofReminders = (req, res) => {
-  // const { _id } = req.params;
-  // Invoice.findById(_id)
-  //   .then(invoice => {
-  //     // console.log(invoice);
-  //     Reminder.find({ invoiceId: invoice._id })
-  //       .then(reminders => {
-  //         // console.log(reminders);
-  //         res.json(reminders);
-  //       })
-  //       .catch(err => {
-  //         res.send(err);
-  //       });
-  //   })
-  //   .catch(err => {
-  //     res.send(err);
-  //   });
-  const { invoices } = req.user;
-  invoices.map(rem => {
-    res.send(rem.reminders);
-  });
-  // invoices
-  //   .find({})
-  //   .populate('reminders')
-  //   .then(list => {
-  //     res.json(list);
-  //   });
-};
-
 const getReminder = (req, res) => {
   const { id } = req.params;
   Reminder.findOne({ _id: id })
@@ -115,7 +86,6 @@ const getReminder = (req, res) => {
     })
     .catch(err => {
       res.status(500).json(err);
-      // console.log(err);
     });
 };
 
@@ -165,7 +135,6 @@ const cancelSchedule = (req, res) => {
 };
 
 module.exports = {
-  setofReminders,
   allReminders,
   getReminder,
   createReminder,
