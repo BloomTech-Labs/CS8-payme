@@ -67,6 +67,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, function(load, done) {
       model: 'Invoice',
       populate: { path: 'reminders', model: 'Reminder' },
     })
+    .populate('reminders')
     .then(user => {
       // console.log(load.exp - new Date().getTime());
       // console.log(user);

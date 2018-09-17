@@ -55,6 +55,7 @@ const User = new mongoose.Schema(
       exp: Number,
     },
     invoices: [{ type: ObjectId, ref: 'Invoice' }],
+    reminders: [{ type: ObjectId, ref: 'Reminder' }],
   },
   {
     timestamps: true,

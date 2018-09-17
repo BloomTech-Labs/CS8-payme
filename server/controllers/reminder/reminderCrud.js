@@ -37,26 +37,42 @@ const createReminder = (req, res) => {
     days: date,
   });
 
+  const { _id } = req.user;
   const { id } = req.params;
 
-  reminder.save().then(newreminder => {
-    console.log(newreminder);
+  reminder
+    .save()
+    .then(newreminder => {
+      console.log(_id);
+      User.findByIdAndUpdate(_id, { $addToSet: { reminders: newreminder._id } })
+        .populate('reminders')
+        .then(user => {
+          // res.send(user);
+          Invoice.findByIdAndUpdate(id, {
+            $addToSet: { reminders: newreminder._id },
+          })
+            .populate('reminders')
+            .then(inv => {
+              res.json(newreminder);
 
-    Invoice.findByIdAndUpdate(id, {
-      $addToSet: { reminders: newreminder._id },
-    })
-      .populate('reminders')
-      .then(inv => {
-        res.json(newreminder);
-
-        scheduler.scheduleSEND(newreminder); // schedule reminder
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
+              scheduler.scheduleSEND(newreminder); // schedule reminder
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        }) // user catch
+        .catch(err => {
+          res.json(err);
+        });
+    }) // reminder catch
+    .catch(err => {
+      res.json(err);
+    });
 };
-const allReminders = (req, res) => {};
+const allReminders = (req, res) => {
+  const { reminders } = req.user;
+  res.json(reminders);
+};
 
 const setofReminders = (req, res) => {
   // const { _id } = req.params;

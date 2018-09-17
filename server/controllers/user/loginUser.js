@@ -9,12 +9,12 @@ const login = (req, res) => {
   const token = makeToken(tknUser);
   User.findOne(_id)
     .select('-password -img')
-
     .populate({
       path: 'invoices',
       model: 'Invoice',
       populate: { path: 'reminders', model: 'Reminder' },
     })
+    .populate('reminders')
     .then(user => {
       res.json({ token, user });
     });
@@ -31,6 +31,7 @@ const checkToken = (req, res) => {
       model: 'Invoice',
       populate: { path: 'reminders', model: 'Reminder' },
     })
+    .populate('reminders')
     .then(user => res.json({ user, token }))
     .catch(err => res.status(501).json(err));
 };
