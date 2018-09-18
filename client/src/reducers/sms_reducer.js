@@ -15,11 +15,13 @@ export default function (state = initialState, action) {
     case INVOICE_REMINDERS:
       return { ...state, reminders: action.payload };
     case ADD_REMINDER:
-      return { ...state, areminders: action.payload };
+      return { ...state, reminders: action.payload };
     case ONE_REMINDER:
       return { ...state, reminder: action.payload };
-    case DELETED_SMS:
-      return { ...state, reminders: action.payload };
+    case DELETED_SMS: {
+      const newlist = state.areminders.filter(rem => rem._id !== action.payload._id);
+      return { ...state, areminders: newlist };
+    }
     default:
       return state;
   }

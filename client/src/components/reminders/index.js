@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import SideNav from '../sidebar';
-import Reminders from './data/remindersArray';
+
+import Emails from './data/emailData';
+import SMS from './data/smsData';
 
 import { allReminders } from '../../actions/smsReminders';
 
@@ -15,7 +17,7 @@ class RemindersHome extends Component {
   render() {
     const { invoices, reminders, areminders } = this.props;
     console.log(areminders);
-    // console.log(this.state.list);
+
     return (
       <div className="reminder">
         <SideNav />
@@ -26,11 +28,16 @@ class RemindersHome extends Component {
               <div> \/\/\\/\/\/\///\//\// </div>
             </Link>
           </div>
+
           <div>
-            {/* {invoices.map((inv, i) => {
-              return
-            })} */}
-            {areminders ? <Reminders reminders={areminders} /> : <div>Reminding reminders...</div>}
+            {areminders ? (
+              <div>
+                <SMS reminders={areminders} />
+                <Emails reminders={areminders} />
+              </div>
+            ) : (
+              <div>Reminding reminders...</div>
+            )}
           </div>
         </div>
       </div>

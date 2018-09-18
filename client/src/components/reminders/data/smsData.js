@@ -1,12 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { deleteSms } from '../../../actions/smsReminders';
 
 const SMS = props => {
+  const smsReminders = props.reminders.filter(rem => {
+    return rem.isEmail === false;
+  });
   return (
     <div>
-      {props.reminders.map((r, i) => {
+      {smsReminders.map((r, i) => {
         return (
-          <div key={i}>
+          <div style={{ backgroundColor: 'red' }} key={i}>
             <div>{r.name}</div>
+            <span onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })}>
+              <i className="fa fa-bell-slash" />
+            </span>
           </div>
         );
       })}
@@ -14,4 +23,7 @@ const SMS = props => {
   );
 };
 
-export default SMS;
+export default connect(
+  null,
+  { deleteSms },
+)(SMS);

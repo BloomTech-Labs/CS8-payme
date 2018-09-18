@@ -15,6 +15,7 @@ export function allReminders() {
         headers: { Authorization: `bearer ${localStorage.getItem('id')}` },
       })
       .then(res => {
+        console.log(res.data);
         dispatch({ type: ALL_REMINDERS, payload: res.data });
       })
       .catch(err => {
@@ -32,9 +33,9 @@ export function addReminder(content, history) {
         },
       })
       .then(res => {
-        console.log(content);
-        console.log(res);
-        history.push('/invoices');
+        // console.log(content);
+        console.log('Added: ', res.data);
+        history.push('/reminders');
         dispatch({
           type: ADD_REMINDER,
           payload: res.data,
@@ -59,12 +60,11 @@ export function deleteSms({ invoiceId, reminderId }) {
         },
       })
       .then(res => {
-        console.log(res);
+        // console.log(res.data);
         dispatch({
           type: DELETED_SMS,
           payload: res.data,
         });
-        // history.push('/invoices');
       })
       .catch(err => {
         console.log(err);
