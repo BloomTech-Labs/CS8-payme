@@ -107,9 +107,9 @@ const deleteReminder = (req, res) => {
         .then(invoice => {
           // console.log('invoice\n', invoice);
           Reminder.findByIdAndRemove(reminderId)
-            .then(() => {
+            .then(reminder => {
               // console.log(invoice);
-              res.status(200).json(user.reminders);
+              res.status(200).json(reminder);
             })
             .catch(err => {
               console.log(err);
