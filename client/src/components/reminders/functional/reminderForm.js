@@ -1,6 +1,6 @@
 import React from 'react';
 
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
 import { addReminder } from '../../../actions/smsReminders';
@@ -8,6 +8,11 @@ import { addReminder } from '../../../actions/smsReminders';
 const ReminderForm = props => {
   return (
     <div className="reminderform">
+      <Link to="/reminders">
+        <span>
+          <i className="fas fa-arrow-left add fa-fw" />
+        </span>
+      </Link>
       <div className="reminderform-drop">
         {props.dropdown ? (
           <React.Fragment>
