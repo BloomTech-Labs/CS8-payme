@@ -18,11 +18,12 @@ class Reminders extends Component {
       message: '',
       rPhone: '',
       email: '',
-      name: '',
+      title: '',
       amount: null,
       isEmail: false,
       company: '',
-      date: new Date(),
+      start: new Date(),
+      end: new Date(),
     },
     dropdown: true,
     Custmessage: false,
@@ -37,16 +38,6 @@ class Reminders extends Component {
 
   onSelect = () => this.setState({ selected: !this.state.selected });
 
-  onChange(date) {
-    this.setState(state => ({
-      ...state,
-      reminder: {
-        ...state.reminder,
-        ...date,
-      },
-    }));
-  }
-
   toggle = msg => {
     console.log('hey');
     if (msg === 'cal') {
@@ -57,6 +48,26 @@ class Reminders extends Component {
       this.setState({ Custmessage: true, calendar: false });
     }
   };
+
+  startChange(start) {
+    this.setState(state => ({
+      ...state,
+      reminder: {
+        ...state.reminder,
+        ...start,
+      },
+    }));
+  }
+
+  endChange(end) {
+    this.setState(state => ({
+      ...state,
+      reminder: {
+        ...state.reminder,
+        ...end,
+      },
+    }));
+  }
 
   handleChange(e) {
     this.setState(state => ({
@@ -119,8 +130,15 @@ class Reminders extends Component {
                 />
               </p>
             </div>
-
-            <DateTimePicker onChange={date => this.onChange({ date })} value={reminder.date} />
+            <div>
+              <DateTimePicker
+                onChange={start => this.startChange({ start })}
+                value={reminder.start}
+              />
+            </div>
+            <div>
+              <DateTimePicker onChange={end => this.endChange({ end })} value={reminder.end} />
+            </div>
           </div>
           {/* ) : null} */}
           <div className="reminder-form_container">
@@ -134,7 +152,7 @@ class Reminders extends Component {
               getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
                 invoiceId: id,
                 rPhone: phone,
-                name,
+                title: name,
                 amount,
                 email,
                 company,
