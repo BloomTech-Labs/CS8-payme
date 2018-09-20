@@ -7,12 +7,19 @@ const scheduler = function() {
       /**********************************
         Break down date object 
       */
-      const initialSend = new Date(reminder.days);
+      const initialSend = new Date(reminder.start);
       const startNumb = initialSend.getDay(); // 0-6 starts at sunday
-      const startDate = initialSend.getDate(); // 1-31
+      const startDay = initialSend.getDate(); // 1-31
       const startHour = initialSend.getHours();
       const startMinute = initialSend.getMinutes();
       const startMonth = initialSend.getMonth();
+
+      const lastSend = new Date(reminder.end);
+      const endNumb = lastSend.getDay();
+      const endDay = lastSend.getDate();
+      const endHour = lastSend.getHours();
+      const endMinute = lastSend.getMinutes();
+      const endMonth = lastSend.getMonth();
       /*********************************/
 
       const remId = reminder._id.toString();
@@ -39,13 +46,17 @@ const scheduler = function() {
         let rule = new schedule.RecurrenceRule();
         rule.dayOfWeek = [startNumb, new schedule.Range(0, 6)];
         rule.hour = startHour;
-        rule.minute = startMinute;
+        rule.minute = startMinute + 1;
 
-        let job = schedule.scheduleJob(remId, rule, function() {
-          reminder.isEmail === true
-            ? sender.sendEmail(reminder)
-            : sender.sendSMS(reminder);
-        });
+        let job = schedule.scheduleJob(
+          remId,
+          { start: initialSend, end: lastSend, rule },
+          function() {
+            reminder.isEmail === true
+              ? sender.sendEmail(reminder)
+              : sender.sendSMS(reminder);
+          }
+        );
       }
       /**********************************/
 
@@ -53,10 +64,14 @@ const scheduler = function() {
        * Sends reminder WEEKLY
        */
       if (reminder.remind === 'weekly') {
-        // Sends 11:30am every week on selected day
+        let rule = new schedule.RecurrenceRule();
+        rule.dayOfWeek = startNumb;
+        rule.hour = startHour || endHour;
+        rule.minute = startMinute || endMinute;
+
         let job = schedule.scheduleJob(
           remId,
-          { hour: startHour, minute: startMinute, dayOfWeek: startNumb },
+          { start: initialSend, end: lastSend, rule },
           function() {
             reminder.isEmail === true
               ? sender.sendEmail(reminder)
@@ -72,14 +87,19 @@ const scheduler = function() {
       if (reminder.remind === 'monthly') {
         let rule = new schedule.RecurrenceRule();
         rule.month = [startMonth, new schedule.Range(0, 11)];
-        rule.hour = startHour;
-        rule.minute = startMinute;
+        rule.dayOfWeek = startNumb || endNumb;
+        rule.hour = startHour || endHour;
+        rule.minute = startMinute || endMinute;
 
-        let job = schedule.scheduleJob(remId, rule, function() {
-          reminder.isEmail === true
-            ? sender.sendEmail(reminder)
-            : sender.sendSMS(reminder);
-        });
+        let job = schedule.scheduleJob(
+          remId,
+          { start: initialSend, end: lastSend, rule },
+          function() {
+            reminder.isEmail === true
+              ? sender.sendEmail(reminder)
+              : sender.sendSMS(reminder);
+          }
+        );
       }
       /**********************************/
     },

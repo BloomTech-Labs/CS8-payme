@@ -17,16 +17,17 @@ const createReminder = (req, res) => {
     message,
     isEmail,
     email,
-    name,
+    title,
     amount,
     company,
     remind,
-    date,
+    start,
+    end,
   } = req.body;
 
   const reminder = new Reminder({
     invoiceId,
-    name,
+    title,
     phoneNumber: rPhone,
     email,
     message,
@@ -34,7 +35,8 @@ const createReminder = (req, res) => {
     amount,
     company,
     remind,
-    days: date,
+    start,
+    end,
   });
 
   const { _id } = req.user;

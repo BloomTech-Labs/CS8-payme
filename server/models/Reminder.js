@@ -5,7 +5,7 @@ const scheduler = require('../scheduling/scheduler');
 const ReminderSchema = new mongoose.Schema({
   invoiceId: String,
 
-  name: String,
+  title: String,
 
   company: String,
 
@@ -39,7 +39,13 @@ const ReminderSchema = new mongoose.Schema({
     required: true,
   }, // custom, daily, weekly, monthly
 
-  days: {
+  start: {
+    required: true,
+    type: Date,
+    default: Date.now(),
+  },
+  end: {
+    required: true,
     type: Date,
     default: Date.now(),
   },
