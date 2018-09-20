@@ -9,10 +9,15 @@ const SMS = props => {
   });
   return (
     <div>
+      Remind by sms:
       {smsReminders.map((r, i) => {
         return (
-          <div style={{ backgroundColor: 'red' }} key={i}>
-            <div>{r.name}</div>
+          <div style={{ border: '1px solid red' }} key={i}>
+            <span>
+              <i className="fas fa-mobile-alt" />
+            </span>
+            <p>{r.name}</p>
+            <p>{r.date}</p>
             <span onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })}>
               <i className="fa fa-bell-slash" />
             </span>
