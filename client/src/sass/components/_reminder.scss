@@ -21,8 +21,7 @@
   // margin: 0 auto;
   &-navigation {
     display: flex;
-    // justify-content: space-around;
-    // border: 0.3px solid rgb(210, 210, 210);
+    flex-flow: column;
     height: 6rem;
     min-height: 6rem;
     background-color: rgb(60, 60, 60);
@@ -35,7 +34,7 @@
 
   &-container {
     width: 100%;
-    // background-color: yellow;    
+    // background-color: yellow;
   }
 
   &-layout {
@@ -165,14 +164,13 @@
 
 .reminder-calendar {
   // background-color: yellow;
-  width: 90%;
+  width: 100%;
   height: 50rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   // margin-left: 50rem;
-
 }
 
 .fa.arrow.left.remind {
@@ -182,4 +180,10 @@
 .fa-arrow-left {
   font-size: 3rem;
   margin-bottom: 1.5rem;
+}
+.react-datetime-picker__button__input__input {
+}
+.react-datetime-picker__button__input__hour {
+  background-color: red;
+  // padding: 1rem;
 }

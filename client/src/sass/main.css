@@ -1064,6 +1064,7 @@ e,'s are considered best option for media queries
   width: 100%; }
   .reminder-navigation {
     display: flex;
+    flex-flow: column;
     height: 6rem;
     min-height: 6rem;
     background-color: #3c3c3c;
@@ -1137,7 +1138,7 @@ e,'s are considered best option for media queries
   text-align: center; }
 
 .reminder-calendar {
-  width: 90%;
+  width: 100%;
   height: 50rem;
   display: flex;
   justify-content: center;
@@ -1150,6 +1151,9 @@ e,'s are considered best option for media queries
 .fa-arrow-left {
   font-size: 3rem;
   margin-bottom: 1.5rem; }
+
+.react-datetime-picker__button__input__hour {
+  background-color: red; }
 
 .settings {
   background-color: #ffffff;
@@ -1402,7 +1406,7 @@ e,'s are considered best option for media queries
     height: 4rem;
     display: flex;
     justify-content: center; }
-    .dropdown-option p {
+    .dropdown-option span {
       height: 100%;
       width: 100%;
       padding: 1rem 1rem;
