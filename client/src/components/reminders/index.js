@@ -21,6 +21,17 @@ class RemindersHome extends Component {
     console.log(this.props.areminders);
   }
 
+  eventStyler = event => {
+    const eventStyles = {
+      backgroundColor: '',
+    };
+
+    if (event.isEmail === false) {
+      eventStyles.backgroundColor = '#000000';
+    }
+    return { style: eventStyles };
+  };
+
   render() {
     const { invoices, reminders, areminders } = this.props;
     // console.log(areminders);
@@ -53,7 +64,12 @@ class RemindersHome extends Component {
           </div>
           <div style={{ height: '100%', padding: '10px' }}>
             {areminders ? (
-              <BigCalendar events={areminders} views={['month']} />
+              <BigCalendar
+                events={areminders}
+                // compontents={{ event: [SMS, Emails] }}
+                views={['month']}
+                eventPropGetter={this.eventStyler}
+              />
             ) : (
               <div>Reminding reminders...</div>
             )}
