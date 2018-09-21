@@ -97,31 +97,30 @@ class Reminders extends Component {
     const { reminder } = this.state;
     // const { invoice } = this.props;
     console.log(reminders);
-    console.log(reminder.date);
     console.log(reminder);
     return (
       <div className="reminder">
         <Sidebar />
         <div className="reminder-container">
           <div className="reminder-navigation">
-            {reminder.name ? (
-              <p style={{ marginRight: '5rem', marginLeft: '5rem' }}>
-                CurrentInvoice:
-                <span style={{ color: '#22CFB1' }}>{reminder.name}</span>
-              </p>
-            ) : null}
-            {this.state.calendar || this.state.Custmessage ? (
+            {/* {this.state.calendar || this.state.Custmessage ? (
               <div>
                 <p>
                   Date Selected:
                   <span style={{ color: '#22CFB1' }}>{reminder.date.toString().slice(0, 25)}</span>
                 </p>
               </div>
-            ) : null}
+            ) : null} */}
           </div>
+          {reminder.title ? (
+            <p style={{ marginRight: '5rem', marginLeft: '5rem' }}>
+              CurrentInvoice:
+              <span style={{ color: '#22CFB1' }}>{reminder.title}</span>
+            </p>
+          ) : null}
           {/* {this.state.calendar ? ( */}
-          <div className="reminder-calendar">
-            <div className="calendar_header">
+          {/* <div className="reminder-calendar"> */}
+            {/* <div className="calendar_header">
               <p> Select desired date</p>
               <p onClick={() => this.toggle('sms')}>
                 <i
@@ -129,20 +128,21 @@ class Reminders extends Component {
                   className="fas fa-arrow-left remind fa-flip-horizontal"
                 />
               </p>
-            </div>
-            <div>
-              <DateTimePicker
-                onChange={start => this.startChange({ start })}
-                value={reminder.start}
-              />
-            </div>
-            <div>
-              <DateTimePicker onChange={end => this.endChange({ end })} value={reminder.end} />
-            </div>
-          </div>
+            </div> */}
+
+            {/* <DateTimePicker
+              onChange={start => this.startChange({ start })}
+              value={reminder.start}
+            />
+            <br />
+            <DateTimePicker onChange={end => this.endChange({ end })} value={reminder.end} /> */}
+          {/* </div> */}
           {/* ) : null} */}
+
           <div className="reminder-form_container">
             <RemindForm
+              startChange={start => this.startChange({ start })}
+              endChange={end => this.endChange({ end })}
               handleMessage={e => this.handleChange({ message: e.target.value })}
               handleEmail={e => this.handleChange({ isEmail: e.target.value })}
               handleRemind={e => this.handleChange({ remind: e.target.value })}

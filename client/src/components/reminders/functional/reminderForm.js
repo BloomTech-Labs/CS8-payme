@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
+import DateTimePicker from 'react-datetime-picker';
 import { addReminder } from '../../../actions/smsReminders';
 
 const ReminderForm = props => {
@@ -22,6 +23,9 @@ const ReminderForm = props => {
                 className="fas fa-arrow-left fa-flip-horizontal fa-fw"
               />
             </p> */}
+            <DateTimePicker onChange={props.startChange} value={props.formData.start} />
+            <br />
+            <DateTimePicker onChange={props.endChange} value={props.formData.end} />
             <h1>Select An Invoice</h1>
             <Dropdown
               className="dropdown"
@@ -31,8 +35,8 @@ const ReminderForm = props => {
               selection
               options={props.invoices.map((invoice, i) => {
                 return (
-                  <div className="dropdown-option" key={i}>
-                    <p
+                  <div className="dropdown-option" key={invoice._id}>
+                    <span
                       tabIndex="0"
                       className={props.selected ? 'dropdown-select' : 'dropdown-not'}
                       onClick={() => {
@@ -50,7 +54,7 @@ const ReminderForm = props => {
                     >
                       {invoice.clientName} -
                       <span style={{ margin: '1rem 0 0 0' }}> #{invoice.number}</span>
-                    </p>
+                    </span>
                   </div>
                 );
               })}
