@@ -34,7 +34,7 @@ class RemindersHome extends Component {
 
   render() {
     const { invoices, reminders, areminders } = this.props;
-    // console.log(areminders);
+    // console.log(invoices);
 
     return (
       <div className="reminder">
@@ -62,12 +62,17 @@ class RemindersHome extends Component {
               <div>Reminding reminders...</div>
             )}
           </div>
-          <div style={{ height: '100%', padding: '10px' }}>
+          <div style={{ height: '100%', padding: '10px', width: '80%' }}>
             {areminders ? (
               <BigCalendar
                 events={areminders}
-                // compontents={{ event: [SMS, Emails] }}
-                views={['month']}
+                startAccessor={event => {
+                  return moment(event.start).toDate();
+                }}
+                endAccessor={event => {
+                  return moment(event.end).toDate();
+                }}
+                views={['month', 'day', 'week']}
                 eventPropGetter={this.eventStyler}
               />
             ) : (
