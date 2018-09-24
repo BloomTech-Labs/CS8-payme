@@ -52,33 +52,36 @@ class RemindersHome extends Component {
             </Link>
           </div>
 
-          <div style={{ border: '2px solid black' }}>
-            {areminders ? (
+          {areminders ? (
+            <div
+              style={{
+                border: '2px solid black',
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: '100%',
+              }}
+            >
               <div>
                 <SMS reminders={areminders} />
                 <Emails reminders={areminders} />
               </div>
-            ) : (
-              <div>Reminding reminders...</div>
-            )}
-          </div>
-          <div style={{ height: '100%', padding: '10px', width: '80%' }}>
-            {areminders ? (
-              <BigCalendar
-                events={areminders}
-                startAccessor={event => {
-                  return moment(event.start).toDate();
-                }}
-                endAccessor={event => {
-                  return moment(event.end).toDate();
-                }}
-                views={['month', 'day', 'week']}
-                eventPropGetter={this.eventStyler}
-              />
-            ) : (
-              <div>Reminding reminders...</div>
-            )}
-          </div>
+              <div style={{ height: '70%', width: '70%' }}>
+                <BigCalendar
+                  events={areminders}
+                  startAccessor={event => {
+                    return moment(event.start).toDate();
+                  }}
+                  endAccessor={event => {
+                    return moment(event.end).toDate();
+                  }}
+                  views={['month', 'day', 'week']}
+                  eventPropGetter={this.eventStyler}
+                />
+              </div>
+            </div>
+          ) : (
+            <div>Reminding reminders...</div>
+          )}
         </div>
       </div>
     );
