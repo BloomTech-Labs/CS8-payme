@@ -1064,7 +1064,6 @@ e,'s are considered best option for media queries
   width: 100%; }
   .reminder-navigation {
     display: flex;
-    flex-flow: column;
     height: 6rem;
     min-height: 6rem;
     background-color: #3c3c3c;
@@ -1423,6 +1422,20 @@ e,'s are considered best option for media queries
   width: 100%;
   display: flex;
   flex-flow: column; }
+
+.create_reminder {
+  height: 6rem;
+  width: 10rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .create_reminder p {
+    margin: 0;
+    color: white; }
+    .create_reminder p:hover {
+      color: #22CFB1; }
 
 .rList {
   width: 30%;
