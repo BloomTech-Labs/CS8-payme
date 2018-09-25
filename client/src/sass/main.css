@@ -1066,7 +1066,7 @@ e,'s are considered best option for media queries
     display: flex;
     height: 6rem;
     min-height: 6rem;
-    background-color: #3c3c3c;
+    background-color: #2d2d2d;
     color: white; }
     .reminder-navigation p {
       margin-top: 1rem; }
@@ -1454,14 +1454,14 @@ e,'s are considered best option for media queries
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1px;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: white; }
-  .rCard .date {
-    width: 10rem;
-    display: flex;
-    justify-content: center; }
+  .rCard-date {
+    width: 12rem;
+    display: flex; }
   .rCard p {
-    margin: 0; }
+    margin: 0;
+    font-size: 13px; }
 
 .rbc-toolbar {
   height: 7rem; }

@@ -45,6 +45,7 @@ class RemindersHome extends Component {
         <SideNav />
         <div className="home">
           <div className="reminder-navigation">
+            <hr className="navigation-line" />
             <div className="create_reminder">
               <Link to="/createreminders">
                 <p>

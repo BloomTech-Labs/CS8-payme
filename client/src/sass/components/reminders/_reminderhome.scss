@@ -40,17 +40,19 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1px;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: white;
   // border: 1px solid red;
-  .date {
-    width: 10rem;
+  &-date {
+    width: 12rem;
     display: flex;
-    justify-content: center;
+
     // border: 1px solid blue;
   }
   p {
     margin: 0;
+    font-size: 13px;
+    // width: 100%;
     // color: #44d3ff
   }
 }
