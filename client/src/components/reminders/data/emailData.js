@@ -23,10 +23,10 @@ const Emails = props => {
         end = end.format('MM/DD h:mma');
         return (
           <div className="rCard" style={{ borderLeft: '4px solid #ff4444' }} key={i}>
-            <p>{r.title}</p>
+            <p style={{ fontWeight: 'bold' }}>{r.title}</p>
             {r.remind !== 'custom' ? (
               <div className="rCard-date">
-                <p>{start}</p> <div style={{ width: '19px' }}> - </div> <p>{end}</p>
+                <p>{start}</p> <div className="range"> - </div> <p>{end}</p>
               </div>
             ) : (
               <p>{start}</p>

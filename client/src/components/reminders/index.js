@@ -46,14 +46,14 @@ class RemindersHome extends Component {
         <div className="home">
           <div className="reminder-navigation">
             <hr className="navigation-line" />
-            <div className="create_reminder">
-              <Link to="/createreminders">
+            <Link to="/createreminders">
+              <div className="create_reminder">
                 <p>
                   Create
                   <i className="fas fa-plus fa-fw" />
                 </p>
-              </Link>
-            </div>
+              </div>
+            </Link>
             <hr className="navigation-line" />
           </div>
 
@@ -74,8 +74,8 @@ class RemindersHome extends Component {
 
               <div
                 style={{
-                  height: '70%',
-                  width: '70%',
+                  height: '75%',
+                  width: '60%',
                   marginLeft: '3px',
                 }}
               >

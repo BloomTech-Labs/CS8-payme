@@ -23,14 +23,14 @@ const SMS = props => {
         let end = moment(r.end);
         end = end.format('M/DD h:mma');
         // console.log(start);
+
         return (
           <div className="rCard" style={{ borderLeft: '4px solid #44d3ff' }} key={i}>
-            <p>{r.title}</p>
+            <p style={{ fontWeight: 'bold' }}>{r.title}</p>
 
             {r.remind !== 'custom' ? (
               <div className="rCard-date">
-                <p>{start}</p> <div style={{ width: '22px', fontSize: '22px' }}> - </div>{' '}
-                <p>{end}</p>
+                <p>{start}</p> <div className="range"> - </div> <p>{end}</p>
               </div>
             ) : (
               <p>{start}</p>
