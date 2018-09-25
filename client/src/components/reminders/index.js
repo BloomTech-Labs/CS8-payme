@@ -23,13 +23,15 @@ class RemindersHome extends Component {
 
   eventStyler = event => {
     const eventStyles = {
-      border: '1px solid white',
-      borderRadius: '12px',
-      backgroundColor: '',
+      // border: '1px solid white',
+      borderRadius: '16px',
+      fontSize: '12px',
+      backgroundColor: '#ff4444',
     };
 
     if (event.isEmail === false) {
-      eventStyles.backgroundColor = '#000000';
+      eventStyles.backgroundColor = '#44d3ff';
+      eventStyles.color = 'grey';
     }
     return { style: eventStyles };
   };
@@ -57,10 +59,10 @@ class RemindersHome extends Component {
           {areminders ? (
             <div
               style={{
-                border: '2px solid black',
                 display: 'flex',
                 justifyContent: 'space-between',
                 height: '100%',
+                backgroundColor: '#f5f5f5',
               }}
             >
               <div className="rList">
@@ -69,7 +71,13 @@ class RemindersHome extends Component {
                 <Emails reminders={areminders} />
               </div>
 
-              <div style={{ height: '70%', width: '70%', padding: '8px' }}>
+              <div
+                style={{
+                  height: '70%',
+                  width: '70%',
+                  marginLeft: '3px',
+                }}
+              >
                 <BigCalendar
                   events={areminders}
                   startAccessor={event => {

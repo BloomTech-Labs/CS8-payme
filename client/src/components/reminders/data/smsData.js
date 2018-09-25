@@ -24,12 +24,12 @@ const SMS = props => {
         end = end.format('ddd MM/DD h:mm');
         // console.log(start);
         return (
-          <div className="rCard" style={{ borderLeft: '4px solid green' }} key={i}>
+          <div className="rCard" style={{ borderLeft: '4px solid #44d3ff' }} key={i}>
             <p>{r.title}</p>
 
             {r.remind !== 'custom' ? (
               <div className="rCard-date">
-                <p style={{ color: '#62fff7' }}>{start}</p> - <p>{end}</p>
+                <p>{start}</p> - <p>{end}</p>
               </div>
             ) : (
               <p>{start}</p>

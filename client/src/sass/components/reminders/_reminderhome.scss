@@ -30,10 +30,35 @@
     width: 10rem;
     display: flex;
     justify-content: center;
-    border: 1px solid blue;
+    // border: 1px solid blue;
   }
   p {
     margin: 0;
-    // color: #62fff7
+    // color: #44d3ff
   }
+}
+
+.rbc-toolbar {
+  height: 7rem;
+}
+.rbc-toolbar-label {
+  font-size: 26px;
+}
+.rbc-event-content {
+  padding: 1px;
+}
+.rbc-day-bg {
+  background-color: white;
+}
+.rbc-off-range-bg {
+  background-color: #e5e5e5;
+}
+
+.rbc-header {
+  color: white;
+  background-color: $color-nav;
+  padding: 4px;
+}
+.rbc-today {
+  background-color: #b8fff8b6;
 }

@@ -22,7 +22,7 @@ const Emails = props => {
         let end = moment(r.end);
         end = end.format('ddd MM/DD h:mm');
         return (
-          <div className="rCard" style={{ borderLeft: '4px solid blue' }} key={i}>
+          <div className="rCard" style={{ borderLeft: '4px solid #ff4444' }} key={i}>
             <p>{r.title}</p>
             {r.remind !== 'custom' ? (
               <div className="rCard-date">
