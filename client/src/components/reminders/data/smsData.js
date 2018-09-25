@@ -38,7 +38,10 @@ const SMS = props => {
 
             <p style={{ fontSize: '12.5px' }}>{r.remind.toUpperCase()}</p>
 
-            <span onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })}>
+            <span
+              style={{ cursor: 'pointer' }}
+              onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })}
+            >
               <i className="fas fa-trash-alt" />
             </span>
           </div>
