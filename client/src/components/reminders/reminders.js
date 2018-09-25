@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Calendar from 'react-calendar';
-import DateTimePicker from 'react-datetime-picker';
-import InputMoment from 'input-moment';
-import moment from 'moment';
+import { Link } from 'react-router-dom';
+
 import { getAllInvoices, getInvoice } from '../../actions/invoices';
 import Sidebar from '../sidebar';
 // import Dropdown from './dropdown';
@@ -103,24 +101,16 @@ class Reminders extends Component {
         <Sidebar />
         <div className="reminder-container">
           <div className="reminder-navigation">
-            {/* {this.state.calendar || this.state.Custmessage ? (
-              <div>
-                <p>
-                  Date Selected:
-                  <span style={{ color: '#22CFB1' }}>{reminder.date.toString().slice(0, 25)}</span>
-                </p>
-              </div>
-            ) : null} */}
+            <Link to="/reminders">
+              <span>
+                <i className="fas fa-arrow-left add fa-fw" />
+              </span>
+            </Link>
           </div>
-          {reminder.title ? (
-            <p style={{ marginRight: '5rem', marginLeft: '5rem' }}>
-              CurrentInvoice:
-              <span style={{ color: '#22CFB1' }}>{reminder.title}</span>
-            </p>
-          ) : null}
+
           {/* {this.state.calendar ? ( */}
           {/* <div className="reminder-calendar"> */}
-            {/* <div className="calendar_header">
+          {/* <div className="calendar_header">
               <p> Select desired date</p>
               <p onClick={() => this.toggle('sms')}>
                 <i
@@ -130,7 +120,7 @@ class Reminders extends Component {
               </p>
             </div> */}
 
-            {/* <DateTimePicker
+          {/* <DateTimePicker
               onChange={start => this.startChange({ start })}
               value={reminder.start}
             />
@@ -146,9 +136,6 @@ class Reminders extends Component {
               handleMessage={e => this.handleChange({ message: e.target.value })}
               handleEmail={e => this.handleChange({ isEmail: e.target.value })}
               handleRemind={e => this.handleChange({ remind: e.target.value })}
-              remind={reminder.remind}
-              isEmail={reminder.isEmail}
-              invoices={invoices}
               getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
                 invoiceId: id,
                 rPhone: phone,
@@ -156,8 +143,11 @@ class Reminders extends Component {
                 amount,
                 email,
                 company,
-              })
-              }
+              })}
+              remind={reminder.remind}
+              isEmail={reminder.isEmail}
+              title={reminder.title}
+              invoices={invoices}
               formData={reminder}
               history={this.props.history}
               selected={this.state.selected}
