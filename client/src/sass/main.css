@@ -1424,6 +1424,33 @@ e,'s are considered best option for media queries
   display: flex;
   flex-flow: column; }
 
+.rList {
+  width: 30%;
+  background-color: #f5f5f5; }
+
+.rType {
+  height: 6rem;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 22px; }
+
+.rCard {
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+  padding: 1.5rem;
+  background-color: white; }
+  .rCard .date {
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue; }
+  .rCard p {
+    margin: 0; }
+
 body {
   height: 100vh;
   color: black;

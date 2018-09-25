@@ -4,3 +4,36 @@
   display: flex;
   flex-flow: column;
 }
+.rList {
+  width: 30%;
+  background-color: #f5f5f5;
+}
+.rType {
+  height: 6rem;
+  padding-left: 1rem;
+  display: flex;
+  // justify-content: space-around;
+  align-items: center;
+  font-size: 22px;
+}
+
+.rCard {
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px;
+  padding: 1.5rem;
+  background-color: white;
+  // border: 1px solid red;
+  .date {
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;
+  }
+  p {
+    margin: 0;
+    // color: #62fff7
+  }
+}

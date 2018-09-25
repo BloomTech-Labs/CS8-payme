@@ -23,6 +23,8 @@ class RemindersHome extends Component {
 
   eventStyler = event => {
     const eventStyles = {
+      border: '1px solid white',
+      borderRadius: '12px',
       backgroundColor: '',
     };
 
@@ -61,11 +63,13 @@ class RemindersHome extends Component {
                 height: '100%',
               }}
             >
-              <div>
+              <div className="rList">
                 <SMS reminders={areminders} />
+
                 <Emails reminders={areminders} />
               </div>
-              <div style={{ height: '70%', width: '70%' }}>
+
+              <div style={{ height: '70%', width: '70%', padding: '8px' }}>
                 <BigCalendar
                   events={areminders}
                   startAccessor={event => {

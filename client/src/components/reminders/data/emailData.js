@@ -9,27 +9,29 @@ const Emails = props => {
     return rem.isEmail === true;
   });
   return (
-    <div>
-      Remind by Email:
+    <div style={{ marginBottom: '2rem' }}>
+      <div className="rType">
+        email Reminders{' '}
+        <span style={{ margin: '1rem 3rem' }}>
+          <i className="fas fa-envelope-open fa-fw" />
+        </span>
+      </div>
       {emailReminders.map((r, i) => {
         let start = moment(r.start);
-        start = start.format('MM ddd hh:mm');
+        start = start.format('ddd MM/DD h:mm');
         let end = moment(r.end);
-        end = end.format('MM ddd hh:mm');
+        end = end.format('ddd MM/DD h:mm');
         return (
-          <div style={{ border: '1px solid blue' }} key={i}>
-            <span>
-              <i className="fas fa-envelope-open fa-fw" />
-            </span>
-            <div>{r.title}</div>
+          <div className="rCard" style={{ borderLeft: '4px solid blue' }} key={i}>
+            <p>{r.title}</p>
             {r.remind !== 'custom' ? (
-              <p>
-                {start} - {end}
-              </p>
+              <div className="rCard-date">
+                <p>{start}</p> - <p>{end}</p>
+              </div>
             ) : (
               <p>{start}</p>
             )}
-            <p>{r.remind}</p>
+            <p>{r.remind.toUpperCase()}</p>
             <span onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })}>
               <i className="fa fa-bell-slash" />
             </span>

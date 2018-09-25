@@ -9,28 +9,34 @@ const SMS = props => {
     return rem.isEmail === false;
   });
   return (
-    <div>
-      Remind by sms:
+    <div style={{ margin: '2rem 0' }}>
+      <div className="rType">
+        sms Reminders{' '}
+        <span style={{ margin: '1rem 3rem' }}>
+          <i className="fas fa-mobile-alt" />
+        </span>
+      </div>
+
       {smsReminders.map((r, i) => {
         let start = moment(r.start);
-        start = start.format('MM ddd hh:mm');
+        start = start.format('ddd MM/DD h:mm');
         let end = moment(r.end);
-        end = end.format('MM ddd hh:mm');
+        end = end.format('ddd MM/DD h:mm');
         // console.log(start);
         return (
-          <div style={{ display: 'flex', justifyContent: 'space-around' }} key={i}>
-            <span>
-              <i className="fas fa-mobile-alt" />
-            </span>
+          <div className="rCard" style={{ borderLeft: '4px solid green' }} key={i}>
             <p>{r.title}</p>
+
             {r.remind !== 'custom' ? (
-              <p>
-                {start} - {end}
-              </p>
+              <div className="rCard-date">
+                <p style={{ color: '#62fff7' }}>{start}</p> - <p>{end}</p>
+              </div>
             ) : (
               <p>{start}</p>
             )}
-            <p>{r.remind}</p>
+
+            <p>{r.remind.toUpperCase()}</p>
+
             <span onClick={() => props.deleteSms({ reminderId: r._id, invoiceId: r.invoiceId })}>
               <i className="fa fa-bell-slash" />
             </span>
