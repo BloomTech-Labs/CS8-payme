@@ -1073,76 +1073,88 @@ e,'s are considered best option for media queries
   .reminder-container {
     width: 100%; }
   .reminder-form_container {
-    margin-top: 10rem;
-    width: 100%; }
-  .reminder-radios_menu {
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    margin: -1rem 0 1rem 0;
-    height: 10rem; }
-  .reminder-radios {
+    height: 80%; }
+  .reminder-radios_menu {
+    height: 25%;
+    width: 18rem;
     display: flex;
     justify-content: space-between;
-    height: 80%;
+    flex-flow: column;
+    align-items: center; }
+    .reminder-radios_menu h1 {
+      align-self: center;
+      margin: 2px; }
+  .reminder-radios {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
     flex-direction: column; }
   .reminder-select {
-    display: flex; }
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    align-self: flex-start; }
+    .reminder-select label {
+      margin-left: 6px; }
 
 .reminderform {
-  height: 100%;
-  width: 100%;
-  max-width: 350px;
+  height: 80%;
+  width: 60%;
+  padding: 2rem;
+  margin: 3rem auto;
   display: flex;
-  width: 80%;
-  margin: auto;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between; }
+  flex-direction: column; }
   @media (max-width: 56.25em) {
     .reminderform {
       padding-top: 15px; } }
   .reminderform-drop {
-    width: 100%; }
+    height: 30%;
+    width: 18rem;
+    display: flex;
+    flex-flow: column;
+    align-self: center; }
   .reminderform-message {
-    width: 100%; }
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 80%;
+    align-self: center;
+    margin: 3rem 0; }
+    .reminderform-message h1 {
+      align-self: center; }
     .reminderform-message-input {
-      margin: 1rem 0;
+      margin: 1rem auto;
       padding: 3px 4px;
-      width: 100%;
+      width: 25rem;
       height: 8rem;
       border: solid grey 1.4px;
       border-radius: 5px;
-      resize: none; }
+      resize: none;
+      align-self: center; }
+  .reminderform-calendars {
+    height: 40%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
 
-.addreminder {
+.input_section {
+  height: 60%;
+  width: 85%;
+  margin: 1rem auto 4rem auto;
   display: flex;
-  justify-content: center;
-  width: 100%; }
-  .addreminder-button {
-    width: 10rem;
-    padding: 1rem;
-    background-color: #E86C62;
-    border: solid grey 1px;
-    border-radius: 5px; }
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center; }
+  .input_section h1 {
+    font-size: 28px; }
 
-.calendar_header {
+.rButton_container {
   display: flex;
-  justify-content: space-around;
-  width: 45%;
-  height: 7rem;
-  font-size: 2rem;
-  align-items: center;
-  text-align: center; }
-
-.reminder-calendar {
-  width: 100%;
-  height: 50rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; }
+  justify-content: center; }
 
 .fa.arrow.left.remind {
   font-size: 4rem; }
@@ -1151,8 +1163,20 @@ e,'s are considered best option for media queries
   font-size: 3rem;
   margin-bottom: 1.5rem; }
 
-.react-datetime-picker__button__input__hour {
-  background-color: red; }
+.react-datetime-picker {
+  width: 100%; }
+
+.react-datetime-picker__button {
+  height: 5rem;
+  border: none;
+  border-bottom: 1px solid #22CFB1; }
+
+.react-calendar {
+  border: 2px solid grey;
+  border-radius: 4px; }
+
+.react-datetime-picker__clock {
+  border-radius: 4px; }
 
 .settings {
   background-color: #ffffff;
@@ -1438,7 +1462,7 @@ e,'s are considered best option for media queries
       color: #22CFB1; }
 
 .rList {
-  width: 30%;
+  width: 40%;
   background-color: #f5f5f5; }
 
 .rType {
@@ -1455,13 +1479,22 @@ e,'s are considered best option for media queries
   align-items: center;
   margin-bottom: 1px;
   padding: 1rem;
-  background-color: white; }
+  background-color: white;
+  border-radius: 3px; }
   .rCard-date {
     width: 12rem;
-    display: flex; }
+    display: flex;
+    justify-content: space-between; }
   .rCard p {
+    width: 100px;
     margin: 0;
-    font-size: 13px; }
+    font-size: 13px;
+    text-align: center; }
+
+.range {
+  font-size: 30px;
+  display: flex;
+  justify-content: center; }
 
 .rbc-toolbar {
   height: 7rem; }
@@ -1476,7 +1509,7 @@ e,'s are considered best option for media queries
   background-color: white; }
 
 .rbc-off-range-bg {
-  background-color: #e5e5e5; }
+  background-color: #f5f5f5; }
 
 .rbc-header {
   color: white;
