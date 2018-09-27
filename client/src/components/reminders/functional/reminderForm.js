@@ -10,6 +10,9 @@ const ReminderForm = props => {
   return (
     <div className="reminderform">
       <React.Fragment>
+        <span style={{ fontSize: '30px', cursor: 'pointer' }} onClick={() => props.toggle()}>
+          <i className="far fa-times-circle" />
+        </span>
         <div className="input_section">
           <div className="reminderform-drop">
             <h1>Invoices</h1>
@@ -97,7 +100,7 @@ const ReminderForm = props => {
         <h1>Custom message</h1>
         <textarea
           type="body"
-          placeholder="Reminder to..."
+          placeholder="Tell em you need your money"
           className="reminderform-message-input"
           onChange={props.handleMessage}
         />

@@ -93,7 +93,7 @@ class RemindersHome extends Component {
 
               <div
                 style={{
-                  height: '75%',
+                  height: '100%',
                   width: '60%',
                   marginLeft: '3px',
                 }}

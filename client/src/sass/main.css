@@ -1060,8 +1060,11 @@ e,'s are considered best option for media queries
     margin: 2rem 1rem; }
 
 .reminder {
+  height: 100%;
   display: flex;
-  width: 100%; }
+  width: 100%;
+  position: absolute;
+  z-index: 1; }
   .reminder-navigation {
     display: flex;
     height: 6rem;
@@ -1071,10 +1074,17 @@ e,'s are considered best option for media queries
     .reminder-navigation p {
       margin-top: 1rem; }
   .reminder-container {
-    width: 100%; }
-  .reminder-form_container {
+    position: absolute;
+    z-index: 1;
     width: 100%;
     height: 80%; }
+  .reminder-form_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    z-index: 100; }
   .reminder-radios_menu {
     height: 25%;
     width: 18rem;
@@ -1101,12 +1111,16 @@ e,'s are considered best option for media queries
       margin-left: 6px; }
 
 .reminderform {
-  height: 80%;
+  height: 85%;
   width: 60%;
   padding: 2rem;
   margin: 3rem auto;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  z-index: 1000; }
   @media (max-width: 56.25em) {
     .reminderform {
       padding-top: 15px; } }
@@ -1444,6 +1458,7 @@ e,'s are considered best option for media queries
 
 .home {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-flow: column; }
 

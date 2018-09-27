@@ -96,49 +96,37 @@ class Reminders extends Component {
     // const { invoice } = this.props;
     console.log(reminders);
     console.log(reminder);
-    return (
-      <div className="reminder">
-        {/* <Sidebar /> */}
-        <div className="reminder-container">
-          {/* <div className="reminder-navigation">
-            <Link to="/reminders">
-              <span>
-                <i className="fas fa-arrow-left add fa-fw" />
-              </span>
-            </Link>
-          </div> */}
 
-          <div className="reminder-form_container">
-            <RemindForm
-              startChange={start => this.startChange({ start })}
-              endChange={end => this.endChange({ end })}
-              handleMessage={e => this.handleChange({ message: e.target.value })}
-              handleEmail={e => this.handleChange({ isEmail: e.target.value })}
-              handleRemind={e => this.handleChange({ remind: e.target.value })}
-              getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
-                invoiceId: id,
-                rPhone: phone,
-                title: name,
-                amount,
-                email,
-                company,
-              })
-              }
-              remind={reminder.remind}
-              isEmail={reminder.isEmail}
-              title={reminder.title}
-              invoices={invoices}
-              formData={reminder}
-              history={this.props.history}
-              toggle={this.props.toggle}
-              selected={this.state.selected}
-              onSelect={this.onSelect}
-              togCalendar={this.toggle}
-              dropdown={this.state.dropdown}
-              cmessage={this.state.Custmessage}
-            />
-          </div>
-        </div>
+    return (
+      <div className="reminder-form_container" onClick={() => this.props.toggle()}>
+        <RemindForm
+          startChange={start => this.startChange({ start })}
+          endChange={end => this.endChange({ end })}
+          handleMessage={e => this.handleChange({ message: e.target.value })}
+          handleEmail={e => this.handleChange({ isEmail: e.target.value })}
+          handleRemind={e => this.handleChange({ remind: e.target.value })}
+          getInvoice={(id, phone, name, amount, email, company) => this.handleInvoice({
+            invoiceId: id,
+            rPhone: phone,
+            title: name,
+            amount,
+            email,
+            company,
+          })
+          }
+          remind={reminder.remind}
+          isEmail={reminder.isEmail}
+          title={reminder.title}
+          invoices={invoices}
+          formData={reminder}
+          history={this.props.history}
+          toggle={this.props.toggle}
+          selected={this.state.selected}
+          onSelect={this.onSelect}
+          togCalendar={this.toggle}
+          dropdown={this.state.dropdown}
+          cmessage={this.state.Custmessage}
+        />
       </div>
     );
   }
