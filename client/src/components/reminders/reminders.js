@@ -98,7 +98,7 @@ class Reminders extends Component {
     console.log(reminder);
 
     return (
-      <div className="reminder-form_container" onClick={() => this.props.toggle()}>
+      <div className="reminder-form_container">
         <RemindForm
           startChange={start => this.startChange({ start })}
           endChange={end => this.endChange({ end })}

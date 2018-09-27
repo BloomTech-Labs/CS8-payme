@@ -80,6 +80,7 @@ class RemindersHome extends Component {
             <div
               style={{
                 display: 'flex',
+                padding: '1rem',
                 justifyContent: 'space-between',
                 height: '100%',
                 backgroundColor: '#f5f5f5',
