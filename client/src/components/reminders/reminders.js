@@ -98,15 +98,15 @@ class Reminders extends Component {
     console.log(reminder);
     return (
       <div className="reminder">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <div className="reminder-container">
-          <div className="reminder-navigation">
+          {/* <div className="reminder-navigation">
             <Link to="/reminders">
               <span>
                 <i className="fas fa-arrow-left add fa-fw" />
               </span>
             </Link>
-          </div>
+          </div> */}
 
           <div className="reminder-form_container">
             <RemindForm
