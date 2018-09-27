@@ -108,27 +108,6 @@ class Reminders extends Component {
             </Link>
           </div>
 
-          {/* {this.state.calendar ? ( */}
-          {/* <div className="reminder-calendar"> */}
-          {/* <div className="calendar_header">
-              <p> Select desired date</p>
-              <p onClick={() => this.toggle('sms')}>
-                <i
-                  style={{ cursor: 'pointer' }}
-                  className="fas fa-arrow-left remind fa-flip-horizontal"
-                />
-              </p>
-            </div> */}
-
-          {/* <DateTimePicker
-              onChange={start => this.startChange({ start })}
-              value={reminder.start}
-            />
-            <br />
-            <DateTimePicker onChange={end => this.endChange({ end })} value={reminder.end} /> */}
-          {/* </div> */}
-          {/* ) : null} */}
-
           <div className="reminder-form_container">
             <RemindForm
               startChange={start => this.startChange({ start })}
@@ -143,7 +122,8 @@ class Reminders extends Component {
                 amount,
                 email,
                 company,
-              })}
+              })
+              }
               remind={reminder.remind}
               isEmail={reminder.isEmail}
               title={reminder.title}
