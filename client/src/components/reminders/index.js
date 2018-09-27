@@ -68,7 +68,11 @@ class RemindersHome extends Component {
           </div>
           {this.state.toggle ? (
             <div>
-              <CreateReminder toggle={this.toggle} toggler={this.state.toggle} />
+              <CreateReminder
+                toggle={this.toggle}
+                toggler={this.state.toggle}
+                history={this.props.history}
+              />
             </div>
           ) : null}
 

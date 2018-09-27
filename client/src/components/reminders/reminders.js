@@ -18,7 +18,7 @@ class Reminders extends Component {
       email: '',
       title: '',
       amount: null,
-      isEmail: false,
+      isEmail: true,
       company: '',
       start: new Date(),
       end: new Date(),
@@ -130,6 +130,7 @@ class Reminders extends Component {
               invoices={invoices}
               formData={reminder}
               history={this.props.history}
+              toggle={this.props.toggle}
               selected={this.state.selected}
               onSelect={this.onSelect}
               togCalendar={this.toggle}

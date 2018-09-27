@@ -107,6 +107,7 @@ const ReminderForm = props => {
           className="addreminder-button connect-stripe_button"
           type="submit"
           onClick={() => {
+            props.toggle();
             props.addReminder(props.formData, props.history);
           }}
         >
