@@ -75,14 +75,6 @@ class Invoices extends Component {
     this.setState({ listView: false, boxView: true });
   };
 
-  // PDF
-  // togglePDF = (id, show) => {
-  //   // console.log(show);
-  //   if (show === 'showpdf') {
-  //     return this.props.getInvoice(id), this.setState({ pdfToggle: true });
-  //   }
-  // };
-
   addInvoiceCheck = () => {
     const payment = new Date().getTime() - this.props.admin.subscription;
     if (!this.props.admin.stripe || !this.props.admin.stripe.code) {
@@ -116,20 +108,14 @@ class Invoices extends Component {
     const display = isDesktop ? 'none' : 'inline';
     const { invoices } = this.props;
     const { reminders } = this.props;
-    // console.log(reminders);
-    // console.log(invoices);
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
         return invoice.clientName.toLowerCase().includes(this.state.search.toLowerCase());
       });
     }
-
     // Box view || list view ?
     const className = this.state.boxView || isDesktop ? 'invoice-box' : 'invoice-list_group';
-    // if (this.state.boxView || isDesktop) {
-    //   className = 'invoice-box';
-    // }
     const SortableList = SortableContainer(props => {
       return (
         <div className={className}>
@@ -145,13 +131,11 @@ class Invoices extends Component {
                 clientName={inv.clientName}
                 company={inv.companyName}
                 history={this.props.history}
-                // isPdfToggled={this.state.pdfToggle}
                 togglePdf={this.togglePDF}
                 boxView={this.state.boxView}
                 listView={this.state.listView}
                 reminder={reminders}
                 isDesktop={isDesktop}
-                // reminders={this.props.allReminders(inv._id)}
                 url={`http://localhost:5000/api/getpdf/${inv._id}`}
               />
             );
