@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { SortableContainer, arrayMove } from 'react-sortable-hoc';
 import { ToastContainer, ToastStore } from 'react-toasts';
 
+import HomeNav from './homeNav';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
 import {
@@ -18,17 +19,6 @@ import {
 } from '../../../actions/invoices';
 
 import { allReminders } from '../../../actions/smsReminders';
-
-//NOTE- Tried exporting these style to classes
-// but it wasn't functioning correctly. Look into-
-const styles = {
-  backgroundColor: 'rgb(45, 45, 45)',
-  color: 'white',
-  border: 'none',
-  fontSize: '1.5rem',
-  height: '6rem',
-  boxShadow: 'none',
-};
 
 class Invoices extends Component {
   state = {
@@ -104,10 +94,10 @@ class Invoices extends Component {
   };
 
   render() {
-    const { isDesktop } = this.state;
+    const { isDesktop, search } = this.state;
     const display = isDesktop ? 'none' : 'inline';
-    const { invoices } = this.props;
-    const { reminders } = this.props;
+    const { invoices, reminders } = this.props;
+
     let filteredInvoices = [];
     if (invoices) {
       filteredInvoices = invoices.filter(invoice => {
@@ -148,57 +138,15 @@ class Invoices extends Component {
         <Sidebar />
         <div className="invoice-main">
           <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore} />
-          <div className="invoice-navigation">
-            <div className="invoice-search">
-              <input
-                type="text"
-                placeholder="Search Invoices"
-                className="invoice-search_input"
-                value={this.state.search}
-                onChange={this.updateSearch}
-              />
-              <div className="invoice-search-icon">
-                <i className="fas fa-search" />
-              </div>
-            </div>
-            <hr className="navigation-line" />
-            <div onClick={this.addInvoiceCheck}>
-              <p className="invoice-new">
-                Add Invoice
-                <i className="fas fa-plus fa-fw" />
-              </p>
-            </div>
-            <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', boxShadow: 'none' }}>
-              <div className="ui simple dropdown item" style={styles}>
-                Sort
-                <i className="fas fa-sort fa-fw" />
-                <div className="menu" style={{ fontSize: '1.3rem' }}>
-                  <div className="item" onClick={() => this.sortData('amount')}>
-                    Total Amount
-                  </div>
-                  <div className="item" onClick={() => this.sortData('clientName')}>
-                    ClientName
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr className="navigation-line" />
-            <div className="ui compact menu" style={{ border: 'none', display, boxShadow: 'none' }}>
-              <div className=" try ui simple dropdown item" style={styles}>
-                View
-                <i className="fas fa-eye fa-fw" />
-                <div className="menu" style={{ paddingTop: '0', fontSize: '1.3rem' }}>
-                  <div className="item" onClick={this.listView}>
-                    List
-                  </div>
-                  <div className="item" onClick={this.boxView}>
-                    Box
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <HomeNav
+            updateSearch={this.updateSearch}
+            addInvoiceCheck={this.addInvoiceCheck}
+            sortData={this.sortData}
+            search={search}
+            listView={this.listView}
+            boxView={this.boxView}
+            display={display}
+          />
           <div className="invoice-success">
             <p>{this.props.message}</p>
           </div>
