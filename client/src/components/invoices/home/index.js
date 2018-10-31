@@ -7,6 +7,7 @@ import { ToastContainer, ToastStore } from 'react-toasts';
 import HomeNav from './homeNav';
 import Sidebar from '../../sidebar';
 import Invoice from './dataInvoice';
+import InvoiceTitles from './invoiceTitles';
 import {
   getAllInvoices,
   handleInvoiceIdx,
@@ -94,7 +95,7 @@ class Invoices extends Component {
   };
 
   render() {
-    const { isDesktop, search } = this.state;
+    const { isDesktop, search, listView } = this.state;
     const display = isDesktop ? 'none' : 'inline';
     const { invoices, reminders } = this.props;
 
@@ -150,24 +151,8 @@ class Invoices extends Component {
           <div className="invoice-success">
             <p>{this.props.message}</p>
           </div>
-          {!isDesktop && (this.state.listView && invoices.length > 0) ? (
-            <div className="invoice-list">
-              <div className="invoice-list-box">
-                <p>Invoice Number</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Client Name</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Company Name</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>PDF</p>
-              </div>
-              <div className="invoice-list-box">
-                <p>Reminder</p>
-              </div>
-            </div>
+          {!isDesktop && (listView && invoices.length > 0) ? (
+            <InvoiceTitles />
           ) : null}
           {invoices.length > 0 ? (
             <SortableList
