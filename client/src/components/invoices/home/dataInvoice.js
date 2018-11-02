@@ -86,22 +86,6 @@ const Datainvoice = SortableElement(props => {
       <div className="invoice-list-box">
         <p className="invoice-list-company">{props.company}</p>
       </div>
-      {/* <div className="invoice-list-box">
-            <span
-              className="invoice-list-pdf"
-              onClick={() => props.togglePdf(props.invoiceID, 'showpdf')}
-            >
-              Invoice PDF
-              <i className="fas fa-paperclip" />
-            </span>
-          </div>
-          <div className="invoice-list-box">
-            <p className="invoice-list-reminder">
-              Weekly
-              <i className="far fa-envelope" style={{ marginLeft: '0.5rem' }} />
-              <i className="fas fa-mobile-alt" style={{ marginLeft: '0.5rem' }} />
-            </p>
-          </div> */}
       <div className="invoice-list-box">
         {props.isPdfToggled ? props.history.push('/pdf') : null}
         {props.img.data ? (
